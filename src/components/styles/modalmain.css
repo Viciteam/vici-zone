@@ -1,0 +1,133 @@
+/*--- BOF base modal design -------------------------------------*/
+.Modal {
+    position: absolute;
+    top: 30%;
+    left: inherit;
+    right: inherit;
+    bottom: inherit;
+    background-color: #fff;
+    width:679px;
+    height: fit-content;
+    margin: 0 auto;
+}
+
+.Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 202, 40, .78);
+}
+
+.jwmodal {
+    padding: 42px;
+    border-radius: 10px;
+    border: 1px solid #000;
+    font-family: nunito, sans-serif;
+}
+
+/*--- EOF base modal design -------------------------------------*/
+
+/*--- BOF custom design for the waitlist -------------------------------------*/
+
+.jw-inner h2 {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 1em;
+    margin-bottom: 5px;
+}
+
+.jw-inner .jw-note {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 1em;
+    margin-bottom: 5px;
+}
+
+.sform .sleft {
+    width: 67%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.sform .sright {
+    width: 30%;
+    display: inline-block;
+    margin-left: 2%;
+    vertical-align: top;
+}
+
+.semailform {
+    padding: 16px;
+    border: 2px solid #DFDFE1;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.jw-inner .semailform > * {
+    display: inline-block;
+}
+
+.jw-inner .semailform .email_icon {
+    color: #A0A8B0;
+    margin-right: 2%;
+    font-size: 20px;
+    line-height: 1em;
+    vertical-align: middle;
+}
+
+.jw-inner .semailform .sform {
+    width: 90%;
+}
+
+.jw-inner .semailform .sform input {
+    display: block;
+    width: 100%;
+    color: #A0A8B0;
+}
+
+.sform .sright button {
+    padding: 16px;
+    background: #FFCA28;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0px 5px 20px rgba(77, 183, 161, 0.25);
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.sform .sright button svg {
+    vertical-align: middle;
+}
+
+.closemods {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.closemods button {
+    font-weight: bold;
+    font-size: 14px;
+    border: 2px solid #000;
+    line-height: 1em;
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
+}
+
+.formerror {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    line-height: 1em;
+}
+
+.dsucess {
+    text-align: center;
+    padding: 15px 0 0;
+}
+
+/*--- EOF custom design for the waitlist -------------------------------------*/

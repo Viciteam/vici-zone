@@ -1,0 +1,208 @@
+
+.main-content {
+    font-family: nunito, sans-serif;
+}
+
+.clear {
+    clear: both;
+}
+
+.profile-part {
+    float: left;
+    width: 27%; 
+}
+
+.content-part {
+    float: right;
+    width: 73%;
+}
+
+.main-profile {
+    box-shadow: 0px 0px 20px #0000001a;
+    border-radius: 15px;
+}
+
+.main-profile .header {
+    padding: 15px 20px;
+}
+
+.user-details {
+    padding: 15px 20px 20px;
+}
+
+.hi-left {
+    display: inline-block;
+    width: 75%;
+    vertical-align: middle;
+}
+
+.hi-right {
+    display: inline-block;
+    width: 25%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.levelrate {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1em;
+}
+
+.dcreatechallenge .dimage img {
+    width: 45px;
+    margin: 0 auto 5px;
+}
+
+.dcreatechallenge .dtext {
+    color: #fcaf38;
+    font-size: 12px;
+    font-style: normal;
+}
+
+.ud-inner h3 {
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1em;
+    margin-bottom: 10px;
+}
+
+.ud-inner .stats {
+    margin-bottom: 10px;
+}
+
+.ud-inner .stats ul li {
+    display: inline-block;
+    margin-right: 15px;
+    line-height: 1em;
+}
+
+.ud-inner .stats ul li > div {
+    display: inline-block;
+}
+
+.stats ul li a {
+    color: #fcaf38;
+    font-weight: bold;
+}
+
+.dinfo ul li {
+    display: inline-block;
+    width: 49%;
+}
+
+.dinfo ul li > div {
+    display: inline-block;
+    font-size: 14px;
+}
+
+
+
+.dpointicon {
+    width: 15px;
+    height: 15px;
+    border-radius: 30px;
+}
+
+.dpointtext {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    margin-left: 5px;
+}
+
+.dinfo .dnum {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.dinfo .dtext {
+    text-transform: capitalize;
+}
+
+.content-inner .timeline {
+    float: left;
+    width: 67%;
+    padding: 15px;
+}
+
+.content-inner .srightnotif {
+    width: 33%;
+    float: right;
+}
+
+.top-part .wall-of-achievement {
+    float: left;
+    width: 45%;
+}
+
+.top-part .top-activities{
+    float: right;
+    width: 55%;
+} 
+
+.timeline .top-part {
+    margin-bottom: 25px;
+}
+
+/* tabs style */
+ul.tabtitles > li {
+    display: inline-block;
+    font-size: 20px;
+    color: #484848;
+    font-style: normal;
+    font-weight: 400;
+    height: auto;
+    left: 0px;
+    margin-right: 25px;
+    cursor: pointer;
+}
+
+.tabtitles .react-tabs__tab--selected {
+    border-bottom: 2px solid #303c6c;
+    color: #303c6c;
+    font-weight: 600;
+}
+
+.list-of-achievement {
+    line-height: 1em;
+    background: #b94375;
+    width: 95%;
+    height: 150px;
+    border-radius: 5px;
+}
+
+.top-header {
+    font-size: 16px;
+    color: #484848;
+    font-weight: 600;
+    line-height: 1em;
+    margin-bottom: 15px;
+}
+
+.ta-list > .ta-list-item {
+    background: #2c9cdb;
+    width: 30%;
+    display: inline-block;
+    margin-right: 3%;
+    height: 150px;
+    border-radius: 5px;
+}
+
+.sr-item {
+    box-shadow: 0px 0px 20px #0000001a;
+    margin-bottom: 20px;
+    border-radius: 15px;
+}
+
+.sr-item .sri-title {
+    padding: 20px 20px 15px;
+    font-size: 16px;
+    color: #484848;
+    font-weight: 600;
+    line-height: 1em;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #bfbfbf;
+}
