@@ -6,9 +6,9 @@ const Content = () => {
             <div className="grid grid-rows-1 grid-cols-1 xl:grid-cols-2 gap-4 container mx-auto">
                 <div className="text-center xl:text-left">
                     <div className="sm:text-5xl text-2xl">Challenge Accepted!</div>
-                    <div className="font-bold sm:text-7xl text-4xl pt-12 text-primary_color">Achieve Life Goals</div>
+                    <div className="font-bold sm:text-7xl text-4xl pt-12 text-primary_color">Achieve Goals</div>
                     <div className="font-bold sm:text-7xl text-4xl pt-8 text-primary_color">Motivate Others</div>
-                    <div className="font-bold sm:text-7xl text-4xl pt-8 text-primary_color">Win Through Life!</div>
+                    <div className="font-bold sm:text-7xl text-4xl pt-8 text-primary_color">Win through Life!</div>
                     <div className="sm:text-3xl text-xl pt-12 xl:w-2/3 w-full">A social network focused on making people's life better.</div>
                     <div className="pt-16 flex justify-center xl:justify-start">
                         <JoinWaitlist btnName="Uncover Vici"/>
