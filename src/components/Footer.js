@@ -7,7 +7,7 @@ const Footer = () => {
                         <li className="px-6"><a href="#">About</a></li>
                         <li className="px-6"><a href="#">Terms of Service</a></li>
                         <li className="px-6"><a href="#">Privacy Policy</a></li>
-                        <li className="px-6"><a href="#">Contact Us</a></li>
+                        <li className="px-6"><a href="/contact-us" target="_blank">Contact Us</a></li>
                     </ul>
                 </div>
             </div>

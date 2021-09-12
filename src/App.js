@@ -10,6 +10,9 @@ import ThankyouHeader from './components/ThankyouPage/Header';
 import ProfileHeader from './components/Pages/Profile/Header';
 import ProfileContent from './components/Pages/Profile/mainProfileContent';
 
+import ContactHeader from './components/Pages/ContactUs/ContactHeader'
+import ContactContent from './components/Pages/ContactUs/ContactContent';
+
 function App() {
   return (
     <Router>
@@ -27,6 +30,10 @@ function App() {
             <Route path="/profile">
               <ProfileHeader />
               <ProfileContent />
+            </Route>
+            <Route path="/contact-us">
+              <ContactHeader />
+              <ContactContent />
             </Route>
           </Switch>
       </div>
