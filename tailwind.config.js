@@ -21,8 +21,11 @@ module.exports = {
       white_color: '#ffffff',
       vici_bgcolor: '#FBE8A6',
       vici_button_txt: '#FCAF38',
+      vici_contact_footer: '#DEDEDE',
+      vici_gray: '#999999',
     },
-    extend: {},
+    extend: {
+    },
   },
   variants: {
     extend: {
