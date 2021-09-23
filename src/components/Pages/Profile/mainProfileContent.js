@@ -8,6 +8,8 @@ import SideProfile from './Segments/SideProfile'
 
 import WallofAchievements from './Segments/WallofAchievements'
 import TopActivities from './Segments/TopActivities'
+import Challenge from './Segments/Challenge'
+import Timeline from './Segments/Timeline'
 
 
 class mainProfileContent extends React.Component{
@@ -54,17 +56,17 @@ class mainProfileContent extends React.Component{
                                 </div>
                                 <div className="middle-part">
                                     <div className="mp-inner">
-                                        <Tabs>
+                                        <Tabs defaultIndex={1}>
                                             <TabList className="tabtitles">
                                                 <Tab>Challenges & Achievements</Tab>
                                                 <Tab>Timeline</Tab>
                                             </TabList>
 
                                             <TabPanel>
-                                                <h2>show challenge</h2>
+                                                <Challenge />
                                             </TabPanel>
                                             <TabPanel>
-                                                <h2>show timeline</h2>
+                                                <Timeline />
                                             </TabPanel>
                                         </Tabs>
                                     </div>

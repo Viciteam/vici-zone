@@ -1,4 +1,7 @@
 
+html {
+    background: #fcfcfc;
+}
 .main-content {
     font-family: nunito, sans-serif;
 }
@@ -187,8 +190,76 @@ ul.tabtitles > li {
     width: 30%;
     display: inline-block;
     margin-right: 3%;
-    height: 150px;
+    height: 160px;
     border-radius: 5px;
+    vertical-align: top;
+}
+.ta-list > .ta-list-item.yellowbar {
+    background: #f2c94c;
+}
+.ta-list > .ta-list-item.purplebar {
+    background: #bb6bd9;
+}
+.ta-list > .ta-list-item > .ta-inner {
+    padding: 10px 10px;
+}
+
+.ta-list > .ta-list-item > .ta-inner .dcenter {
+    width: 85%;
+    margin: 0 auto 10px;
+}
+.ta-list > .ta-list-item > .ta-inner .dnum {
+    text-align: center;
+    font-size: 14px;
+    line-height: 1em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.ta-list > .ta-list-item .CircularProgressbar-trail {
+    stroke: none;
+}
+
+.ta-list > .ta-list-item .CircularProgressbar-background  {
+    fill: #fff;
+}
+
+
+.ta-list > .ta-list-item.bluebar .CircularProgressbar-path {
+    stroke: #2f80ed;
+}
+
+.ta-list > .ta-list-item.yellowbar .CircularProgressbar-path {
+    stroke: #f2994a;
+}
+
+.ta-list > .ta-list-item.purplebar .CircularProgressbar-path {
+    stroke: #9b51e0;
+}
+
+.ta-list > .ta-list-item h3 {
+    font-weight: bold;
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.2em;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    min-height: 26px;
+}
+
+.ta-list > .ta-list-item .dwhitebg {
+    background: #fff;
+    border-radius: 100px;
+    height: 60px;
+    width: 60px;
+}
+
+.ta-list > .ta-list-item.yellowbar .dcenterimage {
+    margin: 15px auto !important;
+}
+.ta-list > .ta-list-item.purplebar .dcenterimage {
+    margin: 19px auto !important;
 }
 
 .sr-item {
@@ -205,4 +276,481 @@ ul.tabtitles > li {
     line-height: 1em;
     margin-bottom: 15px;
     border-bottom: 1px solid #bfbfbf;
+}
+
+/* challenge */
+.dchallemgeheader {
+    text-align: center;
+}
+.dchallemgeheader .dci-left {
+    display: inline-block;
+    width: 45%;
+}
+.dchallemgeheader .dci-left button {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px #00000026;
+    height: 56px;
+    width: 214px;
+    color: #fcaf38;
+    font-weight: bold;
+}
+.dchallemgeheader .dci-right {
+    display: inline-block;
+    width: 45%;
+}
+.dchallemgeheader .dci-right button {
+    background: rgb(254,201,70);
+    background: linear-gradient(180deg, rgba(254,201,70,1) 0%, rgba(244,170,60,1) 100%);
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px #00000026;
+    height: 56px;
+    width: 214px;
+    color: #fff;
+    font-weight: bold;
+}
+.dchallemgeheader {
+    text-align: center;
+    padding: 60px 0;
+    border-bottom: 1px solid #bfbfbf;
+}
+.challenges-inner {
+    width: 90%;
+    margin: 0 auto;
+}
+.dchallengeheadpart .dpartimage {
+    display: inline-block;
+    width: 20%;
+    vertical-align: middle;
+}
+.dchallengeheadpart .dpartimage img {
+    width: 90%;
+    border-radius: 5px;
+}
+
+.dchallengeheadpart .dheadtile{
+    display: inline-block;
+    width: 70%;
+    vertical-align: middle;
+}
+.dchallengeheadpart .dheadtile h3 {
+    font-size: 14px;
+    line-height: 1em;
+}
+.dchallengeheadpart .dheadtile h3 span.dusername {
+    font-size: 16px;
+    font-weight: bold;
+}
+.dchallengeheadpart .dheadtile h3 span.dactivity {
+    font-size: 16px;
+    font-weight: bold;
+}
+.dchallengeheadpart .dheadtile .dtime {
+    line-height: 1em;
+    font-size: 14px;
+    margin-top: 5px;
+}
+.dchallengeheadpart .dheadtile .dtags {
+    margin-top: 5px;
+}
+.dchallengeheadpart .dheadtile .dtags span {
+    display: inline-block;
+    font-size: 12px;
+    background: #ffca28;
+    margin-right: 5px;
+    color: #fff;
+    line-height: 1em;
+    padding: 5px 10px;
+    border-radius: 18px;
+    text-transform: capitalize;
+}
+.dch-item {
+    position: relative;
+}
+.dch-item .ditm-inner {
+    box-shadow: 0px 4px 12px #00000026;
+    margin-top: 65px;
+    background: #fff;
+    border-radius: 5px;
+}
+.cc_inner .dimage {
+    width: 40%;
+    display: inline-block;
+}
+.cc_inner .dinfo {
+    width: 59%;
+    display: inline-block;
+    vertical-align: top;
+}
+.challange_content {
+    background: #ffc928;
+    color: #000;
+    padding: 25px 10px;
+}
+.challange_content .dinfo .dfreq {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 1em;
+    margin-bottom: 5px;
+}
+.challange_content .dinfo .dtitle {
+    font-size: 21px;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 1em;
+    margin-bottom: 10px;
+}
+.challange_content .dinfo .ddesc {
+    font-size: 16px;
+    line-height: 1.2em;
+    margin-bottom: 16px;
+}
+.challange_content .dinfo .dstatus {
+    font-size: 15px;
+    line-height: 1em;
+    margin-bottom: 10px;
+}
+.challange_content .dinfo .dstatus span {
+    font-weight: bold;
+}
+.challange_content .dinfo .douter {
+    background: #fbe8a6;
+    height: 8px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.challange_content .dinfo .douter .dorange {
+    background: #fcaf38;
+    width: 30%;
+}
+.challange_content .dinfo .dpeople {
+    line-height: 1em;
+    text-align: right;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+.challange_content .dinfo .dbuttons {
+    text-align: right;
+}
+.challange_content .dinfo .dbuttons button {
+    line-height: 1em;
+    padding: 15px 25px;
+    font-size: 14px;
+}
+.challange_content .dinfo .dbuttons button.dwhitebg {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 11px #fcaf38;
+    color: #fcaf38;
+    font-weight: bold;
+}
+.dchallengeheadpart {
+    padding: 18px 25px;
+}
+.dprogress {
+    margin-bottom: 55px;
+}
+.challengebuttom {
+    padding: 0px 0px;
+    position: relative;
+}
+.challengebuttom .dc-left-item {
+    display: inline-block;
+    margin-right: 10px;
+}
+.challengebuttom .dc-left-item .dicon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+.challengebuttom .dc-left-item .dvals {
+    display: inline-block;
+    vertical-align: middle;
+}
+.challengebuttom .dcleft {
+    float: left;
+    width: 120px;
+    position: absolute;
+    background: #fff;
+    bottom: -15px;
+    text-align: center;
+    padding: 5px 0px;
+    border-radius: 5px;
+}
+.challengebuttom .dcright {
+    float: right;
+    text-align: right;
+    background: #fff;
+    padding: 10px 20px;
+    position: absolute;
+    right: 0;
+    border-radius: 5px;
+}
+.challengebuttom .dccomment img {
+    display: inline-block;
+}
+
+.roundleft {
+    box-shadow: 0px 4px 12px #00000026;
+}
+.roundright {
+    box-shadow: 0px 4px 12px #00000026;
+}
+.challengebuttom .dc-left-item .dvals .dv-inner {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* timeline */
+.timeline-inner {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.timeline-inner .om-inner {
+    box-shadow: 0px 4px 12px #00000026;
+    padding: 10px 20px 35px;
+    border-radius: 5px;
+}
+.timeline-inner .om-inner .dprofpic {
+    display: inline-block;
+    width: 11%;
+    vertical-align: top;
+}
+.timeline-inner .om-inner .dtextarea {
+    display: inline-block;
+    width: 88%;
+    padding-left: 15px;
+}
+
+.timeline-inner .om-inner .dprofpic img {
+    width: 55px;
+    border-radius: 5px;
+}
+.timeline-inner .om-inner .dtextarea textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    font-size: 14px;
+}
+.tm-onmind {
+    position: relative;
+    margin-top: 50px;
+}
+.tm-onmind .doptions .leftops .ditmone {
+    display: inline-block;
+}
+.tm-onmind .doptions .leftops .ditmone img {
+    margin: 0 10px;
+}
+.tm-onmind .doptions .leftops {
+    position: absolute;
+    background: #fff;
+    bottom: -30px;
+    padding: 10px 10px;
+    left: 0px;
+    border-radius: 5px;
+}
+.tm-onmind .doptions .rightops {
+    position: absolute;
+    background: #fff;
+    padding: 10px 15px;
+    right: 0px;
+    bottom: -30px;
+    border-radius: 5px;
+}
+
+.dtimelinemain .dtm-item-inner .dtm-item-image {
+    float: left;
+    width: 18%;
+    padding-right: 10px;
+}
+
+.dtimelinemain .dtm-item-inner .dtm-item-image img {
+    border-radius: 5px;
+}
+
+.dtimelinemain .dtm-item-inner .dtm-item-info {
+    float: right;
+    width: 82%;
+}
+
+.dtimelinemain {
+    margin-top: 60px;
+}
+
+.dtimelinemain .dtm-item .dtm-item-inner {
+    box-shadow: 0px 4px 12px #00000026;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.dtimelinemain .dtm-item-inner .dtm-item-info h3 {
+    line-height: 1em;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.dtimelinemain .dtm-item-inner .dtm-item-info .subinfo {
+    font-size: 12px;
+    color: #a0a8b0;
+}
+
+.dtm-item .dtm-content .dtm-content-inner {
+    margin-top: 10px;
+    line-height: 1.3em;
+}
+
+.dtm-comments .dtm-comment-inner .dtm-comment-image {
+    display: inline-block;
+    width: 10%;
+}
+.dtm-comments .dtm-comment-inner .dtm-comment-image img {
+    border-radius: 5px;
+}
+
+.dtm-comments .dtm-comment-inner .dtm-comment-content {
+    vertical-align: top;
+    display: inline-block;
+    width: 90%;
+    padding-left: 15px;
+}
+
+.drm-comments-inner {
+    margin-left: 10%;
+    /* border-left: 1px solid #a0a8b0; */
+    padding-left: 15px;
+    position: relative;
+}
+
+.drm-comments-inner::before {
+    content: '';
+    border-left: 2px solid #a0a8b0;
+    position: absolute;
+    left: 0;
+    height: 80%;
+    top: 5%;
+}
+
+.challengebuttom.dtimeline .dcleft {
+    left: -20px;
+    bottom: -20px;
+}
+
+.challengebuttom.dtimeline .dcright {
+    right: -20px;
+    bottom: -20px;
+}
+
+.dtm-comments {
+    margin-top: 25px;
+}
+
+.dtm-comment-inner {
+    margin-bottom: 20px;
+}
+
+.dtm-comments .dtm-comment-inner .dtm-comment-content .dpagetitle {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1em;
+    margin-bottom: 5px;
+}
+
+.dtm-comments .dtm-comment-inner .dtm-comment-content .dcommentcontent {
+    box-shadow: 0px 4px 12px #00000026;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.dtm-comments .dtm-comment-inner .dtm-comment-content .dpagetitle span.dtime {
+    font-size: 12px;
+    color: #a0a8b0;
+}
+
+.dcommentcontent .dcm-text {
+    font-size: 15px;
+}
+
+.dcm-options .doptleft {
+    display: inline-block;
+    width: 50%;
+    vertical-align: middle;
+}
+
+.dcm-options .doptright {
+    display: inline-block;
+    width: 50%;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.dcm-options .doptleft .dc-left-item {
+    display: inline-block;
+    margin-right: 13px;
+}
+.dcm-options .doptleft .dc-left-item > div {
+    display: inline-block;
+}
+
+.dcm-options .doptleft .dc-left-item .dicon img {
+    width: 100%;
+}
+.dcm-options .doptleft .dc-left-item .dicon {
+    width: 12px;
+}
+
+.dcm-options .doptleft .dc-left-item .dvals {
+    font-size: 11px;
+    margin-left: 5px;
+}
+
+.dcm-options .doptright button {
+    font-size: 13px;
+}
+
+.dreplypart .dpartimage {
+    display: inline-block;
+    width: 10%;
+}
+.dreplypart .dformpart {
+    vertical-align: top;
+    display: inline-block;
+    width: 90%;
+    padding-left: 15px;
+}
+
+.dreplypart .dpartimage img {
+    border-radius: 5px;
+}
+
+.dreplypart .dformpart .dforminner {
+    box-shadow: 0px 4px 12px #00000026;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.dreplypart .dformpart .dforminner .dftextarea {
+    display: inline-block;
+    width: 90%;
+    vertical-align: middle;
+}
+.dreplypart .dformpart .dforminner .dftextarea textarea {
+    width: 100%;
+    font-size: 14px;
+    height: 30px;
+}
+.dreplypart .dformpart .dforminner .demoticons {
+    display: inline-block;
+    width: 10%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.dreplypart .dformpart .dforminner .demoticons button {
+    color: #596366;
+    font-size: 30px;
+    line-height: 1em;
 }

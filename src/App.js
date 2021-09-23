@@ -27,7 +27,7 @@ function App() {
               <ThankyouHeader />
               <Thankyou />
             </Route>
-            <Route path="/profile">
+            <Route path="/home">
               <ProfileHeader />
               <ProfileContent />
             </Route>
