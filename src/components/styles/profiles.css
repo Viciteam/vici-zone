@@ -266,6 +266,16 @@ ul.tabtitles > li {
     box-shadow: 0px 0px 20px #0000001a;
     margin-bottom: 20px;
     border-radius: 15px;
+    overflow: hidden;
+}
+
+.sr-item.close_content .sri_content{
+    display: none;
+}
+
+.sr-item.close_content .sri-title {
+    margin: 0;
+    border: 0;
 }
 
 .sr-item .sri-title {
@@ -276,6 +286,14 @@ ul.tabtitles > li {
     line-height: 1em;
     margin-bottom: 15px;
     border-bottom: 1px solid #bfbfbf;
+    position: relative;
+}
+
+.sr-item .sri-title .dcloseicon {
+    position: absolute;
+    top: 19px;
+    right: 20px;
+    cursor: pointer;
 }
 
 /* challenge */
@@ -753,4 +771,97 @@ ul.tabtitles > li {
     color: #596366;
     font-size: 30px;
     line-height: 1em;
+}
+
+/* daily challenges sidebar */
+.daily_goals .sri_inner {
+    padding: 5px 25px;
+}
+
+.daily_goals .sri_inner .dicon {
+    display: inline-block;
+    width: 20%;
+    vertical-align: top;
+}
+
+.daily_goals .sri_inner .dicon img {
+    width: 45px;
+}
+
+.daily_goals .sri_inner .dcontent {
+    display: inline-block;
+    width: 79%;
+    vertical-align: top;
+    padding-left: 5px;
+}
+
+.daily_goals .sri_inner .dcontent h2 {
+    color: #219653;
+    font-weight: bold;
+    line-height: 1em;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.daily_goals .sri_inner .dcontent .ddesc {
+    line-height: 1.2em;
+    font-size: 15px;
+}
+
+.daily_goals .progress-bar {
+    background: #6fcf97;
+    margin-top: 15px;
+    position: relative;
+}
+.daily_goals .progress-bar .dprogressvalue {
+    background: #219653;
+    width: 67.5%;
+}
+
+.daily_goals .progress-bar .dvaltext {
+    width: 100%;
+    position: absolute;
+    z-index: 9;
+    top: 0;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 3px;
+    letter-spacing: 2px;
+}
+
+/* progress bar */
+.ongoing_challenge .sri_inner {
+    padding: 5px 25px;
+}
+
+.ongoing_challenge .sri_inner .dicon {
+    display: inline-block;
+    width: 20%;
+    vertical-align: top;
+}
+
+.ongoing_challenge .sri_inner .dicon img {
+    width: 45px;
+}
+
+.ongoing_challenge .sri_inner .dcontent {
+    display: inline-block;
+    width: 79%;
+    vertical-align: top;
+    padding-left: 5px;
+}
+
+.ongoing_challenge .sri_inner .dcontent h2 {
+    color: #9b51e0;
+    font-weight: bold;
+    line-height: 1em;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.ongoing_challenge .sri_inner .dcontent .ddesc {
+    line-height: 1.2em;
+    font-size: 15px;
 }

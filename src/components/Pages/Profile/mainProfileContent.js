@@ -10,6 +10,8 @@ import WallofAchievements from './Segments/WallofAchievements'
 import TopActivities from './Segments/TopActivities'
 import Challenge from './Segments/Challenge'
 import Timeline from './Segments/Timeline'
+import DailyChallenge from './Segments/DailyChallenge'
+import OngoingChallenge from './Segments/OngoingChallenge'
 
 
 class mainProfileContent extends React.Component{
@@ -74,14 +76,8 @@ class mainProfileContent extends React.Component{
                             </div>
                             <div className="srightnotif">
                                 <div className="sr-inner">
-                                    <div className="sr-item">
-                                        <div className="sri-title">this is the title</div>
-                                        <div className="sri_content">this is the content</div>
-                                    </div>
-                                    <div className="sr-item">
-                                        <div className="sri-title">this is the title</div>
-                                        <div className="sri_content">this is the content</div>
-                                    </div>
+                                    <DailyChallenge />
+                                    <OngoingChallenge />
                                 </div>
                             </div>
                             <br className="clear"/>

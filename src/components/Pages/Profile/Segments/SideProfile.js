@@ -34,7 +34,14 @@ class SideProfile extends React.Component {
                         <div className="header-inner">
                             <div className="hi-left">
                                 <div className="levelrate">Lvl {user_info.level}</div>
-                                <div className="dshowclan">{user_info.clan}</div>
+                                <div className="dshowclan">
+                                    <select name="" id="">
+                                        <option value="cl1">Clan 1</option>
+                                        <option value="cl2">Clan 2</option>
+                                        <option value="cl4">Clan 3</option>
+                                        <option value="Fitness Clan" selected={user_info.clan == 'Fitness Clan'}>Fitness Clan</option>
+                                    </select>
+                                </div>
                             </div>
                             <div className="hi-right">
                                 <div className="dcreatechallenge">
