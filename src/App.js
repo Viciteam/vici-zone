@@ -13,6 +13,11 @@ import ProfileContent from './components/Pages/Profile/mainProfileContent';
 import ContactHeader from './components/Pages/ContactUs/ContactHeader'
 import ContactContent from './components/Pages/ContactUs/ContactContent';
 
+import ClanChallenge from './components/Pages/Clan/Challenge';
+import ClanIndex from './components/Pages/Clan/Index';
+import ClanMembers from './components/Pages/Clan/Members';
+import ClanHeader from './components/Pages/Clan/Header';
+
 function App() {
   return (
     <Router>
@@ -28,13 +33,27 @@ function App() {
               <Thankyou />
             </Route>
             <Route path="/home">
-              <ProfileHeader />
+              {/* <ProfileHeader /> */}
+              <ClanHeader />
               <ProfileContent />
             </Route>
             <Route path="/contact-us">
               <ContactHeader />
               <ContactContent />
             </Route>
+            <Route exact path="/clan/">
+              <ClanHeader />
+              <ClanIndex />
+            </Route>
+            <Route path="/clan/members">
+              <ClanHeader />
+              <ClanMembers />
+            </Route>
+            <Route path="/clan/challenge">
+              <ClanHeader />
+              <ClanChallenge />
+            </Route>
+            
           </Switch>
       </div>
     </Router>

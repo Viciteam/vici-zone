@@ -865,3 +865,502 @@ ul.tabtitles > li {
     line-height: 1.2em;
     font-size: 15px;
 }
+
+
+/* clan challenge */
+.cc-inner {
+    
+}
+
+.clan-inner .breadcrumbs-main {
+    margin-bottom: 35px;
+}
+
+.clan-inner .breadcrumbs-main ul{
+    margin: 0;
+    padding: 0;
+}
+
+.clan-inner .breadcrumbs-main ul li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.clan-inner .breadcrumbs-main ul li::after {
+    content: '•';
+    padding-left: 20px;
+}
+
+.clan-inner .breadcrumbs-main ul li a {
+    text-transform: uppercase;
+}
+
+.clan-challenges button.newchallenge {
+    background: rgb(254,201,70);
+    background: linear-gradient(180deg, rgba(254,201,70,1) 0%, rgba(244,170,60,1) 100%);
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px #00000026;
+    height: 56px;
+    width: 214px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.clan-challenges .dc-left {
+    display: inline-block;
+    width: 70%;
+    vertical-align: top;
+}
+
+.clan-challenges .dc-right {
+    display: inline-block;
+    width: 29%;
+    vertical-align: top;
+}
+
+.clan-header-inner {
+    background: #fff;
+    box-shadow: 0px 4px 12px #00000026;
+    border-radius: 0 0 15px 16px;
+    margin: 0 20px;
+    /* width: 1340px; */
+    padding: 10px;
+}
+
+.clan-header-inner .dlogo {
+    display: inline-block;
+    width: 10%;
+    vertical-align: middle;
+}
+
+.clan-header-inner .dlogo img {
+    width: 120px;
+}
+
+.clan-header-inner .ditems {
+    display: inline-block;
+    width: 89%;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.clan-header-inner .ditems > div {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 10px;
+    position: relative;
+}
+
+.clan-header-inner .ditems .dmenu ul {
+    margin: 0;
+    padding: 0;
+}
+
+.clan-header-inner .ditems .dmenu ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.clan-header-inner .ditems .dmenu ul li a {
+    font-size: 18px;
+}
+
+.clan-header-inner .ditems .dproficon img {
+    width: 40px;
+    border-radius: 5px;
+}
+
+.clan-header-inner .ditems .dnotif {
+    margin: 0 5px;
+}
+
+.clan-header-inner .ditems .dnotif > div {
+    display: inline-block;
+    font-size: 26px;
+    color: #a0a8b0;
+    margin: 0 10px;
+    position: relative;
+}
+
+.clan-header-inner .ditems .dnotif .notifone {
+    background: #ffca28;
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    top: 3px;
+    right: -4px;
+}
+
+.clan-header-inner .ditems .dcoin .dcoin-inner > * ,
+.clan-header-inner .ditems .dmedals .dmedal-inner > * {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: bold;
+}
+.clan-header-inner .ditems .dsearch span {
+    color: #596366;
+    position: absolute;
+    font-size: 20px;
+    top: 9px;
+    margin-left: 10px;
+}
+.clan-header-inner .ditems .dsearch input {
+    border: 1px solid #a0a8b0;
+    line-height: 1em;
+    padding: 10px 10px 10px 35px;
+    border-radius: 15px;
+    width: 150px;
+}
+
+.clan-header-inner .ditems .dcoin img {
+    width: 18px;
+}
+
+.clan-header-inner .ditems .dmedals img {
+    width: 14px;
+}
+
+.clan-inner.mt-20 {
+    margin-top: 3rem;
+}
+
+.clan-challenges .dcl-inner h3 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.3em;
+    margin-bottom: 5px;
+}
+
+.clan-challenges .dcl-inner .dsubtitle {
+    font-size: 13px;
+}
+
+.clan-challenges .dcl-inner .cc-list-inner .nochallenge {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.clan-challenges .dcl-inner .cc-list-inner .nochallengenomessage {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.breadcrumbs-inner li.isactive {
+    font-weight: 600;
+}
+
+.clan-inner .dheaderbase {
+    background: #fff;
+    box-shadow: 0px 4px 12px #00000026;
+    padding: 30px 30px;
+    border-radius: 5px;
+    margin-bottom: 26px;
+}
+
+.clan-inner .dheaderbase .dhb-image {
+    display: inline-block;
+    width: 20%;
+    vertical-align: middle;
+}
+
+.clan-inner .dheaderbase .dhb-info {
+    display: inline-block;
+    width: 73%;
+    vertical-align: middle;
+}
+
+.clan-inner .dheaderbase .dhb-eds {
+    display: inline-block;
+    width: 5%;
+    vertical-align: middle;
+}
+
+.clan-inner .dheaderbase .dhb-info h2 {
+    font-size: 46px;
+    font-weight: bold;
+    line-height: 1.2em;
+}
+
+.clan-inner .dheaderbase .dhb-info .info-desc {
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+.clan-inner .dheaderbase .dhb-image .img-place {
+    display: inline-block;
+    background: #f89a18;
+    padding: 5px;
+    border-radius: 15px;
+}
+
+.clan-inner .dheaderbase .dhb-image img {
+    width: 170px;
+    border: 10px solid #fff;
+    border-radius: 15px;
+}
+
+.clan-home .dinfostats {
+    background: #fff;
+    box-shadow: 0px 4px 12px #00000026;
+    padding: 15px 25px;
+    border-radius: 5px;
+    margin-bottom: 26px;
+}
+
+.clan-home .dinfostats > div {
+    width: 33%;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+}
+
+.clan-home .dinfostats .creator > div {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.clan-home .dinfostats .creator .dimage{
+    margin-right: 15px;
+}
+
+.clan-home .dinfostats .creator .dimage img {
+    width: 55px;
+    border-radius: 100px;
+    height: 55px;
+}
+
+.clan-home .dinfostats .rank {
+    text-align: center;
+}
+
+.clan-home .dinfostats .role {
+    text-align: right;
+}
+
+.clan-home .dinfostats .role span {
+    font-weight: bold;
+}
+
+.clan-inner .ddetails .dd-inner .dd-left {
+    display: inline-block;
+    width: 65%;
+    vertical-align: top;
+}
+
+.clan-inner .ddetails .dd-inner .dd-right {
+    display: inline-block;
+    width: 35%;
+    vertical-align: top;
+}
+
+.clan-inner  .ddl-item-inner {
+    background: #fff;
+    box-shadow: 0px 4px 12px #00000026;
+    padding: 15px 25px;
+    width: 95%;
+    border-radius: 5px;
+}
+
+.clan-inner .ddl-item-inner h4 {
+    font-size: 19px;
+    font-weight: bold;
+    line-height: 1.2em;
+    margin-bottom: 20px;
+}
+
+.clan-inner .ddl-item-inner .ddesc {
+    font-size: 16px;
+    text-align: center;
+}
+
+.clan-inner .timeline-inner {
+    width: 95%;
+    border-radius: 5px;
+    margin: 0;
+}
+
+.clan-inner .dtimelineinfo .dt-info {
+    text-align: center;
+    margin-top: 30px;
+    padding: 120px 0;
+}
+
+.clan-inner .dtimelineinfo .dt-info .dnomessage {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.clan-inner.container {
+    width: 1080px;
+}
+
+.clan-inner .achievement-game {
+    background: #fff;
+    box-shadow: 0px 4px 12px #00000026;
+    padding: 185px 25px;
+    border-radius: 5px;
+}
+
+.clan-inner .achievement-game h3 {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.clan-inner .achievement-game .ddescinfo {
+    text-align: center;
+    line-height: 1.3em;
+    margin-bottom: 15px;
+}
+
+.clan-inner .achievement-game .dachievename {
+    text-align: center;
+}
+
+.clan-inner .achievement-game .dachievename button {
+    background: #288ac1;
+    line-height: 1em;
+    display: inline-block;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 10px;
+}
+
+.clan-members .infobase {
+    background: #fff;
+    box-shadow: 0px 4px 12px #00000026;
+    /* padding: 15px 25px; */
+    border-radius: 5px;
+}
+
+.clan-members .topinfo {
+    /* margin-bottom: 20px; */
+    background: #f2f2f2;
+    padding: 15px 25px;
+}
+
+.clan-members .topinfo .tp-left {
+    display: inline-block;
+    width: 50%;
+}
+
+.clan-members .topinfo .tp-right {
+    display: inline-block;
+    width: 50%;
+    text-align: right;
+}
+
+.clan-members .memberlist {
+    padding: 15px 25px 30px;
+}
+
+.clan-members .memberlist .searchpart .dsearch{
+    position: relative;
+}
+
+.clan-members .memberlist .searchpart .dsearch input{
+    border: 1px solid #a0a8b0;
+    line-height: 1em;
+    padding: 10px 10px 10px 35px;
+    border-radius: 15px;
+    width: 410px;
+}
+
+.clan-members .memberlist .searchpart .dsearch span {
+    color: #596366;
+    position: absolute;
+    font-size: 20px;
+    top: 9px;
+    margin-left: 10px;
+}
+
+.clan-members .memberlist .mem-list-item  {
+    display: inline-block;
+    width: 48%;
+    box-shadow: 0px 4px 12px #00000026;
+    margin-right: 1.8%;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+.clan-members .memberlist .mem-list-item .dprofimage {
+    display: inline-block;
+    width: 17%;
+    vertical-align: middle;
+}
+
+.clan-members .memberlist .mem-list-item .dprofimage img {
+    width: 65px;
+    border-radius: 10px;
+}
+
+.clan-members .memberlist .mem-list-item .dinfo {
+    display: inline-block;
+    width: 78%;
+    vertical-align: middle;
+}
+
+.clan-members .memberlist .mem-list-item .dinfo .dmem-info {
+    font-size: 14px;
+    line-height: 1.3em;
+    margin-bottom: 5px;
+}
+
+.clan-members .memberlist .mem-list-item .dinfo .dmem-info span {
+    margin: 0 10px;
+}
+
+.clan-members .memberlist .mem-list-item .dinfo .dmem-info strong {
+    font-size: 15px;
+}
+
+.clan-members .memberlist .mem-list-item .dops {
+    display: inline-block;
+    width: 5%;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.clan-members .memberlist .mem-list-item .dops .dops-inner {
+    font-size: 23px;
+}
+
+.clan-members .infobase .mem-inner {
+    margin-bottom: 20px;
+}
+
+.clan-members .memberlist .mem-list-item .dinfo .role {
+    border: 1px solid #49afd9;
+    display: inline-block;
+    font-size: 12px;
+    padding: 5px 15px;
+    line-height: 1em;
+    background: #e1f1f6;
+    color: #49afd9;
+}
+
+.clan-members button.dinvitefriends {
+    background: #fff;
+    line-height: 1em;
+    padding: 20px 23px 20px 60px;
+    border-radius: 15px;
+    text-transform: capitalize;
+    font-weight: bold;
+    position: relative;
+}
+
+.clan-members button.dinvitefriends span {
+    border: 1px solid #f2f2f2;
+    font-size: 30px;
+    position: absolute;
+    left: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    top: 10px;
+}
