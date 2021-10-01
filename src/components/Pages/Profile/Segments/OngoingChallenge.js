@@ -38,26 +38,26 @@ class OngoingChallenge extends React.Component {
         return (
             <div className={"sr-item ongoing_challenge " + (this.state.contentStatus ? 'open_content' : 'close_content')}>
                 <div className="sri-title">
-                    <div class="dtitle">Ongoing Challenges</div>
-                    <div class="dcloseicon" onClick={this.showInfo}><FontAwesomeIcon icon={this.state.diconbrace} /></div>
+                    <div className="dtitle">Ongoing Challenges</div>
+                    <div className="dcloseicon" onClick={this.showInfo}><FontAwesomeIcon icon={this.state.diconbrace} /></div>
                 </div>
                 <div className={"sri_content " + (this.props.showContent ? 'open_content' : 'close_content')}> 
-                    <div class="sri_inner dlistitem">
-                        <div class="dicon">
+                    <div className="sri_inner dlistitem">
+                        <div className="dicon">
                             <img src="/img/purple_thrp.png"/>
                         </div>
-                        <div class="dcontent">
+                        <div className="dcontent">
                             <h2>Run Run Run!</h2>
-                            <div class="ddesc">Win by being the one who ran the longest in a week!</div>
+                            <div className="ddesc">Win by being the one who ran the longest in a week!</div>
                         </div>
                     </div>
-                    <div class="sri_inner dlistitem">
-                        <div class="dicon">
+                    <div className="sri_inner dlistitem">
+                        <div className="dicon">
                             <img src="/img/purple_thrp.png"/>
                         </div>
-                        <div class="dcontent">
+                        <div className="dcontent">
                             <h2>Muscle Man</h2>
-                            <div class="ddesc">How many weights can you carry?</div>
+                            <div className="ddesc">How many weights can you carry?</div>
                         </div>
                     </div>
                 </div>

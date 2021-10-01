@@ -1364,3 +1364,202 @@ ul.tabtitles > li {
     border-radius: 10px;
     top: 10px;
 }
+.dshowclan {
+    position: relative;
+}
+
+.dshowclan .showedClan {
+    cursor: pointer;
+}
+
+.hi-left .clanlist {
+    background: #fff;
+    position: absolute;
+    z-index: 9;
+}
+.hi-left .clanlist ul li .dicon {
+    display: inline-block;
+    background: #f2c94c;
+    width: 17px;
+    text-align: center;
+    border-radius: 50px;
+    vertical-align: middle;
+    margin-right: 7px;
+    font-size: 11px;
+}
+.hi-left .clanlist ul li .dname {
+    display: inline-block;
+    font-size: 13px;
+}
+.hi-left .clanlist ul li.create_clan,
+.hi-left .clanlist ul li.join_clan {
+    font-size: 13px;
+    color: #f2c94c;
+}
+.hi-left .clanlist ul li {
+    padding: 10px 20px;
+}
+.hi-left .clanlist ul li:hover {
+    background: #f2f2f2;
+    cursor: pointer;
+}
+
+.close_clan_option {
+    display: none;
+}
+
+
+/* create clan modal */
+.create_clan_modal {
+    width: 567px;
+    margin: 10% auto;
+    background: #fff;
+    padding: 30px;
+    font-family: nunito, sans-serif;
+    border-radius: 8px;
+}
+
+.dcreate_clan_inner .dtitle {
+    display: inline-block;
+    width: 90%;
+}
+
+.dcreate_clan_inner .dclose {
+    display: inline-block;
+    width: 9%;
+    text-align: right;
+}
+
+.dcreate_clan_inner .dclose button {
+    color: #eb5757;
+    font-size: 24px;
+}
+
+.dcreate_clan_inner .dtitle h2 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.dcreate_clan_inner .header_part {
+    border-bottom: 1px solid #bfbfbf;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.dcreate_clan_inner .content_part .dconts {
+    font-size: 20px;
+    line-height: 1.3em;
+    margin-bottom: 10px;
+}
+
+.dcreate_clan_inner .content_part .dformlist .df_item label {
+    display: block;
+    font-size: 16px;
+    line-height: 1em;
+    margin-bottom: 5px;
+}
+
+.dcreate_clan_inner .content_part .dformlist .df_item {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.dcreate_clan_inner .content_part .dformlist .df_item label span {
+    font-size: 12px;
+}
+
+.dcreate_clan_inner .content_part .dformlist .df_item input,
+.dcreate_clan_inner .content_part .dformlist .df_item textarea {
+    border: 1px solid #dfdfe1;
+    width: 100%;
+    line-height: 1.3em;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.dcreate_clan_inner .dbuttonups {
+    text-align: right;
+}
+.dcreate_clan_inner .dbuttonups button.dcancel {
+    color: #a5acb4;
+    text-transform: uppercase;
+    margin-right: 15px;
+    line-height: 1em;
+    font-size: 14px;
+    border: 1px solid #a5acb4;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+.dcreate_clan_inner .dbuttonups button.dcreate {
+    background: #ffca28;
+    font-weight: bold;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    line-height: 1em;
+    border: 1px solid #ffca28;
+}
+
+.dcreate_clan_inner .dcolortag .colorswatch {
+    display: inline-block;
+    width: 10%;
+    vertical-align: middle;
+}
+.dcreate_clan_inner .dcolortag .colorinput {
+    display: inline-block;
+    width: 89%;
+    vertical-align: middle;
+}
+
+.dcreate_clan_inner .dcolortag .colorswatch .xswatch {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    border: 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.dcreate_clan_inner .colorpicker {
+    position: absolute;
+    bottom: 0;
+    left: 50px;
+    
+}
+.dcreate_clan_inner .close_color_option {
+    display: none;
+}
+
+.dcreate_clan_inner .open_color_option {
+    display: block;
+}
+
+.create_clan_modal .confirmed_off,
+.create_clan_modal .hide_form {
+    display: none;
+}
+
+.create_clan_modal .confirmed_on {
+    display: block;
+}
+
+.dcreatedconfirm .dmainmessage {
+    text-align: center;
+    padding: 100px 0;
+}
+
+.dcreatedconfirm .dmainmessage .dmessagemain {
+    font-size: 23px;
+    font-weight: bold;
+    line-height: 1em;
+    margin-bottom: 10px;
+}
+
+.dcreatedconfirm .dmainmessage .dclanname {
+    font-size: 31px;
+    line-height: 1em;
+    color: #2d9cdb;
+    font-weight: 600;
+}

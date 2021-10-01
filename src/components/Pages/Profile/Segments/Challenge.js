@@ -14,18 +14,18 @@ class Challenge extends React.Component {
     render () {
         return (
             <div className="challenges-inner">
-                <div class="dchallemgeheader">
-                    <div class="dc-inner">
-                        <div class="dci-left">
+                <div className="dchallemgeheader">
+                    <div className="dc-inner">
+                        <div className="dci-left">
                             <button>Join a Challenge</button>
                         </div>
-                        <div class="dci-right">
+                        <div className="dci-right">
                             <button>New Challenge</button>
                         </div>
                     </div>
                 </div>
-                <div class="dchallenge-list">
-                    <div class="dch-inner">
+                <div className="dchallenge-list">
+                    <div className="dch-inner">
                         <ChallengeList />
                         <ChallengeList />
                         <ChallengeList />

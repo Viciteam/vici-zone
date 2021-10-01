@@ -10,31 +10,31 @@ const ContactContent = () => {
                             <form method="POST" name="fa-form-1" action="https://webhook.helpwise.io/forms/d2b14406-44e9-4a28-8804-44fc2df30276" enctype="multipart/form-data" accept-charset="utf-8">
                                 <div className="grid grid-rows-2 grid-cols-2 gap-6">
                                     <div>
-                                        <label for="first-name" class="block text-sm font-medium text-gray-700">Your name *</label>
-                                        <input type="text" required placeholder="name" name="name" id="first-name" autocomplete="given-name" class="mt-1 border block p-2 w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                        <label for="first-name" className="block text-sm font-medium text-gray-700">Your name *</label>
+                                        <input type="text" required placeholder="name" name="name" id="first-name" autocomplete="given-name" className="mt-1 border block p-2 w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                                     </div>
                                     <div>
-                                        <label for="first-name" class="block text-sm font-medium text-gray-700">Contact email *</label>
-                                        <input type="email" required placeholder="sample@email.com" name="email" id="email" class="mt-1 border block p-2 w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                        <label for="first-name" className="block text-sm font-medium text-gray-700">Contact email *</label>
+                                        <input type="email" required placeholder="sample@email.com" name="email" id="email" className="mt-1 border block p-2 w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                                     </div>
                                     <div>
-                                        <label for="first-name" class="block text-sm font-medium text-gray-700">Company name</label>
-                                        <input type="text" placeholder="Your company" name="company" id="company" autocomplete="company" class="mt-1 border block p-2 w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                        <label for="first-name" className="block text-sm font-medium text-gray-700">Company name</label>
+                                        <input type="text" placeholder="Your company" name="company" id="company" autocomplete="company" className="mt-1 border block p-2 w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                                     </div>
                                     <div>
-                                        <label for="first-name" class="block text-sm font-medium text-gray-700">Country</label>
-                                        <input type="text" placeholder="eg. Indonesia" name="country" id="country" autocomplete="country" class="mt-1 border block p-2 w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                        <label for="first-name" className="block text-sm font-medium text-gray-700">Country</label>
+                                        <input type="text" placeholder="eg. Indonesia" name="country" id="country" autocomplete="country" className="mt-1 border block p-2 w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                                     </div>
                                 </div>
                                 <div className="mt-6">
                                     <div>
-                                        <label for="about" class="block text-sm font-medium text-gray-700">
+                                        <label for="about" className="block text-sm font-medium text-gray-700">
                                             Your message *
                                         </label>
-                                        <div class="mt-1">
-                                            <textarea id="message" name="your message" rows="6" class="p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Type your message..." />
+                                        <div className="mt-1">
+                                            <textarea id="message" name="your message" rows="6" className="p-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md" placeholder="Type your message..." />
                                         </div>
-                                        <p class="mt-2 text-sm text-gray-200">
+                                        <p className="mt-2 text-sm text-gray-200">
                                             By submitting this form you agree to our terms and conditions and our Privacy Policy which explains how we may collect, use and disclose your personal information including to third parties.
                                         </p>
                                     </div>

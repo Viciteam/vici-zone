@@ -15,88 +15,88 @@ class ChallengeList extends React.Component {
 
     render () {
         return (
-            <div class="dch-item">
-                <div class="ditm-inner">
-                    <div class="dchallengeheadpart">
-                        <div class="dpartimage">
-                            <div class="dpimageinner">
+            <div className="dch-item">
+                <div className="ditm-inner">
+                    <div className="dchallengeheadpart">
+                        <div className="dpartimage">
+                            <div className="dpimageinner">
                                 <img src="/img/user_main.jpg"/>
                             </div>
                         </div>
-                        <div class="dheadtile">
-                            <h3><span class="dusername">John Peter Doe</span> created a <span class="dactivity">Challenge for herself!</span></h3>
-                            <div class="dtime">5m ago</div>
-                            <div class="dtags">
+                        <div className="dheadtile">
+                            <h3><span className="dusername">John Peter Doe</span> created a <span className="dactivity">Challenge for herself!</span></h3>
+                            <div className="dtime">5m ago</div>
+                            <div className="dtags">
                                 <span>health</span>
                                 <span>productibity</span>
                             </div>
                         </div>
                     </div>
-                    <div class="challange_content">
-                        <div class="cc_inner">
-                            <div class="dimage">
-                                <div class="dimg-inner">
+                    <div className="challange_content">
+                        <div className="cc_inner">
+                            <div className="dimage">
+                                <div className="dimg-inner">
                                     <img src="/img/cards.JPG"/>
                                 </div>
                             </div>
-                            <div class="dinfo">
-                                <div class="dinfo-inner">
-                                    <div class="dfreq">Daily</div>
-                                    <div class="dtitle">Healthy Spirits!</div>
-                                    <div class="ddesc">Discipline yourself to drink water more ofter. Begin a healthy life with a small step</div>
-                                    <div class="dstatus">
+                            <div className="dinfo">
+                                <div className="dinfo-inner">
+                                    <div className="dfreq">Daily</div>
+                                    <div className="dtitle">Healthy Spirits!</div>
+                                    <div className="ddesc">Discipline yourself to drink water more ofter. Begin a healthy life with a small step</div>
+                                    <div className="dstatus">
                                         <span>Current milestone:</span> 40 Glasses
                                     </div>
-                                    <div class="dprogress">
-                                        <div class="douter">
-                                            <div class="dorange">&nbsp;</div>
+                                    <div className="dprogress">
+                                        <div className="douter">
+                                            <div className="dorange">&nbsp;</div>
                                         </div>
                                     </div>
-                                    {/* <div class="dpeople">
+                                    {/* <div className="dpeople">
                                         list of people
                                     </div> */}
-                                    <div class="dbuttons">
+                                    <div className="dbuttons">
                                         <button>View Challenge</button>
-                                        <button class="dwhitebg">Join Challenge</button>
+                                        <button className="dwhitebg">Join Challenge</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="challengebuttom">
-                        <div class="dcb-inner">
-                            <div class="dcleft">
-                                <div class="dc-left-item">
-                                    <div class="dicon">
-                                        <div class="dclikable">
+                    <div className="challengebuttom">
+                        <div className="dcb-inner">
+                            <div className="dcleft">
+                                <div className="dc-left-item">
+                                    <div className="dicon">
+                                        <div className="dclikable">
                                             <img src="/img/like.png"/>
                                         </div>
                                     </div>
-                                    <div class="dvals">
-                                        <div class="dv-inner">
+                                    <div className="dvals">
+                                        <div className="dv-inner">
                                             0
                                         </div>
                                     </div>
                                 </div>
-                                <div class="dc-left-item">
-                                    <div class="dicon">
-                                        <div class="dclikable">
+                                <div className="dc-left-item">
+                                    <div className="dicon">
+                                        <div className="dclikable">
                                             <img src="/img/dislike.png"/>
                                         </div>
                                     </div>
-                                    <div class="dvals">
-                                        <div class="dv-inner">
+                                    <div className="dvals">
+                                        <div className="dv-inner">
                                             0
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="dcright">
-                                <div class="dccomment">
+                            <div className="dcright">
+                                <div className="dccomment">
                                     <img src="/img/comment.png"/>
                                 </div>
                             </div>
-                            <br class="clear" />
+                            <br className="clear" />
                         </div>
                     </div>
                 </div>

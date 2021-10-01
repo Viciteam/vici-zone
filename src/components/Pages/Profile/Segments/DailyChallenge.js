@@ -38,22 +38,22 @@ class DailyChallenge extends React.Component {
         return (
             <div className={"sr-item daily_goals " + (this.state.contentStatus ? 'open_content' : 'close_content')}>
                 <div className="sri-title">
-                    <div class="dtitle">Daily Goals</div>
-                    <div class="dcloseicon" onClick={this.showInfo}><FontAwesomeIcon icon={this.state.diconbrace} /></div>
+                    <div className="dtitle">Daily Goals</div>
+                    <div className="dcloseicon" onClick={this.showInfo}><FontAwesomeIcon icon={this.state.diconbrace} /></div>
                 </div>
                 <div className={"sri_content"}> 
-                    <div class="sri_inner">
-                        <div class="dicon">
+                    <div className="sri_inner">
+                        <div className="dicon">
                             <img src="/img/cursor.png"/>
                         </div>
-                        <div class="dcontent">
+                        <div className="dcontent">
                             <h2>Healthy Spirits!</h2>
-                            <div class="ddesc">Drink at least 8 glasses of water per day</div>
+                            <div className="ddesc">Drink at least 8 glasses of water per day</div>
                         </div>
                     </div>
-                    <div class="progress-bar">
-                        <div class="dprogressvalue">&nbsp;</div>
-                        <div class="dvaltext">7/8</div>
+                    <div className="progress-bar">
+                        <div className="dprogressvalue">&nbsp;</div>
+                        <div className="dvaltext">7/8</div>
                     </div>
                 </div>
             </div>

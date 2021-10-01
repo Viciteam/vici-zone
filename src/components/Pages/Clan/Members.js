@@ -59,7 +59,7 @@ class Members extends React.Component {
                                                                 <div className="role">Leader</div>
                                                             </div>
                                                             <div className="dops">
-                                                                <div class="dops-inner">
+                                                                <div className="dops-inner">
                                                                     <FontAwesomeIcon icon={faEllipsisV} />
                                                                 </div>
                                                             </div>
@@ -75,7 +75,7 @@ class Members extends React.Component {
                                                                 <div className="role">Leader</div>
                                                             </div>
                                                             <div className="dops">
-                                                                <div class="dops-inner">
+                                                                <div className="dops-inner">
                                                                     <FontAwesomeIcon icon={faEllipsisV} />
                                                                 </div>
                                                             </div>

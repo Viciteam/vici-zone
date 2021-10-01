@@ -26,8 +26,8 @@ class Index extends React.Component {
                                     <ClanInfo />
                                     <div className="dinfostats">
                                         <div className="creator">
-                                            <div class="dimage"><img src="/img/user_main.jpg"/></div>
-                                            <div class="dname">Creator</div>
+                                            <div className="dimage"><img src="/img/user_main.jpg"/></div>
+                                            <div className="dname">Creator</div>
                                         </div>
                                         <div className="rank">Rank/Level --</div>
                                         <div className="role">Role <span>Leader</span></div>
