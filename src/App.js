@@ -18,6 +18,10 @@ import ClanIndex from './components/Pages/Clan/Index';
 import ClanMembers from './components/Pages/Clan/Members';
 import ClanHeader from './components/Pages/Clan/Header';
 
+import LoginPage from './components/Pages/Auth/Login';
+
+
+
 function App() {
   return (
     <Router>
@@ -33,7 +37,6 @@ function App() {
               <Thankyou />
             </Route>
             <Route path="/home">
-              {/* <ProfileHeader /> */}
               <ClanHeader />
               <ProfileContent />
             </Route>
@@ -52,6 +55,9 @@ function App() {
             <Route path="/clan/challenge">
               <ClanHeader />
               <ClanChallenge />
+            </Route>
+            <Route path="/login">
+              <LoginPage />
             </Route>
             
           </Switch>

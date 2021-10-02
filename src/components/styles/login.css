@@ -1,0 +1,142 @@
+.dloginpage {
+    min-height: 100vh;
+}
+.dlogin-float {
+    width: 450px;
+    margin: 8% auto;
+    box-shadow: 0px 0px 12px #c3c3c3;
+    border-radius: 5px;
+    text-align: center;
+    padding: 40px 80px;
+}
+
+.dlogin-float h2 {
+    font-weight: bold;
+    font-size: 36px;
+    margin-bottom: 30px;
+    line-height: 1em;
+}
+
+.dlogin-float .dformpart .dusername {
+    margin-bottom: 10px;
+}
+
+.dlogin-float .dformpart input {
+    width: 100%;
+    border: 1px solid #DFDFE1;
+    font-size: 14px;
+    line-height: 1em;
+    padding: 10px 20px;
+    color: #131416;
+    border-radius: 30px;
+}
+
+.dlogin-float .dformpart {
+    margin-bottom: 40px;
+}
+
+.orseparator {
+    text-align: center;
+    position: relative;
+    line-height: 1em;
+    margin-bottom: 20px;
+}
+
+.orseparator .sepbase {
+    display: inline-block;
+    font-size: 12px;
+    padding: 0 15px;
+    background: #fff;
+    top: -13px;
+    position: relative;
+}
+.dlogin-float .dloginbutton {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.dlogin-float .dloginbutton button {
+    background: #FFCA28;
+    width: 100%;
+    line-height: 1em;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 40px;
+}
+
+.dlogin-float .forgotpass {
+    font-size: 12px;
+    color: #A0A8B0;
+}
+
+.dlogin-float .dreg {
+    font-size: 12px;
+    color: #A0A8B0;
+    margin-bottom: 10px;
+}
+
+.dlogin-float .dreg a {
+    color: #FFCA28;
+}
+
+.dlogin-float .sociallogins {
+    margin-bottom: 80px;
+}
+.dlogin-float .sociallogins .dfb .dfbnewbutton:hover {
+    border: 1px solid #3B5998;
+}
+.dlogin-float .sociallogins .dfb .dfbnewbutton {
+    background: #FFFFFF;
+    /* border: 1px solid #3B5998; */
+    border: 1px solid #DFDFE1;
+    border-radius: 30px;
+    font-size: 13px;
+    width: 100%;
+    line-height: 1em;
+    padding: 10px 0;
+    color: #1F1521;
+}
+
+.dlogin-float .sociallogins .dfb .dfbnewbutton i.fa.fa-facebook {
+    background: #3B5998;
+    color: #fff;
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    padding: 6px;
+    border-radius: 30px;
+    font-weight: 100;
+}
+
+.dlogin-float button.dglnewbutton:hover {
+    border: 1px solid #ea4335 !important;
+}
+
+.dlogin-float button.dglnewbutton {
+    border: 1px solid #DFDFE1 !important;
+    box-shadow: none !important;
+    width: 100%;
+    text-align: center;
+    display: inline-block !important;
+    border-radius: 40px !important;
+}
+
+.dlogin-float button.dglnewbutton > * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.dlogin-float button.dglnewbutton > div {
+    margin-right: 15px !important;
+    padding: 0 !important;
+}
+
+.dlogin-float button.dglnewbutton > span {
+    font-size: 13px;
+}
+
+.dlogin-float .sociallogins .dgoogle {
+    margin-bottom: 10px;
+}
