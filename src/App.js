@@ -20,6 +20,8 @@ import ClanHeader from './components/Pages/Clan/Header';
 
 import LoginPage from './components/Pages/Auth/Login';
 
+import NewChallenge from './components/Pages/Challenge/NewChallenge';
+
 
 
 function App() {
@@ -59,7 +61,10 @@ function App() {
             <Route path="/login">
               <LoginPage />
             </Route>
-            
+            <Route path="/challenge/new">
+              <ClanHeader />
+              <NewChallenge />
+            </Route>
           </Switch>
       </div>
     </Router>
