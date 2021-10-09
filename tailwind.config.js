@@ -23,6 +23,9 @@ module.exports = {
       vici_button_txt: '#FCAF38',
       vici_contact_footer: '#DEDEDE',
       vici_gray: '#999999',
+      btn_bgcolor: '#2D9CDB',
+      vici_black: '#000',
+      medium_gray: '#A0A8B0',
     },
     extend: {
     },
