@@ -1,6 +1,13 @@
 import React from 'react';
+import CalculatingModal from './CalculatingModal';
+import { useState } from 'react';
+
 
 function JoinClanModal ({ closeModal }) {
+
+    const [openCalculating, setCalculating] = useState(false)
+    const [passRequirement, setPassRequirement] = useState(null)
+
     return (
         <div className="bg-vici_black bg-opacity-50 absolute inset-0 flex justify-center items-center z-10">
             <div className="bg-white_color w-1/4 rounded-xl p-6">
@@ -15,20 +22,37 @@ function JoinClanModal ({ closeModal }) {
                     </div>
                 </div>      
                 <div className="mt-6 pb-8 border-b border-medium_gray">
-                    <div className="px-10">
-                        <div className="font-bold text-xl text-center">Clan Requirements</div>
-                        <div className="pt-4 text-sm">The clan leader has set some requirements in order for new members to join.</div>
-                        <div className="pt-4 text-sm font-bold">New members must achieve 2000 Steps before joining. App integration: Google Health (required)</div>
-                        <div className="pt-5 font-bold">Integrate App</div>
-                        <select className="w-full px-3 py-3 border border-medium_gray rounded-md mt-3 form-select">
-                            <option className="py-2">Google Health</option>
-                        </select>
-                    </div>
+                    {
+                        passRequirement ?
+                        <div className="px-10">
+                            <div className="font-bold text-xl text-center">Congratulations!</div>
+                            <div className="font-bold mt-3 text-center">2000/2000 Steps Achieved.</div>
+                            <div className="font-bold mt-4 text-sm text-center">You have joined the <span className="text-vici_button_txt">Running Club</span> clan! Check out their challenges to get started.</div>
+                        </div>
+                        : 
+                        <div className="px-10">
+                            <div className="font-bold text-xl text-center">Clan Requirements</div>
+                            <div className="pt-4 text-sm">The clan leader has set some requirements in order for new members to join.</div>
+                            <div className="pt-4 text-sm font-bold">New members must achieve 2000 Steps before joining. App integration: Google Health (required)</div>
+                            <div className="pt-5 font-bold">Integrate App</div>
+                            <select className="w-full px-3 py-3 border border-medium_gray rounded-md mt-3 form-select">
+                                <option className="py-2">Google Health</option>
+                            </select>
+                        </div>
+                    }
                 </div> 
-                <div className="flex justify-end mt-3">
-                    <button onClick={closeModal} className="px-6 py-2 text-medium_gray bg-white_color border rounded-md uppercase text-sm mr-3">Cancel</button>
-                    <button className="px-6 py-2 text-white_color bg-primary_color rounded-md uppercase text-sm">SUBMIT REQUIREMENTS</button>
-                </div>
+                {
+                    passRequirement ?
+                    <div className="flex justify-end mt-3">
+                        <button onClick={closeModal} className="px-6 py-2 text-medium_gray bg-white_color border rounded-md uppercase text-sm mr-3">Close</button>
+                    </div>
+                    :
+                    <div className="flex justify-end mt-3">
+                        <button onClick={closeModal} className="px-6 py-2 text-medium_gray bg-white_color border rounded-md uppercase text-sm mr-3">Cancel</button>
+                        <button onClick={() => { setCalculating(true)}} className="px-6 py-2 text-white_color bg-primary_color rounded-md uppercase text-sm">SUBMIT REQUIREMENTS</button>
+                    </div>
+                }
+                {openCalculating && <CalculatingModal closeCalculating={setCalculating} isPassRequirement={setPassRequirement} />}
             </div>
         </div>
     )
