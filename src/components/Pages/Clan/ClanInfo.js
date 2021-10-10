@@ -1,29 +1,31 @@
 import './../../styles/profiles.css';
-import React from 'react';
+import React, { useContext } from 'react';
 import JoinClanModal from './Components/JoinClanModal';
-
+import { JoinContext } from './JoinedContext';
 class ClanInfo extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             active: this.props.active,
-            openModal: false
+            openModal: false,
         }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
+        //const [] = useContext(JoinContext);
+        
     }
+    static contextType = JoinContext;
 
     handleOpenModal () {
         this.setState({ openModal: true });
     }
 
-    handleCloseModal (e) {
-        e.stopPropagation();
+    handleCloseModal () {
         this.setState({ openModal: false });
     }
 
     render () {
-
+        const {isJoined, joinedUser} = this.context;
         return (
             <div className="dheaderbase">
                 <div className="dhb-inner">
@@ -42,8 +44,11 @@ class ClanInfo extends React.Component {
                             <div className="mt-14">
                             {/* <div className="dhb-eds"> */}
                                 {/* <a href="#">Edit</a> */}
-                                <button onClick={this.handleOpenModal} className="font-bold uppercase px-8 mx-6 py-3 bg-btn_bgcolor text-white_color rounded-lg text-sm">Join Clan</button>
-                                {this.state.openModal && <JoinClanModal closeModal={this.handleCloseModal} />}
+                                {
+                                    !isJoined &&
+                                    <button onClick={this.handleOpenModal} className="font-bold uppercase px-8 mx-6 py-3 bg-btn_bgcolor text-white_color rounded-lg text-sm">Join Clan</button>
+                                }
+                                {this.state.openModal && <JoinClanModal closeModal={this.handleCloseModal } />}
                             </div>
                         </div>
                     </div>

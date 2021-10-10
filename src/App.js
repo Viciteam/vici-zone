@@ -17,6 +17,8 @@ import ClanChallenge from './components/Pages/Clan/Challenge';
 import ClanIndex from './components/Pages/Clan/Index';
 import ClanMembers from './components/Pages/Clan/Members';
 import ClanHeader from './components/Pages/Clan/Header';
+import { JoinProvider } from './components/Pages/Clan/JoinedContext';
+
 
 import LoginPage from './components/Pages/Auth/Login';
 
@@ -48,7 +50,9 @@ function App() {
             </Route>
             <Route exact path="/clan/">
               <ClanHeader />
-              <ClanIndex />
+              <JoinProvider>
+                <ClanIndex />
+              </JoinProvider>
             </Route>
             <Route path="/clan/members">
               <ClanHeader />
