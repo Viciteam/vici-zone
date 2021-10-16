@@ -26,6 +26,8 @@ module.exports = {
       btn_bgcolor: '#2D9CDB',
       vici_black: '#000',
       medium_gray: '#A0A8B0',
+      dark_gray: '#596366',
+      light_gray: '#F7F7F7',
       purple: '#9B51E0',
     },
     extend: {
