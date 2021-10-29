@@ -21,6 +21,8 @@ import ClanHeader from './components/Pages/Clan/Header';
 import LoginPage from './components/Pages/Auth/Login';
 
 import NewChallenge from './components/Pages/Challenge/NewChallenge';
+import GoalChallengeOne from './components/Pages/Challenge/GoalChallengeOne';
+import PreChallenge from './components/Pages/Challenge/PreChallenge';
 
 
 
@@ -64,6 +66,14 @@ function App() {
             <Route path="/challenge/new">
               <ClanHeader />
               <NewChallenge />
+            </Route>
+            <Route exact path="/challenge/goal">
+              <ClanHeader />
+              <GoalChallengeOne />
+            </Route>
+            <Route path="/challenge/goal/pre-challenge">
+              <ClanHeader />
+              <PreChallenge />
             </Route>
           </Switch>
       </div>

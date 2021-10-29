@@ -12,7 +12,7 @@ class NewChallenge extends React.Component {
 
     render () {
         return (
-            <div className="challenges-inner">
+            <div className="challenges-page-inner">
                 <h2>New Challenge</h2>
                 <div className="dtopnavs">
                     <div className="leftsubnav">
