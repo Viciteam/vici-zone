@@ -38,7 +38,7 @@ class mainProfileContent extends React.Component{
 
     render(){
         const user_information = this.state.userinfo;
-        return(
+        return (
             <div className="container mx-auto mt-20">
                 <div className="main-content">
                     <div className="profile-part">
