@@ -973,6 +973,22 @@
     display: inline-block;
     width: 33%;
     text-align: center;
+    vertical-align: middle;
+}
+
+.challenges-goal-page-inner .dphotoslist ul li .dlistimage {
+    width: 95px;
+    margin: 0 auto;
+    height: 95px;
+    border-radius: 12px;
+}
+
+.challenges-goal-page-inner .dphotoslist ul li .dlistimage .dlimg-base {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background-size: cover !important;
+    cursor: pointer;
 }
 
 .challenges-goal-page-inner .cgoal-center-inner .dshowsitem {
@@ -1080,6 +1096,11 @@
     margin-bottom: 20px;
 }
 
+.challenges-goal-page-inner .dphotoslist ul li .dlistimage.ditem-active {
+    border: 1px solid #FFCA28;
+    padding: 5px;
+}
+
 .challenges-goal-page-inner .cgoal-right .cgoal-right-inner.withopts .withops-show-card {
     width: 300px;
 }
@@ -1158,4 +1179,141 @@
     height: 10px;
     overflow: hidden;
     border-radius: 15px;
+}
+
+.challenges-goal-page-inner .withops-show-card .doptionspart .doptleft {
+    width: 40%;
+    display: inline-block;
+}
+
+.challenges-goal-page-inner .withops-show-card .doptionspart .doptright {
+    width: 59%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.challenges-goal-page-inner .withops-show-card .doptionspart .doptleft .donut-chart {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 1em auto;
+    border-radius: 100%;
+    background: pink;
+}
+
+.challenges-goal-page-inner .withops-show-card .doptionspart .doptleft .donut-chart-block {
+    box-shadow: 0px 4px 10px rgb(189 189 189 / 25%);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.challenges-goal-page-inner .withops-show-card .doptionspart .doptleft p.center {
+    background: #fff;
+    position: absolute;
+    text-align: center;
+    font-size: 28px;
+    top:0;left:0;bottom:0;right:0;
+    width: 75px;
+    height: 75px;   
+    margin: auto;
+    border-radius: 50%;
+    line-height: 35px;
+    padding: 15% 0 0;
+}
+
+.challenges-goal-page-inner .withops-show-card .doptionspart .doptleft .portion-block {
+    border-radius: 50%;
+    clip: rect(0px, 100px, 50px, 49px);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.challenges-goal-page-inner .withops-show-card .doptionspart .doptleft .circle {
+    border-radius: 50%;
+    clip: rect(0px, 50px, 50px, 0px);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    font-family: monospace;
+    /* font-size: 1.5rem; */
+}
+
+.challenges-goal-page-inner .withops-show-card .doptionspart .doptleft #part1 {
+    transform: rotate(0deg);
+}
+
+.challenges-goal-page-inner .withops-show-card .doptionspart .doptleft #part1 .circle {
+    background-color: #E64C65;
+    /* transform: rotate(76deg); */
+    animation: first 1s 1 forwards;
+}
+
+@keyframes first {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(70deg);}
+}
+
+.challenges-goal-page-inner .withops-show-card .doptionspart .doptright .doptr-item {
+    box-shadow: 0px 4px 10px rgb(189 189 189 / 25%);
+    border-radius: 12px;
+    overflow: hidden;
+    width: 89%;
+    margin-left: 12%;
+    margin-bottom: 10%;
+    text-align: center;
+}
+
+.challenges-goal-page-inner .withops-show-card .doptionspart .doptright .doptr-item.diconpin {
+    font-size: 35px;
+    padding: 10px 0 5px;
+}
+
+.challenges-goal-page-inner .withops-show-card .doptionspart .doptright .doptr-item button {
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1em;
+    width: 100%;
+    padding: 15px;
+}
+
+.challenges-goal-page-inner .cgoal-right .cgoal-right-inner.withopts .withops-show-card .wsc-inner .prev-participants {
+    margin: 10% 7%;
+}
+
+.challenges-goal-page-inner .cgoal-right .cgoal-right-inner.withopts .withops-show-card .wsc-inner .prev-participants .dpart-list .dname {
+    width: 65%;
+    display: inline-block;
+}
+
+.challenges-goal-page-inner .cgoal-right .cgoal-right-inner.withopts .withops-show-card .wsc-inner .prev-participants .dpart-list .dnumjoins {
+    width: 35%;
+    display: inline-block;
+}
+
+.challenges-goal-page-inner .cgoal-right .cgoal-right-inner.withopts .withops-show-card .wsc-inner .prev-participants .dpart-list .dname .dphoto {
+    margin-right: 10px;
+}
+
+.challenges-goal-page-inner .cgoal-right .cgoal-right-inner.withopts .withops-show-card .wsc-inner .prev-participants .dpart-list .dname .dphoto img {
+    width: 35px;
+    border-radius: 36px;
+}
+
+.challenges-goal-page-inner .cgoal-right .cgoal-right-inner.withopts .withops-show-card .wsc-inner .prev-participants .dpart-list .dname > * {
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.challenges-goal-page-inner .cgoal-right .cgoal-right-inner.withopts .withops-show-card .wsc-inner .prev-participants .dpart-list .dname .dfname {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.challenges-goal-page-inner .cgoal-right .cgoal-right-inner.withopts .withops-show-card .wsc-inner .prev-participants .dpart-list .dnumjoins {
+    font-size: 13px;
+    font-weight: bold;
+    text-align: right;
 }
