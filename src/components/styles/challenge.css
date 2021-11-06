@@ -228,7 +228,12 @@
     box-shadow: 0px 4px 10px 0px #bdbdbd40;
     border-radius: 18px;
     margin-bottom: 20px;
+    /* padding: 20px 20px; */
+}
+.challenges-goal-page-inner .cgoal-center-inner .cg-item .cg-input {
     padding: 20px 20px;
+    background: #fff;
+    border-radius: 18px;
 }
 .challenges-goal-page-inner .cgoal-center-inner .cg-item.active_item {
     background: #FFCA28;
@@ -237,7 +242,7 @@
     font-weight: bold;
     font-size: 16px;
     line-height: 1em;
-    margin-bottom: 12px;
+    padding: 13px 20px;
 }
 
 .challenges-goal-page-inner .cgoal-center-inner .cg-item .cg-input select {
@@ -258,6 +263,9 @@
     color: #1F1521;
     font-size: 12px;
     margin-bottom: 15px;
+}
+.challenges-goal-page-inner .cgoal-center-inner .cg-item .cg-input input[type="radio"] {
+    margin: 0;
 }
 .challenges-goal-page-inner .cgoal-center-inner .cg-item .cg-input textarea {
     border: 1px solid #DFDFE1;
@@ -515,6 +523,7 @@
 .challenges-goal-page-inner .ddown_list .dselectlocation {
     display: block;
     width: 100%;
+    padding: 20px;
 }
 
 .challenges-goal-page-inner .ddown_list .dlocationlist {
@@ -525,6 +534,7 @@
     top: 100%;
     border-radius: 5px;
     left: 0;
+    z-index: 9;
 }
 
 .challenges-goal-page-inner .ddown_list .dlocationlist .dll-item {
@@ -568,7 +578,7 @@
 }
 
 .challenges-goal-page-inner .dlp-item.ddown_list {
-    padding: 20px 20px;
+    padding: 0;
     cursor: pointer;
 }
 

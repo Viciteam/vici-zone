@@ -17,8 +17,8 @@ class GoalChallengeOne extends React.Component {
         this.state = {
             uinfo: this.props.uinfo,
             activepart: 'title',
-            stepnumber: 3,
-            menuActive: 4,
+            stepnumber: 2,
+            menuActive: 3,
             activityList: [{"activity": ""}],
             checked: false,
             showCountry: false,
@@ -558,7 +558,7 @@ class GoalChallengeOne extends React.Component {
                                 </div>
 
 
-                                <div className={"cg-item "} onFocus={() => this.createActive('three_challenge_duration') }>
+                                <div className={"cg-item " + (this.state.activepart == 'three_challenge_duration' ? 'active_item' : '')} onFocus={() => this.createActive('three_challenge_duration') }>
                                     <div className="cg-label">Challenge Duration</div>
                                     <div className="cg-input dactivity">
                                         <div className="cd-dropbase">
