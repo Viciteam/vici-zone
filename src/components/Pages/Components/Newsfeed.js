@@ -11,11 +11,11 @@ class Newsfeed extends React.Component {
                                 <img src="/img/user_main.jpg" className="w-20 h-20 rounded-md"/>
                             </div>
                             <div className="pl-3">
-                                <div><span className="font-bold">Daphne Winter</span> created a challenge!</div>
+                                <div><span className="font-bold">Daphne Winter</span> <span className="font-bold text-primary_color">Completed</span> a challenge!</div>
                                 <div className="text-sm text-medium_gray">5m ago</div>
                                 <div className="flex pt-1">
-                                    <div className="bg-purple text-white_color px-2 rounded-full">Health</div>
-                                    <div className="bg-purple text-white_color px-2 rounded-full ml-3">Productivity</div>
+                                    <div className="bg-primary_color text-white_color px-2 rounded-full">Health</div>
+                                    <div className="bg-primary_color text-white_color px-2 rounded-full ml-3">Productivity</div>
                                 </div>
                             </div>
                         </div>
@@ -28,7 +28,7 @@ class Newsfeed extends React.Component {
                         </div>
                     </div>
                     <div>
-                        <img src="/img/dummy/Frame.png" className="w-full"/>
+                        <img src="/img/dummy/Frame2.png" className="w-full"/>
                     </div>
                 </div>
                 <div className="flex justify-between">

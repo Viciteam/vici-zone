@@ -17,8 +17,8 @@ class GoalChallengeOne extends React.Component {
         this.state = {
             uinfo: this.props.uinfo,
             activepart: 'title',
-            stepnumber: 3,
-            menuActive: 4,
+            stepnumber: 2,
+            menuActive: 3,
             activityList: [{"activity": ""}],
             checked: false,
             showCountry: false,
@@ -27,7 +27,8 @@ class GoalChallengeOne extends React.Component {
             showDropOptions: false,
             showOptionOne: true,
             showOptionTwo: false,
-            selectedColor: '#207bd7'
+            selectedColor: '#03488d',
+            selectedPreviewHeaderImage: '/img/prev-header.png'
         }
         this.createActive = this.createActive.bind(this);
         this.proceedToNext = this.proceedToNext.bind(this);
@@ -38,6 +39,7 @@ class GoalChallengeOne extends React.Component {
         this.showDropBase = this.showDropBase.bind(this);
         this.activateItem = this.activateItem.bind(this);
         this.changeColor = this.changeColor.bind(this);
+        this.changePrevHeader = this.changePrevHeader.bind(this);
 
         this.activity_list = [
             {"activity": ""}
@@ -144,6 +146,10 @@ class GoalChallengeOne extends React.Component {
         this.setState({selectedColor: vals});
     }
 
+    changePrevHeader(selectedTodo){
+        this.setState({selectedPreviewHeaderImage: selectedTodo});
+    }
+
     render () {
         const tip_images = [
             '/img/challenge_tip1.png',
@@ -156,6 +162,22 @@ class GoalChallengeOne extends React.Component {
             'Measurable goals are easier to gauge. Just choose and click!',
             'A goal with a deadline helps you achieve it much quicker.',
         ]
+
+        const challenge_photo = [
+            '/img/prev-header.png',
+            '/img/prev-header1.png',
+            '/img/prev-header2.png',
+            '/img/prev-header3.png',
+        ];
+
+        const todoItems = challenge_photo.map((todo, index) =>
+            // Only do this if items have no stable IDs
+            <li key={index}>
+                <div className={"dlistimage " + (this.state.selectedPreviewHeaderImage == todo ? 'ditem-active' : "")}>
+                    <div className="dlimg-base" onClick={() => this.changePrevHeader(todo)} style={{background: 'url('+todo+') no-repeat center center'}}>&nbsp;</div>
+                </div>
+            </li>
+        );
 
         
 
@@ -536,7 +558,7 @@ class GoalChallengeOne extends React.Component {
                                 </div>
 
 
-                                <div className={"cg-item "} onFocus={() => this.createActive('three_challenge_duration') }>
+                                <div className={"cg-item " + (this.state.activepart == 'three_challenge_duration' ? 'active_item' : '')} onFocus={() => this.createActive('three_challenge_duration') }>
                                     <div className="cg-label">Challenge Duration</div>
                                     <div className="cg-input dactivity">
                                         <div className="cd-dropbase">
@@ -610,10 +632,8 @@ class GoalChallengeOne extends React.Component {
                                             <div className="dphotoslist">
                                                 <ul>
                                                     <li><img src="/img/s4img0.png" className=""/></li>
-                                                    <li><img src="/img/s4img2.png" className=""/></li>
-                                                    <li><img src="/img/s4img3.png" className=""/></li>
-                                                    <li><img src="/img/s4img4.png" className=""/></li>
-                                                    <li><img src="/img/s4img5.png" className=""/></li>
+                                                    {todoItems}
+                                                    
                                                 </ul>
                                             </div>
                                         </div>
@@ -657,9 +677,9 @@ class GoalChallengeOne extends React.Component {
                                 <h3>Preview</h3>
                                 <div className="withops-show-card">
                                     <h4>Card</h4>
-                                    <div class="wsc-inner">
+                                    <div className="wsc-inner">
                                         <div className="prev-image">
-                                            <img src="/img/prev-header.png" alt="" />
+                                            <img src={this.state.selectedPreviewHeaderImage} alt="" />
                                         </div>
                                         <div className="prev-sm-header">DAILY</div>
                                         <div className="prev-mg-header">HEALTHY SPIRITS!</div>
@@ -671,7 +691,17 @@ class GoalChallengeOne extends React.Component {
                                                 <li style={{backgroundColor: this.state.selectedColor}}>Health</li>
                                             </ul>
                                         </div>
-                                        <div className="prev-participants">show participants</div>
+                                        <div className="prev-participants">
+                                            <div className="dpart-list">
+                                                <div className="dname">
+                                                    <div className="dphoto">
+                                                        <img src="/img/prof_icon.png" alt="" />
+                                                    </div>
+                                                    <div className="dfname">John S. White</div>
+                                                </div>
+                                                <div className="dnumjoins">20 Joined</div>
+                                            </div>
+                                        </div>
                                         <div className="prev-instructions">instructions</div>
                                     </div>
 
@@ -679,6 +709,25 @@ class GoalChallengeOne extends React.Component {
                                     <div className="wsc-inner dprogresspart">
                                         <div className="dprogressbase" style={{backgroundColor: this.state.selectedColor+"70"}}>
                                             <div className="dprogressvals" style={{backgroundColor: this.state.selectedColor, width: '60%'}}>&nbsp;</div>
+                                        </div>
+                                    </div>
+
+                                    <div className="doptionspart">
+                                        <div className="doptleft">
+                                            <div className="donut-chart-block block"> 
+                                                <div className="donut-chart" style={{backgroundColor: this.state.selectedColor+"70"}}>
+                                                    <div id="part1" className="portion-block"><div className="circle" style={{backgroundColor: this.state.selectedColor}}></div></div>
+                                                    <p className="center"></p>        
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="doptright">
+                                            <div className="doptr-item diconpin" style={{color: this.state.selectedColor}}>
+                                                <FontAwesomeIcon icon={faMapMarkerAlt} />
+                                            </div>
+                                            <div className="doptr-item no-bg">
+                                                <button style={{backgroundColor: this.state.selectedColor}}>Join Challenge</button>
+                                            </div>
                                         </div>
                                     </div>
 
