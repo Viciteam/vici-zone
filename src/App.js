@@ -28,6 +28,8 @@ import PreChallenge from './components/Pages/Challenge/PreChallenge';
 
 import ViewChallenge from './components/Pages/Challenge/ViewChallenge';
 
+import ExploreChallenge from './components/Pages/Challenge/Explore/ExploreChallenge'
+
 
 
 function App() {
@@ -84,6 +86,10 @@ function App() {
             <Route exact path="/challenge/view">
               <ClanHeader />
               <ViewChallenge />
+            </Route>
+            <Route path="/challenge/explore">
+              <ClanHeader />
+              <ExploreChallenge />
             </Route>
           </Switch>
       </div>
