@@ -10,6 +10,8 @@ import ThankyouHeader from './components/ThankyouPage/Header';
 import ProfileHeader from './components/Pages/Profile/Header';
 import ProfileContent from './components/Pages/Profile/mainProfileContent';
 
+import GuestContent from './components/Pages/Guest/GuestContent';
+
 import ContactHeader from './components/Pages/ContactUs/ContactHeader'
 import ContactContent from './components/Pages/ContactUs/ContactContent';
 
@@ -30,7 +32,7 @@ import ViewChallenge from './components/Pages/Challenge/ViewChallenge';
 
 import ExploreChallenge from './components/Pages/Challenge/Explore/ExploreChallenge'
 
-
+import Onboarding from './components/Pages/Onboarding/Onboarding';
 
 function App() {
   return (
@@ -49,6 +51,14 @@ function App() {
             <Route path="/home">
               <ClanHeader />
               <ProfileContent />
+            </Route>
+            <Route path="/onboarding">
+              <ClanHeader />
+              <Onboarding />
+            </Route>
+            <Route path="/guest">
+              <ClanHeader />
+              <GuestContent />
             </Route>
             <Route path="/contact-us">
               <ContactHeader />
