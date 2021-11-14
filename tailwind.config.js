@@ -30,6 +30,12 @@ module.exports = {
       dark_gray: '#596366',
       light_gray: '#F7F7F7',
       purple: '#9B51E0',
+      btn_dark: '#19181A',
+      tag_success: '#219653',
+      bottom_gray: '#DFDFE1',
+      tag_competition: '#2F4237',
+      tag_progress: '#C53DF4',
+      tag_maroon: '#7F0A0A',
     },
     extend: {
     },
