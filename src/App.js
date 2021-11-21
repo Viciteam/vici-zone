@@ -34,6 +34,8 @@ import ExploreChallenge from './components/Pages/Challenge/Explore/ExploreChalle
 
 import Onboarding from './components/Pages/Onboarding/Onboarding';
 
+import Messages from './components/Pages/Messages/Messages'
+
 function App() {
   return (
     <Router>
@@ -100,6 +102,10 @@ function App() {
             <Route path="/challenge/explore">
               <ClanHeader />
               <ExploreChallenge />
+            </Route>
+            <Route path="/messages">
+              <ClanHeader />
+              <Messages />
             </Route>
           </Switch>
       </div>

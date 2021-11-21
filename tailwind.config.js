@@ -22,6 +22,8 @@ module.exports = {
         inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
         none: 'none',
         'vici': '0px 4px 10px rgba(189, 189, 189, 0.25)',
+        'border_shadow' : 'inset 0px -1px 0px rgba(0, 0, 0, 0.25)',
+        'border_shadow_right' : 'inset -1px 0px 0px #EBECEF',
     },
     fontSize: {
         'xs': '.75rem',
@@ -69,6 +71,7 @@ module.exports = {
       vici_secondary: '#303C6C',
       failed_secondary: '#eb575780',
       other_challenges: '#25345C',
+      vici_light_gray: '#F2F2F2',
     },
     extend: {
       width: {
