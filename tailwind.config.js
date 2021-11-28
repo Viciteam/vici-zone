@@ -24,6 +24,8 @@ module.exports = {
         'vici': '0px 4px 10px rgba(189, 189, 189, 0.25)',
         'border_shadow' : 'inset 0px -1px 0px rgba(0, 0, 0, 0.25)',
         'border_shadow_right' : 'inset -1px 0px 0px #EBECEF',
+        'border_shadow_button' : '0px 4px 12px rgba(0, 0, 0, 0.15)',
+        'card_border': '0px 0px 20px rgba(0, 0, 0, 0.1)',
     },
     fontSize: {
         'xs': '.75rem',
@@ -72,6 +74,7 @@ module.exports = {
       failed_secondary: '#eb575780',
       other_challenges: '#25345C',
       vici_light_gray: '#F2F2F2',
+      vici_request: '#030612',
     },
     extend: {
       width: {

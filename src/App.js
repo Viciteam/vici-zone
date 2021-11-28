@@ -10,6 +10,8 @@ import ThankyouHeader from './components/ThankyouPage/Header';
 import ProfileHeader from './components/Pages/Profile/Header';
 import ProfileContent from './components/Pages/Profile/mainProfileContent';
 
+import Profile from './components/Pages/Profile/Index'
+
 import GuestContent from './components/Pages/Guest/GuestContent';
 
 import ContactHeader from './components/Pages/ContactUs/ContactHeader'
@@ -53,6 +55,10 @@ function App() {
             <Route path="/home">
               <ClanHeader />
               <ProfileContent />
+            </Route>
+            <Route path="/profile">
+              <ClanHeader />
+              <Profile />
             </Route>
             <Route path="/onboarding">
               <ClanHeader />
