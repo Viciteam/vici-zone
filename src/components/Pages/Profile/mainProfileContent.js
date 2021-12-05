@@ -12,6 +12,9 @@ import Challenge from './Segments/Challenge'
 import Timeline from './Segments/Timeline'
 import DailyChallenge from './Segments/DailyChallenge'
 import OngoingChallenge from './Segments/OngoingChallenge'
+import PopularClans from '../Clan/PopularClans'
+import WhoToFollow from '../Clan/WhoToFollow';
+import Friends from '../Clan/Friends';
 
 
 class mainProfileContent extends React.Component{
@@ -76,8 +79,11 @@ class mainProfileContent extends React.Component{
                             </div>
                             <div className="srightnotif">
                                 <div className="sr-inner">
-                                    <DailyChallenge />
-                                    <OngoingChallenge />
+                                    {/* <DailyChallenge />
+                                    <OngoingChallenge /> */}
+                                    <PopularClans />
+                                    <WhoToFollow />
+                                    <Friends />
                                 </div>
                             </div>
                             <br className="clear"/>

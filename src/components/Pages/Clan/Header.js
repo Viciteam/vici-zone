@@ -10,9 +10,15 @@ class ClanHeader extends React.Component {
         this.state = {
             uinfo: this.props.uinfo,
             openMessages: false,
+            openSearchDropdown: false,
+            search: '',
         }
         this.handleOpenMessages = this.handleOpenMessages.bind(this);
         //this.handleCloseMessages = this.handleCloseMessages.bind(this);
+    }
+
+    handleKeyPress = (event) => {
+        this.setState({search: event.target.value});
     }
 
     handleOpenMessages () {
@@ -21,7 +27,6 @@ class ClanHeader extends React.Component {
         }else{
             this.setState({ openMessages: true });
         }
-       
     }
 
     render () {
@@ -47,6 +52,35 @@ class ClanHeader extends React.Component {
             }
         ]
 
+        const people = [
+            {
+                img: '/img/dummy/1.png',
+                name: 'Jennifer Lorem Ipsum',
+                subtitle: 'Friend',
+            },
+            {
+                img: '/img/dummy/2.png',
+                name: 'Cathy White',
+                subtitle: 'Friend',
+            },
+            {
+                img: '/img/dummy/3.png',
+                name: 'Jen Gold',
+                subtitle: 'Followed',
+            },
+        ]
+
+        const challenges = [
+            {
+                img: '/img/dummy/Avatar User 13.png',
+                title: 'Just Dance Challenge',
+            },
+            {
+                img: '/img/dummy/Avatar User 132.png',
+                title: 'Jello eating contest',
+            }
+        ]
+
         return (
             <div className="clan-header-main">
                 <div className="clan-header-inner">
@@ -61,9 +95,53 @@ class ClanHeader extends React.Component {
                                 <li><a href="#">Learn</a></li>
                             </ul>
                         </div>
-                        <div className="dsearch">
+                        <div className="dsearch relative">
                             <span><FontAwesomeIcon icon={faSearch} /></span>
-                            <input type="text" name="" id="" />
+                            <input onKeyPress={this.handleKeyPress.bind(this)} type="text" name="" id="" />
+                            {
+                                this.state.search.length > 0 &&
+                                <div className="absolute w-96 bg-white_color shadow-lg z-50 rounded-b-3xl">
+                                    <div className="py-3 shadow-border_shadow px-5 text-left">
+                                        Results for: {this.state.search}
+                                    </div>
+                                    <div className="py-3 px-5 text-left">
+                                        <div className="font-bold text-vici_secondary_text">People</div>
+                                        {
+                                            people.map((item, i) => (
+                                                <div className="px-3 py-2 flex">
+                                                    <div>
+                                                        <img src={ item.img } className="rounded-full" />
+                                                    </div>
+                                                    <div className="pl-3">
+                                                        <div className="font-bold">{ item.name }</div>
+                                                        <div className="">{ item.subtitle}</div>
+                                                    </div>
+                                                </div>
+                                            ))
+                                        }
+                                        <div className="font-bold text-vici_secondary_text">Challenges</div>
+                                        {
+                                            challenges.map((item, i) => (
+                                                <div className="px-3 py-2 flex">
+                                                    <div>
+                                                        <img src={ item.img } className="rounded-lg" width="54" />
+                                                    </div>
+                                                    <div className="pl-3 pt-2">
+                                                        <div className="font-bold">{ item.title }</div>
+                                                    </div>
+                                                </div>
+                                            ))
+                                        }
+                                        <div className="font-bold text-vici_secondary_text">Clans</div>
+                                        <div className="flex justify-center p-3">
+                                            <div>0 results for “{this.state.search}” in clans</div>
+                                        </div>
+                                    </div>
+                                    <div className="flex justify-center pb-3">
+                                        <button className="text-vici_secondary font-bold"><a href="/search-results">See more results</a></button>
+                                    </div>
+                                </div>
+                            }
                         </div>
                         <div className="dnotif">
                             <div className="relative">

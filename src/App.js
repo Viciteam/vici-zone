@@ -37,6 +37,7 @@ import ExploreChallenge from './components/Pages/Challenge/Explore/ExploreChalle
 import Onboarding from './components/Pages/Onboarding/Onboarding';
 
 import Messages from './components/Pages/Messages/Messages'
+import SearchResults from './components/Pages/Search/SearchResults';
 
 function App() {
   return (
@@ -108,6 +109,10 @@ function App() {
             <Route path="/challenge/explore">
               <ClanHeader />
               <ExploreChallenge />
+            </Route>
+            <Route path="/search-results">
+              <ClanHeader />
+              <SearchResults />
             </Route>
             <Route path="/messages">
               <ClanHeader />
