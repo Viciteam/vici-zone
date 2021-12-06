@@ -4,6 +4,9 @@ import React from 'react';
 import WatchRewards from './Segments/WatchRewards'
 import Comments from './Segments/Comments'
 
+import OtherChallenges from './Segments/OtherChallenges'
+import OtherMainSIde from './Segments/OtherMainSIde'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle, faEye, faTimes } from '@fortawesome/free-solid-svg-icons'
 
@@ -42,46 +45,8 @@ class ViewChallenge extends React.Component {
                 <div className="dview-left">
                     <div className="dv-left-inner">
                         <div className="dvl-main-sidebar">
-                            <div className="main-sidebar-inner">
-                                <div className="dshageimage">
-                                    <img src="/img/share.png" alt="" />
-                                </div>
-                                <h2>Morning Routine</h2>
-                                <div className="subtitle">Goal</div>
-                                <div className="ms-main-image">
-                                    <img src="/img/watch_main.png" alt="" />
-                                </div>
-                                <div className="ms-sub-title">A morning routine challenge for those who want to start their day with a healthy mindset!</div>
-                                <div className="dinfodetails">
-                                    <div className="dinfoitem">
-                                        <div className="din-left">CREATED BY:</div>
-                                        <div className="din-right"><span className="dimagepart"><img src="/img/dummy/1.png" alt="" /></span><span className="dtextpart">John S. White</span></div>
-                                    </div>
-                                    <div className="dinfoitem">
-                                        <div className="din-left">PEOPLE JOINED:</div>
-                                        <div className="din-right"><img src="/img/dummy/Group.png" alt="" /></div>
-                                    </div>
-                                    <div className="dinfoitem">
-                                        <div className="din-left">DURATION:</div>
-                                        <div className="din-right">Daily</div>
-                                    </div>
-                                    <div className="dinfoitem">
-                                        <div className="din-left">INSTRUCTIONS:</div>
-                                        <div className="din-right">Do the completed set of actions daily</div>
-                                    </div>
-                                </div>
-                                <div className="ms-join-button">
-                                    <button>Join Challenge</button>
-                                </div>
-                                <div className="ms-button-options">
-                                    <div className="ms-button-optleft">
-                                        <button onClick={() => this.watchChallenge()}><span className="diconbase"><FontAwesomeIcon icon={faEye} /></span><span className="dtextbase">{this.state.isWatchingText}</span></button>
-                                    </div>
-                                    <div className="ms-button-optright">
-                                        <button>Invite Friends</button>
-                                    </div>
-                                </div>
-                            </div>
+                            
+                            <OtherMainSIde />
                         </div>
                         <div className="dvl-main-sidebar">
                             <WatchRewards />
@@ -143,15 +108,33 @@ class ViewChallenge extends React.Component {
                             </div>
                             <div className="drightpart">
                                 <div className="dchartpart">
-                                    <div className="donut-chart-block"> 
+                                    {/* <div className="donut-chart-block"> 
                                         <div className="donut-chart" style={{backgroundColor: this.state.selectedColor+"70"}}>
                                             <div id="part1" className="portion-block"><div className="circle" style={{backgroundColor: this.state.selectedColor}}></div></div>
                                             <p className="center"><span className="dnum">0</span><br /><span className="dsubtext">Actions</span></p>        
                                         </div>
+                                    </div> */}
+                                    <div className="watch-pie-chart wpc-progress">
+                                        <h6>
+                                            <span className="dnumbs">0</span>
+                                            <span className="dactions">Actions</span>
+                                        </h6>
+                                        <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
+                                        <g>
+                                        <title>Layer 1</title>
+                                        <circle id="circle" className="circle_animation" r="44.85699" cy="81" cx="81" style={{
+                                            stroke: '#25345C',
+                                            transition: 'all 0.3s',
+                                            strokeWidth: '10',
+                                            strokeDasharray: '282',
+                                            strokeDashoffset: '282'
+                                            }} fill="none"/>
+                                        </g>
+                                        </svg>
                                     </div>
                                 </div>
                                 <div className="dprogressinfo">
-                                    <h3>23% progess</h3>
+                                    <h3>No progess yet.</h3>
                                     <div className="dpi-join-button">Join Challenge</div>
                                 </div>
                             </div>
@@ -225,6 +208,14 @@ class ViewChallenge extends React.Component {
                         </div>
                         <div className="dvr-item dvr-main-comments no-shadow">
                             <Comments />
+                        </div>
+                    </div>
+                </div>
+                <div className="dotherinfo">
+                    <div className="dohterinner">
+                        <h2 className="dotherheader">Other challenges</h2>
+                        <div className="dotheritems">
+                            <OtherChallenges />
                         </div>
                     </div>
                 </div>

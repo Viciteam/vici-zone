@@ -1,24 +1,26 @@
 import './../../styles/challenge.css';
 import React from 'react';
 
-import Menu from './Segments/Menu'
+import Menu from './Segments/MenuLeaderboard'
 
 import Switch from "react-switch";
 
+import ReactModal from 'react-modal';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faBars, faEllipsisV, faGlobeEurope, faMapMarkerAlt, faImage, faCrosshairs } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faBars, faEllipsisV, faGlobeEurope, faMapMarkerAlt, faImage, faCrosshairs, faCog } from '@fortawesome/free-solid-svg-icons'
 
 import { HexColorPicker } from "react-colorful";
 
 
-class GoalChallengeOne extends React.Component {
+class LeaaderboardChallengeOne extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             uinfo: this.props.uinfo,
             activepart: 'title',
-            stepnumber: 0,
-            menuActive: 1,
+            stepnumber: 1,
+            menuActive: 2,
             activityList: [{"activity": ""}],
             checked: false,
             showCountry: false,
@@ -28,7 +30,10 @@ class GoalChallengeOne extends React.Component {
             showOptionOne: true,
             showOptionTwo: false,
             selectedColor: '#03488d',
-            selectedPreviewHeaderImage: '/img/prev-header.png'
+            selectedPreviewHeaderImage: '/img/prev-header.png',
+            rewardWinner: true,
+            isOpenRewardModal: false,
+            isOpenSingleRewardModal: false
         }
         this.createActive = this.createActive.bind(this);
         this.proceedToNext = this.proceedToNext.bind(this);
@@ -150,6 +155,22 @@ class GoalChallengeOne extends React.Component {
         this.setState({selectedPreviewHeaderImage: selectedTodo});
     }
 
+    cancelOpenRewardModal(){
+        this.setState({isOpenRewardModal: false});
+    }
+
+    openRewardModal(){
+        this.setState({isOpenRewardModal: true});
+    }
+
+    openSingleReward(){
+        this.setState({isOpenSingleRewardModal: true});
+    }
+
+    closeSingleReward(){
+        this.setState({isOpenSingleRewardModal: false});
+    }
+
     render () {
         const tip_images = [
             '/img/challenge_tip1.png',
@@ -179,6 +200,72 @@ class GoalChallengeOne extends React.Component {
             </li>
         );
 
+        const rewardOpts = () => {
+            return (
+                <div className="d-reward-select d-reward-multiple">
+                    <div className="d-reward-list">
+                        <div className="d-reward-item">
+                            <div className="d-place-info gold-text">1st</div>
+                            <div className="d-place-reward-text">Reward</div>
+                            <div className="d-place-reward-list-icon">
+                                <div className="d-place-rewards-items">
+                                    <div className="d-place-item"><img src="/img/reward_gift.png" alt="" /></div>
+                                    <div className="d-place-item"><img src="/img/reward_token.png" alt="" /></div>
+                                    <div className="d-place-item"><img src="/img/reward_cert.png" alt="" /></div>
+                                </div>
+                            </div>
+                            <div className="d-place-edit">
+                                <button onClick={() => this.openSingleReward()}>Edit</button>
+                            </div>
+                        </div>
+                        <div className="d-reward-item">
+                            <div className="d-place-info silver-text">2st</div>
+                            <div className="d-place-reward-text">Reward</div>
+                            <div className="d-place-reward-list-icon">
+                                <div className="d-place-rewards-items">
+                                    <div className="d-place-item"><img src="/img/reward_gift.png" alt="" /></div>
+                                    <div className="d-place-item"><img src="/img/reward_token.png" alt="" /></div>
+                                </div>
+                            </div>
+                            <div className="d-place-edit">
+                                <button>Edit</button>
+                            </div>
+                        </div>
+                        <div className="d-reward-item">
+                            <div className="d-place-info bronze-text">3st</div>
+                            <div className="d-place-reward-text">Reward</div>
+                            <div className="d-place-reward-list-icon">
+                                <button>Add Reward</button>
+                            </div>
+                            <div className="d-place-edit">
+                                <button>Edit</button>
+                            </div>
+                        </div>
+                        <div className="d-reward-item add-new-placer">
+                            <button>Add 4th Place</button>
+                        </div>
+                        <ReactModal
+                            isOpen={this.state.isOpenSingleRewardModal}
+                            contentLabel="Example Modal"
+                            className="watch_side_modal"
+                            ariaHideApp={false}
+                        >
+                            <div className="d-rewards-settings-modal">
+                                <h4>Rewards</h4>
+                                <div className="d-reward-settings-list">
+                                    this content
+                                </div>
+                                <div className="d-reward-settings-ops">
+                                    <button className="cancelReward" onClick={() => this.cancelOpenRewardModal()}>Cancel</button>
+                                    <button className="saveReward">Save</button>
+                                </div>
+                            </div>
+                        </ReactModal>
+                    </div>
+                </div>
+            );
+        }
+
         
 
         return (
@@ -188,10 +275,10 @@ class GoalChallengeOne extends React.Component {
                         <div className="cgoal-left-inner">
                             <div className="dtitle">
                                 <div className="dimage">
-                                    <img src="/img/ch_goal.png" alt="" />
+                                    <img src="/img/ch_leaderboard.png" alt="" />
                                 </div>
                                 <div className="dtext">
-                                    Goal Challenge
+                                    Leaderboard
                                 </div>
                             </div>
                             <div className="dmenu-side">
@@ -240,31 +327,11 @@ class GoalChallengeOne extends React.Component {
 
                         <div className={"dstep step_one " + (this.state.stepnumber == 1 ? 'isactive_tab' : '')}>
                             <div className="cgoal-center-inner">
-                                <h2>How to Measure the Goal?</h2>
 
-                                <div className={"cg-item " + (this.state.activepart == 'two_main_goal' ? 'active_item' : '')} onFocus={() => this.createActive('two_main_goal') }>
-                                    <div className="cg-label">Main Goal</div>
-                                    <div className="cg-input">
-                                        <div className="dmultiple">
-                                            <div className="dm-left">
-                                                <div className="dradiobt">
-                                                    <input type="radio" name="gender" />
-                                                </div>
-                                                <div className="dtextone">
-                                                    Single Goal
-                                                </div>
-                                            </div>
-                                            <div className="dm-right">
-                                                <div className="dradiobt">
-                                                    <input type="radio" name="gender" />
-                                                </div>
-                                                <div className="dtextone">
-                                                    Multiple Milestones
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="dsdesc">Description</div>
-                                        <div className="dsdesc">Single Goal. Only has one goal with multiple actions, enable multiple milestones to create milestones.</div>
+                                <div className={"cg-item " + (this.state.activepart == 'title' ? 'active_item' : '')} onFocus={() => this.createActive('title') }>
+                                    <div className="cg-label">Purpose</div>
+                                    <div className="cg-input dactivity">
+                                        <div className="subheader">What is the purpose of this competition?</div>
                                         <input type="text" />
                                     </div>
                                 </div>
@@ -331,6 +398,47 @@ class GoalChallengeOne extends React.Component {
                                     </div>
                                     <div className="cg-input dactivity">
                                         <div className="subheader">Set how many points participant can get for each action</div>
+                                    </div>
+                                </div>
+
+                                <div className={"cg-item " + (this.state.activepart == 'two_rewards' ? 'active_item' : '')} onFocus={() => this.createActive('two_rewards') }>
+                                    <div className="cg-label">Customize Rewards</div>
+                                    <div className="cg-input">
+                                        {rewardOpts()}
+                                        <div className="d-show-reward">
+                                            <a href="">Give reward for everbody else</a>
+                                        </div>
+                                        <div className="d-rewards-settings">
+                                            <button onClick={() => this.openRewardModal()}><span><FontAwesomeIcon icon={faCog} /></span> Reward Settings</button>
+                                        </div>
+                                        <ReactModal
+                                            isOpen={this.state.isOpenRewardModal}
+                                            contentLabel="Example Modal"
+                                            className="watch_side_modal"
+                                            ariaHideApp={false}
+                                        >
+                                            <div className="d-rewards-settings-modal">
+                                                <h4>Reward Settings</h4>
+                                                <div className="d-reward-settings-list">
+                                                    <div className="cg-label">
+                                                        <div className="cgl-name">
+                                                            <div className="cgl-name-title">Allow winners to pick their rewards</div>
+                                                        </div>
+                                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
+                                                    </div>
+                                                    <div className="cg-label">
+                                                        <div className="cgl-name">
+                                                            <div className="cgl-name-title">Allow multiple rewards</div>
+                                                        </div>
+                                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
+                                                    </div>
+                                                </div>
+                                                <div className="d-reward-settings-ops">
+                                                    <button className="cancelReward" onClick={() => this.cancelOpenRewardModal()}>Cancel</button>
+                                                    <button className="saveReward">Save</button>
+                                                </div>
+                                            </div>
+                                        </ReactModal>
                                     </div>
                                 </div>
 
@@ -741,4 +849,4 @@ class GoalChallengeOne extends React.Component {
     }
 }
 
-export default GoalChallengeOne
+export default LeaaderboardChallengeOne

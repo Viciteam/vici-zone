@@ -13,6 +13,7 @@ class ShowActivity extends React.Component {
     }
 
     render () {
+        const actionlabel = this.props.info.action.replace(/_/g, ' ');
         return (
             <div className="dpost-list-item activity-item">
                 <div className="dpost-list-item">
@@ -21,7 +22,7 @@ class ShowActivity extends React.Component {
                             <img src="/img/user_main.jpg" alt="" />
                         </div>
                         <div className="dpost-list-text">
-                            <h3>{this.props.info.name} - {this.props.info.action}</h3>
+                            <h3>{this.props.info.name} - <span className="actionpart">{actionlabel}</span></h3>
                             <div className="dnumber">1hr ago</div>
                         </div>
                         <div className="dpost-list-dots">

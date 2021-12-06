@@ -24,6 +24,8 @@ import LoginPage from './components/Pages/Auth/Login';
 
 import NewChallenge from './components/Pages/Challenge/NewChallenge';
 import GoalChallengeOne from './components/Pages/Challenge/GoalChallengeOne';
+import GoalContestOne from './components/Pages/Challenge/GoalContestOne';
+import LeaaderboardChallengeOne from './components/Pages/Challenge/LeaaderboardChallengeOne';
 import PreChallenge from './components/Pages/Challenge/PreChallenge';
 
 import ViewChallenge from './components/Pages/Challenge/ViewChallenge';
@@ -78,6 +80,14 @@ function App() {
             <Route exact path="/challenge/goal">
               <ClanHeader />
               <GoalChallengeOne />
+            </Route>
+            <Route exact path="/challenge/contest">
+              <ClanHeader />
+              <GoalContestOne />
+            </Route>
+            <Route exact path="/challenge/leaderboard">
+              <ClanHeader />
+              <LeaaderboardChallengeOne />
             </Route>
             <Route path="/challenge/goal/pre-challenge">
               <ClanHeader />

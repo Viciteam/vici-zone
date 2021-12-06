@@ -33,11 +33,11 @@ class ShowComment extends React.Component {
                     </div>
                     <div className="dpost-list-item-ops">
                         <div className="dpost-list-left">
-                            <div className="likebtn">
+                            <div className="lkbtn likebtn">
                                 <span className="dicon"><FontAwesomeIcon icon={faThumbsUp} /></span>
                                 <span className="dnum">0</span>
                             </div>
-                            <div className="likebtn">
+                            <div className="lkbtn dislikebtn">
                                 <span className="dicon"><FontAwesomeIcon icon={faThumbsDown} /></span>
                                 <span className="dnum">0</span>
                             </div>
