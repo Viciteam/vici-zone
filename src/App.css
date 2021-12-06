@@ -24,6 +24,31 @@
   color: white;
 }
 
+.active {
+  background: #FBE8A6;
+}
+
+.active-text {
+  font-weight: 700;
+}
+
+.half-circle {
+  width: 63px;
+  height: 119px;
+  border-top-left-radius: 800px;
+  border-bottom-left-radius: 800px;
+  background: #FFCA28;
+}
+
+.h-screen-auto {
+  height: calc(100vh - 200px);
+}
+
+.mute-chat input:checked ~ .dot {
+  transform: translateX(100%);
+  background-color: #ffffff;
+}
+
 .App-link {
   color: #61dafb;
 }
