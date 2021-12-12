@@ -5,8 +5,11 @@ import Menu from './Segments/Menu'
 
 import Switch from "react-switch";
 
+import ReactModal from 'react-modal';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faBars, faEllipsisV, faGlobeEurope, faMapMarkerAlt, faImage, faCrosshairs } from '@fortawesome/free-solid-svg-icons'
+import { faFacebook, faInstagram, faTwitter, faYoutube, faTiktok } from '@fortawesome/free-brands-svg-icons'
 
 import { HexColorPicker } from "react-colorful";
 
@@ -17,8 +20,8 @@ class GoalChallengeOne extends React.Component {
         this.state = {
             uinfo: this.props.uinfo,
             activepart: 'title',
-            stepnumber: 0,
-            menuActive: 1,
+            stepnumber: 1,
+            menuActive: 2,
             activityList: [{"activity": ""}],
             checked: false,
             showCountry: false,
@@ -28,7 +31,14 @@ class GoalChallengeOne extends React.Component {
             showOptionOne: true,
             showOptionTwo: false,
             selectedColor: '#03488d',
-            selectedPreviewHeaderImage: '/img/prev-header.png'
+            selectedPreviewHeaderImage: '/img/prev-header.png',
+            socialActionSLide: false,
+            socialType: 'social',
+            isOpenSingleRewardModal: false,
+            isFacebookLoginEnabled: false,
+            isFacebookVisitEnabled: false,
+            isFacebookViewPostEnabled: false,
+            isFacebookJoinGroupEnabled: false,
         }
         this.createActive = this.createActive.bind(this);
         this.proceedToNext = this.proceedToNext.bind(this);
@@ -40,10 +50,55 @@ class GoalChallengeOne extends React.Component {
         this.activateItem = this.activateItem.bind(this);
         this.changeColor = this.changeColor.bind(this);
         this.changePrevHeader = this.changePrevHeader.bind(this);
+        this.onSocialActionChange = this.onSocialActionChange.bind(this);
+        this.socialOpenOptions = this.socialOpenOptions.bind(this);
+        this.socialCloseOptions = this.socialCloseOptions.bind(this);
+
+        // social popup
+        this.toogleFacebookLogin = this.toogleFacebookLogin.bind(this);
+        this.toogleFacebookVisit = this.toogleFacebookVisit.bind(this);
+        this.toogleFacebookViewPost = this.toogleFacebookViewPost.bind(this);
+        this.toogleFacebookJoinGroup = this.toogleFacebookJoinGroup.bind(this);
+
+        // change tab
+        this.toogleCustomSocialActions = this.toogleCustomSocialActions.bind(this);
+        this.toogleInviteFriendsActions = this.toogleInviteFriendsActions.bind(this);
+        this.toogleFacebookActions = this.toogleFacebookActions.bind(this);
 
         this.activity_list = [
             {"activity": ""}
         ];
+    }
+
+    toogleCustomSocialActions(){
+        console.log('shiowe iasd');
+        this.setState({socialType: 'custom_social_action'});
+    }
+
+    toogleInviteFriendsActions(){
+        this.setState({socialType: 'invite_friend'});
+    }
+
+    toogleFacebookActions(){
+        this.setState({socialType: 'social'});
+    }
+
+    
+
+    toogleFacebookLogin(){
+        this.setState({isFacebookLoginEnabled: !this.state.isFacebookLoginEnabled});
+    }
+
+    toogleFacebookVisit(){
+        this.setState({isFacebookVisitEnabled: !this.state.isFacebookVisitEnabled});
+    }
+
+    toogleFacebookViewPost(){
+        this.setState({isFacebookViewPostEnabled: !this.state.isFacebookViewPostEnabled});
+    }
+
+    toogleFacebookJoinGroup(){
+        this.setState({isFacebookJoinGroupEnabled: !this.state.isFacebookJoinGroupEnabled});
     }
 
     createActive(setactive){
@@ -150,6 +205,19 @@ class GoalChallengeOne extends React.Component {
         this.setState({selectedPreviewHeaderImage: selectedTodo});
     }
 
+    onSocialActionChange(){
+        this.setState({socialActionSLide: !this.state.socialActionSLide});
+    }
+
+    socialOpenOptions(){
+        console.log('open modal');
+        this.setState({isOpenSingleRewardModal: true});
+    }
+
+    socialCloseOptions(){
+        this.setState({isOpenSingleRewardModal: false});
+    }
+
     render () {
         const tip_images = [
             '/img/challenge_tip1.png',
@@ -178,6 +246,124 @@ class GoalChallengeOne extends React.Component {
                 </div>
             </li>
         );
+
+        const socialActionBottomOptions = () => {
+            return (
+                <div className="d-reward-settings-ops">
+                    <button className="cancelReward" onClick={() => this.socialCloseOptions()}>Cancel</button>
+                    <button className="saveReward">Save and Add actions</button>
+                </div>
+            );
+        }
+
+        const socialOptions = () => {
+            if(this.state.socialType == 'social'){
+                return (
+                    <div className="d-social-items">
+                        <h3>Facebook Actions</h3>
+                        <div className="d-social-item">
+                            <div className="d-social-item-text">Login with Facebook</div>
+                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookLogin} checked={this.state.isFacebookLoginEnabled} /></div>
+                        </div>
+                        <div className="d-social-item">
+                            <div className="d-social-item-text">Visit on Facebook</div>
+                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookVisit} checked={this.state.isFacebookVisitEnabled} /></div>
+                        </div>
+                        <div className="d-social-item">
+                            <div className="d-social-header">
+                                <div className="d-social-item-text">Enter URL</div>
+                            </div>
+                            <div className="d-social-value">
+                                <input type="text" placeholder="www.facebookpage.com" />
+                            </div>
+                        </div>
+                        <div className="d-social-item">
+                            <div className="d-social-header">
+                                <div className="d-social-item-text">View Post</div>
+                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookViewPost} checked={this.state.isFacebookViewPostEnabled} /></div>
+                            </div>
+                            <div className="d-social-value">
+                                <input type="text" placeholder="www.facebookpage.com" />
+                            </div>
+                        </div>
+                        <div className="d-social-item">
+                            <div className="d-social-header">
+                                <div className="d-social-item-text">Join Facebook Group</div>
+                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookJoinGroup} checked={this.state.isFacebookJoinGroupEnabled} /></div>
+                            </div>
+                            <div className="d-social-value">
+                                <input type="text" placeholder="www.facebookpage.com" />
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            if(this.state.socialType == 'custom_social_action'){
+                return (
+                    <div className="d-social-items">
+                        <h3>Custom social actions</h3>
+                        <div className="d-social-item">
+                            <div className="d-social-header">
+                                <div className="d-social-item-text">Action Name</div>
+                            </div>
+                            <div className="d-social-value">
+                                <input type="text" placeholder="Action Name" />
+                            </div>
+                        </div>
+                        <div className="d-social-item">
+                            <div className="d-social-header">
+                                <div className="d-social-item-text">URL if applicable</div>
+                            </div>
+                            <div className="d-social-value">
+                                <input type="text" placeholder="www.facebookpage.com" />
+                            </div>
+                        </div>
+                        <h3>Verify</h3>
+                        <div className="d-social-item">
+                            <div className="d-social-header">
+                                <div className="d-social-item-text">Question</div>
+                            </div>
+                            <div className="d-social-value">
+                                <input type="text" placeholder="type here..." />
+                            </div>
+                        </div>
+                        <div className="d-social-item">
+                            <div className="d-social-header">
+                                <div className="d-social-item-text">Answer</div>
+                            </div>
+                            <div className="d-social-value">
+                                <input type="text" placeholder="" />
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            if(this.state.socialType == 'invite_friend'){
+                return (
+                    <div className="d-social-items">
+                        <h3>Invite Friends</h3>
+                        <div className="d-social-item">
+                            <div className="d-social-header">
+                                <div className="d-social-item-text">Give points every:</div>
+                            </div>
+                            <div className="d-social-value">
+                                <input type="text" placeholder="" />
+                            </div>
+                        </div>
+                        <div className="d-social-item">
+                            <div className="d-social-header">
+                                <div className="d-social-item-text">Points per invite</div>
+                            </div>
+                            <div className="d-social-value">
+                                <input type="number" defaultValue="1" />
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+        }
 
         
 
@@ -317,11 +503,88 @@ class GoalChallengeOne extends React.Component {
                                 <div className={"cg-item " + (this.state.activepart == 'two_social_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_social_actions') }>
                                     <div className="cg-label">
                                         <div className="cgl-name">Social Actions</div>
-                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
+                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.onSocialActionChange} checked={this.state.socialActionSLide} /></div>
                                     </div>
                                     <div className="cg-input dactivity">
                                         <div className="subheader">Actions that help spread the word, build awareness and increase challenge engagement</div>
+                                        <div className="social-action-list"></div>
+                                        <div className="add-social-action">
+                                            <button onClick={() => this.socialOpenOptions()}><span><FontAwesomeIcon icon={faPlus} /></span> Add Social Action</button>
+                                        </div>
                                     </div>
+                                    <ReactModal
+                                        isOpen={this.state.isOpenSingleRewardModal}
+                                        contentLabel="Example Modal"
+                                        className="social_action_modal"
+                                        ariaHideApp={false}
+                                    >
+                                        <div className="d-rewards-settings-modal">
+                                            <h4>Social Actions</h4>
+                                            <div className="d-social-settings-list">
+                                                <div className="d-social-left-side" >
+                                                    <div className="d-social-settings">
+                                                        <div className="d-social-settings-dropdown">
+                                                            <select>
+                                                                <option value="">Choose from saved settings</option>
+                                                            </select>
+                                                        </div>
+                                                        <div className="d-social-setting-sub">
+                                                            <button>Save social settings</button>
+                                                        </div>
+                                                    </div>
+                                                    <div className="d-social-show-items">
+                                                        <div className={"d-social-show-item " + (this.state.socialType == 'social' ? 'active' : '')} onClick={() => this.toogleFacebookActions()}>
+                                                            <div className="d-social-item-icon">
+                                                                <span className="facebook"><FontAwesomeIcon icon={faFacebook} /></span>
+                                                            </div>
+                                                            <div className="d-social-item-text">Facebook</div>
+                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
+                                                        </div>
+                                                        <div className="d-social-show-item">
+                                                            <div className="d-social-item-icon">
+                                                                <span className="instagram"><FontAwesomeIcon icon={faInstagram} /></span>
+                                                            </div>
+                                                            <div className="d-social-item-text">Instagram</div>
+                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
+                                                        </div>
+                                                        <div className="d-social-show-item">
+                                                            <div className="d-social-item-icon">
+                                                                <span className="twitter"><FontAwesomeIcon icon={faTwitter} /></span>
+                                                            </div>
+                                                            <div className="d-social-item-text">Twitter</div>
+                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
+                                                        </div>
+                                                        <div className="d-social-show-item">
+                                                            <div className="d-social-item-icon">
+                                                                <span className="youtube"><FontAwesomeIcon icon={faYoutube} /></span>
+                                                            </div>
+                                                            <div className="d-social-item-text">Youtube</div>
+                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
+                                                        </div>
+                                                        <div className="d-social-show-item">
+                                                            <div className="d-social-item-icon">
+                                                                <span className="tiktok"><FontAwesomeIcon icon={faTiktok} /></span>
+                                                            </div>
+                                                            <div className="d-social-item-text">Tiktok</div>
+                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
+                                                        </div>
+                                                        <div className="d-social-show-item no-icon-part" onClick={() => this.toogleInviteFriendsActions()}>
+                                                            <div className="d-social-item-text">Invite Friends</div>
+                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
+                                                        </div>
+                                                        <div className={"d-social-show-item no-icon-part " + (this.state.socialType == 'custom_social_action' ? 'active' : '')} onClick={() => this.toogleCustomSocialActions()}>
+                                                            <div className="d-social-item-text">Custom Social Action</div>
+                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div className="d-social-right-side" >
+                                                    {socialOptions()}
+                                                </div>
+                                            </div>
+                                            {socialActionBottomOptions()}
+                                        </div>
+                                    </ReactModal>
                                 </div>
 
                                 <div className={"cg-item " + (this.state.activepart == 'two_convert_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_convert_actions') }>

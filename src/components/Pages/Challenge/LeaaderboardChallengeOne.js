@@ -8,7 +8,7 @@ import Switch from "react-switch";
 import ReactModal from 'react-modal';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faBars, faEllipsisV, faGlobeEurope, faMapMarkerAlt, faImage, faCrosshairs, faCog } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faBars, faEllipsisV, faGlobeEurope, faMapMarkerAlt, faImage, faCrosshairs, faCog, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 import { HexColorPicker } from "react-colorful";
 
@@ -33,8 +33,11 @@ class LeaaderboardChallengeOne extends React.Component {
             selectedPreviewHeaderImage: '/img/prev-header.png',
             rewardWinner: true,
             isOpenRewardModal: false,
-            isOpenSingleRewardModal: false
+            isOpenSingleRewardModal: false,
+            selectedRewardStep: 1,
+            rewardType: 'file',
         }
+
         this.createActive = this.createActive.bind(this);
         this.proceedToNext = this.proceedToNext.bind(this);
         this.proceedToPrev = this.proceedToPrev.bind(this);
@@ -45,10 +48,34 @@ class LeaaderboardChallengeOne extends React.Component {
         this.activateItem = this.activateItem.bind(this);
         this.changeColor = this.changeColor.bind(this);
         this.changePrevHeader = this.changePrevHeader.bind(this);
+        this.updateRewardsNextStep = this.updateRewardsNextStep.bind(this);
+
+        // rewards modal
+        this.toggleRewardFile = this.toggleRewardFile.bind(this);
+        this.toggleRewardManualSent = this.toggleRewardManualSent.bind(this);
+        this.toggleRewardInstructions = this.toggleRewardInstructions.bind(this);
+        this.toggleRewardUniqueReward = this.toggleRewardUniqueReward.bind(this);
+
 
         this.activity_list = [
             {"activity": ""}
         ];
+    }
+    
+    toggleRewardFile(){
+        this.setState({rewardType: 'file'})
+    }
+
+    toggleRewardManualSent(){
+        this.setState({rewardType: 'manual_sent'})
+    }
+
+    toggleRewardInstructions(){
+        this.setState({rewardType: 'instructions'})
+    }
+
+    toggleRewardUniqueReward(){
+        this.setState({rewardType: 'unique_reward'})
     }
 
     createActive(setactive){
@@ -77,14 +104,6 @@ class LeaaderboardChallengeOne extends React.Component {
     /** Page 2 */
     addActivity(){
         console.log("shiw -> ", this.activity_list);
-
-        /**
-            Add New Item
-        */
-
-        // this.activityList.push({"activity": ""});
-
-
     }
 
     resetCount(){
@@ -169,6 +188,11 @@ class LeaaderboardChallengeOne extends React.Component {
 
     closeSingleReward(){
         this.setState({isOpenSingleRewardModal: false});
+        this.setState({selectedRewardStep: 1});
+    }
+
+    updateRewardsNextStep(){
+        this.setState({selectedRewardStep: 2});
     }
 
     render () {
@@ -200,6 +224,191 @@ class LeaaderboardChallengeOne extends React.Component {
             </li>
         );
 
+        const updateRewardSteps = () => {
+            if(this.state.selectedRewardStep == 1){
+                return (
+                    <div className="d-reward-step d-rewards-step-one">
+                        <div className="drs-iamge">
+                            <img src="/img/reward_image.png" alt="" />
+                        </div>
+                        <div className="drs-subheader">Set minimum points or measurement for this position</div>
+                        <div className="drs-options-list">
+                            <div className="drs-option-item">
+                                <div className="drs-option-left">Minimum points needed</div>
+                                <div className="drs-option-right">
+                                    <input type="number" defaultValue="0" />
+                                </div>
+                            </div>
+                            <div className="drs-option-button">
+                                <button><span><FontAwesomeIcon icon={faPlus} /></span> Add measurement</button>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            if(this.state.selectedRewardStep == 2){
+                return (
+                    <div className="d-reward-step d-reward-step-two">
+                        <div className="d-reward-left">
+                            <h4>Choose reward type</h4>
+                            <div className="d-rewards-step-two-options">
+                                <div className={"d-rewards-step-two-items " + (this.state.rewardType == 'file' ? 'd-reward-active' : '')} onClick={() => this.toggleRewardFile()}>
+                                    <div className="rewards-option-items-icon">
+                                        <img src="/img/rewards_file.png" alt="" />
+                                    </div>
+                                    <div className="rewards-option-items-text">File</div>
+                                    <div className="rewards-option-items-plus"><span><FontAwesomeIcon icon={faPlus} /></span></div>
+                                </div>
+                                <div className={"d-rewards-step-two-items " + (this.state.rewardType == 'manual_sent' ? 'd-reward-active' : '')} onClick={() => this.toggleRewardManualSent()}>
+                                    <div className="rewards-option-items-icon">
+                                        <img src="/img/rewards_gift.png" alt="" />
+                                    </div>
+                                    <div className="rewards-option-items-text">Manually sent</div>
+                                    <div className="rewards-option-items-plus"><span><FontAwesomeIcon icon={faPlus} /></span></div>
+                                </div>
+                                <div className={"d-rewards-step-two-items " + (this.state.rewardType == 'instructions' ? 'd-reward-active' : '')} onClick={() => this.toggleRewardInstructions()}>
+                                    <div className="rewards-option-items-icon">
+                                        <img src="/img/rewards_instructions.png" alt="" />
+                                    </div>
+                                    <div className="rewards-option-items-text">Instructions</div>
+                                    <div className="rewards-option-items-plus"><span><FontAwesomeIcon icon={faPlus} /></span></div>
+                                </div>
+                                <div className={"d-rewards-step-two-items " + (this.state.rewardType == 'unique_reward' ? 'd-reward-active' : '')} onClick={() => this.toggleRewardUniqueReward()}>
+                                    <div className="rewards-option-items-icon">&nbsp;</div>
+                                    <div className="rewards-option-items-text">Unique rewards</div>
+                                    <div className="rewards-option-items-plus"><span><FontAwesomeIcon icon={faPlus} /></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="d-reward-right">
+                            {rewardstep()}
+                        </div>
+                    </div>
+                );
+            }
+        }
+
+        const rewardstep = () => {
+            if(this.state.rewardType == 'file'){
+                return (
+                    <div className="show-rewards-type">
+                        <h4>File</h4>
+                        <div className="d-upload-a-file">
+                            <div className="d-upload-file-icon">
+                                <img src="/img/rewards_file.png" alt="" />
+                            </div>
+                            <div className="d-upload-file-text">Upload File</div>
+                        </div>
+                        <div className="d-upload-max-reward">
+                            <div className="d-max-rwward-text">Max no. of times the reward can be given:</div>
+                            <div className="d-max-rwward-input">
+                                <input type="text" defaultValue="0"/>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            if(this.state.rewardType == 'manual_sent'){
+                return (
+                    <div className="show-rewards-type">
+                        <h4>Manually sent</h4>
+                        <div className="d-sub-title-info">You will manually send this reward to the participants</div>
+                        <div className="d-reward-item">
+                            <div className="d-reward-label">Reward Name</div>
+                            <div className="d-reward-input">
+                                <input type="text" defaultValue="" />
+                            </div>
+                        </div>
+                        <div className="d-reward-item">
+                            <div className="d-reward-label">Reward Details</div>
+                            <div className="d-reward-input">
+                                <textarea></textarea>
+                            </div>
+                        </div>
+                        <div className="d-upload-max-reward">
+                            <div className="d-max-rwward-text">Max no. of times the reward can be given:</div>
+                            <div className="d-max-rwward-input">
+                                <input type="text" defaultValue="0"/>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            if(this.state.rewardType == 'instructions'){
+                return (
+                    <div className="show-rewards-type">
+                        <h4>Instructions</h4>
+                        <div className="d-reward-item">
+                            <div className="d-reward-label">Reward Name</div>
+                            <div className="d-reward-input">
+                                <input type="text" defaultValue="" />
+                            </div>
+                        </div>
+                        <div className="d-reward-item">
+                            <div className="d-reward-label">Reward Details</div>
+                            <div className="d-reward-input">
+                                <textarea></textarea>
+                            </div>
+                        </div>
+                        <div className="d-reward-item">
+                            <div className="d-reward-label">Reward Instructions</div>
+                            <div className="d-reward-input">
+                                <textarea></textarea>
+                            </div>
+                        </div>
+                        <div className="d-upload-max-reward">
+                            <div className="d-max-rwward-text">Max no. of times the reward can be given:</div>
+                            <div className="d-max-rwward-input">
+                                <input type="text" defaultValue="0"/>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            if(this.state.rewardType == 'unique_reward'){
+                return (
+                    <div className="show-rewards-type">
+                        <h4>Unique rewards</h4>
+                        <div className="d-reward-select">
+                            <select>
+                                <option value="">Unique coupon codes</option>
+                            </select>
+                        </div>
+                        <div className="d-upload-a-file">
+                            <div className="d-upload-file-icon">
+                                <img src="/img/rewards_file.png" alt="" />
+                            </div>
+                            <div className="d-upload-file-text">Upload CSV</div>
+                        </div>
+                    </div>
+                );
+            }
+        }
+
+        const updateRewardStepsButtons = () => {
+            if(this.state.selectedRewardStep == 1){
+                return (
+                    <div className="d-reward-settings-ops">
+                        <button className="cancelReward" onClick={() => this.closeSingleReward()}>Cancel</button>
+                        <button className="saveReward" onClick={() => this.updateRewardsNextStep()}>Next <span><FontAwesomeIcon icon={faArrowRight} /></span></button>
+                    </div>
+                );
+            }
+
+            if(this.state.selectedRewardStep == 2){
+                return (
+                    <div className="d-reward-settings-ops">
+                        <button className="cancelReward" onClick={() => this.closeSingleReward()}>Cancel</button>
+                        <button className="saveReward">Save Rewards</button>
+                    </div>
+                );
+            }
+        }
+
         const rewardOpts = () => {
             return (
                 <div className="d-reward-select d-reward-multiple">
@@ -228,17 +437,17 @@ class LeaaderboardChallengeOne extends React.Component {
                                 </div>
                             </div>
                             <div className="d-place-edit">
-                                <button>Edit</button>
+                                <button onClick={() => this.openSingleReward()}>Edit</button>
                             </div>
                         </div>
                         <div className="d-reward-item">
                             <div className="d-place-info bronze-text">3st</div>
                             <div className="d-place-reward-text">Reward</div>
                             <div className="d-place-reward-list-icon">
-                                <button>Add Reward</button>
+                                <button onClick={() => this.openSingleReward()}>Add Reward</button>
                             </div>
                             <div className="d-place-edit">
-                                <button>Edit</button>
+                                <button onClick={() => this.openSingleReward()}>Edit</button>
                             </div>
                         </div>
                         <div className="d-reward-item add-new-placer">
@@ -253,18 +462,18 @@ class LeaaderboardChallengeOne extends React.Component {
                             <div className="d-rewards-settings-modal">
                                 <h4>Rewards</h4>
                                 <div className="d-reward-settings-list">
-                                    this content
+                                    {updateRewardSteps()}
                                 </div>
-                                <div className="d-reward-settings-ops">
-                                    <button className="cancelReward" onClick={() => this.cancelOpenRewardModal()}>Cancel</button>
-                                    <button className="saveReward">Save</button>
-                                </div>
+                                {updateRewardStepsButtons()}
                             </div>
                         </ReactModal>
                     </div>
                 </div>
             );
+        
         }
+
+        
 
         
 
