@@ -1,27 +1,26 @@
 import './../../styles/challenge.css';
 import React from 'react';
 
-import Menu from './Segments/Menu'
+import Menu from './Segments/MenuContest'
 
 import Switch from "react-switch";
 
 import ReactModal from 'react-modal';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faBars, faEllipsisV, faGlobeEurope, faMapMarkerAlt, faImage, faCrosshairs } from '@fortawesome/free-solid-svg-icons'
-import { faFacebook, faInstagram, faTwitter, faYoutube, faTiktok } from '@fortawesome/free-brands-svg-icons'
+import { faPlus, faBars, faEllipsisV, faGlobeEurope, faMapMarkerAlt, faImage, faCrosshairs, faLink, faUpload, faCameraRetro, faCog } from '@fortawesome/free-solid-svg-icons'
 
 import { HexColorPicker } from "react-colorful";
 
 
-class GoalChallengeOne extends React.Component {
+class GoalContestOne extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             uinfo: this.props.uinfo,
             activepart: 'title',
-            stepnumber: 1,
-            menuActive: 2,
+            stepnumber: 3,
+            menuActive: 4,
             activityList: [{"activity": ""}],
             checked: false,
             showCountry: false,
@@ -32,14 +31,50 @@ class GoalChallengeOne extends React.Component {
             showOptionTwo: false,
             selectedColor: '#03488d',
             selectedPreviewHeaderImage: '/img/prev-header.png',
-            socialActionSLide: false,
-            socialType: 'social',
-            isOpenSingleRewardModal: false,
-            isFacebookLoginEnabled: false,
-            isFacebookVisitEnabled: false,
-            isFacebookViewPostEnabled: false,
-            isFacebookJoinGroupEnabled: false,
+            enableAction: false,
+            selectedJudgeOption: 'me',
+            judgeList: [
+                {
+                    id: 1,
+                    name: 'John Peter Doe',
+                    photo: '/img/dummy/1.png',
+                    status: 1
+                },
+                {
+                    id: 2,
+                    name: 'Someone Doe',
+                    photo: '/img/dummy/2.png',
+                    status: 1
+                },
+                {
+                    id: 3,
+                    name: 'Jopnathan Someone Doe',
+                    photo: '/img/dummy/3.png',
+                    status: 0
+                },
+                {
+                    id: 4,
+                    name: 'John Doe',
+                    photo: '/img/dummy/4.png',
+                    status: 0
+                },
+                {
+                    id: 5,
+                    name: 'John Doe',
+                    photo: '/img/dummy/5.png',
+                    status: 1
+                }
+            ],
+            singleRewardsList: [],
+            linkCheck: false,
+            uploadCheck: false,
+            cameraCheck: false,
+            showAddJudge: false,
+            rewardWinner: true,
+            isOpenRewardModal: false
         }
+
+
         this.createActive = this.createActive.bind(this);
         this.proceedToNext = this.proceedToNext.bind(this);
         this.proceedToPrev = this.proceedToPrev.bind(this);
@@ -50,55 +85,15 @@ class GoalChallengeOne extends React.Component {
         this.activateItem = this.activateItem.bind(this);
         this.changeColor = this.changeColor.bind(this);
         this.changePrevHeader = this.changePrevHeader.bind(this);
-        this.onSocialActionChange = this.onSocialActionChange.bind(this);
-        this.socialOpenOptions = this.socialOpenOptions.bind(this);
-        this.socialCloseOptions = this.socialCloseOptions.bind(this);
-
-        // social popup
-        this.toogleFacebookLogin = this.toogleFacebookLogin.bind(this);
-        this.toogleFacebookVisit = this.toogleFacebookVisit.bind(this);
-        this.toogleFacebookViewPost = this.toogleFacebookViewPost.bind(this);
-        this.toogleFacebookJoinGroup = this.toogleFacebookJoinGroup.bind(this);
-
-        // change tab
-        this.toogleCustomSocialActions = this.toogleCustomSocialActions.bind(this);
-        this.toogleInviteFriendsActions = this.toogleInviteFriendsActions.bind(this);
-        this.toogleFacebookActions = this.toogleFacebookActions.bind(this);
+        this.enableActionChange = this.enableActionChange.bind(this);
+        this.changeJudge = this.changeJudge.bind(this);
+        this.inviteJudge = this.inviteJudge.bind(this);
+        this.cancelInviteJudge = this.cancelInviteJudge.bind(this);
+        this.changeWinnerOptions = this.changeWinnerOptions.bind(this);
 
         this.activity_list = [
             {"activity": ""}
         ];
-    }
-
-    toogleCustomSocialActions(){
-        console.log('shiowe iasd');
-        this.setState({socialType: 'custom_social_action'});
-    }
-
-    toogleInviteFriendsActions(){
-        this.setState({socialType: 'invite_friend'});
-    }
-
-    toogleFacebookActions(){
-        this.setState({socialType: 'social'});
-    }
-
-    
-
-    toogleFacebookLogin(){
-        this.setState({isFacebookLoginEnabled: !this.state.isFacebookLoginEnabled});
-    }
-
-    toogleFacebookVisit(){
-        this.setState({isFacebookVisitEnabled: !this.state.isFacebookVisitEnabled});
-    }
-
-    toogleFacebookViewPost(){
-        this.setState({isFacebookViewPostEnabled: !this.state.isFacebookViewPostEnabled});
-    }
-
-    toogleFacebookJoinGroup(){
-        this.setState({isFacebookJoinGroupEnabled: !this.state.isFacebookJoinGroupEnabled});
     }
 
     createActive(setactive){
@@ -124,17 +119,13 @@ class GoalChallengeOne extends React.Component {
         this.setState({ checked });
     }
 
-    /** Page 2 */
+    enableActionChange(checked){
+        // console.log('checked -> ', checked);
+        this.setState({ enableAction: checked });
+    }
+
     addActivity(){
         console.log("shiw -> ", this.activity_list);
-
-        /**
-            Add New Item
-        */
-
-        // this.activityList.push({"activity": ""});
-
-
     }
 
     resetCount(){
@@ -205,17 +196,43 @@ class GoalChallengeOne extends React.Component {
         this.setState({selectedPreviewHeaderImage: selectedTodo});
     }
 
-    onSocialActionChange(){
-        this.setState({socialActionSLide: !this.state.socialActionSLide});
+    changeJudge(selectJudge){
+        console.log('select judge -> ', selectJudge);
+
+        this.setState({selectedJudgeOption: selectJudge});
+
+        this.createActive('item_decide_winner');
     }
 
-    socialOpenOptions(){
-        console.log('open modal');
-        this.setState({isOpenSingleRewardModal: true});
+    inviteJudge(){
+        console.log('invite judge now');
+
+        this.setState({showAddJudge: true});
     }
 
-    socialCloseOptions(){
-        this.setState({isOpenSingleRewardModal: false});
+    cancelInviteJudge(){
+        this.setState({showAddJudge: false});
+    }
+
+    changeWinnerOptions(checked){
+        console.log('change winner type -> ', checked);
+
+        this.setState({rewardWinner: checked});
+    }
+
+    addSingleReward(){
+        let appendme = [];
+        const listOfRewards = this.state.singleRewardsList;
+        listOfRewards.push(appendme);
+        this.setState({singleRewardsList: listOfRewards});
+    }
+
+    cancelOpenRewardModal(){
+        this.setState({isOpenRewardModal: false});
+    }
+
+    openRewardModal(){
+        this.setState({isOpenRewardModal: true});
     }
 
     render () {
@@ -223,11 +240,13 @@ class GoalChallengeOne extends React.Component {
             '/img/challenge_tip1.png',
             '/img/challenge_tip2.png',
             '/img/challenge_tip3.png',
+            '/img/challenge_tip3.png',
         ];
 
         const tip_message = [
             'Remember a good title catches your reader\'s interest. But don\'t just be a clickbait. Keep It Short, Simple, and on Point.',
             'Measurable goals are easier to gauge. Just choose and click!',
+            'A goal with a deadline helps you achieve it much quicker.',
             'A goal with a deadline helps you achieve it much quicker.',
         ]
 
@@ -247,124 +266,165 @@ class GoalChallengeOne extends React.Component {
             </li>
         );
 
-        const socialActionBottomOptions = () => {
-            return (
-                <div className="d-reward-settings-ops">
-                    <button className="cancelReward" onClick={() => this.socialCloseOptions()}>Cancel</button>
-                    <button className="saveReward">Save and Add actions</button>
-                </div>
-            );
-        }
-
-        const socialOptions = () => {
-            if(this.state.socialType == 'social'){
+        const rewardOpts = () => {
+            if(!this.state.rewardWinner){
                 return (
-                    <div className="d-social-items">
-                        <h3>Facebook Actions</h3>
-                        <div className="d-social-item">
-                            <div className="d-social-item-text">Login with Facebook</div>
-                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookLogin} checked={this.state.isFacebookLoginEnabled} /></div>
-                        </div>
-                        <div className="d-social-item">
-                            <div className="d-social-item-text">Visit on Facebook</div>
-                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookVisit} checked={this.state.isFacebookVisitEnabled} /></div>
-                        </div>
-                        <div className="d-social-item">
-                            <div className="d-social-header">
-                                <div className="d-social-item-text">Enter URL</div>
+                    <div className="d-reward-select d-reward-single">
+                        <div className="d-reward-single-list">
+                            <div className="activity-add-button">
+                                <div className="daddactions" onClick={() => this.addSingleReward()}>
+                                    <span className="dicon"><FontAwesomeIcon icon={faPlus} /></span>
+                                    <span className="dtext">Add Reward</span>
+                                </div>
                             </div>
-                            <div className="d-social-value">
-                                <input type="text" placeholder="www.facebookpage.com" />
-                            </div>
-                        </div>
-                        <div className="d-social-item">
-                            <div className="d-social-header">
-                                <div className="d-social-item-text">View Post</div>
-                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookViewPost} checked={this.state.isFacebookViewPostEnabled} /></div>
-                            </div>
-                            <div className="d-social-value">
-                                <input type="text" placeholder="www.facebookpage.com" />
-                            </div>
-                        </div>
-                        <div className="d-social-item">
-                            <div className="d-social-header">
-                                <div className="d-social-item-text">Join Facebook Group</div>
-                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookJoinGroup} checked={this.state.isFacebookJoinGroupEnabled} /></div>
-                            </div>
-                            <div className="d-social-value">
-                                <input type="text" placeholder="www.facebookpage.com" />
-                            </div>
+                            {this.state.singleRewardsList.map((todo, index) => 
+                                <div className="ac-item">
+                                    <div className="dleftitems">
+                                        <span className="dtext"><input type="text" placeholder="Enter Reward" /></span>
+                                    </div>
+                                    <div className="drightitems">
+                                        <span className="doptions"><FontAwesomeIcon icon={faEllipsisV} /></span>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 );
             }
 
-            if(this.state.socialType == 'custom_social_action'){
+            if(this.state.rewardWinner){
                 return (
-                    <div className="d-social-items">
-                        <h3>Custom social actions</h3>
-                        <div className="d-social-item">
-                            <div className="d-social-header">
-                                <div className="d-social-item-text">Action Name</div>
+                    <div className="d-reward-select d-reward-multiple">
+                        <div className="d-reward-list">
+                            <div className="d-reward-item">
+                                <div className="d-place-info gold-text">1st</div>
+                                <div className="d-place-reward-text">Reward</div>
+                                <div className="d-place-reward-list-icon">
+                                    <div className="d-place-rewards-items">
+                                        <div className="d-place-item"><img src="/img/reward_gift.png" alt="" /></div>
+                                        <div className="d-place-item"><img src="/img/reward_token.png" alt="" /></div>
+                                        <div className="d-place-item"><img src="/img/reward_cert.png" alt="" /></div>
+                                    </div>
+                                </div>
+                                <div className="d-place-edit">
+                                    <button>Edit</button>
+                                </div>
                             </div>
-                            <div className="d-social-value">
-                                <input type="text" placeholder="Action Name" />
+                            <div className="d-reward-item">
+                                <div className="d-place-info silver-text">2st</div>
+                                <div className="d-place-reward-text">Reward</div>
+                                <div className="d-place-reward-list-icon">
+                                    <div className="d-place-rewards-items">
+                                        <div className="d-place-item"><img src="/img/reward_gift.png" alt="" /></div>
+                                        <div className="d-place-item"><img src="/img/reward_token.png" alt="" /></div>
+                                    </div>
+                                </div>
+                                <div className="d-place-edit">
+                                    <button>Edit</button>
+                                </div>
                             </div>
-                        </div>
-                        <div className="d-social-item">
-                            <div className="d-social-header">
-                                <div className="d-social-item-text">URL if applicable</div>
+                            <div className="d-reward-item">
+                                <div className="d-place-info bronze-text">3st</div>
+                                <div className="d-place-reward-text">Reward</div>
+                                <div className="d-place-reward-list-icon">
+                                    <button>Add Reward</button>
+                                </div>
+                                <div className="d-place-edit">
+                                    <button>Edit</button>
+                                </div>
                             </div>
-                            <div className="d-social-value">
-                                <input type="text" placeholder="www.facebookpage.com" />
-                            </div>
-                        </div>
-                        <h3>Verify</h3>
-                        <div className="d-social-item">
-                            <div className="d-social-header">
-                                <div className="d-social-item-text">Question</div>
-                            </div>
-                            <div className="d-social-value">
-                                <input type="text" placeholder="type here..." />
-                            </div>
-                        </div>
-                        <div className="d-social-item">
-                            <div className="d-social-header">
-                                <div className="d-social-item-text">Answer</div>
-                            </div>
-                            <div className="d-social-value">
-                                <input type="text" placeholder="" />
-                            </div>
-                        </div>
-                    </div>
-                );
-            }
-
-            if(this.state.socialType == 'invite_friend'){
-                return (
-                    <div className="d-social-items">
-                        <h3>Invite Friends</h3>
-                        <div className="d-social-item">
-                            <div className="d-social-header">
-                                <div className="d-social-item-text">Give points every:</div>
-                            </div>
-                            <div className="d-social-value">
-                                <input type="text" placeholder="" />
-                            </div>
-                        </div>
-                        <div className="d-social-item">
-                            <div className="d-social-header">
-                                <div className="d-social-item-text">Points per invite</div>
-                            </div>
-                            <div className="d-social-value">
-                                <input type="number" defaultValue="1" />
+                            <div className="d-reward-item add-new-placer">
+                                <button>Add 4th Place</button>
                             </div>
                         </div>
                     </div>
                 );
             }
         }
+        
+        const judgeShow = () => {
+            if(this.state.selectedJudgeOption == 'select'){
+                return (
+                    <div className="show-select-judge">
+                        <div className="ss-title">Select Judges</div>
+                        <div className={"d-judge-add d-jitem-segment " + (this.state.showAddJudge ? 'd-jadd-tab-active' : "")}>
+                            <div className="d-jadd-inner">
+                                <div className="d-jadd-enter">
+                                    <input type="text" style={{ backgroundImage: "url(/img/search_icon.png)", backgroundRepeat: 'no-repeat' }} />
+                                </div>
+                                <div className="d-jadd-userlist">
+                                    {this.state.judgeList.map((todo, index) => 
+                                        <div className="djl-invited-item d-judge-invited" key={index}>
+                                            <div className="djl-inner">
+                                                <div className="djl-photo"><img src={todo.photo} alt="" /></div>
+                                                <div className="djl-title">{todo.name}</div>
+                                                <div className="djl-close">x</div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="d-jadd-list">
+                                    <input type="text" value="https://invitelink" style={{ backgroundImage: "url(/img/link.png)", backgroundRepeat: 'no-repeat' }} />
+                                    <button>Copy</button>
+                                </div>
+                                <div className="d-jadd-options">
+                                    <button className="d-jadd-cancel" onClick={() => this.cancelInviteJudge()}>Cancel</button>
+                                    <button className="d-jadd-sendinvite">Send Invite</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={"d-judge-list d-jitem-segment " + (this.state.showAddJudge ? '' : "d-jadd-tab-active")}>
+                            <div className="djl-item d-add-judge">
+                                <div className="djl-add-inner" onClick={() => this.inviteJudge()}>
+                                    <div className="d-add-icon"><FontAwesomeIcon icon={faPlus} /></div>
+                                    <div className="d-add-text">Invite judges</div>
+                                </div>
+                            </div>
+                            {this.state.judgeList.map((todo, index) => 
+                                <div className="djl-item d-judge-item" key={index}>
+                                    <div className="djl-inner">
+                                        <div className="djl-close">x</div>
+                                        <div className="djl-photo"><img src={todo.photo} alt="" /></div>
+                                        <div className="djl-title">{todo.name}</div>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                );
+            }
 
+            if(this.state.selectedJudgeOption == 'random'){
+                return (
+                    <div className="show-random-winner">
+                        <div className="ss-title">Random Winners</div>
+                        <div className="ss-random-items">
+                            <div className="cg-label">
+                                <div className="cgl-name">
+                                    <div className="cgl-name-title">Allow multiple winners</div>
+                                </div>
+                                <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
+                            </div>
+                            <div className="cg-label many-winners">
+                                <div className="cgl-name">
+                                    <div className="cgl-name-title">How many winners?</div>
+                                </div>
+                                <div className="cgl-doptions">
+                                    <input type="number" defaultValue="1" />
+                                </div>
+                            </div>
+                            <div className="cg-label base-main-specs">
+                                <select>
+                                    <option value="">Automatically pick random winner</option>
+                                    <option value="">Challenge creator spin the wheel to pick winner</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+            
+        }
         
 
         return (
@@ -374,10 +434,10 @@ class GoalChallengeOne extends React.Component {
                         <div className="cgoal-left-inner">
                             <div className="dtitle">
                                 <div className="dimage">
-                                    <img src="/img/ch_goal.png" alt="" />
+                                    <img src="/img/ch_contest.png" alt="" />
                                 </div>
                                 <div className="dtext">
-                                    Goal Challenge
+                                    Contest
                                 </div>
                             </div>
                             <div className="dmenu-side">
@@ -426,174 +486,182 @@ class GoalChallengeOne extends React.Component {
 
                         <div className={"dstep step_one " + (this.state.stepnumber == 1 ? 'isactive_tab' : '')}>
                             <div className="cgoal-center-inner">
-                                <h2>How to Measure the Goal?</h2>
+                                <h2>Entry Submission</h2>
 
-                                <div className={"cg-item " + (this.state.activepart == 'two_main_goal' ? 'active_item' : '')} onFocus={() => this.createActive('two_main_goal') }>
-                                    <div className="cg-label">Main Goal</div>
+                                <div className={"cg-item " + (this.state.activepart == 'how_to_submit_entry' ? 'active_item' : '')} onFocus={() => this.createActive('how_to_submit_entry') }>
+                                    <div className="cg-label">
+                                        <div className="dmaintitle">How will the contestants submit their entry?</div>
+                                        <div className="dsubtitle">Can select more than one.</div>
+                                    </div>
                                     <div className="cg-input">
-                                        <div className="dmultiple">
+                                        <div className="cg-entry-ops">
+                                            <div className="cg-ops-item">
+                                                <div className="cg-checkbox-ops">
+                                                    <input type="checkbox"/>
+                                                </div>
+                                                <div className="cg-icon-ops">
+                                                    <FontAwesomeIcon icon={faLink} />
+                                                </div>
+                                                <div className="cg-text-ops">Link</div>
+                                            </div>
+                                            <div className="cg-ops-item">
+                                                <div className="cg-checkbox-ops">
+                                                    <input type="checkbox" />
+                                                </div>
+                                                <div className="cg-icon-ops">
+                                                    <FontAwesomeIcon icon={faUpload} />
+                                                </div>
+                                                <div className="cg-text-ops">Upload</div>
+                                            </div>
+                                            <div className="cg-ops-item">
+                                                <div className="cg-checkbox-ops">
+                                                    <input type="checkbox" />
+                                                </div>
+                                                <div className="cg-icon-ops">
+                                                    <FontAwesomeIcon icon={faCameraRetro} />
+                                                </div>
+                                                <div className="cg-text-ops">Via Camera</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className={"cg-item " + (this.state.activepart == 'two_enable_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_enable_actions') }>
+                                    <div className="cg-label">
+                                        <div className="cgl-name">
+                                            <div className="cgl-name-title">Enable Actions</div>
+                                            <div className="cgl-name-subtitle">Enable additional actions to complete a submission</div>
+                                        </div>
+                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
+                                    </div>
+                                    <div className="cg-input dactivity">
+                                        <div className="cg-item cg-innerpart">
+                                            <div className="cg-label">
+                                                <div className="cgl-name">
+                                                    <div className="cgl-name-title">Social Actions</div>
+                                                    <div className="cgl-name-subtitle">Actions that involves other's time/resources for the common good e.g., volunteering, donation drives, etc</div>
+                                                </div>
+                                                <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
+                                            </div>
+                                        </div>
+
+                                        <div className="cg-item cg-innerpart">
+                                            <div className="cg-label">
+                                                <div className="cgl-name">
+                                                    <div className="cgl-name-title">Convert all actions into entry points</div>
+                                                    <div className="cgl-name-subtitle">Entries will be based on points, useful for deciding winners randomly.</div>
+                                                </div>
+                                                <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <h2>Judges</h2>
+
+                                <div className={"cg-item " + (this.state.activepart == 'item_decide_winner' ? 'active_item' : '')} onFocus={() => this.createActive('item_decide_winner') }>
+                                    <div className="cg-label">
+                                        <div className="dmaintitle">Who decides the winner?</div>
+                                    </div>
+                                    <div className="cg-input">
+                                        <div className="cg-decide-ops">
+                                            <div onClick={() => this.changeJudge('me')} className={"cd-decide-item " + (this.state.selectedJudgeOption == 'me' ? 'active_item' : '')}>
+                                                <div className="cditem-icon">
+                                                    <img src="/img/judge_me.png" alt="" />
+                                                </div>
+                                                <div className="cditem-text">Me</div>
+                                            </div>
+                                            <div onClick={() => this.changeJudge('audience')} className={"cd-decide-item " + (this.state.selectedJudgeOption == 'audience' ? 'active_item' : '')}>
+                                                <div className="cditem-icon">
+                                                    <img src="/img/judge_audience.png" alt="" />
+                                                </div>
+                                                <div className="cditem-text">Audience Votes</div>
+                                            </div>
+                                            <div onClick={() => this.changeJudge('select')} className={"cd-decide-item " + (this.state.selectedJudgeOption == 'select' ? 'active_item' : '')}>
+                                                <div className="cditem-icon">
+                                                    <img src="/img/judge_select.png" alt="" />
+                                                </div>
+                                                <div className="cditem-text">Select Judges</div>
+                                            </div>
+                                            <div onClick={() => this.changeJudge('random')} className={"cd-decide-item " + (this.state.selectedJudgeOption == 'random' ? 'active_item' : '')}>
+                                                <div className="cditem-icon">
+                                                    <img src="/img/judge_random.png" alt="" />
+                                                </div>
+                                                <div className="cditem-text">Random Winners</div>
+                                            </div>
+                                        </div>
+                                        <div className="show-judges-options">
+                                            {judgeShow()}
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                                
+                                
+                                <div className="dnext-button">
+                                    <button className="prev-arrow" onClick={() => this.proceedToPrev()}>Back</button>
+                                    <button className="next-arrow" onClick={() => this.proceedToNext()}>Next &rarr;</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={"dstep step_one " + (this.state.stepnumber == 2 ? 'isactive_tab' : '')}>
+                            <div className="cgoal-center-inner">
+                                <h2>Customize Rewards</h2>
+
+                                <div className={"cg-item " + (this.state.activepart == 'two_rewards' ? 'active_item' : '')} onFocus={() => this.createActive('two_rewards') }>
+                                    <div className="cg-label">Rewards</div>
+                                    <div className="cg-input">
+                                        <div className="d-rewards-select">
                                             <div className="dm-left">
-                                                <div className="dradiobt">
-                                                    <input type="radio" name="gender" />
-                                                </div>
-                                                <div className="dtextone">
-                                                    Single Goal
-                                                </div>
+                                                <div className="dtextone">One winner</div>
+                                                <div className="drakicon"><img src="/img/judge_single.png" alt="" /></div>
+                                            </div>
+                                            <div className="dm-center">
+                                                <Switch height={20} width={40} onChange={this.changeWinnerOptions} checked={this.state.rewardWinner} />
                                             </div>
                                             <div className="dm-right">
-                                                <div className="dradiobt">
-                                                    <input type="radio" name="gender" />
-                                                </div>
-                                                <div className="dtextone">
-                                                    Multiple Milestones
-                                                </div>
+                                                <div className="drakicon"><img src="/img/judge_audience.png" alt="" /></div>
+                                                <div className="dtextone">Multiple winners</div>
                                             </div>
                                         </div>
-                                        <div className="dsdesc">Description</div>
-                                        <div className="dsdesc">Single Goal. Only has one goal with multiple actions, enable multiple milestones to create milestones.</div>
-                                        <input type="text" />
-                                    </div>
-                                </div>
-
-                                <div className={"cg-item " + (this.state.activepart == 'two_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_actions') }>
-                                    <div className="cg-label">Actions</div>
-                                    <div className="cg-input dactivity">
-                                        <div className="subheader">Specify the actions needed to complete the goal.</div>
-                                        <div className="activity-list">
-                                            <div className="activity-items">
-                                                <div className="ac-item">
-                                                    <div className="dleftitems">
-                                                        <span className="dicon"><FontAwesomeIcon icon={faBars} /></span>
-                                                        <span className="dtext">Drink 8 glasses of water everyday</span>
+                                        {rewardOpts()}
+                                        <div className="d-show-reward">
+                                            <a href="">Give reward for everbody else</a>
+                                        </div>
+                                        <div className="d-rewards-settings">
+                                            <button onClick={() => this.openRewardModal()}><span><FontAwesomeIcon icon={faCog} /></span> Reward Settings</button>
+                                        </div>
+                                        <ReactModal
+                                            isOpen={this.state.isOpenRewardModal}
+                                            contentLabel="Example Modal"
+                                            className="watch_side_modal"
+                                            ariaHideApp={false}
+                                        >
+                                            <div className="d-rewards-settings-modal">
+                                                <h4>Reward Settings</h4>
+                                                <div className="d-reward-settings-list">
+                                                    <div className="cg-label">
+                                                        <div className="cgl-name">
+                                                            <div className="cgl-name-title">Allow winners to pick their rewards</div>
+                                                        </div>
+                                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
                                                     </div>
-                                                    <div className="drightitems">
-                                                        <span className="doptions"><FontAwesomeIcon icon={faEllipsisV} /></span>
+                                                    <div className="cg-label">
+                                                        <div className="cgl-name">
+                                                            <div className="cgl-name-title">Allow multiple rewards</div>
+                                                        </div>
+                                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
                                                     </div>
                                                 </div>
-                                                <div className="ac-item">
-                                                    <div className="dleftitems">
-                                                        <span className="dicon"><FontAwesomeIcon icon={faBars} /></span>
-                                                        <span className="dtext">Drink 8 glasses of water everyday</span>
-                                                    </div>
-                                                    <div className="drightitems">
-                                                        <span className="doptions"><FontAwesomeIcon icon={faEllipsisV} /></span>
-                                                    </div>
-                                                </div>
-                                                <div className="ac-item">
-                                                    <div className="dleftitems">
-                                                        <span className="dicon"><FontAwesomeIcon icon={faBars} /></span>
-                                                        <span className="dtext">Drink 8 glasses of water everyday</span>
-                                                    </div>
-                                                    <div className="drightitems">
-                                                        <span className="doptions"><FontAwesomeIcon icon={faEllipsisV} /></span>
-                                                    </div>
+                                                <div className="d-reward-settings-ops">
+                                                    <button className="cancelReward" onClick={() => this.cancelOpenRewardModal()}>Cancel</button>
+                                                    <button className="saveReward">Save</button>
                                                 </div>
                                             </div>
-                                            <div className="activity-add-button">
-                                                <div className="daddactions" onClick={() => this.addActivity()}>
-                                                    <span className="dicon"><FontAwesomeIcon icon={faPlus} /></span>
-                                                    <span className="dtext">Add an action</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="ditem-flow"><div className="dflowtext">Must complete actions in order</div> <Switch height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
-                                    </div>
-                                </div>
-
-                                <div className={"cg-item " + (this.state.activepart == 'two_social_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_social_actions') }>
-                                    <div className="cg-label">
-                                        <div className="cgl-name">Social Actions</div>
-                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.onSocialActionChange} checked={this.state.socialActionSLide} /></div>
-                                    </div>
-                                    <div className="cg-input dactivity">
-                                        <div className="subheader">Actions that help spread the word, build awareness and increase challenge engagement</div>
-                                        <div className="social-action-list"></div>
-                                        <div className="add-social-action">
-                                            <button onClick={() => this.socialOpenOptions()}><span><FontAwesomeIcon icon={faPlus} /></span> Add Social Action</button>
-                                        </div>
-                                    </div>
-                                    <ReactModal
-                                        isOpen={this.state.isOpenSingleRewardModal}
-                                        contentLabel="Example Modal"
-                                        className="social_action_modal"
-                                        ariaHideApp={false}
-                                    >
-                                        <div className="d-rewards-settings-modal">
-                                            <h4>Social Actions</h4>
-                                            <div className="d-social-settings-list">
-                                                <div className="d-social-left-side" >
-                                                    <div className="d-social-settings">
-                                                        <div className="d-social-settings-dropdown">
-                                                            <select>
-                                                                <option value="">Choose from saved settings</option>
-                                                            </select>
-                                                        </div>
-                                                        <div className="d-social-setting-sub">
-                                                            <button>Save social settings</button>
-                                                        </div>
-                                                    </div>
-                                                    <div className="d-social-show-items">
-                                                        <div className={"d-social-show-item " + (this.state.socialType == 'social' ? 'active' : '')} onClick={() => this.toogleFacebookActions()}>
-                                                            <div className="d-social-item-icon">
-                                                                <span className="facebook"><FontAwesomeIcon icon={faFacebook} /></span>
-                                                            </div>
-                                                            <div className="d-social-item-text">Facebook</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                        <div className="d-social-show-item">
-                                                            <div className="d-social-item-icon">
-                                                                <span className="instagram"><FontAwesomeIcon icon={faInstagram} /></span>
-                                                            </div>
-                                                            <div className="d-social-item-text">Instagram</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                        <div className="d-social-show-item">
-                                                            <div className="d-social-item-icon">
-                                                                <span className="twitter"><FontAwesomeIcon icon={faTwitter} /></span>
-                                                            </div>
-                                                            <div className="d-social-item-text">Twitter</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                        <div className="d-social-show-item">
-                                                            <div className="d-social-item-icon">
-                                                                <span className="youtube"><FontAwesomeIcon icon={faYoutube} /></span>
-                                                            </div>
-                                                            <div className="d-social-item-text">Youtube</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                        <div className="d-social-show-item">
-                                                            <div className="d-social-item-icon">
-                                                                <span className="tiktok"><FontAwesomeIcon icon={faTiktok} /></span>
-                                                            </div>
-                                                            <div className="d-social-item-text">Tiktok</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                        <div className="d-social-show-item no-icon-part" onClick={() => this.toogleInviteFriendsActions()}>
-                                                            <div className="d-social-item-text">Invite Friends</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                        <div className={"d-social-show-item no-icon-part " + (this.state.socialType == 'custom_social_action' ? 'active' : '')} onClick={() => this.toogleCustomSocialActions()}>
-                                                            <div className="d-social-item-text">Custom Social Action</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="d-social-right-side" >
-                                                    {socialOptions()}
-                                                </div>
-                                            </div>
-                                            {socialActionBottomOptions()}
-                                        </div>
-                                    </ReactModal>
-                                </div>
-
-                                <div className={"cg-item " + (this.state.activepart == 'two_convert_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_convert_actions') }>
-                                    <div className="cg-label">
-                                        <div className="cgl-name">Convert all actions into points</div>
-                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
-                                    </div>
-                                    <div className="cg-input dactivity">
-                                        <div className="subheader">Set how many points participant can get for each action</div>
+                                        </ReactModal>
                                     </div>
                                 </div>
 
@@ -603,7 +671,7 @@ class GoalChallengeOne extends React.Component {
                                         <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
                                     </div>
                                     <div className="cg-input dactivity">
-                                        <div className="subheader">Add penalty if goal has not been met.</div>
+                                        <div className="subheader">Set penalty for people who did not win.</div>
                                         <div className="activity-list">
                                             <div className="activity-items">
                                                 <div className="ac-item">
@@ -659,7 +727,7 @@ class GoalChallengeOne extends React.Component {
                             </div>
                         </div>
 
-                        <div className={"dstep step_one " + (this.state.stepnumber == 2 ? 'isactive_tab' : '')}>
+                        <div className={"dstep step_one " + (this.state.stepnumber == 3 ? 'isactive_tab' : '')}>
                             <div className="cgoal-center-inner">
                                 <h2>Audience & Duration</h2>
 
@@ -820,7 +888,6 @@ class GoalChallengeOne extends React.Component {
                                     </div>
                                 </div>
 
-
                                 <div className={"cg-item " + (this.state.activepart == 'three_challenge_duration' ? 'active_item' : '')} onFocus={() => this.createActive('three_challenge_duration') }>
                                     <div className="cg-label">Challenge Duration</div>
                                     <div className="cg-input dactivity">
@@ -870,6 +937,29 @@ class GoalChallengeOne extends React.Component {
                                     </div>
                                 </div>
 
+                                <div className={"cg-item " + (this.state.activepart == 'three_challenge_duration' ? 'active_item' : '')} onFocus={() => this.createActive('three_challenge_duration') }>
+                                    <div className="cg-label">Voting Duration</div>
+                                    <div className="cg-input dactivity">
+                                        <div className="cd-dropbase">
+                                            <div className="dshowitems">
+                                                <div className={"cd-option-one dshowoptions active_item"}>
+                                                    <div className="cd-option-item">
+                                                        <div className="cd-input-item">
+                                                            <input type="text" name="" placeholder="Start Date" />
+                                                        </div>
+                                                        <div className="cd-input-item">
+                                                            <input type="text" name="" placeholder="End Date" />
+                                                        </div>
+                                                        <div className="cd-input-item">
+                                                            <input type="text" name="" placeholder="11:00 am" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 
                                 <div className="dnext-button">
                                     <button className="prev-arrow" onClick={() => this.proceedToPrev()}>Back</button>
@@ -878,7 +968,7 @@ class GoalChallengeOne extends React.Component {
                             </div>
                         </div>
 
-                        <div className={"dstep step_one " + (this.state.stepnumber == 3 ? 'isactive_tab' : '')}>
+                        <div className={"dstep step_one " + (this.state.stepnumber == 4 ? 'isactive_tab' : '')}>
                             <div className="cgoal-center-inner">
                                 <h2>Customize Appearance</h2>
 
@@ -930,12 +1020,12 @@ class GoalChallengeOne extends React.Component {
                         
                     </div>
                     <div className="cgoal-right">
-                        <div className="cgoal-right-inner" style={{display: this.state.stepnumber < 2 ? 'block' : 'none' }} >
+                        <div className="cgoal-right-inner" style={{display: this.state.stepnumber < 4 ? 'block' : 'none' }} >
                             <div className="dimage"><img src={tip_images[this.state.stepnumber]} alt="" /></div>
                             <div className="dtipbase">Tip { this.state.stepnumber + 1}</div>
                             <div className="dtextinfo">{tip_message[this.state.stepnumber]}</div>
                         </div>
-                        <div className="cgoal-right-inner withopts"  style={{display: this.state.stepnumber == 3 ? 'block' : 'none' }} >
+                        <div className="cgoal-right-inner withopts"  style={{display: this.state.stepnumber == 5 ? 'block' : 'none' }} >
                             <div className="withops-inner">
                                 <h3>Preview</h3>
                                 <div className="withops-show-card">
@@ -1004,4 +1094,4 @@ class GoalChallengeOne extends React.Component {
     }
 }
 
-export default GoalChallengeOne
+export default GoalContestOne

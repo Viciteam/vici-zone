@@ -1,20 +1,19 @@
 import './../../styles/challenge.css';
 import React from 'react';
 
-import Menu from './Segments/Menu'
+import Menu from './Segments/MenuLeaderboard'
 
 import Switch from "react-switch";
 
 import ReactModal from 'react-modal';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faBars, faEllipsisV, faGlobeEurope, faMapMarkerAlt, faImage, faCrosshairs } from '@fortawesome/free-solid-svg-icons'
-import { faFacebook, faInstagram, faTwitter, faYoutube, faTiktok } from '@fortawesome/free-brands-svg-icons'
+import { faPlus, faBars, faEllipsisV, faGlobeEurope, faMapMarkerAlt, faImage, faCrosshairs, faCog, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 import { HexColorPicker } from "react-colorful";
 
 
-class GoalChallengeOne extends React.Component {
+class LeaaderboardChallengeOne extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -32,14 +31,13 @@ class GoalChallengeOne extends React.Component {
             showOptionTwo: false,
             selectedColor: '#03488d',
             selectedPreviewHeaderImage: '/img/prev-header.png',
-            socialActionSLide: false,
-            socialType: 'social',
+            rewardWinner: true,
+            isOpenRewardModal: false,
             isOpenSingleRewardModal: false,
-            isFacebookLoginEnabled: false,
-            isFacebookVisitEnabled: false,
-            isFacebookViewPostEnabled: false,
-            isFacebookJoinGroupEnabled: false,
+            selectedRewardStep: 1,
+            rewardType: 'file',
         }
+
         this.createActive = this.createActive.bind(this);
         this.proceedToNext = this.proceedToNext.bind(this);
         this.proceedToPrev = this.proceedToPrev.bind(this);
@@ -50,55 +48,34 @@ class GoalChallengeOne extends React.Component {
         this.activateItem = this.activateItem.bind(this);
         this.changeColor = this.changeColor.bind(this);
         this.changePrevHeader = this.changePrevHeader.bind(this);
-        this.onSocialActionChange = this.onSocialActionChange.bind(this);
-        this.socialOpenOptions = this.socialOpenOptions.bind(this);
-        this.socialCloseOptions = this.socialCloseOptions.bind(this);
+        this.updateRewardsNextStep = this.updateRewardsNextStep.bind(this);
 
-        // social popup
-        this.toogleFacebookLogin = this.toogleFacebookLogin.bind(this);
-        this.toogleFacebookVisit = this.toogleFacebookVisit.bind(this);
-        this.toogleFacebookViewPost = this.toogleFacebookViewPost.bind(this);
-        this.toogleFacebookJoinGroup = this.toogleFacebookJoinGroup.bind(this);
+        // rewards modal
+        this.toggleRewardFile = this.toggleRewardFile.bind(this);
+        this.toggleRewardManualSent = this.toggleRewardManualSent.bind(this);
+        this.toggleRewardInstructions = this.toggleRewardInstructions.bind(this);
+        this.toggleRewardUniqueReward = this.toggleRewardUniqueReward.bind(this);
 
-        // change tab
-        this.toogleCustomSocialActions = this.toogleCustomSocialActions.bind(this);
-        this.toogleInviteFriendsActions = this.toogleInviteFriendsActions.bind(this);
-        this.toogleFacebookActions = this.toogleFacebookActions.bind(this);
 
         this.activity_list = [
             {"activity": ""}
         ];
     }
-
-    toogleCustomSocialActions(){
-        console.log('shiowe iasd');
-        this.setState({socialType: 'custom_social_action'});
-    }
-
-    toogleInviteFriendsActions(){
-        this.setState({socialType: 'invite_friend'});
-    }
-
-    toogleFacebookActions(){
-        this.setState({socialType: 'social'});
-    }
-
     
-
-    toogleFacebookLogin(){
-        this.setState({isFacebookLoginEnabled: !this.state.isFacebookLoginEnabled});
+    toggleRewardFile(){
+        this.setState({rewardType: 'file'})
     }
 
-    toogleFacebookVisit(){
-        this.setState({isFacebookVisitEnabled: !this.state.isFacebookVisitEnabled});
+    toggleRewardManualSent(){
+        this.setState({rewardType: 'manual_sent'})
     }
 
-    toogleFacebookViewPost(){
-        this.setState({isFacebookViewPostEnabled: !this.state.isFacebookViewPostEnabled});
+    toggleRewardInstructions(){
+        this.setState({rewardType: 'instructions'})
     }
 
-    toogleFacebookJoinGroup(){
-        this.setState({isFacebookJoinGroupEnabled: !this.state.isFacebookJoinGroupEnabled});
+    toggleRewardUniqueReward(){
+        this.setState({rewardType: 'unique_reward'})
     }
 
     createActive(setactive){
@@ -127,14 +104,6 @@ class GoalChallengeOne extends React.Component {
     /** Page 2 */
     addActivity(){
         console.log("shiw -> ", this.activity_list);
-
-        /**
-            Add New Item
-        */
-
-        // this.activityList.push({"activity": ""});
-
-
     }
 
     resetCount(){
@@ -205,17 +174,25 @@ class GoalChallengeOne extends React.Component {
         this.setState({selectedPreviewHeaderImage: selectedTodo});
     }
 
-    onSocialActionChange(){
-        this.setState({socialActionSLide: !this.state.socialActionSLide});
+    cancelOpenRewardModal(){
+        this.setState({isOpenRewardModal: false});
     }
 
-    socialOpenOptions(){
-        console.log('open modal');
+    openRewardModal(){
+        this.setState({isOpenRewardModal: true});
+    }
+
+    openSingleReward(){
         this.setState({isOpenSingleRewardModal: true});
     }
 
-    socialCloseOptions(){
+    closeSingleReward(){
         this.setState({isOpenSingleRewardModal: false});
+        this.setState({selectedRewardStep: 1});
+    }
+
+    updateRewardsNextStep(){
+        this.setState({selectedRewardStep: 2});
     }
 
     render () {
@@ -247,123 +224,256 @@ class GoalChallengeOne extends React.Component {
             </li>
         );
 
-        const socialActionBottomOptions = () => {
+        const updateRewardSteps = () => {
+            if(this.state.selectedRewardStep == 1){
+                return (
+                    <div className="d-reward-step d-rewards-step-one">
+                        <div className="drs-iamge">
+                            <img src="/img/reward_image.png" alt="" />
+                        </div>
+                        <div className="drs-subheader">Set minimum points or measurement for this position</div>
+                        <div className="drs-options-list">
+                            <div className="drs-option-item">
+                                <div className="drs-option-left">Minimum points needed</div>
+                                <div className="drs-option-right">
+                                    <input type="number" defaultValue="0" />
+                                </div>
+                            </div>
+                            <div className="drs-option-button">
+                                <button><span><FontAwesomeIcon icon={faPlus} /></span> Add measurement</button>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            if(this.state.selectedRewardStep == 2){
+                return (
+                    <div className="d-reward-step d-reward-step-two">
+                        <div className="d-reward-left">
+                            <h4>Choose reward type</h4>
+                            <div className="d-rewards-step-two-options">
+                                <div className={"d-rewards-step-two-items " + (this.state.rewardType == 'file' ? 'd-reward-active' : '')} onClick={() => this.toggleRewardFile()}>
+                                    <div className="rewards-option-items-icon">
+                                        <img src="/img/rewards_file.png" alt="" />
+                                    </div>
+                                    <div className="rewards-option-items-text">File</div>
+                                    <div className="rewards-option-items-plus"><span><FontAwesomeIcon icon={faPlus} /></span></div>
+                                </div>
+                                <div className={"d-rewards-step-two-items " + (this.state.rewardType == 'manual_sent' ? 'd-reward-active' : '')} onClick={() => this.toggleRewardManualSent()}>
+                                    <div className="rewards-option-items-icon">
+                                        <img src="/img/rewards_gift.png" alt="" />
+                                    </div>
+                                    <div className="rewards-option-items-text">Manually sent</div>
+                                    <div className="rewards-option-items-plus"><span><FontAwesomeIcon icon={faPlus} /></span></div>
+                                </div>
+                                <div className={"d-rewards-step-two-items " + (this.state.rewardType == 'instructions' ? 'd-reward-active' : '')} onClick={() => this.toggleRewardInstructions()}>
+                                    <div className="rewards-option-items-icon">
+                                        <img src="/img/rewards_instructions.png" alt="" />
+                                    </div>
+                                    <div className="rewards-option-items-text">Instructions</div>
+                                    <div className="rewards-option-items-plus"><span><FontAwesomeIcon icon={faPlus} /></span></div>
+                                </div>
+                                <div className={"d-rewards-step-two-items " + (this.state.rewardType == 'unique_reward' ? 'd-reward-active' : '')} onClick={() => this.toggleRewardUniqueReward()}>
+                                    <div className="rewards-option-items-icon">&nbsp;</div>
+                                    <div className="rewards-option-items-text">Unique rewards</div>
+                                    <div className="rewards-option-items-plus"><span><FontAwesomeIcon icon={faPlus} /></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="d-reward-right">
+                            {rewardstep()}
+                        </div>
+                    </div>
+                );
+            }
+        }
+
+        const rewardstep = () => {
+            if(this.state.rewardType == 'file'){
+                return (
+                    <div className="show-rewards-type">
+                        <h4>File</h4>
+                        <div className="d-upload-a-file">
+                            <div className="d-upload-file-icon">
+                                <img src="/img/rewards_file.png" alt="" />
+                            </div>
+                            <div className="d-upload-file-text">Upload File</div>
+                        </div>
+                        <div className="d-upload-max-reward">
+                            <div className="d-max-rwward-text">Max no. of times the reward can be given:</div>
+                            <div className="d-max-rwward-input">
+                                <input type="text" defaultValue="0"/>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            if(this.state.rewardType == 'manual_sent'){
+                return (
+                    <div className="show-rewards-type">
+                        <h4>Manually sent</h4>
+                        <div className="d-sub-title-info">You will manually send this reward to the participants</div>
+                        <div className="d-reward-item">
+                            <div className="d-reward-label">Reward Name</div>
+                            <div className="d-reward-input">
+                                <input type="text" defaultValue="" />
+                            </div>
+                        </div>
+                        <div className="d-reward-item">
+                            <div className="d-reward-label">Reward Details</div>
+                            <div className="d-reward-input">
+                                <textarea></textarea>
+                            </div>
+                        </div>
+                        <div className="d-upload-max-reward">
+                            <div className="d-max-rwward-text">Max no. of times the reward can be given:</div>
+                            <div className="d-max-rwward-input">
+                                <input type="text" defaultValue="0"/>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            if(this.state.rewardType == 'instructions'){
+                return (
+                    <div className="show-rewards-type">
+                        <h4>Instructions</h4>
+                        <div className="d-reward-item">
+                            <div className="d-reward-label">Reward Name</div>
+                            <div className="d-reward-input">
+                                <input type="text" defaultValue="" />
+                            </div>
+                        </div>
+                        <div className="d-reward-item">
+                            <div className="d-reward-label">Reward Details</div>
+                            <div className="d-reward-input">
+                                <textarea></textarea>
+                            </div>
+                        </div>
+                        <div className="d-reward-item">
+                            <div className="d-reward-label">Reward Instructions</div>
+                            <div className="d-reward-input">
+                                <textarea></textarea>
+                            </div>
+                        </div>
+                        <div className="d-upload-max-reward">
+                            <div className="d-max-rwward-text">Max no. of times the reward can be given:</div>
+                            <div className="d-max-rwward-input">
+                                <input type="text" defaultValue="0"/>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            if(this.state.rewardType == 'unique_reward'){
+                return (
+                    <div className="show-rewards-type">
+                        <h4>Unique rewards</h4>
+                        <div className="d-reward-select">
+                            <select>
+                                <option value="">Unique coupon codes</option>
+                            </select>
+                        </div>
+                        <div className="d-upload-a-file">
+                            <div className="d-upload-file-icon">
+                                <img src="/img/rewards_file.png" alt="" />
+                            </div>
+                            <div className="d-upload-file-text">Upload CSV</div>
+                        </div>
+                    </div>
+                );
+            }
+        }
+
+        const updateRewardStepsButtons = () => {
+            if(this.state.selectedRewardStep == 1){
+                return (
+                    <div className="d-reward-settings-ops">
+                        <button className="cancelReward" onClick={() => this.closeSingleReward()}>Cancel</button>
+                        <button className="saveReward" onClick={() => this.updateRewardsNextStep()}>Next <span><FontAwesomeIcon icon={faArrowRight} /></span></button>
+                    </div>
+                );
+            }
+
+            if(this.state.selectedRewardStep == 2){
+                return (
+                    <div className="d-reward-settings-ops">
+                        <button className="cancelReward" onClick={() => this.closeSingleReward()}>Cancel</button>
+                        <button className="saveReward">Save Rewards</button>
+                    </div>
+                );
+            }
+        }
+
+        const rewardOpts = () => {
             return (
-                <div className="d-reward-settings-ops">
-                    <button className="cancelReward" onClick={() => this.socialCloseOptions()}>Cancel</button>
-                    <button className="saveReward">Save and Add actions</button>
+                <div className="d-reward-select d-reward-multiple">
+                    <div className="d-reward-list">
+                        <div className="d-reward-item">
+                            <div className="d-place-info gold-text">1st</div>
+                            <div className="d-place-reward-text">Reward</div>
+                            <div className="d-place-reward-list-icon">
+                                <div className="d-place-rewards-items">
+                                    <div className="d-place-item"><img src="/img/reward_gift.png" alt="" /></div>
+                                    <div className="d-place-item"><img src="/img/reward_token.png" alt="" /></div>
+                                    <div className="d-place-item"><img src="/img/reward_cert.png" alt="" /></div>
+                                </div>
+                            </div>
+                            <div className="d-place-edit">
+                                <button onClick={() => this.openSingleReward()}>Edit</button>
+                            </div>
+                        </div>
+                        <div className="d-reward-item">
+                            <div className="d-place-info silver-text">2st</div>
+                            <div className="d-place-reward-text">Reward</div>
+                            <div className="d-place-reward-list-icon">
+                                <div className="d-place-rewards-items">
+                                    <div className="d-place-item"><img src="/img/reward_gift.png" alt="" /></div>
+                                    <div className="d-place-item"><img src="/img/reward_token.png" alt="" /></div>
+                                </div>
+                            </div>
+                            <div className="d-place-edit">
+                                <button onClick={() => this.openSingleReward()}>Edit</button>
+                            </div>
+                        </div>
+                        <div className="d-reward-item">
+                            <div className="d-place-info bronze-text">3st</div>
+                            <div className="d-place-reward-text">Reward</div>
+                            <div className="d-place-reward-list-icon">
+                                <button onClick={() => this.openSingleReward()}>Add Reward</button>
+                            </div>
+                            <div className="d-place-edit">
+                                <button onClick={() => this.openSingleReward()}>Edit</button>
+                            </div>
+                        </div>
+                        <div className="d-reward-item add-new-placer">
+                            <button>Add 4th Place</button>
+                        </div>
+                        <ReactModal
+                            isOpen={this.state.isOpenSingleRewardModal}
+                            contentLabel="Example Modal"
+                            className="watch_side_modal"
+                            ariaHideApp={false}
+                        >
+                            <div className="d-rewards-settings-modal">
+                                <h4>Rewards</h4>
+                                <div className="d-reward-settings-list">
+                                    {updateRewardSteps()}
+                                </div>
+                                {updateRewardStepsButtons()}
+                            </div>
+                        </ReactModal>
+                    </div>
                 </div>
             );
+        
         }
 
-        const socialOptions = () => {
-            if(this.state.socialType == 'social'){
-                return (
-                    <div className="d-social-items">
-                        <h3>Facebook Actions</h3>
-                        <div className="d-social-item">
-                            <div className="d-social-item-text">Login with Facebook</div>
-                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookLogin} checked={this.state.isFacebookLoginEnabled} /></div>
-                        </div>
-                        <div className="d-social-item">
-                            <div className="d-social-item-text">Visit on Facebook</div>
-                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookVisit} checked={this.state.isFacebookVisitEnabled} /></div>
-                        </div>
-                        <div className="d-social-item">
-                            <div className="d-social-header">
-                                <div className="d-social-item-text">Enter URL</div>
-                            </div>
-                            <div className="d-social-value">
-                                <input type="text" placeholder="www.facebookpage.com" />
-                            </div>
-                        </div>
-                        <div className="d-social-item">
-                            <div className="d-social-header">
-                                <div className="d-social-item-text">View Post</div>
-                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookViewPost} checked={this.state.isFacebookViewPostEnabled} /></div>
-                            </div>
-                            <div className="d-social-value">
-                                <input type="text" placeholder="www.facebookpage.com" />
-                            </div>
-                        </div>
-                        <div className="d-social-item">
-                            <div className="d-social-header">
-                                <div className="d-social-item-text">Join Facebook Group</div>
-                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookJoinGroup} checked={this.state.isFacebookJoinGroupEnabled} /></div>
-                            </div>
-                            <div className="d-social-value">
-                                <input type="text" placeholder="www.facebookpage.com" />
-                            </div>
-                        </div>
-                    </div>
-                );
-            }
-
-            if(this.state.socialType == 'custom_social_action'){
-                return (
-                    <div className="d-social-items">
-                        <h3>Custom social actions</h3>
-                        <div className="d-social-item">
-                            <div className="d-social-header">
-                                <div className="d-social-item-text">Action Name</div>
-                            </div>
-                            <div className="d-social-value">
-                                <input type="text" placeholder="Action Name" />
-                            </div>
-                        </div>
-                        <div className="d-social-item">
-                            <div className="d-social-header">
-                                <div className="d-social-item-text">URL if applicable</div>
-                            </div>
-                            <div className="d-social-value">
-                                <input type="text" placeholder="www.facebookpage.com" />
-                            </div>
-                        </div>
-                        <h3>Verify</h3>
-                        <div className="d-social-item">
-                            <div className="d-social-header">
-                                <div className="d-social-item-text">Question</div>
-                            </div>
-                            <div className="d-social-value">
-                                <input type="text" placeholder="type here..." />
-                            </div>
-                        </div>
-                        <div className="d-social-item">
-                            <div className="d-social-header">
-                                <div className="d-social-item-text">Answer</div>
-                            </div>
-                            <div className="d-social-value">
-                                <input type="text" placeholder="" />
-                            </div>
-                        </div>
-                    </div>
-                );
-            }
-
-            if(this.state.socialType == 'invite_friend'){
-                return (
-                    <div className="d-social-items">
-                        <h3>Invite Friends</h3>
-                        <div className="d-social-item">
-                            <div className="d-social-header">
-                                <div className="d-social-item-text">Give points every:</div>
-                            </div>
-                            <div className="d-social-value">
-                                <input type="text" placeholder="" />
-                            </div>
-                        </div>
-                        <div className="d-social-item">
-                            <div className="d-social-header">
-                                <div className="d-social-item-text">Points per invite</div>
-                            </div>
-                            <div className="d-social-value">
-                                <input type="number" defaultValue="1" />
-                            </div>
-                        </div>
-                    </div>
-                );
-            }
-        }
+        
 
         
 
@@ -374,10 +484,10 @@ class GoalChallengeOne extends React.Component {
                         <div className="cgoal-left-inner">
                             <div className="dtitle">
                                 <div className="dimage">
-                                    <img src="/img/ch_goal.png" alt="" />
+                                    <img src="/img/ch_leaderboard.png" alt="" />
                                 </div>
                                 <div className="dtext">
-                                    Goal Challenge
+                                    Leaderboard
                                 </div>
                             </div>
                             <div className="dmenu-side">
@@ -426,31 +536,11 @@ class GoalChallengeOne extends React.Component {
 
                         <div className={"dstep step_one " + (this.state.stepnumber == 1 ? 'isactive_tab' : '')}>
                             <div className="cgoal-center-inner">
-                                <h2>How to Measure the Goal?</h2>
 
-                                <div className={"cg-item " + (this.state.activepart == 'two_main_goal' ? 'active_item' : '')} onFocus={() => this.createActive('two_main_goal') }>
-                                    <div className="cg-label">Main Goal</div>
-                                    <div className="cg-input">
-                                        <div className="dmultiple">
-                                            <div className="dm-left">
-                                                <div className="dradiobt">
-                                                    <input type="radio" name="gender" />
-                                                </div>
-                                                <div className="dtextone">
-                                                    Single Goal
-                                                </div>
-                                            </div>
-                                            <div className="dm-right">
-                                                <div className="dradiobt">
-                                                    <input type="radio" name="gender" />
-                                                </div>
-                                                <div className="dtextone">
-                                                    Multiple Milestones
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="dsdesc">Description</div>
-                                        <div className="dsdesc">Single Goal. Only has one goal with multiple actions, enable multiple milestones to create milestones.</div>
+                                <div className={"cg-item " + (this.state.activepart == 'title' ? 'active_item' : '')} onFocus={() => this.createActive('title') }>
+                                    <div className="cg-label">Purpose</div>
+                                    <div className="cg-input dactivity">
+                                        <div className="subheader">What is the purpose of this competition?</div>
                                         <input type="text" />
                                     </div>
                                 </div>
@@ -503,88 +593,11 @@ class GoalChallengeOne extends React.Component {
                                 <div className={"cg-item " + (this.state.activepart == 'two_social_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_social_actions') }>
                                     <div className="cg-label">
                                         <div className="cgl-name">Social Actions</div>
-                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.onSocialActionChange} checked={this.state.socialActionSLide} /></div>
+                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
                                     </div>
                                     <div className="cg-input dactivity">
                                         <div className="subheader">Actions that help spread the word, build awareness and increase challenge engagement</div>
-                                        <div className="social-action-list"></div>
-                                        <div className="add-social-action">
-                                            <button onClick={() => this.socialOpenOptions()}><span><FontAwesomeIcon icon={faPlus} /></span> Add Social Action</button>
-                                        </div>
                                     </div>
-                                    <ReactModal
-                                        isOpen={this.state.isOpenSingleRewardModal}
-                                        contentLabel="Example Modal"
-                                        className="social_action_modal"
-                                        ariaHideApp={false}
-                                    >
-                                        <div className="d-rewards-settings-modal">
-                                            <h4>Social Actions</h4>
-                                            <div className="d-social-settings-list">
-                                                <div className="d-social-left-side" >
-                                                    <div className="d-social-settings">
-                                                        <div className="d-social-settings-dropdown">
-                                                            <select>
-                                                                <option value="">Choose from saved settings</option>
-                                                            </select>
-                                                        </div>
-                                                        <div className="d-social-setting-sub">
-                                                            <button>Save social settings</button>
-                                                        </div>
-                                                    </div>
-                                                    <div className="d-social-show-items">
-                                                        <div className={"d-social-show-item " + (this.state.socialType == 'social' ? 'active' : '')} onClick={() => this.toogleFacebookActions()}>
-                                                            <div className="d-social-item-icon">
-                                                                <span className="facebook"><FontAwesomeIcon icon={faFacebook} /></span>
-                                                            </div>
-                                                            <div className="d-social-item-text">Facebook</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                        <div className="d-social-show-item">
-                                                            <div className="d-social-item-icon">
-                                                                <span className="instagram"><FontAwesomeIcon icon={faInstagram} /></span>
-                                                            </div>
-                                                            <div className="d-social-item-text">Instagram</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                        <div className="d-social-show-item">
-                                                            <div className="d-social-item-icon">
-                                                                <span className="twitter"><FontAwesomeIcon icon={faTwitter} /></span>
-                                                            </div>
-                                                            <div className="d-social-item-text">Twitter</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                        <div className="d-social-show-item">
-                                                            <div className="d-social-item-icon">
-                                                                <span className="youtube"><FontAwesomeIcon icon={faYoutube} /></span>
-                                                            </div>
-                                                            <div className="d-social-item-text">Youtube</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                        <div className="d-social-show-item">
-                                                            <div className="d-social-item-icon">
-                                                                <span className="tiktok"><FontAwesomeIcon icon={faTiktok} /></span>
-                                                            </div>
-                                                            <div className="d-social-item-text">Tiktok</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                        <div className="d-social-show-item no-icon-part" onClick={() => this.toogleInviteFriendsActions()}>
-                                                            <div className="d-social-item-text">Invite Friends</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                        <div className={"d-social-show-item no-icon-part " + (this.state.socialType == 'custom_social_action' ? 'active' : '')} onClick={() => this.toogleCustomSocialActions()}>
-                                                            <div className="d-social-item-text">Custom Social Action</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="d-social-right-side" >
-                                                    {socialOptions()}
-                                                </div>
-                                            </div>
-                                            {socialActionBottomOptions()}
-                                        </div>
-                                    </ReactModal>
                                 </div>
 
                                 <div className={"cg-item " + (this.state.activepart == 'two_convert_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_convert_actions') }>
@@ -594,6 +607,47 @@ class GoalChallengeOne extends React.Component {
                                     </div>
                                     <div className="cg-input dactivity">
                                         <div className="subheader">Set how many points participant can get for each action</div>
+                                    </div>
+                                </div>
+
+                                <div className={"cg-item " + (this.state.activepart == 'two_rewards' ? 'active_item' : '')} onFocus={() => this.createActive('two_rewards') }>
+                                    <div className="cg-label">Customize Rewards</div>
+                                    <div className="cg-input">
+                                        {rewardOpts()}
+                                        <div className="d-show-reward">
+                                            <a href="">Give reward for everbody else</a>
+                                        </div>
+                                        <div className="d-rewards-settings">
+                                            <button onClick={() => this.openRewardModal()}><span><FontAwesomeIcon icon={faCog} /></span> Reward Settings</button>
+                                        </div>
+                                        <ReactModal
+                                            isOpen={this.state.isOpenRewardModal}
+                                            contentLabel="Example Modal"
+                                            className="watch_side_modal"
+                                            ariaHideApp={false}
+                                        >
+                                            <div className="d-rewards-settings-modal">
+                                                <h4>Reward Settings</h4>
+                                                <div className="d-reward-settings-list">
+                                                    <div className="cg-label">
+                                                        <div className="cgl-name">
+                                                            <div className="cgl-name-title">Allow winners to pick their rewards</div>
+                                                        </div>
+                                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
+                                                    </div>
+                                                    <div className="cg-label">
+                                                        <div className="cgl-name">
+                                                            <div className="cgl-name-title">Allow multiple rewards</div>
+                                                        </div>
+                                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
+                                                    </div>
+                                                </div>
+                                                <div className="d-reward-settings-ops">
+                                                    <button className="cancelReward" onClick={() => this.cancelOpenRewardModal()}>Cancel</button>
+                                                    <button className="saveReward">Save</button>
+                                                </div>
+                                            </div>
+                                        </ReactModal>
                                     </div>
                                 </div>
 
@@ -1004,4 +1058,4 @@ class GoalChallengeOne extends React.Component {
     }
 }
 
-export default GoalChallengeOne
+export default LeaaderboardChallengeOne
