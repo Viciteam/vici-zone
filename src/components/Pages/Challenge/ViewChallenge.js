@@ -56,7 +56,7 @@ class ViewChallenge extends React.Component {
                                 <h2>Invite link</h2>
                                 <div className="dlinkfield">
                                     <div className="dlinkinput" >
-                                        <input type="text" value="https://invitelink" style={{backgroundImage: 'url(/img/link.png)'}}/>
+                                        <input type="text" placeholder="https://invitelink" style={{backgroundImage: 'url(/img/link.png)'}}/>
                                     </div>
                                     <div className="dlinkbutton">
                                         <button>Copy</button>

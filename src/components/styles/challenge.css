@@ -2922,6 +2922,10 @@
     border-radius: 10px;
 }
 
+.d-rewards-settings-modal.d-social-modal-size {
+    width: 800px;
+}
+
 .d-rewards-settings-modal h4 {
     font-size: 18px;
     font-weight: bold;
@@ -3227,7 +3231,7 @@
     width: 35%;
     display: inline-block;
     padding: 10px 20px;
-    border-right: 1px solid #DFDFE1;
+    
     vertical-align: top;
 }
 
@@ -3235,6 +3239,8 @@
     width: 64%;
     display: inline-block;
     vertical-align: top;
+    border-left: 1px solid #DFDFE1;
+    min-height: 430px;
 }
 
 .d-social-settings-list .d-social-left-side .d-social-settings {
@@ -3324,6 +3330,12 @@
 
 .d-social-settings-list .d-social-right-side .d-social-items .d-social-item {
     margin-bottom: 15px;
+    width: 94%;
+    margin-left: 5%;
+}
+
+.d-social-settings-list .d-social-right-side .d-social-items .d-social-item.d-enable-repeat-action {
+    margin-bottom: 0;
 }
 
 .d-social-settings-list .d-social-right-side .d-social-items .d-social-item .d-social-value input {
@@ -3409,4 +3421,302 @@
 .d-reward-settings-list.d-reward-sent-setting .d-reward-proof-list .d-reward-item {
     display: inline-block;
     vertical-align: top;
+}
+
+.d-social-value-item,
+.d-social-segmented-values {
+    width: 94%;
+    margin-left: 5%;
+    margin-top: 7px;
+    margin-bottom: 10px;
+}
+
+.d-social-value-item label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1em;
+    margin-bottom: 5px;
+}
+
+.d-social-value-item input {
+    width: 100%;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    line-height: 1em;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.d-social-value-item.d-value-points label {
+    width: 45%;
+    display: inline-block;
+}
+
+
+.d-social-value-item.d-value-points input {
+    width: 50%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    line-height: 1em;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-left: 4%;
+}
+
+.d-social-value-item.d-max-points > * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.d-social-value-item.d-max-points > label {
+    width: 30%;
+    margin-right: 3%;
+
+}
+
+.d-social-value-item.d-max-points > select {
+    width: 30%;
+    margin-right: 3%;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    line-height: 1em;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.d-social-value-item.d-max-points > input {
+    width: 30%;
+    margin-right: 3%;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    line-height: 1em;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.d-social-segmented-values .d-social-left-segment {
+    display: inline-block;
+    vertical-align: middle;
+    width: 47%;
+    margin: 0 1%;
+}
+
+.d-social-segmented-values .d-social-right-segment {
+    display: inline-block;
+    vertical-align: middle;
+    width: 47%;
+    margin: 0 1%;
+    text-align: right;
+}
+
+.secment-instructions {
+    font-size: 12px;
+    line-height: 1.2em;
+    margin-bottom: 15px;
+}
+
+.d-social-question-info {
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.d-social-values-additional-options,
+.d-like-page-after-login {
+    display: none;
+}
+
+.d-like-page-after-login.enabled-allow-like-page,
+.d-social-values-additional-options.repeated-action-enabled {
+    display: block;
+}
+
+.d-social-options-container {
+    max-height: 450px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.join-challenge-steps {
+    margin: 10% auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 12px #ccc;
+    font-family: nunito, sans-serif;
+}
+
+.join-challenge-steps.challenge-step-one {
+    width: 600px;
+}
+
+.join-challenge-steps.challenge-step-two {
+    width: 470px;
+    overflow: hidden;
+}
+
+.join-challenge-steps.challenge-step-one .join-challenge-header {
+    font-size: 21px;
+    font-weight: bold;
+    padding: 15px 20px;
+    border-bottom: 1px solid #00000025;
+    line-height: 1em;
+}
+
+.join-challenge-steps.challenge-step-one .join-challenge-footer {
+    text-align: right;
+    border-top: 1px solid #00000025;
+    line-height: 1em;
+    padding: 15px 20px;
+}
+
+.join-challenge-steps.challenge-step-one .join-challenge-footer .cancel-option {
+    color: #A0A8B0;
+    border: 2px solid #A0A8B0;
+    line-height: 1em;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.join-challenge-steps.challenge-step-one .join-challenge-footer .join-option {
+    color: #fff;
+    background: #FFCA28;
+    border: 2px solid #FFCA28;
+    line-height: 1em;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.join-challenge-steps.challenge-step-two .ms-watch-content{
+    padding: 10px 20px;
+}
+
+.join-challenge-steps.challenge-step-two .dsub-desc-ops {
+    text-align: right;
+    border-top: 1px solid #00000025;
+    line-height: 1em;
+    padding: 15px 0px;
+    font-size: 14px;
+}
+
+.join-challenge-steps.challenge-step-two .dsub-desc-ops .savebutton {
+    color: #fff;
+    background: #FFCA28;
+    border: 2px solid #FFCA28;
+    line-height: 1em;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-left: 15px;
+    letter-spacing: 1px;
+}
+
+.join-challenge-steps.challenge-step-one .join-challenge-content {
+    padding: 45px 20px;
+}
+
+.join-challenge-steps.challenge-step-one .join-challenge-content h3 {
+    text-align: center;
+    font-weight: bold;
+    line-height: 1em;
+    margin-bottom: 35px;
+}
+
+.join-challenge-steps.challenge-step-one .join-challenge-content .join-challenge-item {
+    width: 85%;
+    margin: 0 auto 20px;
+}
+
+.join-challenge-steps.challenge-step-one .join-challenge-content .join-challenge-item .d-join-checkbox {
+    display: inline-block;
+    vertical-align: top;
+    width: 10%;
+    text-align: center;
+    line-height: 1.4em;
+}
+
+.join-challenge-steps.challenge-step-one .join-challenge-content .join-challenge-item .d-join-content {
+    display: inline-block;
+    vertical-align: top;
+    width: 89%;
+}
+
+.join-challenge-steps.challenge-step-one .join-challenge-item-title {
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 1.2em;
+    margin-bottom: 10px;
+}
+
+.join-challenge-steps.challenge-step-one .join-challenge-item-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 1.2em;
+}
+
+.join-challenge-steps.challenge-step-one .join-challenge-content .join-challenge-item .join-challenge-idv-options {
+    width: 80%;
+    margin: 20px auto 0;
+}
+
+.join-challenge-steps.challenge-step-one .join-challenge-idv-options-items label {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1em;
+    display: block;
+    margin-bottom: 7px;
+}
+
+.join-challenge-steps.challenge-step-one .join-challenge-idv-options-items .d-select-squad {
+    position: relative;
+}
+
+.join-challenge-steps.challenge-step-one .join-challenge-idv-options-items .d-select-squad .d-selected-squad {
+    border: 1px solid #DFDFE1;
+    border-radius: 15px;
+    line-height: 1em;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.join-challenge-steps.challenge-step-one .join-challenge-idv-options-items .d-select-squad .d-squad-options {
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 0 12px #ccc;
+    display: none;
+}
+
+.join-challenge-steps.challenge-step-one .join-challenge-idv-options-items .d-select-squad .d-squad-options .d-select-squad-item {
+    border-bottom: 1px solid #ccc;
+    font-size: 14px;
+    line-height: 1em;
+    padding: 15px 20px;
+    cursor: pointer;
+}
+
+.join-challenge-steps.challenge-step-one .join-challenge-idv-options-items .d-select-squad .d-squad-options .d-select-squad-item:hover {
+    background: #e5e5e5;
+}
+
+.join-challenge-steps.challenge-step-two .ms-watch-join {
+    margin: 40px 0;
+}
+
+.join-challenge-steps.challenge-step-two .ms-watch-join h3 {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1em;
+    margin-bottom: 10px;
+}
+
+.join-challenge-steps.challenge-step-two .ms-watch-join .ms-join-success {
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.3em;
 }

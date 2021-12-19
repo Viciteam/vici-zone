@@ -8,10 +8,12 @@ import Switch from "react-switch";
 import ReactModal from 'react-modal';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faBars, faEllipsisV, faGlobeEurope, faMapMarkerAlt, faImage, faCrosshairs } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faBars, faEllipsisV, faGlobeEurope, faMapMarkerAlt, faImage, faCrosshairs, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faInstagram, faTwitter, faYoutube, faTiktok } from '@fortawesome/free-brands-svg-icons'
 
 import { HexColorPicker } from "react-colorful";
+
+import ReactTooltip from 'react-tooltip';
 
 
 class GoalChallengeOne extends React.Component {
@@ -33,12 +35,41 @@ class GoalChallengeOne extends React.Component {
             selectedColor: '#03488d',
             selectedPreviewHeaderImage: '/img/prev-header.png',
             socialActionSLide: false,
-            socialType: 'social',
-            isOpenSingleRewardModal: false,
+            socialType: 'youtube',
+            isOpenSingleRewardModal: true, // open social action modal
+
+            // facebook options
             isFacebookLoginEnabled: false,
-            isFacebookVisitEnabled: false,
+            isFacebookVisitEnabled: true,
             isFacebookViewPostEnabled: false,
             isFacebookJoinGroupEnabled: false,
+            isFacebookSelectPhotoVideoEnabled: false,
+            
+            // facebook Login Options
+            isFacebookLoginAllowToLikePage: false,
+            isFacebookLoginEnabledrepeat: false,
+
+            // instagram
+            isInstagramSelectPhotoVideoEnabled: false,
+            isInstagramSelectVisitAPost: false,
+            isInstagramSelectVisitAProfile: false,
+            isInstagramShowPhotoVideoEnabledRepeat: false,
+            isInstagramVisitaPostEnabledRepeat: false,
+            isInstagramVisitaProfileEnabledRepeat: false,
+            
+            // twitter
+            isTwitterFollowAUserEnabled: false,
+            isTwitterViewATweetEnabled: false,
+            isTwitterRetweetATweetEnabled: false,
+            isTwitterTweetEnabled: false,
+
+            // youtube
+            isYoutubeVisitChannelEnabled: false,
+            
+
+            // facebook Visit Options
+            isFacebookVisitAllowToLikePage: false,
+            isFacebookVisitEnabledrepeat: false,
         }
         this.createActive = this.createActive.bind(this);
         this.proceedToNext = this.proceedToNext.bind(this);
@@ -59,11 +90,40 @@ class GoalChallengeOne extends React.Component {
         this.toogleFacebookVisit = this.toogleFacebookVisit.bind(this);
         this.toogleFacebookViewPost = this.toogleFacebookViewPost.bind(this);
         this.toogleFacebookJoinGroup = this.toogleFacebookJoinGroup.bind(this);
+        this.toogleFacebookSelectPhotoVideo = this.toogleFacebookSelectPhotoVideo.bind(this);
+
+        // facebook login options
+        this.toogleFacebookLoginAllowToLikePage = this.toogleFacebookLoginAllowToLikePage.bind(this);
+        this.toogleFacebookLoginEnableRepeat = this.toogleFacebookLoginEnableRepeat.bind(this);
+
+        // facebook view options
+        this.toogleFacebookViewAllowToLikePage = this.toogleFacebookViewAllowToLikePage.bind(this);
+        this.toogleFacebookViewEnableRepeat = this.toogleFacebookViewEnableRepeat.bind(this);
+
+        // instagram options
+        this.toogleInstagramSelectPhotoVideo = this.toogleInstagramSelectPhotoVideo.bind(this);
+        this.toogleInstagramVisitAPost = this.toogleInstagramVisitAPost.bind(this);
+        this.toogleInstagramVisitAProfile = this.toogleInstagramVisitAProfile.bind(this);
+        this.toogleInstagramShowPhotoVideoEnableRepeat = this.toogleInstagramShowPhotoVideoEnableRepeat.bind(this);
+        this.toogleInstagramVisitaPostEnableRepeat = this.toogleInstagramVisitaPostEnableRepeat.bind(this);
+
+        // twitter
+        this.toogleTwitterFollowAUser = this.toogleTwitterFollowAUser.bind(this);
+        this.toogleTwitterViewATweet = this.toogleTwitterViewATweet.bind(this);
+        this.toogleTwitterRetweetaTweet = this.toogleTwitterRetweetaTweet.bind(this);
+        this.toogleTwitterTweet = this.toogleTwitterTweet.bind(this);
+
+        // youtube
+        this.toogleYoutubeVisitChannel = this.toogleYoutubeVisitChannel.bind(this);
 
         // change tab
         this.toogleCustomSocialActions = this.toogleCustomSocialActions.bind(this);
         this.toogleInviteFriendsActions = this.toogleInviteFriendsActions.bind(this);
         this.toogleFacebookActions = this.toogleFacebookActions.bind(this);
+        this.toogleInstagramActions = this.toogleInstagramActions.bind(this);
+        this.toogleTwitterActions = this.toogleTwitterActions.bind(this);
+        this.toogleYoutubeActions = this.toogleYoutubeActions.bind(this);
+        this.toogleTiktokActions = this.toogleTiktokActions.bind(this);
 
         this.activity_list = [
             {"activity": ""}
@@ -80,18 +140,29 @@ class GoalChallengeOne extends React.Component {
     }
 
     toogleFacebookActions(){
-        this.setState({socialType: 'social'});
+        this.setState({socialType: 'facebook'});
     }
 
+    toogleInstagramActions(){
+        this.setState({socialType: 'instagram'});
+    }
+
+    toogleTwitterActions(){
+        this.setState({socialType: 'twitter'});
+    }
+
+    toogleYoutubeActions(){
+        this.setState({socialType: 'youtube'});
+    }
+
+    toogleTiktokActions(){
+        this.setState({socialType: 'tiktok'});
+    }
+
+    toogleFacebookSelectPhotoVideo(){
+        this.setState({isFacebookSelectPhotoVideoEnabled: !this.state.isFacebookSelectPhotoVideoEnabled});
+    }
     
-
-    toogleFacebookLogin(){
-        this.setState({isFacebookLoginEnabled: !this.state.isFacebookLoginEnabled});
-    }
-
-    toogleFacebookVisit(){
-        this.setState({isFacebookVisitEnabled: !this.state.isFacebookVisitEnabled});
-    }
 
     toogleFacebookViewPost(){
         this.setState({isFacebookViewPostEnabled: !this.state.isFacebookViewPostEnabled});
@@ -101,10 +172,82 @@ class GoalChallengeOne extends React.Component {
         this.setState({isFacebookJoinGroupEnabled: !this.state.isFacebookJoinGroupEnabled});
     }
 
+    // facebook login
+    toogleFacebookLoginEnableRepeat(){
+        this.setState({isFacebookLoginEnabledrepeat: !this.state.isFacebookLoginEnabledrepeat});
+    }
+
+    toogleFacebookLoginAllowToLikePage(){
+        this.setState({isFacebookLoginAllowToLikePage: !this.state.isFacebookLoginAllowToLikePage});
+    }
+
+    toogleFacebookLogin(){
+        this.setState({isFacebookLoginEnabled: !this.state.isFacebookLoginEnabled});
+    }
+
+    // Facebook view
+    toogleFacebookViewEnableRepeat(){
+        this.setState({isFacebookVisitEnabledrepeat: !this.state.isFacebookVisitEnabledrepeat});
+    }
+
+    toogleFacebookViewAllowToLikePage(){
+        this.setState({isFacebookVisitAllowToLikePage: !this.state.isFacebookVisitAllowToLikePage});
+    }
+
+    toogleFacebookVisit(){
+        this.setState({isFacebookVisitEnabled: !this.state.isFacebookVisitEnabled});
+    }
+
+
+
+    // instagram options
+    toogleInstagramSelectPhotoVideo(){
+        this.setState({isInstagramSelectPhotoVideoEnabled: !this.state.isInstagramSelectPhotoVideoEnabled});
+    }
+
+    toogleInstagramVisitAPost(){
+        this.setState({isInstagramSelectVisitAPost: !this.state.isInstagramSelectVisitAPost});
+    }
+
+    toogleInstagramVisitAProfile(){
+        this.setState({isInstagramSelectVisitAProfile: !this.state.isInstagramSelectVisitAProfile});
+    }
+
+    toogleInstagramShowPhotoVideoEnableRepeat(){
+        this.setState({isInstagramShowPhotoVideoEnableRepeat: !this.state.isInstagramShowPhotoVideoEnableRepeat});
+    }
+
+    toogleInstagramVisitaPostEnableRepeat(){
+        this.setState({isInstagramVisitaPostEnabledRepeat: !this.state.isInstagramVisitaPostEnabledRepeat});
+    }
+
     createActive(setactive){
         console.log('Type ->', setactive);
         this.setState({activepart: setactive})
     }
+
+    // twitter
+    toogleTwitterFollowAUser(){
+        this.setState({isTwitterFollowAUserEnabled: !this.state.isTwitterFollowAUserEnabled});
+    }
+
+    toogleTwitterViewATweet(){
+        this.setState({isTwitterViewATweetEnabled: !this.state.isTwitterViewATweetEnabled});
+    }
+
+    toogleTwitterRetweetaTweet(){
+        this.setState({isTwitterRetweetATweetEnabled: !this.state.isTwitterRetweetATweetEnabled});
+    }
+
+    toogleTwitterTweet(){
+        this.setState({isTwitterTweetEnabled: !this.state.isTwitterTweetEnabled});
+    }
+
+    // youtube
+    toogleYoutubeVisitChannel(){
+        this.setState({isYoutubeVisitChannelEnabled: !this.state.isYoutubeVisitChannelEnabled});
+    }
+
 
     proceedToNext(){
         let stepnum = this.state.stepnumber + 1;
@@ -257,44 +400,689 @@ class GoalChallengeOne extends React.Component {
         }
 
         const socialOptions = () => {
-            if(this.state.socialType == 'social'){
+            if(this.state.socialType == 'facebook'){
+                let LoginWithFacebookInput = () => {
+                    if(this.state.isFacebookLoginEnabled){
+                        return (
+                            <div className="d-social-value-section">
+                                <div className="d-social-value-item">
+                                    <label htmlFor="">Instructions</label>
+                                    <input type="text" placeholder="Enter using Facebook"/>
+                                </div>
+                                <div className="d-social-item d-enable-user-to-like-page">
+                                    <div className="d-social-item-text">After entering, give the user option to Like a Page?</div>
+                                    <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookLoginAllowToLikePage} checked={this.state.isFacebookLoginAllowToLikePage} /></div>
+                                </div>
+                                <div className={"d-social-value-item d-like-page-after-login" + (this.state.isFacebookLoginAllowToLikePage ? 'enabled-allow-like-page' : "")}>
+                                    <label htmlFor="">Page URL</label>
+                                    <input type="text" placeholder="https://www.facebook.com/JanesWidgets"/>
+                                </div>
+                                <div className="d-social-segmented-values">
+                                    <div className="d-social-left-segment">
+                                        <div className="d-social-item d-enable-repeat-action">
+                                            <div className="d-social-item-text">Enable repeated action </div>
+                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookLoginEnableRepeat} checked={this.state.isFacebookLoginEnabledrepeat} /></div>
+                                        </div>
+                                    </div>
+                                    <div className="d-social-right-segment">
+                                        <div className="d-social-value-item d-value-points">
+                                            <label htmlFor="">Points</label>
+                                            <input type="number" defaultValue="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={"d-social-values-additional-options " + (this.state.isFacebookLoginEnabledrepeat ? 'repeated-action-enabled' : "")}>
+                                    <div className="d-social-value-item d-max-points">
+                                        <label htmlFor="">Maximum points per</label>
+                                        <select name="" id="">
+                                            <option >Day</option>
+                                            <option >Week</option>
+                                            <option >Month</option>
+                                            <option >Year</option>
+                                        </select>
+                                        <input type="number" defaultValue="0" />
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    }
+                };
+
+                let VisitFacebookOption = () => {
+                    if(this.state.isFacebookVisitEnabled){
+                        return (
+                            <div className="d-social-value-section">
+                                <div className="d-social-value-item">
+                                    <label htmlFor="">Enter URL</label>
+                                    <input type="text" placeholder="https://www.facebook.com/JanesWidgets"/>
+                                </div>
+                                <div className="d-social-value-item">
+                                    <label htmlFor="">Instructions</label>
+                                    <input type="text" placeholder="Enter using Facebook"/>
+                                </div>
+                                <div className="d-social-item d-enable-user-to-like-page">
+                                    <div className="d-social-item-text">After entering, give the user option to Like a Page?</div>
+                                    <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookViewAllowToLikePage} checked={this.state.isFacebookVisitAllowToLikePage} /></div>
+                                </div>
+                                <div className={"d-social-value-item d-like-page-after-login" + (this.state.isFacebookVisitAllowToLikePage ? 'enabled-allow-like-page' : "")}>
+                                    <label htmlFor="">Page URL</label>
+                                    <input type="text" placeholder="https://www.facebook.com/JanesWidgets"/>
+                                </div>
+                                <div className="d-social-segmented-values">
+                                    <div className="d-social-left-segment">
+                                        <div className="d-social-item d-enable-repeat-action">
+                                            <div className="d-social-item-text">Enable repeated action </div>
+                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookViewEnableRepeat} checked={this.state.isFacebookVisitEnabledrepeat} /></div>
+                                        </div>
+                                    </div>
+                                    <div className="d-social-right-segment">
+                                        <div className="d-social-value-item d-value-points">
+                                            <label htmlFor="">Points</label>
+                                            <input type="number" defaultValue="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={"d-social-values-additional-options " + (this.state.isFacebookVisitEnabledrepeat ? 'repeated-action-enabled' : "")}>
+                                    <div className="d-social-value-item d-max-points">
+                                        <label htmlFor="">Maximum points per</label>
+                                        <select name="" id="">
+                                            <option >Day</option>
+                                            <option >Week</option>
+                                            <option >Month</option>
+                                            <option >Year</option>
+                                        </select>
+                                        <input type="number" defaultValue="0" />
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    }
+                };
+
+                let ViewPostOption = () => {
+                    if(this.state.isFacebookViewPostEnabled){
+                        return (
+                            <div className="d-social-value-section">
+                                <div className="d-social-value-item">
+                                    <label htmlFor="">Enter Facebook post URL</label>
+                                    <input type="text" placeholder="https://www.facebook.com/JanesWidgets"/>
+                                </div>
+                                <div className="d-social-value-item">
+                                    <label htmlFor="">Instructions</label>
+                                    <input type="text" placeholder="Enter using Facebook"/>
+                                </div>
+                                <div className={"d-social-value-item d-like-page-after-login" + (this.state.isFacebookVisitAllowToLikePage ? 'enabled-allow-like-page' : "")}>
+                                    <label htmlFor="">Page URL</label>
+                                    <input type="text" placeholder="https://www.facebook.com/JanesWidgets"/>
+                                </div>
+                                <div className="d-social-segmented-values">
+                                    <div className="d-social-left-segment">
+                                        <div className="d-social-item d-enable-repeat-action">
+                                            <div className="d-social-item-text">Enable repeated action </div>
+                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookViewEnableRepeat} checked={this.state.isFacebookVisitEnabledrepeat} /></div>
+                                        </div>
+                                    </div>
+                                    <div className="d-social-right-segment">
+                                        <div className="d-social-value-item d-value-points">
+                                            <label htmlFor="">Points</label>
+                                            <input type="number" defaultValue="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={"d-social-values-additional-options " + (this.state.isFacebookVisitEnabledrepeat ? 'repeated-action-enabled' : "")}>
+                                    <div className="d-social-value-item d-max-points">
+                                        <label htmlFor="">Maximum points per</label>
+                                        <select name="" id="">
+                                            <option >Day</option>
+                                            <option >Week</option>
+                                            <option >Month</option>
+                                            <option >Year</option>
+                                        </select>
+                                        <input type="number" defaultValue="0" />
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    }
+                };
+
+                let JoinGroupOption = () => {
+                    if(this.state.isFacebookJoinGroupEnabled){
+                        return (
+                            <div className="d-social-value-section">
+                                <div className="d-social-value-item">
+                                    <label htmlFor="">Enter Facebook Group API</label>
+                                    <input type="text" placeholder="****************************"/>
+                                </div>
+                            </div>
+                        );
+                    }
+                };
+
+                let SelectPhotoVideoOption = () => {
+                    if(this.state.isFacebookSelectPhotoVideoEnabled){
+                        return (
+                            <div className="d-social-value-section">
+                                <div className="d-social-value-item">
+                                    <label htmlFor="">show options soon</label>
+                                </div>
+                            </div>
+                        );
+                    }
+                };
+                
                 return (
                     <div className="d-social-items">
                         <h3>Facebook Actions</h3>
-                        <div className="d-social-item">
-                            <div className="d-social-item-text">Login with Facebook</div>
-                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookLogin} checked={this.state.isFacebookLoginEnabled} /></div>
+                        <div className="d-social-options-container">
+                            <div className="d-social-item">
+                                <div className="d-social-item-text">Login with Facebook <span data-tip="The Facebook Entry action allows you to award an entry for logging into Facebook within the widget.<br />The action has two states, you can award the entry right away, or you can optionally ask the user to<br />Like your Facebook page after login." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookLogin} checked={this.state.isFacebookLoginEnabled} /></div>
+                                {LoginWithFacebookInput()}
+                            </div>
+                            <div className="d-social-item">
+                                <div className="d-social-item-text">Visit on Facebook <span data-tip="The Facebook Visit action allows you to ask a user to visit a specific Facebook page." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookVisit} checked={this.state.isFacebookVisitEnabled} /></div>
+                                {VisitFacebookOption()}
+                            </div>
+                            <div className="d-social-item">
+                                <div className="d-social-header">
+                                    <div className="d-social-item-text">View Post <span data-tip="test ." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                    <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookViewPost} checked={this.state.isFacebookViewPostEnabled} /></div>
+                                </div>
+                                {ViewPostOption()}
+                            </div>
+                            <div className="d-social-item">
+                                <div className="d-social-header">
+                                    <div className="d-social-item-text">Join Facebook Group <span data-tip="test ." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                    <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookJoinGroup} checked={this.state.isFacebookJoinGroupEnabled} /></div>
+                                </div>
+                                {JoinGroupOption()}
+                            </div>
+                            <div className="d-social-item">
+                                <div className="d-social-header">
+                                    <div className="d-social-item-text">Select image/photo <span data-tip="test ." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                    <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookSelectPhotoVideo} checked={this.state.isFacebookSelectPhotoVideoEnabled} /></div>
+                                </div>
+                                {SelectPhotoVideoOption()}
+                            </div>
                         </div>
+                        <ReactTooltip html="true" />
+                    </div>
+                );
+            }
+
+            if(this.state.socialType == 'twitter'){
+                
+                let FollowAUser = () => {
+                    if(this.state.isTwitterFollowAUserEnabled){
+                        return (
+                            <div className="d-instagram-visit-a-post">
+                                <div className="d-social-value-section">
+                                    <div className="d-social-value-item">
+                                        <label htmlFor="">Instructions</label>
+                                        <input type="text" placeholder=""/>
+                                    </div>
+                                </div>
+                                <div className="d-social-value-section">
+                                    <div className="d-social-value-item">
+                                        <label htmlFor="">Username</label>
+                                        <input type="text" placeholder="@someone"/>
+                                    </div>
+                                </div>
+                                <div className="d-social-segmented-values">
+                                    <div className="d-social-left-segment">
+                                        <div className="d-social-item d-enable-repeat-action">
+                                            <div className="d-social-item-text">Enable repeated action </div>
+                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramVisitaPostEnableRepeat} checked={this.state.isInstagramVisitaPostEnabledRepeat} /></div>
+                                        </div>
+                                    </div>
+                                    <div className="d-social-right-segment">
+                                        <div className="d-social-value-item d-value-points">
+                                            <label htmlFor="">Points</label>
+                                            <input type="number" defaultValue="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={"d-social-values-additional-options " + (this.state.isInstagramVisitaPostEnabledRepeat ? 'repeated-action-enabled' : "")}>
+                                    <div className="d-social-value-item d-max-points">
+                                        <label htmlFor="">Maximum points per</label>
+                                        <select name="" id="">
+                                            <option >Day</option>
+                                            <option >Week</option>
+                                            <option >Month</option>
+                                            <option >Year</option>
+                                        </select>
+                                        <input type="number" defaultValue="0" />
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    }
+                };
+
+                let ViewATweet = () => {
+                    if(this.state.isTwitterViewATweetEnabled){
+                        return (
+                            <div className="d-instagram-visit-a-post">
+                                <div className="d-social-value-section">
+                                    <div className="d-social-value-item">
+                                        <label htmlFor="">Instructions</label>
+                                        <input type="text" placeholder=""/>
+                                    </div>
+                                </div>
+                                <div className="d-social-value-section">
+                                    <div className="d-social-value-item">
+                                        <label htmlFor="">Twitter Post URL</label>
+                                        <input type="text" placeholder="https://twitter.com/vici/status/1227713580572103"/>
+                                    </div>
+                                </div>
+                                <div className="d-social-segmented-values">
+                                    <div className="d-social-left-segment">
+                                        <div className="d-social-item d-enable-repeat-action">
+                                            <div className="d-social-item-text">Enable repeated action </div>
+                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramVisitaPostEnableRepeat} checked={this.state.isInstagramVisitaPostEnabledRepeat} /></div>
+                                        </div>
+                                    </div>
+                                    <div className="d-social-right-segment">
+                                        <div className="d-social-value-item d-value-points">
+                                            <label htmlFor="">Points</label>
+                                            <input type="number" defaultValue="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={"d-social-values-additional-options " + (this.state.isInstagramVisitaPostEnabledRepeat ? 'repeated-action-enabled' : "")}>
+                                    <div className="d-social-value-item d-max-points">
+                                        <label htmlFor="">Maximum points per</label>
+                                        <select name="" id="">
+                                            <option >Day</option>
+                                            <option >Week</option>
+                                            <option >Month</option>
+                                            <option >Year</option>
+                                        </select>
+                                        <input type="number" defaultValue="0" />
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    }
+                };
+
+                let ReTweet = () => {
+                    if(this.state.isTwitterRetweetATweetEnabled){
+                        return (
+                            <div className="d-instagram-visit-a-post">
+                                <div className="d-social-value-section">
+                                    <div className="d-social-value-item">
+                                        <label htmlFor="">Instructions</label>
+                                        <input type="text" placeholder=""/>
+                                    </div>
+                                </div>
+                                <div className="d-social-value-section">
+                                    <div className="d-social-value-item">
+                                        <label htmlFor="">Tweet URL</label>
+                                        <input type="text" placeholder="https://twitter.com/vici/status/1227713580572103"/>
+                                    </div>
+                                </div>
+                                <div className="d-social-segmented-values">
+                                    <div className="d-social-left-segment">
+                                        <div className="d-social-item d-enable-repeat-action">
+                                            <div className="d-social-item-text">Enable repeated action </div>
+                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramVisitaPostEnableRepeat} checked={this.state.isInstagramVisitaPostEnabledRepeat} /></div>
+                                        </div>
+                                    </div>
+                                    <div className="d-social-right-segment">
+                                        <div className="d-social-value-item d-value-points">
+                                            <label htmlFor="">Points</label>
+                                            <input type="number" defaultValue="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={"d-social-values-additional-options " + (this.state.isInstagramVisitaPostEnabledRepeat ? 'repeated-action-enabled' : "")}>
+                                    <div className="d-social-value-item d-max-points">
+                                        <label htmlFor="">Maximum points per</label>
+                                        <select name="" id="">
+                                            <option >Day</option>
+                                            <option >Week</option>
+                                            <option >Month</option>
+                                            <option >Year</option>
+                                        </select>
+                                        <input type="number" defaultValue="0" />
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    }
+                };
+
+                let Tweet = () => {
+                    if(this.state.isTwitterTweetEnabled){
+                        return (
+                            <div className="d-instagram-visit-a-post">
+                                <div className="d-social-value-section">
+                                    <div className="d-social-value-item">
+                                        <label htmlFor="">Instructions</label>
+                                        <input type="text" placeholder=""/>
+                                    </div>
+                                </div>
+                                <div className="d-social-value-section">
+                                    <div className="d-social-value-item">
+                                        <label htmlFor="">Tweet</label>
+                                        <input type="text" placeholder="I'm in the running to win a Widget Pro thanks to @JanesWidgets! #win #widgets"/>
+                                    </div>
+                                </div>
+                                <div className="d-social-segmented-values">
+                                    <div className="d-social-left-segment">
+                                        <div className="d-social-item d-enable-repeat-action">
+                                            <div className="d-social-item-text">Enable repeated action </div>
+                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramVisitaPostEnableRepeat} checked={this.state.isInstagramVisitaPostEnabledRepeat} /></div>
+                                        </div>
+                                    </div>
+                                    <div className="d-social-right-segment">
+                                        <div className="d-social-value-item d-value-points">
+                                            <label htmlFor="">Points</label>
+                                            <input type="number" defaultValue="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={"d-social-values-additional-options " + (this.state.isInstagramVisitaPostEnabledRepeat ? 'repeated-action-enabled' : "")}>
+                                    <div className="d-social-value-item d-max-points">
+                                        <label htmlFor="">Maximum points per</label>
+                                        <select name="" id="">
+                                            <option >Day</option>
+                                            <option >Week</option>
+                                            <option >Month</option>
+                                            <option >Year</option>
+                                        </select>
+                                        <input type="number" defaultValue="0" />
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    }
+                };
+
+                
+                return (
+                    <div className="d-social-items">
+                        <h3>Twitter Actions</h3>
+                        <div className="d-social-options-container">
+                            <div className="d-social-item">
+                                <div className="d-social-header">
+                                    <div className="d-social-item-text">Follow a user <span data-tip="test ." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                    <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleTwitterFollowAUser} checked={this.state.isTwitterFollowAUserEnabled} /></div>
+                                </div>
+                                {FollowAUser()}
+                            </div>
+                            <div className="d-social-item">
+                                <div className="d-social-header">
+                                    <div className="d-social-item-text">View a Tweet <span data-tip="test ." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                    <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleTwitterViewATweet} checked={this.state.isTwitterViewATweetEnabled} /></div>
+                                </div>
+                                {ViewATweet()}
+                            </div>
+                            <div className="d-social-item">
+                                <div className="d-social-header">
+                                    <div className="d-social-item-text">Retweet a tweet <span data-tip="test ." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                    <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleTwitterRetweetaTweet} checked={this.state.isTwitterRetweetATweetEnabled} /></div>
+                                </div>
+                                {ReTweet()}
+                            </div>
+                            <div className="d-social-item">
+                                <div className="d-social-header">
+                                    <div className="d-social-item-text">Tweet <span data-tip="test ." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                    <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleTwitterTweet} checked={this.state.isTwitterTweetEnabled} /></div>
+                                </div>
+                                {Tweet()}
+                            </div>
+                        </div>
+                        <ReactTooltip html="true" />
+                    </div>
+                );
+            }
+
+            if(this.state.socialType == 'instagram'){
+                
+                let VisitAPost = () => {
+                    if(this.state.isInstagramSelectVisitAPost){
+                        return (
+                            <div className="d-instagram-visit-a-post">
+                                <div className="d-social-value-section">
+                                    <div className="d-social-value-item">
+                                        <label htmlFor="">Instructions</label>
+                                        <input type="text" placeholder=""/>
+                                    </div>
+                                </div>
+                                <div className="d-social-value-section">
+                                    <div className="d-social-value-item">
+                                        <label htmlFor="">Media URL</label>
+                                        <input type="text" placeholder="http://instagram.com/p/blDoYMvlZu/"/>
+                                    </div>
+                                </div>
+                                <div className="d-social-segmented-values">
+                                    <div className="d-social-left-segment">
+                                        <div className="d-social-item d-enable-repeat-action">
+                                            <div className="d-social-item-text">Enable repeated action </div>
+                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramVisitaPostEnableRepeat} checked={this.state.isInstagramVisitaPostEnabledRepeat} /></div>
+                                        </div>
+                                    </div>
+                                    <div className="d-social-right-segment">
+                                        <div className="d-social-value-item d-value-points">
+                                            <label htmlFor="">Points</label>
+                                            <input type="number" defaultValue="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={"d-social-values-additional-options " + (this.state.isInstagramVisitaPostEnabledRepeat ? 'repeated-action-enabled' : "")}>
+                                    <div className="d-social-value-item d-max-points">
+                                        <label htmlFor="">Maximum points per</label>
+                                        <select name="" id="">
+                                            <option >Day</option>
+                                            <option >Week</option>
+                                            <option >Month</option>
+                                            <option >Year</option>
+                                        </select>
+                                        <input type="number" defaultValue="0" />
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    }
+                };
+
+                let VisitAPProfile = () => {
+                    if(this.state.isInstagramSelectVisitAProfile){
+                        return (
+                            <div className="d-instagram-visit-a-post">
+                                <div className="d-social-value-section">
+                                    <div className="d-social-value-item">
+                                        <label htmlFor="">Instructions</label>
+                                        <input type="text" placeholder=""/>
+                                    </div>
+                                </div>
+                                <div className="d-social-value-section">
+                                    <div className="d-social-value-item">
+                                        <label htmlFor="">Profile URL</label>
+                                        <input type="text" placeholder="Nike or http://instagram.com/nike"/>
+                                    </div>
+                                </div>
+                                <div className="d-social-segmented-values">
+                                    <div className="d-social-left-segment">
+                                        <div className="d-social-item d-enable-repeat-action">
+                                            <div className="d-social-item-text">Enable repeated action </div>
+                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramVisitaPostEnableRepeat} checked={this.state.isInstagramVisitaPostEnabledRepeat} /></div>
+                                        </div>
+                                    </div>
+                                    <div className="d-social-right-segment">
+                                        <div className="d-social-value-item d-value-points">
+                                            <label htmlFor="">Points</label>
+                                            <input type="number" defaultValue="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={"d-social-values-additional-options " + (this.state.isInstagramVisitaPostEnabledRepeat ? 'repeated-action-enabled' : "")}>
+                                    <div className="d-social-value-item d-max-points">
+                                        <label htmlFor="">Maximum points per</label>
+                                        <select name="" id="">
+                                            <option >Day</option>
+                                            <option >Week</option>
+                                            <option >Month</option>
+                                            <option >Year</option>
+                                        </select>
+                                        <input type="number" defaultValue="0" />
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    }
+                };
+
+                let SelectPhotoVideoOption = () => {
+                    if(this.state.isInstagramSelectPhotoVideoEnabled){
+                        return (
+                            <div className="d-instagram-option-items">
+                                <div className="d-social-value-section">
+                                    <div className="d-social-value-item">
+                                        <label htmlFor="">show options soon</label>
+                                    </div>
+                                </div>
+                                <div className="d-social-segmented-values">
+                                    <div className="d-social-left-segment">
+                                        <div className="d-social-item d-enable-repeat-action">
+                                            <div className="d-social-item-text">Enable repeated action </div>
+                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramShowPhotoVideoEnableRepeat} checked={this.state.isInstagramShowPhotoVideoEnableRepeat} /></div>
+                                        </div>
+                                    </div>
+                                    <div className="d-social-right-segment">
+                                        <div className="d-social-value-item d-value-points">
+                                            <label htmlFor="">Points</label>
+                                            <input type="number" defaultValue="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={"d-social-values-additional-options " + (this.state.isInstagramShowPhotoVideoEnableRepeat ? 'repeated-action-enabled' : "")}>
+                                    <div className="d-social-value-item d-max-points">
+                                        <label htmlFor="">Maximum points per</label>
+                                        <select name="" id="">
+                                            <option >Day</option>
+                                            <option >Week</option>
+                                            <option >Month</option>
+                                            <option >Year</option>
+                                        </select>
+                                        <input type="number" defaultValue="0" />
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    }
+                };
+
+                return (
+                    <div className="d-social-items">
+                        <h3>Instagram</h3>
                         <div className="d-social-item">
-                            <div className="d-social-item-text">Visit on Facebook</div>
-                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookVisit} checked={this.state.isFacebookVisitEnabled} /></div>
+                            <div className="d-social-header">
+                                <div className="d-social-item-text">Select image/photo <span data-tip="test ." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramSelectPhotoVideo} checked={this.state.isInstagramSelectPhotoVideoEnabled} /></div>
+                            </div>
+                            {SelectPhotoVideoOption()}
                         </div>
                         <div className="d-social-item">
                             <div className="d-social-header">
-                                <div className="d-social-item-text">Enter URL</div>
+                                <div className="d-social-item-text">Visit a Post <span data-tip="test ." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramVisitAPost} checked={this.state.isInstagramSelectVisitAPost} /></div>
                             </div>
-                            <div className="d-social-value">
-                                <input type="text" placeholder="www.facebookpage.com" />
+                            {VisitAPost()}
+                        </div>
+                        <div className="d-social-item">
+                            <div className="d-social-header">
+                                <div className="d-social-item-text">Visit a Profile <span data-tip="test ." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramVisitAProfile} checked={this.state.isInstagramSelectVisitAProfile} /></div>
+                            </div>
+                            {VisitAPProfile()}
+                        </div>
+                    </div>
+                );
+            }
+
+            if(this.state.socialType == 'youtube'){
+
+                let VisitChannel = () => {
+                    if(this.state.isYoutubeVisitChannelEnabled){
+                        return (
+                            <div className="d-instagram-option-items">
+                                <div className="d-social-value-section">
+                                    <div className="d-social-value-item">
+                                        <label htmlFor="">Instructions</label>
+                                        <input type="text" placeholder=""/>
+                                    </div>
+                                </div>
+                                <div className="d-social-value-section">
+                                    <div className="d-social-value-item">
+                                        <label htmlFor="">Channel URL</label>
+                                        <input type="text" placeholder="https://www.youtube.com/user/LondonGrammar"/>
+                                    </div>
+                                </div>
+                                <div className="d-social-segmented-values">
+                                    <div className="d-social-left-segment">
+                                        <div className="d-social-item d-enable-repeat-action">
+                                            <div className="d-social-item-text">Enable repeated action</div>
+                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramShowPhotoVideoEnableRepeat} checked={this.state.isInstagramShowPhotoVideoEnableRepeat} /></div>
+                                        </div>
+                                    </div>
+                                    <div className="d-social-right-segment">
+                                        <div className="d-social-value-item d-value-points">
+                                            <label htmlFor="">Points</label>
+                                            <input type="number" defaultValue="0"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className={"d-social-values-additional-options " + (this.state.isInstagramShowPhotoVideoEnableRepeat ? 'repeated-action-enabled' : "")}>
+                                    <div className="d-social-value-item d-max-points">
+                                        <label htmlFor="">Maximum points per</label>
+                                        <select name="" id="">
+                                            <option >Day</option>
+                                            <option >Week</option>
+                                            <option >Month</option>
+                                            <option >Year</option>
+                                        </select>
+                                        <input type="number" defaultValue="0" />
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    }
+                };
+
+                return (
+                    <div className="d-social-items">
+                        <h3>Youtube</h3>
+                        <div className="d-social-item">
+                            <div className="d-social-header">
+                                <div className="d-social-item-text">Visit youtube channel <span data-tip="The YouTube Visit allows you to send users from<br />your campaign to your YouTube Channel." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleYoutubeVisitChannel} checked={this.state.isYoutubeVisitChannelEnabled} /></div>
+                            </div>
+                            {VisitChannel()}
+                        </div>
+                        <div className="d-social-item">
+                            <div className="d-social-header">
+                                <div className="d-social-item-text">Subscribe to channel <span data-tip="YouTube Subscribe actions are no longer available<br />due to YouTube’s Fake Engagement Policy updates" className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleYoutubeVisitChannel} checked={false} disabled/></div>
                             </div>
                         </div>
                         <div className="d-social-item">
                             <div className="d-social-header">
-                                <div className="d-social-item-text">View Post</div>
-                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookViewPost} checked={this.state.isFacebookViewPostEnabled} /></div>
-                            </div>
-                            <div className="d-social-value">
-                                <input type="text" placeholder="www.facebookpage.com" />
+                                <div className="d-social-item-text">Watch a video <span data-tip="YouTube Watch a video are no longer available<br />due to YouTube’s Fake Engagement Policy updates" className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleYoutubeVisitChannel} checked={false} disabled/></div>
                             </div>
                         </div>
                         <div className="d-social-item">
                             <div className="d-social-header">
-                                <div className="d-social-item-text">Join Facebook Group</div>
-                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookJoinGroup} checked={this.state.isFacebookJoinGroupEnabled} /></div>
-                            </div>
-                            <div className="d-social-value">
-                                <input type="text" placeholder="www.facebookpage.com" />
+                                <div className="d-social-item-text">Comment a video <span data-tip="YouTube Comment a video are no longer available<br />due to YouTube’s Fake Engagement Policy updates" className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleYoutubeVisitChannel} checked={false} disabled/></div>
                             </div>
                         </div>
+                        <ReactTooltip html="true" />
                     </div>
                 );
             }
@@ -369,6 +1157,7 @@ class GoalChallengeOne extends React.Component {
 
         return (
             <div className="challenges-goal-page-inner">
+                <ReactTooltip />
                 <div className="cgoal-inner">
                     <div className="cgoal-left">
                         <div className="cgoal-left-inner">
@@ -518,14 +1307,14 @@ class GoalChallengeOne extends React.Component {
                                         className="social_action_modal"
                                         ariaHideApp={false}
                                     >
-                                        <div className="d-rewards-settings-modal">
+                                        <div className="d-rewards-settings-modal d-social-modal-size">
                                             <h4>Social Actions</h4>
                                             <div className="d-social-settings-list">
                                                 <div className="d-social-left-side" >
                                                     <div className="d-social-settings">
                                                         <div className="d-social-settings-dropdown">
                                                             <select>
-                                                                <option value="">Choose from saved settings</option>
+                                                                <option >Choose from saved settings</option>
                                                             </select>
                                                         </div>
                                                         <div className="d-social-setting-sub">
@@ -533,42 +1322,42 @@ class GoalChallengeOne extends React.Component {
                                                         </div>
                                                     </div>
                                                     <div className="d-social-show-items">
-                                                        <div className={"d-social-show-item " + (this.state.socialType == 'social' ? 'active' : '')} onClick={() => this.toogleFacebookActions()}>
+                                                        <div className={"d-social-show-item " + (this.state.socialType == 'facebook' ? 'active' : '')} onClick={() => this.toogleFacebookActions()}>
                                                             <div className="d-social-item-icon">
                                                                 <span className="facebook"><FontAwesomeIcon icon={faFacebook} /></span>
                                                             </div>
                                                             <div className="d-social-item-text">Facebook</div>
                                                             <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
                                                         </div>
-                                                        <div className="d-social-show-item">
+                                                        <div className={"d-social-show-item " + (this.state.socialType == 'instagram' ? 'active' : '')} onClick={() => this.toogleInstagramActions()}>
                                                             <div className="d-social-item-icon">
                                                                 <span className="instagram"><FontAwesomeIcon icon={faInstagram} /></span>
                                                             </div>
                                                             <div className="d-social-item-text">Instagram</div>
                                                             <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
                                                         </div>
-                                                        <div className="d-social-show-item">
+                                                        <div className={"d-social-show-item " + (this.state.socialType == 'twitter' ? 'active' : '')} onClick={() => this.toogleTwitterActions()}>
                                                             <div className="d-social-item-icon">
                                                                 <span className="twitter"><FontAwesomeIcon icon={faTwitter} /></span>
                                                             </div>
                                                             <div className="d-social-item-text">Twitter</div>
                                                             <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
                                                         </div>
-                                                        <div className="d-social-show-item">
+                                                        <div className={"d-social-show-item " + (this.state.socialType == 'youtube' ? 'active' : '')} onClick={() => this.toogleYoutubeActions()}>
                                                             <div className="d-social-item-icon">
                                                                 <span className="youtube"><FontAwesomeIcon icon={faYoutube} /></span>
                                                             </div>
                                                             <div className="d-social-item-text">Youtube</div>
                                                             <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
                                                         </div>
-                                                        <div className="d-social-show-item">
+                                                        <div className={"d-social-show-item " + (this.state.socialType == 'tiktok' ? 'active' : '')} onClick={() => this.toogleTiktokActions()}>
                                                             <div className="d-social-item-icon">
                                                                 <span className="tiktok"><FontAwesomeIcon icon={faTiktok} /></span>
                                                             </div>
                                                             <div className="d-social-item-text">Tiktok</div>
                                                             <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
                                                         </div>
-                                                        <div className="d-social-show-item no-icon-part" onClick={() => this.toogleInviteFriendsActions()}>
+                                                        <div className={"d-social-show-item no-icon-part " + (this.state.socialType == 'invite_friend' ? 'active' : '')} onClick={() => this.toogleInviteFriendsActions()}>
                                                             <div className="d-social-item-text">Invite Friends</div>
                                                             <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
                                                         </div>
@@ -668,9 +1457,9 @@ class GoalChallengeOne extends React.Component {
                                     <div className="cg-input dactivity">
                                         <div className="dc_privacy">
                                             <select name="" className="dc_privacy_setting">
-                                                <option value="">Invite Only</option>
-                                                <option value="">Invite Only</option>
-                                                <option value="">Invite Only</option>
+                                                <option >Invite Only</option>
+                                                <option >Invite Only</option>
+                                                <option >Invite Only</option>
                                             </select>
                                         </div>
                                     </div>
@@ -847,17 +1636,17 @@ class GoalChallengeOne extends React.Component {
                                                     <div className="cd-option-item">
                                                         <div className="cd-input-item">
                                                             <select name="" id="">
-                                                                <option value="">Once</option>
-                                                                <option value="">Daily</option>
-                                                                <option value="">Weekly</option>
-                                                                <option value="">Monthly</option>
-                                                                <option value="">Set Duration</option>
+                                                                <option >Once</option>
+                                                                <option >Daily</option>
+                                                                <option >Weekly</option>
+                                                                <option >Monthly</option>
+                                                                <option >Set Duration</option>
                                                             </select>
                                                         </div>
                                                         <div className="cd-input-item">
                                                             <select name="" id="">
-                                                                <option value="">End On</option>
-                                                                <option value="">Repeat</option>
+                                                                <option >End On</option>
+                                                                <option >Repeat</option>
                                                             </select>
                                                         </div>
                                                         <div className="cd-input-item">
