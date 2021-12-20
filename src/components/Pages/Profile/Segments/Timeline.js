@@ -5,12 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSmile } from '@fortawesome/free-regular-svg-icons'
 
 class Timeline extends React.Component {
+    
     constructor(props){
         super(props);
         this.state = {
             uinfo: this.props.uinfo,
             postMessage: '',
             postComments: '',
+            openAttach: false,
             posts: [
                 {
                     id: 1,
@@ -46,6 +48,17 @@ class Timeline extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleCommentChange = this.handleCommentChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+        this.handleOpenAttach = this.handleOpenAttach.bind(this);
+        this.handleCloseAttach = this.handleCloseAttach.bind(this);
+    }
+
+    handleOpenAttach () {
+        this.setState({openAttach: true});
+    }
+
+    handleCloseAttach () {
+        this.setState({openAttach: false});
     }
 
     handleChange (event) {
@@ -85,6 +98,10 @@ class Timeline extends React.Component {
           }
     }
 
+    handleClick(e) {
+        this.refs.fileUploader.click();
+    }
+
     _handleKeyDown = (e) => { 
             const data = {
                 avatar: '/img/user_main.jpg',
@@ -105,6 +122,7 @@ class Timeline extends React.Component {
 
     render () {
         const { posts } = this.state
+        
         return (
             <div className="timeline-inner">
                 {/* BOF add post */}
@@ -116,14 +134,34 @@ class Timeline extends React.Component {
                         <div className="dtextarea">
                             <textarea value={this.state.postMessage} onChange={this.handleChange} placeholder="Write Something.."></textarea>
                         </div>
+                        {
+                            this.state.openAttach &&
+                            <div className="h-48 relative w-full flex justify-center border rounded-lg border-medium_gray bg-primary_background">
+                                <div onClick={this.handleCloseAttach} className="absolute cursor-pointer text-medium_gray right-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 m-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div onClick={this.handleClick} className="mt-12 cursor-pointer">
+                                    <div className="w-full flex justify-center">
+                                        <img src="/img/Group 1270.png"/>
+                                    </div>
+                                    <div className="text-vici_secondary font-bold">Add Attachments</div>
+                                </div>
+                                <input type="file" id="file" ref="fileUploader" style={{display: "none"}}/>
+                            </div>
+                        }
                         <div className="doptions">
                             <div className="leftops">
                                 <div className="ditmone">
                                     <img src="/img/addimage.png"/>
                                 </div>
-                                <div className="ditmone">
+                                <button onClick={this.handleOpenAttach} className="ditmone">
                                     <img src="/img/clip.png"/>
-                                </div>
+                                </button>
+                                <button className="ditmone">
+                                    <img src="/img/notes.png"/>
+                                </button>
                             </div>
                             <div className="rightops">
                                 <button onClick={this._handleKeyDown} className="ditmone">

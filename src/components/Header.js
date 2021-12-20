@@ -1,5 +1,6 @@
 import JoinWaitlist from './modals/JoinWaitlist'
 import { useHistory } from 'react-router-dom';
+import {Helmet} from "react-helmet";
 
 const Header = () => {
 
@@ -18,6 +19,9 @@ const Header = () => {
 
     return ( 
         <div className="container mx-auto">
+            <Helmet>
+                <script src="/js/tracking.js" type="text/javascript" />
+            </Helmet>
             <div className="text-red-500 h-24 flex justify-between">
                 <div onClick={handleRedirect} className="pt-3 cursor-pointer">
                     <img src="/img/vici.png" alt="header_logo" width="135"/>

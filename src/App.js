@@ -10,6 +10,10 @@ import ThankyouHeader from './components/ThankyouPage/Header';
 import ProfileHeader from './components/Pages/Profile/Header';
 import ProfileContent from './components/Pages/Profile/mainProfileContent';
 
+import Profile from './components/Pages/Profile/Index'
+
+import GuestContent from './components/Pages/Guest/GuestContent';
+
 import ContactHeader from './components/Pages/ContactUs/ContactHeader'
 import ContactContent from './components/Pages/ContactUs/ContactContent';
 
@@ -24,13 +28,18 @@ import LoginPage from './components/Pages/Auth/Login';
 
 import NewChallenge from './components/Pages/Challenge/NewChallenge';
 import GoalChallengeOne from './components/Pages/Challenge/GoalChallengeOne';
+import GoalContestOne from './components/Pages/Challenge/GoalContestOne';
+import LeaaderboardChallengeOne from './components/Pages/Challenge/LeaaderboardChallengeOne';
 import PreChallenge from './components/Pages/Challenge/PreChallenge';
 
 import ViewChallenge from './components/Pages/Challenge/ViewChallenge';
 
 import ExploreChallenge from './components/Pages/Challenge/Explore/ExploreChallenge'
 
+import Onboarding from './components/Pages/Onboarding/Onboarding';
 
+import Messages from './components/Pages/Messages/Messages'
+import SearchResults from './components/Pages/Search/SearchResults';
 
 function App() {
   return (
@@ -49,6 +58,18 @@ function App() {
             <Route path="/home">
               <ClanHeader />
               <ProfileContent />
+            </Route>
+            <Route path="/profile">
+              <ClanHeader />
+              <Profile />
+            </Route>
+            <Route path="/onboarding">
+              <ClanHeader />
+              <Onboarding />
+            </Route>
+            <Route path="/guest">
+              <ClanHeader />
+              <GuestContent />
             </Route>
             <Route path="/contact-us">
               <ContactHeader />
@@ -79,6 +100,14 @@ function App() {
               <ClanHeader />
               <GoalChallengeOne />
             </Route>
+            <Route exact path="/challenge/contest">
+              <ClanHeader />
+              <GoalContestOne />
+            </Route>
+            <Route exact path="/challenge/leaderboard">
+              <ClanHeader />
+              <LeaaderboardChallengeOne />
+            </Route>
             <Route path="/challenge/goal/pre-challenge">
               <ClanHeader />
               <PreChallenge />
@@ -90,6 +119,14 @@ function App() {
             <Route path="/challenge/explore">
               <ClanHeader />
               <ExploreChallenge />
+            </Route>
+            <Route path="/search-results">
+              <ClanHeader />
+              <SearchResults />
+            </Route>
+            <Route path="/messages">
+              <ClanHeader />
+              <Messages />
             </Route>
           </Switch>
       </div>
