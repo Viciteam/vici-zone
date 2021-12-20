@@ -13,6 +13,8 @@ class ShowActivity extends React.Component {
     }
 
     render () {
+
+      const renderActivityLabel = (this.props.info.action == 'join_challenge' ? 'Join Challenge' : 'Failed Challenge')
         return (
             <div className="dpost-list-item activity-item">
                 <div className="dpost-list-item">
@@ -21,15 +23,15 @@ class ShowActivity extends React.Component {
                             <img src="/img/user_main.jpg" alt="" />
                         </div>
                         <div className="dpost-list-text">
-                            <h3>{this.props.info.name} - {this.props.info.action}</h3>
+                            <h3>{this.props.info.name} - {renderActivityLabel}</h3>
                             <div className="dnumber">1hr ago</div>
                         </div>
                         <div className="dpost-list-dots">
                             &nbsp;
                         </div>
                     </div>
-                </div> 
-            </div> 
+                </div>
+            </div>
         )
     }
 }
