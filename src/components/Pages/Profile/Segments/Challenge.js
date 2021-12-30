@@ -34,11 +34,17 @@ class Challenge extends React.Component {
                 <div className="dchallemgeheader">
                     <div className="dc-inner">
                         <div className="dci-left">
-                            <button onClick={this.handleOpenModal}>Join a Challenge</button>
+                            <button onClick={this.handleOpenModal}>
+                                <img src="/img/join_challenge.png" alt="" />
+                                <span>Join a Challenge</span>
+                            </button>
                             {this.state.openModal && <LoginModal closeModal={this.handleCloseModal } />}
                         </div>
                         <div className="dci-right">
-                            <button onClick={() => this.newChallenge() }>New Challenge</button>
+                            <button onClick={() => this.newChallenge() }>
+                                <img src="/img/new_challenge.png" alt="" />
+                                <span>New Challenge</span>
+                            </button>
                         </div>
                     </div>
                 </div>
