@@ -90,7 +90,7 @@ class ClanHeader extends React.Component {
                     <div className="ditems">
                         <div className="dmenu">
                             <ul>
-                                <li><a href="#">Home</a></li>
+                                <li><a href="/home">Home</a></li>
                                 <li><a href="#">Explore</a></li>
                                 <li><a href="#">Learn</a></li>
                             </ul>

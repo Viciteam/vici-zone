@@ -197,7 +197,11 @@ class SideProfile extends React.Component {
                         </div>
                     </div>
                     <div className="avatar">
-                        <Avatar />
+                        <div className="d-profile-avatar">
+                            <div className="d-profile-avatar-inner">
+                                <img src="/img/user-profile.png" alt="" />
+                            </div>
+                        </div>
                     </div>
                     <div className="user-details">
                         <div className="ud-inner">
