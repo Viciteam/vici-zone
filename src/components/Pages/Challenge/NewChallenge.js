@@ -16,7 +16,7 @@ class NewChallenge extends React.Component {
                 <h2>New Challenge</h2>
                 <div className="dtopnavs">
                     <div className="leftsubnav">
-                        <a href="#">Home</a>
+                        <a href="/">Home</a>
                     </div>
                     <div className="centersubnav">
                         <h3>Select Challenge Type</h3>

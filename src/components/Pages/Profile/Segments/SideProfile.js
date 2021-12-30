@@ -78,6 +78,10 @@ class SideProfile extends React.Component {
         this.setState({createClanConfirm: true});
     }
 
+    openNewChallenge(){
+        console.log('open challenge');
+    }
+
 
 
     render () {
@@ -189,8 +193,10 @@ class SideProfile extends React.Component {
                             </div>
                             <div className="hi-right">
                                 <div className="dcreatechallenge">
-                                    <div className="dimage"><img src="/img/challenge_question.png"/></div>
-                                    <div className="dtext">Challenge</div>
+                                    <a href="/challenge/new">
+                                        <div className="dimage"><img src="/img/challenge_question.png"/></div>
+                                        <div className="dtext">Challenge</div>
+                                    </a>
                                 </div>
                             </div>
                             <br className="clear"/>
