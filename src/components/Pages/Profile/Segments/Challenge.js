@@ -13,6 +13,7 @@ class Challenge extends React.Component {
         }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
+        this.newChallenge = this.newChallenge.bind(this);
     }
 
     handleOpenModal () {
@@ -21,6 +22,10 @@ class Challenge extends React.Component {
 
     handleCloseModal () {
         this.setState({ openModal: false });
+    }
+
+    newChallenge(){
+        window.location.href = "/challenge/new";
     }
 
     render () {
@@ -33,7 +38,7 @@ class Challenge extends React.Component {
                             {this.state.openModal && <LoginModal closeModal={this.handleCloseModal } />}
                         </div>
                         <div className="dci-right">
-                            <button>New Challenge</button>
+                            <button onClick={() => this.newChallenge() }>New Challenge</button>
                         </div>
                     </div>
                 </div>

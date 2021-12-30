@@ -312,6 +312,7 @@ ul.tabtitles > li {
     width: 214px;
     color: #fcaf38;
     font-weight: bold;
+    border: 1px solid #fcaf38;
 }
 .dchallemgeheader .dci-right {
     display: inline-block;
