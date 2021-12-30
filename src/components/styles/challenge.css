@@ -3828,3 +3828,16 @@
     color: #596366;
     font-weight: bold;
 }
+
+.avatar .d-profile-avatar {
+    background-color: red;
+    background-image: linear-gradient(to right, #711f4e , #9f2b5d);
+}
+
+.avatar .d-profile-avatar .d-profile-avatar-inner {
+    padding: 120px 0;
+}
+
+.avatar .d-profile-avatar .d-profile-avatar-inner img {
+    margin: 0 auto;
+}
