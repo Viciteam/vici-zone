@@ -4,6 +4,9 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment, faBell, faSearch } from '@fortawesome/free-solid-svg-icons'
 
+import BrandProfileModal from './Components/BrandProfileModal';
+import { ProfileContext } from '../Profile/ProfileContext'
+
 class ClanHeader extends React.Component {
     constructor(props){
         super(props);
@@ -11,14 +14,57 @@ class ClanHeader extends React.Component {
             uinfo: this.props.uinfo,
             openMessages: false,
             openSearchDropdown: false,
+            openAccountSettings: false,
+            openCreateBrandProfile: false,
+            openCreateBrandProfileInvite: false,
             search: '',
+            banner: null,
         }
         this.handleOpenMessages = this.handleOpenMessages.bind(this);
-        //this.handleCloseMessages = this.handleCloseMessages.bind(this);
+        this.handleOpenAccountSettings = this.handleOpenAccountSettings.bind(this);
+
+        this.handleOpenCreateBrandProfile = this.handleOpenCreateBrandProfile.bind(this);
+        this.handleCloseCreateBrandProfile = this.handleCloseCreateBrandProfile.bind(this);
+
+        this.handleBannerChanges = this.handleBannerChanges.bind(this);
+        this.handleProfileImage = this.handleProfileImage.bind(this);
+    }
+
+    static contextType = ProfileContext;
+
+    handleBannerChanges (val) {
+        const { banner, profile } = this.context;
+        const [bannerValue, setBannerValue] = banner;
+        //const [profileValue, setProfileValue] = profile;
+        setBannerValue(val)
+    }
+
+    handleProfileImage (val) {
+        const { banner, profile } = this.context;
+        const [profileValue, setProfileValue] = profile;
+        setProfileValue(val)
+    }
+
+    handleOpenCreateBrandProfile () {
+        this.setState({ openCreateBrandProfile: true });
+        this.setState({ openAccountSettings: false });
+    }
+
+    handleCloseCreateBrandProfile () {
+        this.setState({ openCreateBrandProfile: false });
     }
 
     handleKeyPress = (event) => {
         this.setState({search: event.target.value});
+    }
+
+    handleOpenAccountSettings () {
+        if(this.state.openAccountSettings){
+            this.setState({ openAccountSettings: false });
+        }else{
+            this.setState({ openAccountSettings: true });
+            this.setState({ openMessages: false });
+        }
     }
 
     handleOpenMessages () {
@@ -26,6 +72,7 @@ class ClanHeader extends React.Component {
             this.setState({ openMessages: false });
         }else{
             this.setState({ openMessages: true });
+            this.setState({ openAccountSettings: false });
         }
     }
 
@@ -80,7 +127,7 @@ class ClanHeader extends React.Component {
                 title: 'Jello eating contest',
             }
         ]
-
+        
         return (
             <div className="clan-header-main">
                 <div className="clan-header-inner">
@@ -90,7 +137,7 @@ class ClanHeader extends React.Component {
                     <div className="ditems">
                         <div className="dmenu">
                             <ul>
-                                <li><a href="#">Home</a></li>
+                                <li><a href="/home">Home</a></li>
                                 <li><a href="#">Explore</a></li>
                                 <li><a href="#">Learn</a></li>
                             </ul>
@@ -219,7 +266,63 @@ class ClanHeader extends React.Component {
                             <div className="dalarm"><FontAwesomeIcon icon={faBell} /><span className="notifone">&nbsp;</span></div>
                         </div>
                         <div className="dproficon">
-                            <img src="/img/user_main.jpg"/>
+                            <div className="relative">
+                                <img onClick={this.handleOpenAccountSettings} src="/img/user_main.jpg" className="cursor-pointer"/>
+                                {
+                                    this.state.openAccountSettings &&
+                                    <div className="absolute bg-white_color right-0 shadow-vici rounded z-10" style={{width: '270px'}}>
+                                        <div className="text-left">
+                                            <div className="text-sm font-bold px-6 pt-6 pb-3">
+                                                Profile
+                                            </div>
+                                            <div onClick={this.handleOpenCreateBrandProfile} className="flex px-6 py-3 cursor-pointer ">
+                                                <div>
+                                                    <button className="p-1 border rounded border-medium_gray text-vici_secondary">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div className="text-sm text-vici_secondary font-bold pl-3 pt-1">
+                                                    Create brand profile
+                                                </div>
+                                            </div>
+                                            <div className="flex justify-between px-6 py-3 bg-light_gray">
+                                                <div className="text-sm font-bold">
+                                                    Focus Mode
+                                                </div>
+                                                <div>
+                                                    <label for="toggleB" class="flex items-center cursor-pointer">
+                                                        <div class="relative mute-chat">
+                                                            <input type="checkbox" id="toggleB" class="sr-only" />
+                                                            <div class="block bg-bottom_gray w-12 h-7 rounded-full"></div>
+                                                            <div class="dot absolute left-1 top-1 bg-vici_gray w-5 h-5 rounded-full transition"></div>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div className="mx-6 border border-bottom_gray mt-2"></div>
+                                            <div className="px-6 py-3 text-sm font-bold cursor-pointer hover:bg-light_gray">
+                                                Account Settings
+                                            </div>
+                                            <div className="mx-6 border border-bottom_gray mb-2"></div>
+                                            <div className="px-6 py-3 text-sm font-bold cursor-pointer hover:bg-light_gray">
+                                            Help & Support
+                                            </div>
+                                            <div className="px-6 py-3 text-sm font-bold cursor-pointer hover:bg-light_gray">
+                                            Give Feedback
+                                            </div>
+                                            <div className="px-6 py-3 text-sm font-bold cursor-pointer hover:bg-light_gray">
+                                            Language - English (US)
+                                            </div>
+                                            <div className="mx-6 border border-bottom_gray mt-2"></div>
+                                            <div className="px-6 py-3 mb-3 mt-2 text-sm font-bold hover:bg-light_gray cursor-pointer">
+                                            Logout
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
                         </div>
                         <div className="dcoin">
                             <div className="dcoin-inner"><img src="/img/coil.png"/> <span>250</span></div>
@@ -229,6 +332,7 @@ class ClanHeader extends React.Component {
                         </div>
                     </div>
                 </div>
+                {this.state.openCreateBrandProfile && <BrandProfileModal closeModal={this.handleCloseCreateBrandProfile } bannerUpdate={this.handleBannerChanges} profileUpdate={this.handleProfileImage} />}
             </div>
         )
     }

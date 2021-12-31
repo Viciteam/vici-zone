@@ -312,6 +312,13 @@ ul.tabtitles > li {
     width: 214px;
     color: #fcaf38;
     font-weight: bold;
+    border: 1px solid #fcaf38;
+}
+.dchallemgeheader .dci-left button >* {
+    display: inline-block;
+}
+.dchallemgeheader .dci-left button > img {
+    margin-right: -10px;
 }
 .dchallemgeheader .dci-right {
     display: inline-block;
@@ -326,6 +333,13 @@ ul.tabtitles > li {
     width: 214px;
     color: #fff;
     font-weight: bold;
+}
+.dchallemgeheader .dci-right button > * {
+    display: inline-block;
+}
+
+.dchallemgeheader .dci-right button > img {
+    margin-right: -10px;
 }
 .dchallemgeheader {
     text-align: center;

@@ -3546,11 +3546,28 @@
     font-family: nunito, sans-serif;
 }
 
+.quit-challenge-steps {
+    margin: 10% auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 12px #ccc;
+    font-family: nunito, sans-serif;
+}
+
 .join-challenge-steps.challenge-step-one {
     width: 600px;
 }
 
+.quit-challenge-steps.challenge-step-one {
+    width: 470px;
+}
+
 .join-challenge-steps.challenge-step-two {
+    width: 470px;
+    overflow: hidden;
+}
+
+.quit-challenge-steps.challenge-step-two {
     width: 470px;
     overflow: hidden;
 }
@@ -3720,7 +3737,6 @@
     font-size: 15px;
     line-height: 1.3em;
 }
-
 .d-action-current-step .d-add-action-modal-inner {
     margin: 5% auto;
     width: 760px;
@@ -3769,4 +3785,98 @@
 .d-action-step-image img {
   margin: 0 auto;
   width: 130px;
+}
+.challenges-page-inner .dview-left .main-sidebar-inner .ms-join-button button.quit-challenge {
+    background: #EB5757;
+}
+
+.ms-watch-modal-inner.ms-watch-quit {
+    padding: 30px 20px;
+}
+
+.ms-watch-modal-inner.ms-watch-quit .ms-quit-icon {
+    text-align: center;
+    font-size: 130px;
+    line-height: 1em;
+    color: #EB5757;
+    padding: 15px 0;
+}
+
+.ms-watch-modal-inner.ms-watch-quit .ms-watch-content {
+    text-align: center;
+}
+
+.ms-watch-modal-inner.ms-watch-quit .ms-watch-content .ms-watch-quit-desc .ms-watch-quit-title {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1em;
+    margin-bottom: 7px;
+}
+
+.ms-watch-modal-inner.ms-watch-quit .ms-watch-content .ms-watch-quit-desc .ms-watch-quit-desc {
+    line-height: 1.4em;
+    font-size: 14px;
+    padding: 0 60px;
+    color: #596366;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.ms-watch-modal-inner.ms-watch-quit .ms-watch-content .ms-watch-quit-desc .ms-watch-let-creator-know textarea {
+    border: 1px solid #DFDFE1;
+    width: 100%;
+    padding: 20px;
+    line-height: 1em;
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+.ms-watch-modal-inner.ms-watch-quit .ms-watch-content .ms-watch-quit-desc .ms-watch-let-creator-know {
+    padding: 0 35px;
+    margin-bottom: 15px;
+}
+
+.ms-watch-modal-inner.ms-watch-quit .dsub-desc-ops button.cancelbutton {
+    border: 2px solid #DFDFE1;
+    color: #131416;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 1em;
+    padding: 10px 15px;
+    border-radius: 7px;
+}
+
+
+.ms-watch-modal-inner.ms-watch-quit .dsub-desc-ops button.quitbutton {
+    border: 2px solid #EB5757;
+    background: #EB5757;
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 1em;
+    padding: 10px 15px;
+    border-radius: 7px;
+    margin-left: 20px;
+}
+
+.quit-challenge-steps.challenge-step-two .ms-watch-join h3 {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 30px;
+}
+
+.quit-challenge-steps.challenge-step-two .dsub-desc-ops {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.quit-challenge-steps.challenge-step-two .dsub-desc-ops button.cancelbutton {
+    font-size: 14px;
+    color: #596366;
+    font-weight: bold;
+}
+
+.dcreatechallenge {
+    cursor: pointer;
 }

@@ -78,6 +78,10 @@ class SideProfile extends React.Component {
         this.setState({createClanConfirm: true});
     }
 
+    openNewChallenge(){
+        console.log('open challenge');
+    }
+
 
 
     render () {
@@ -99,7 +103,7 @@ class SideProfile extends React.Component {
                         <div className="header-inner">
                             <div className="hi-left">
                                 <div className="levelrate">Lvl {user_info.level}</div>
-                                <div className="dshowclan">
+                                {/* <div className="dshowclan">
                                     <div className="showedClan" onClick={this.openClanOptions}>{user_info.clan}</div>
                                     <div className={"clanlist " + (this.state.showOptions ? 'open_clan_option' : 'close_clan_option')}>
                                         <div className="dcl-inner">
@@ -169,7 +173,6 @@ class SideProfile extends React.Component {
                                         <div className={"dcreate_clan_inner dcreatedconfirm " + (this.state.createClanConfirm ? 'confirmed_on' : 'confirmed_off')}>
                                             <div className="header_part">
                                                 <div className="dtitle">
-                                                    {/* <h2>Create a Clan</h2> */}
                                                 </div>
                                                 <div className="dclose">
                                                     <button onClick={this.closeModal}><FontAwesomeIcon icon={faTimes} /></button>
@@ -185,19 +188,25 @@ class SideProfile extends React.Component {
                                             </div>
                                         </div>
                                     </ReactModal>
-                                </div>
+                                </div> */}
                             </div>
                             <div className="hi-right">
                                 <div className="dcreatechallenge">
-                                    <div className="dimage"><img src="/img/challenge_question.png"/></div>
-                                    <div className="dtext">Challenge</div>
+                                    <a href="/challenge/new">
+                                        <div className="dimage"><img src="/img/challenge_question.png"/></div>
+                                        <div className="dtext">Challenge</div>
+                                    </a>
                                 </div>
                             </div>
                             <br className="clear"/>
                         </div>
                     </div>
                     <div className="avatar">
-                        <Avatar />
+                        <div className="d-profile-avatar">
+                            <div className="d-profile-avatar-inner">
+                                <img src="/img/user-profile.png" alt="" />
+                            </div>
+                        </div>
                     </div>
                     <div className="user-details">
                         <div className="ud-inner">

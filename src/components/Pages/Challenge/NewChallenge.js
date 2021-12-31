@@ -16,7 +16,7 @@ class NewChallenge extends React.Component {
                 <h2>New Challenge</h2>
                 <div className="dtopnavs">
                     <div className="leftsubnav">
-                        <a href="#">Home</a>
+                        <a href="/">Home</a>
                     </div>
                     <div className="centersubnav">
                         <h3>Select Challenge Type</h3>
@@ -28,16 +28,18 @@ class NewChallenge extends React.Component {
                 <div className="diconitems">
                     <div className="dic-inner">
                         <div className="dic-item">
-                            <div className="dic-item-inner">
-                                <div className="dic-icon">
-                                    <img src="/img/ch_goal.png"/>
+                            <a href="/challenge/goal">
+                                <div className="dic-item-inner">
+                                    <div className="dic-icon">
+                                        <img src="/img/ch_goal.png"/>
+                                    </div>
+                                    <div className="dtiletext">goal</div>
+                                    <div className="dshowtext">
+                                        <h2 className="greenbg">Goal Challenge</h2>
+                                        <div class="ddesc">anyone who achieves a goal/milestone wins.</div>
+                                    </div>
                                 </div>
-                                <div className="dtiletext">goal</div>
-                                <div className="dshowtext">
-                                    <h2 className="greenbg">Goal Challenge</h2>
-                                    <div class="ddesc">anyone who achieves a goal/milestone wins.</div>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                         <div className="dic-item">
                             <div className="dic-item-inner">

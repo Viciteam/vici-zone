@@ -22,7 +22,7 @@ import ClanIndex from './components/Pages/Clan/Index';
 import ClanMembers from './components/Pages/Clan/Members';
 import ClanHeader from './components/Pages/Clan/Header';
 import { JoinProvider } from './components/Pages/Clan/JoinedContext';
-
+import { ProfileProvider } from './components/Pages/Profile/ProfileContext';
 
 import LoginPage from './components/Pages/Auth/Login';
 
@@ -46,7 +46,11 @@ function App() {
     <Router>
       <div className="bg-primary_background font-nunito">
           <Switch>
-            <Route exact path="/">
+           <Route exact path="/">
+              <ClanHeader />
+              <ProfileContent />
+            </Route>
+            <Route exact path="/waitlist">
               <Header />
               <Content />
               <Footer />
@@ -55,13 +59,12 @@ function App() {
               <ThankyouHeader />
               <Thankyou />
             </Route>
-            <Route path="/home">
-              <ClanHeader />
-              <ProfileContent />
-            </Route>
+            
             <Route path="/profile">
-              <ClanHeader />
-              <Profile />
+            <ProfileProvider>
+                <ClanHeader />
+                <Profile />
+              </ProfileProvider>
             </Route>
             <Route path="/onboarding">
               <ClanHeader />

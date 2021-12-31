@@ -81,7 +81,7 @@ class mainProfileContent extends React.Component{
                                 <div className="sr-inner">
                                     {/* <DailyChallenge />
                                     <OngoingChallenge /> */}
-                                    <PopularClans />
+                                    {/* <PopularClans /> */}
                                     <WhoToFollow />
                                     <Friends />
                                 </div>

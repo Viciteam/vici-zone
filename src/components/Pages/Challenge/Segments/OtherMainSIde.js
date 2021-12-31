@@ -5,7 +5,7 @@ import ReactModal from 'react-modal';
 import Switch from "react-switch";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faEye} from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faEye, faExclamationCircle} from '@fortawesome/free-solid-svg-icons'
 
 class OtherMainSIde extends React.Component {
     constructor(props){
@@ -22,7 +22,10 @@ class OtherMainSIde extends React.Component {
             joinChallengeStep: 1,
             joinChallengeSelected: 'individual',
             joinChallengeSelectedSquad: 'Please select a Squad',
-            joinChallengeSelectedClan: 'Please select a Clan'
+            joinChallengeSelectedClan: 'Please select a Clan',
+            quitChallengeModal: true,
+            quitChallengeStep: 1,
+            quitChallengeType: 1 
         }
 
         this.watchChallenge = this.watchChallenge.bind(this);
@@ -30,8 +33,11 @@ class OtherMainSIde extends React.Component {
         this.cancelWatch = this.cancelWatch.bind(this);
         this.joinChallengeOption = this.joinChallengeOption.bind(this);
         this.openJoinChallenge = this.openJoinChallenge.bind(this);
-        this.closeJoinChallenge = this.closeJoinChallenge.bind(this);
+        this.openQuitChallenge = this.openQuitChallenge.bind(this);
         this.confirmJoinChallenge = this.confirmJoinChallenge.bind(this);
+        this.closeJoinChallenge = this.closeJoinChallenge.bind(this);
+        this.closeQuitChallenge = this.closeQuitChallenge.bind(this);
+        this.confirmQuitChallenge = this.confirmQuitChallenge.bind(this);
     }
 
     watchChallenge(){
@@ -72,8 +78,20 @@ class OtherMainSIde extends React.Component {
         this.setState({ joinChallengeModal: true });
     }
 
+    openQuitChallenge(){
+        this.setState({ quitChallengeModal: true });
+    }
+
+    closeQuitChallenge(){
+        this.setState({ quitChallengeModal: false });
+    }
+
     confirmJoinChallenge(){
         this.setState({ joinChallengeStep: 2 });
+    }
+
+    confirmQuitChallenge(){
+        this.setState({ quitChallengeStep: 2 });
     }
 
     render () {
@@ -202,7 +220,67 @@ class OtherMainSIde extends React.Component {
                 );
             }
         };
-        
+
+        let quitChallenge = () => {
+            if(this.state.quitChallengeStep == 1){
+
+                let hasPenalty = () => {
+                    return (
+                        <div className="showPenalty">
+                            test
+                        </div>
+                    );
+                }
+
+                return (
+                    <div className="quit-challenge-steps challenge-step-one">
+                        <div className="ms-watch-modal">
+                            <div className="ms-watch-modal-inner ms-watch-quit">
+                                <div className="ms-quit-icon">
+                                    <FontAwesomeIcon icon={faExclamationCircle} />
+                                </div>
+                                <div className="ms-watch-content">
+                                    <div className="ms-watch-quit-desc">
+                                        <div className="ms-watch-quit-title">You are about to abandon the challenge</div>
+                                        <div className="ms-watch-quit-desc">You will be marked as 'abandoned' in the participant list</div>
+                                        <div className="ms-watch-let-creator-know">
+                                            <textarea placeholder="Let the creator know your reason for abandoning (optional)"></textarea>
+                                        </div>
+                                    </div>
+                                    <div className="dsub-desc-ops">
+                                        <button className="cancelbutton" onClick={() => this.closeQuitChallenge()}>ON SECOND THOUGHT</button>
+                                        <button className="quitbutton" onClick={() => this.confirmQuitChallenge()}>Abandon Challenge</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
+            if(this.state.quitChallengeStep == 2){
+                return (
+                    <div className="quit-challenge-steps challenge-step-two">
+                        <div className="ms-watch-modal">
+                            <div className="ms-watch-modal-inner">
+                                <div className="ms-watch-header-top">
+                                    <img src="/img/watch_header.png" alt="" />
+                                </div>
+                                <div className="ms-watch-content">
+                                    <div className="ms-watch-join">
+                                        <h3>Challenge Abandoned</h3>
+                                    </div>
+                                    <div className="dsub-desc-ops">
+                                        <button className="cancelbutton">Home</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+        };
+
         return (
             <div className="main-sidebar-inner">
                 <div className="dshageimage">
@@ -234,6 +312,7 @@ class OtherMainSIde extends React.Component {
                 </div>
                 <div className="ms-join-button">
                     <button onClick={() => this.openJoinChallenge()}>Join Challenge</button>
+                    <button className="quit-challenge" onClick={() => this.openQuitChallenge()}>Quit Challenge</button>
                 </div>
 
                 <div className="ms-button-options">
@@ -264,7 +343,7 @@ class OtherMainSIde extends React.Component {
                                         <div className="dsub-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={() => this.handleChange('one')} checked={this.state.switchOne} /></div>
                                     </div>
                                     <div className="dsub-items">
-                                        <div className="dsub-title">When someone fails a challenge</div>
+                                        <div className="dsub-title">When someone fails the challenge</div>
                                         <div className="dsub-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={() => this.handleChange('two')} checked={this.state.switchTwo} /></div>
                                     </div>
                                     <div className="dsub-items">
@@ -296,6 +375,17 @@ class OtherMainSIde extends React.Component {
                 >
                     <div className="ms-watch-modal">
                         {joinChallenge()}
+                    </div>
+                </ReactModal>
+
+                <ReactModal
+                    isOpen={this.state.quitChallengeModal}
+                    contentLabel="Example Modal"
+                    className="quit_challenge_modal"
+                    ariaHideApp={false}
+                >
+                    <div className="ms-watch-modal">
+                        {quitChallenge()}
                     </div>
                 </ReactModal>
             </div>
