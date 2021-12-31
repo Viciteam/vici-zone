@@ -22,8 +22,8 @@ class GoalChallengeOne extends React.Component {
         this.state = {
             uinfo: this.props.uinfo,
             activepart: 'title',
-            stepnumber: 1,
-            menuActive: 2,
+            stepnumber: 0,
+            menuActive: 1,
             activityList: [{"activity": ""}],
             checked: false,
             showCountry: false,
@@ -36,7 +36,7 @@ class GoalChallengeOne extends React.Component {
             selectedPreviewHeaderImage: '/img/prev-header.png',
             socialActionSLide: false,
             socialType: 'youtube',
-            isOpenSingleRewardModal: true, // open social action modal
+            isOpenSingleRewardModal: false, // open social action modal
 
             // facebook options
             isFacebookLoginEnabled: false,
@@ -71,6 +71,7 @@ class GoalChallengeOne extends React.Component {
             isFacebookVisitAllowToLikePage: false,
             isFacebookVisitEnabledrepeat: false,
         }
+        
         this.createActive = this.createActive.bind(this);
         this.proceedToNext = this.proceedToNext.bind(this);
         this.proceedToPrev = this.proceedToPrev.bind(this);
