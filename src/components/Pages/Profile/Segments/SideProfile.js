@@ -9,6 +9,8 @@ import Avatar from "./Avatar.jsx";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
+import ImageUploading, {ImageListType} from 'react-images-uploading';
+
 class SideProfile extends React.Component {
     constructor(props){
         super(props);
@@ -18,7 +20,8 @@ class SideProfile extends React.Component {
             isModalOpen: false,
             mainColor: '#c6ad23',
             showColorChange: false,
-            createClanConfirm: false
+            createClanConfirm: false,
+            images: []
         }
         this.data_initialize = this.data_initialize.bind(this);
         this.createClan = this.createClan.bind(this);
@@ -28,6 +31,7 @@ class SideProfile extends React.Component {
         this.changeColor = this.changeColor.bind(this);
         this.changeColorOption = this.changeColorOption.bind(this);
         this.createClanNow = this.createClanNow.bind(this);
+        this.uploadImage = this.uploadImage.bind(this);
     }
 
     data_initialize(){
@@ -76,6 +80,11 @@ class SideProfile extends React.Component {
 
     createClanNow(){
         this.setState({createClanConfirm: true});
+    }
+
+    uploadImage(imageList, addUpdateIndex){
+        console.log('uploaded', imageList);
+        console.log('uploaded', addUpdateIndex);
     }
 
 
@@ -201,6 +210,45 @@ class SideProfile extends React.Component {
                             <div className="d-profile-avatar-inner">
                                 <img src="/img/user-profile.png" alt="" />
                             </div>
+                            <ImageUploading
+                                multiple
+                                value={this.state.images}
+                                onChange={this.uploadImage}
+                                maxNumber={69}
+                                dataURLKey="data_url"
+                            >
+                                {({
+                                imageList,
+                                onImageUpload,
+                                onImageRemoveAll,
+                                onImageUpdate,
+                                onImageRemove,
+                                isDragging,
+                                dragProps,
+                                }) => (
+                                // write your building UI
+                                <div className="upload__image-wrapper">
+                                    <button
+                                    style={isDragging ? { color: 'red' } : undefined}
+                                    onClick={onImageUpload}
+                                    {...dragProps}
+                                    >
+                                    Click or Drop here
+                                    </button>
+                                    &nbsp;
+                                    <button onClick={onImageRemoveAll}>Remove all images</button>
+                                    {imageList.map((image, index) => (
+                                    <div key={index} className="image-item">
+                                        <img src={image['data_url']} alt="" width="100" />
+                                        <div className="image-item__btn-wrapper">
+                                        <button onClick={() => onImageUpdate(index)}>Update</button>
+                                        <button onClick={() => onImageRemove(index)}>Remove</button>
+                                        </div>
+                                    </div>
+                                    ))}
+                                </div>
+                                )}
+                            </ImageUploading>
                         </div>
                     </div>
                     <div className="user-details">
