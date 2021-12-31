@@ -46,7 +46,11 @@ function App() {
     <Router>
       <div className="bg-primary_background font-nunito">
           <Switch>
-            <Route exact path="/">
+           <Route exact path="/">
+              <ClanHeader />
+              <ProfileContent />
+            </Route>
+            <Route exact path="/waitlist">
               <Header />
               <Content />
               <Footer />
@@ -55,10 +59,7 @@ function App() {
               <ThankyouHeader />
               <Thankyou />
             </Route>
-            <Route path="/home">
-              <ClanHeader />
-              <ProfileContent />
-            </Route>
+            
             <Route path="/profile">
             <ProfileProvider>
                 <ClanHeader />
