@@ -2,6 +2,7 @@ import './../../styles/challenge.css';
 import React from 'react';
 
 import Menu from './Segments/Menu'
+import ChallengeGoalActions from './Segments/ChallengeGoalActions'
 
 import Switch from "react-switch";
 
@@ -36,7 +37,7 @@ class GoalChallengeOne extends React.Component {
             selectedPreviewHeaderImage: '/img/prev-header.png',
             socialActionSLide: false,
             socialType: 'youtube',
-            isOpenSingleRewardModal: true, // open social action modal
+            isOpenSingleRewardModal: false, // open social action modal
 
             // facebook options
             isFacebookLoginEnabled: false,
@@ -44,7 +45,7 @@ class GoalChallengeOne extends React.Component {
             isFacebookViewPostEnabled: false,
             isFacebookJoinGroupEnabled: false,
             isFacebookSelectPhotoVideoEnabled: false,
-            
+
             // facebook Login Options
             isFacebookLoginAllowToLikePage: false,
             isFacebookLoginEnabledrepeat: false,
@@ -56,7 +57,7 @@ class GoalChallengeOne extends React.Component {
             isInstagramShowPhotoVideoEnabledRepeat: false,
             isInstagramVisitaPostEnabledRepeat: false,
             isInstagramVisitaProfileEnabledRepeat: false,
-            
+
             // twitter
             isTwitterFollowAUserEnabled: false,
             isTwitterViewATweetEnabled: false,
@@ -65,7 +66,7 @@ class GoalChallengeOne extends React.Component {
 
             // youtube
             isYoutubeVisitChannelEnabled: false,
-            
+
 
             // facebook Visit Options
             isFacebookVisitAllowToLikePage: false,
@@ -162,7 +163,7 @@ class GoalChallengeOne extends React.Component {
     toogleFacebookSelectPhotoVideo(){
         this.setState({isFacebookSelectPhotoVideoEnabled: !this.state.isFacebookSelectPhotoVideoEnabled});
     }
-    
+
 
     toogleFacebookViewPost(){
         this.setState({isFacebookViewPostEnabled: !this.state.isFacebookViewPostEnabled});
@@ -252,15 +253,15 @@ class GoalChallengeOne extends React.Component {
     proceedToNext(){
         let stepnum = this.state.stepnumber + 1;
         let menuitem = this.state.menuActive + 1;
-        this.setState({stepnumber: stepnum}) 
-        this.setState({menuActive: menuitem}) 
+        this.setState({stepnumber: stepnum})
+        this.setState({menuActive: menuitem})
     }
 
     proceedToPrev(){
         let stepnum = this.state.stepnumber - 1;
         let menuitem = this.state.menuActive - 1;
-        this.setState({stepnumber: stepnum}) 
-        this.setState({menuActive: menuitem}) 
+        this.setState({stepnumber: stepnum})
+        this.setState({menuActive: menuitem})
     }
 
     handleChange(checked) {
@@ -570,7 +571,7 @@ class GoalChallengeOne extends React.Component {
                         );
                     }
                 };
-                
+
                 return (
                     <div className="d-social-items">
                         <h3>Facebook Actions</h3>
@@ -613,7 +614,7 @@ class GoalChallengeOne extends React.Component {
             }
 
             if(this.state.socialType == 'twitter'){
-                
+
                 let FollowAUser = () => {
                     if(this.state.isTwitterFollowAUserEnabled){
                         return (
@@ -802,7 +803,7 @@ class GoalChallengeOne extends React.Component {
                     }
                 };
 
-                
+
                 return (
                     <div className="d-social-items">
                         <h3>Twitter Actions</h3>
@@ -842,7 +843,7 @@ class GoalChallengeOne extends React.Component {
             }
 
             if(this.state.socialType == 'instagram'){
-                
+
                 let VisitAPost = () => {
                     if(this.state.isInstagramSelectVisitAPost){
                         return (
@@ -1153,7 +1154,7 @@ class GoalChallengeOne extends React.Component {
             }
         }
 
-        
+
 
         return (
             <div className="challenges-goal-page-inner">
@@ -1174,7 +1175,7 @@ class GoalChallengeOne extends React.Component {
                             </div>
                         </div>
                     </div>
-                    
+
                     <div className="cgoal-center">
                         <div className={"dstep step_one " + (this.state.stepnumber == 0 ? 'isactive_tab' : '')}>
                             <div className="cgoal-center-inner">
@@ -1245,48 +1246,9 @@ class GoalChallengeOne extends React.Component {
                                 </div>
 
                                 <div className={"cg-item " + (this.state.activepart == 'two_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_actions') }>
+
                                     <div className="cg-label">Actions</div>
-                                    <div className="cg-input dactivity">
-                                        <div className="subheader">Specify the actions needed to complete the goal.</div>
-                                        <div className="activity-list">
-                                            <div className="activity-items">
-                                                <div className="ac-item">
-                                                    <div className="dleftitems">
-                                                        <span className="dicon"><FontAwesomeIcon icon={faBars} /></span>
-                                                        <span className="dtext">Drink 8 glasses of water everyday</span>
-                                                    </div>
-                                                    <div className="drightitems">
-                                                        <span className="doptions"><FontAwesomeIcon icon={faEllipsisV} /></span>
-                                                    </div>
-                                                </div>
-                                                <div className="ac-item">
-                                                    <div className="dleftitems">
-                                                        <span className="dicon"><FontAwesomeIcon icon={faBars} /></span>
-                                                        <span className="dtext">Drink 8 glasses of water everyday</span>
-                                                    </div>
-                                                    <div className="drightitems">
-                                                        <span className="doptions"><FontAwesomeIcon icon={faEllipsisV} /></span>
-                                                    </div>
-                                                </div>
-                                                <div className="ac-item">
-                                                    <div className="dleftitems">
-                                                        <span className="dicon"><FontAwesomeIcon icon={faBars} /></span>
-                                                        <span className="dtext">Drink 8 glasses of water everyday</span>
-                                                    </div>
-                                                    <div className="drightitems">
-                                                        <span className="doptions"><FontAwesomeIcon icon={faEllipsisV} /></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="activity-add-button">
-                                                <div className="daddactions" onClick={() => this.addActivity()}>
-                                                    <span className="dicon"><FontAwesomeIcon icon={faPlus} /></span>
-                                                    <span className="dtext">Add an action</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="ditem-flow"><div className="dflowtext">Must complete actions in order</div> <Switch height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
-                                    </div>
+                                    <ChallengeGoalActions />
                                 </div>
 
                                 <div className={"cg-item " + (this.state.activepart == 'two_social_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_social_actions') }>
@@ -1440,7 +1402,7 @@ class GoalChallengeOne extends React.Component {
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div className="dnext-button">
                                     <button className="prev-arrow" onClick={() => this.proceedToPrev()}>Back</button>
                                     <button className="next-arrow" onClick={() => this.proceedToNext()}>Next &rarr;</button>
@@ -1659,7 +1621,7 @@ class GoalChallengeOne extends React.Component {
                                     </div>
                                 </div>
 
-                                
+
                                 <div className="dnext-button">
                                     <button className="prev-arrow" onClick={() => this.proceedToPrev()}>Back</button>
                                     <button className="next-arrow" onClick={() => this.proceedToNext()}>Next &rarr;</button>
@@ -1685,7 +1647,7 @@ class GoalChallengeOne extends React.Component {
                                                 <ul>
                                                     <li><img src="/img/s4img0.png" className=""/></li>
                                                     {todoItems}
-                                                    
+
                                                 </ul>
                                             </div>
                                         </div>
@@ -1703,7 +1665,7 @@ class GoalChallengeOne extends React.Component {
                                                     <div className="dcolorvals">
                                                         <div className="dcolorprev" style={{backgroundColor: this.state.selectedColor}}>&nbsp;</div>
                                                         <div className="dcolortext">{this.state.selectedColor}</div>
-                                                    </div>  
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -1716,7 +1678,7 @@ class GoalChallengeOne extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div className="cgoal-right">
                         <div className="cgoal-right-inner" style={{display: this.state.stepnumber < 2 ? 'block' : 'none' }} >
@@ -1766,10 +1728,10 @@ class GoalChallengeOne extends React.Component {
 
                                     <div className="doptionspart">
                                         <div className="doptleft">
-                                            <div className="donut-chart-block block"> 
+                                            <div className="donut-chart-block block">
                                                 <div className="donut-chart" style={{backgroundColor: this.state.selectedColor+"70"}}>
                                                     <div id="part1" className="portion-block"><div className="circle" style={{backgroundColor: this.state.selectedColor}}></div></div>
-                                                    <p className="center"></p>        
+                                                    <p className="center"></p>
                                                 </div>
                                             </div>
                                         </div>

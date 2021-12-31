@@ -326,7 +326,7 @@
     margin: 0 auto;
     line-height: 1.3em;
     font-size: 14px;
-} 
+}
 
 .cgoal-left-inner .dtitle {
     margin-bottom: 25px;
@@ -343,7 +343,7 @@
     display: inline-block;
     vertical-align: middle;
     font-weight: bold;
-} 
+}
 
 .cgoal-left-inner .dtitle .dimage img {
     width: 50px;
@@ -568,7 +568,7 @@
     padding: 15px 20px;
     line-height: 1em;
     font-size: 11px;
-    
+
     cursor: pointer;
     font-weight: bold;
 }
@@ -1031,7 +1031,7 @@
 }
 
 .challenges-goal-page-inner .cgoal-center-inner .dshowsitem .dtitle > * {
-    display: inline-block;  
+    display: inline-block;
     vertical-align: middle;
 }
 
@@ -1236,7 +1236,7 @@
     font-size: 28px;
     top:0;left:0;bottom:0;right:0;
     width: 75px;
-    height: 75px;   
+    height: 75px;
     margin: auto;
     border-radius: 50%;
     line-height: 35px;
@@ -1536,7 +1536,7 @@
     font-size: 13px;
     top:0;left:0;bottom:0;right:0;
     width: 75px;
-    height: 75px;   
+    height: 75px;
     margin: auto;
     border-radius: 50%;
     line-height: 1.2em;
@@ -2012,7 +2012,7 @@
     font-size: 19px;
     color: #FFCA28;
     line-height: 1em;
-} 
+}
 .challenges-page-inner .updates-comments-inner .dpostlist {
     padding: 20px 5px;
 }
@@ -2056,7 +2056,7 @@
 }
 
 .challenges-page-inner .updates-comments-inner .dpostlist .dpost-list-item {
-    
+
 }
 
 .challenges-page-inner .updates-comments-inner .dpostlist .dpost-list-item.activity-item {
@@ -2140,7 +2140,7 @@
 .challenges-page-inner .dotheritems .goal-menu-inner .dotheritem .dotherinner .dothertags {
     padding: 0 20px;
     margin-bottom: 20px;
-} 
+}
 
 .challenges-page-inner .dotheritems .goal-menu-inner .dotheritem .dotherinner .dothertags span {
     background: #219653;
@@ -2304,7 +2304,7 @@
     line-height: 1em;
 }
 
-.watch_side_modal .ms-watch-modal .ms-watch-content .dsub-desc-ops .cancelbutton { 
+.watch_side_modal .ms-watch-modal .ms-watch-content .dsub-desc-ops .cancelbutton {
     border: 2px solid #A0A8B0;
     color: #A0A8B0;
     font-size: 14px;
@@ -2385,7 +2385,7 @@
     margin: 10px;
     cursor: pointer;
 }
-    
+
 
 .challenges-goal-page-inner .cgoal-center-inner .cg-item .cg-input .cg-entry-ops .cg-icon-ops {
     width: 10%;
@@ -3231,7 +3231,7 @@
     width: 35%;
     display: inline-block;
     padding: 10px 20px;
-    
+
     vertical-align: top;
 }
 
@@ -3396,7 +3396,7 @@
 }
 
 .d-reward-settings-list.d-reward-sent-setting {
-    text-align: center;    
+    text-align: center;
 }
 
 .d-reward-settings-list.d-reward-sent-setting .d-reward-image img {
@@ -3719,4 +3719,54 @@
     text-align: center;
     font-size: 15px;
     line-height: 1.3em;
+}
+
+.d-action-current-step .d-add-action-modal-inner {
+    margin: 5% auto;
+    width: 760px;
+    background: #fff;
+    box-shadow: 0 0 12px #ccc;
+    border-radius: 10px;
+}
+
+.add-action-modal .d-add-action-modal-inner h4 {
+    border-bottom: 1px solid #ccc;
+    line-height: 1em;
+    font-weight: bold;
+    padding: 15px 20px;
+    font-size: 18px;
+}
+
+.d-action-current-step .d-action-steps-options {
+  border-top: 1px solid #ccc;
+  text-align: right;
+  padding: 15px 20px;
+}
+
+.d-action-current-step .d-action-steps-options button.d-cancel-action {
+    color: #A0A8B0;
+    line-height: 1em;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 10px 20px;
+    border: 2px solid #A0A8B0;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.d-action-current-step .d-action-steps-options button.d-proceed-action {
+    background: #FFCA28;
+    color: #fff;
+    line-height: 1em;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 10px 20px;
+    border: 2px solid #FFCA28;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.d-action-step-image img {
+  margin: 0 auto;
+  width: 130px;
 }
