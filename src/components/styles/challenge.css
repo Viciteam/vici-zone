@@ -3828,3 +3828,7 @@
     color: #596366;
     font-weight: bold;
 }
+
+.dcreatechallenge {
+    cursor: pointer;
+}

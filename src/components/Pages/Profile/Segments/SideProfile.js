@@ -78,6 +78,10 @@ class SideProfile extends React.Component {
         this.setState({createClanConfirm: true});
     }
 
+    openNewChallenge(){
+        console.log('open challenge');
+    }
+
 
 
     render () {
