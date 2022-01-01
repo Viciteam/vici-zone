@@ -14,7 +14,7 @@ class ChallengeGoalActions extends React.Component {
         super(props);
         this.state = {
             isactive: this.props.isactive,
-            addActionModal: true,
+            addActionModal: false,
             actionCurrentStep: 1,
             stageTwoSelectedOption: ''
         }
