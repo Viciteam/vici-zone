@@ -29,8 +29,8 @@ class ShowActivity extends React.Component {
                             &nbsp;
                         </div>
                     </div>
-                </div> 
-            </div> 
+                </div>
+            </div>
         )
     }
 }

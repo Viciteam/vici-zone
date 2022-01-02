@@ -1,6 +1,8 @@
 import './../../styles/challenge.css';
 import React from 'react';
 
+import { withRouter } from 'react-router-dom'
+
 import WatchRewards from './Segments/WatchRewards'
 import Comments from './Segments/Comments'
 
@@ -10,21 +12,68 @@ import OtherMainSIde from './Segments/OtherMainSIde'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle, faEye, faTimes } from '@fortawesome/free-solid-svg-icons'
 
+import axios from 'axios'
+
+const api = axios.create({
+  baseURL: 'https://api.vici.life/api/',
+  headers: {
+    'Content-Type' : 'application/json',
+    'Accept' : 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Authorization' : 'Bearer 1|74Q5WHcDLDhCb5M9NtabCridB2ZN68CGFaS5r2yN'
+  }
+})
+
 
 class ViewChallenge extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            challengeID: this.props.match.params.id,
             uinfo: this.props.uinfo,
             isWatching: false,
-            isWatchingText: 'Watch Challenge'
+            isWatchingText: 'Watch Challenge',
+            challengeDetails: [],
+            challengeName: '',
         }
+
+        // this.getChallengeInfo();
+
 
         this.watchChallenge = this.watchChallenge.bind(this);
     }
 
+    componentDidMount(){
+      api.get('challenge/'+this.state.challengeID).then(
+        (response) => {
+          console.log('response -> ', response.data.challenges);
+          let challenges = response.data.challenges[0];
+          this.setState({challengeName: challenges.name});
+
+        }
+      ).catch((error) => {
+        console.log('error -> ', error);
+      });
+    }
+
+    // getChallengeInfo = async () => {
+    //   console.log('get challenge');
+    //   let self = this;
+    //
+    //   // get challenge
+    //   api.get('challenge/'+this.state.challengeID).then(
+    //     (response) => {
+    //       console.log('response -> ', response.data.challenges);
+    //       this.setState({challengeDetails: response.data.challenges});
+    //
+    //     }
+    //   ).catch((error) => {
+    //     console.log('error -> ', error);
+    //   });
+    // }
+
     watchChallenge(){
-        
+
         this.setState({ isWatching: !this.state.isWatching });
 
         if(this.state.isWatching){
@@ -33,20 +82,20 @@ class ViewChallenge extends React.Component {
             this.setState({ isWatchingText: 'Stop Watching'});
         }
 
-        
+
 
         // this.state.isWatching = !this.state.isWatching;
     }
 
     render () {
-        
+
         return (
             <div className="challenges-page-inner">
                 <div className="dview-left">
                     <div className="dv-left-inner">
                         <div className="dvl-main-sidebar">
-                            
-                            <OtherMainSIde />
+
+                            <OtherMainSIde name={this.state.challengeName} />
                         </div>
                         <div className="dvl-main-sidebar">
                             <WatchRewards />
@@ -108,10 +157,10 @@ class ViewChallenge extends React.Component {
                             </div>
                             <div className="drightpart">
                                 <div className="dchartpart">
-                                    {/* <div className="donut-chart-block"> 
+                                    {/* <div className="donut-chart-block">
                                         <div className="donut-chart" style={{backgroundColor: this.state.selectedColor+"70"}}>
                                             <div id="part1" className="portion-block"><div className="circle" style={{backgroundColor: this.state.selectedColor}}></div></div>
-                                            <p className="center"><span className="dnum">0</span><br /><span className="dsubtext">Actions</span></p>        
+                                            <p className="center"><span className="dnum">0</span><br /><span className="dsubtext">Actions</span></p>
                                         </div>
                                     </div> */}
                                     <div className="watch-pie-chart wpc-progress">
@@ -224,4 +273,4 @@ class ViewChallenge extends React.Component {
     }
 }
 
-export default ViewChallenge
+export default withRouter(ViewChallenge)

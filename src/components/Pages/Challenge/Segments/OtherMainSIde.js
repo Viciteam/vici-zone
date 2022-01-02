@@ -23,9 +23,9 @@ class OtherMainSIde extends React.Component {
             joinChallengeSelected: 'individual',
             joinChallengeSelectedSquad: 'Please select a Squad',
             joinChallengeSelectedClan: 'Please select a Clan',
-            quitChallengeModal: true,
+            quitChallengeModal: false,
             quitChallengeStep: 1,
-            quitChallengeType: 1 
+            quitChallengeType: 1
         }
 
         this.watchChallenge = this.watchChallenge.bind(this);
@@ -69,7 +69,7 @@ class OtherMainSIde extends React.Component {
     }
 
     closeJoinChallenge(){
-        
+
         this.setState({ joinChallengeModal: false });
     }
 
@@ -286,7 +286,7 @@ class OtherMainSIde extends React.Component {
                 <div className="dshageimage">
                     <img src="/img/share.png" alt="" />
                 </div>
-                <h2>Morning Routine</h2>
+                <h2>{this.props.name}</h2>
                 <div className="subtitle">Goal</div>
                 <div className="ms-main-image">
                     <img src="/img/watch_main.png" alt="" />
@@ -304,7 +304,7 @@ class OtherMainSIde extends React.Component {
                     <div className="dinfoitem">
                         <div className="din-left">DURATION:</div>
                         <div className="din-right">Daily</div>
-                    </div> 
+                    </div>
                     <div className="dinfoitem">
                         <div className="din-left">INSTRUCTIONS:</div>
                         <div className="din-right">Do the completed set of actions daily</div>

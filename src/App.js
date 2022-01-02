@@ -59,7 +59,7 @@ function App() {
               <ThankyouHeader />
               <Thankyou />
             </Route>
-            
+
             <Route path="/profile">
             <ProfileProvider>
                 <ClanHeader />
@@ -118,6 +118,10 @@ function App() {
             <Route exact path="/challenge/view">
               <ClanHeader />
               <ViewChallenge />
+            </Route>
+            <Route path="/challenge/:id">
+              <ClanHeader />
+              <ViewChallenge/>
             </Route>
             <Route path="/challenge/explore">
               <ClanHeader />
