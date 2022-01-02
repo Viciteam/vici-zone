@@ -272,7 +272,7 @@
     padding: 10px 24px;
     width: 100%;
     color: #1F1521;
-    font-size: 12px;
+    font-size: 13px;
     margin-bottom: 15px;
 }
 .challenges-goal-page-inner .cgoal-center-inner .cg-item .cg-input input[type="radio"] {
@@ -285,6 +285,7 @@
     width: 100%;
     color: #1F1521;
     height: 120px;
+    font-size: 13px;
 }
 .challenges-goal-page-inner .cgoal-center-inner .cg-item .cg-input input.focus-visible {
     border: 1px solid #DFDFE1 !important;
@@ -530,6 +531,11 @@
 
 .challenges-goal-page-inner .ddown_list {
     position: relative;
+    display: none;
+}
+
+.challenges-goal-page-inner .ddown_list.active_item {
+    display: block;
 }
 
 .challenges-goal-page-inner .ddown_list .dselectlocation {

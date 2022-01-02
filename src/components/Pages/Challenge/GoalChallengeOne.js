@@ -16,6 +16,18 @@ import { HexColorPicker } from "react-colorful";
 
 import ReactTooltip from 'react-tooltip';
 
+import axios from 'axios'
+
+const api = axios.create({
+  baseURL: 'https://api.vici.life/api/',
+  headers: {
+    'Content-Type' : 'application/json',
+    'Accept' : 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Authorization' : 'Bearer 1|74Q5WHcDLDhCb5M9NtabCridB2ZN68CGFaS5r2yN',
+    'X-CSRF-TOKEN': '1|74Q5WHcDLDhCb5M9NtabCridB2ZN68CGFaS5r2yN'
+  }
+})
 
 class GoalChallengeOne extends React.Component {
 
@@ -40,6 +52,9 @@ class GoalChallengeOne extends React.Component {
             socialType: 'youtube',
             isOpenSingleRewardModal: false, // open social action modal,
             convertActionToPoints: false,
+            allowPenalty: false,
+            participantsLocation: false,
+            enableFormAfterJoining: false,
 
             // facebook options
             isFacebookLoginEnabled: false,
@@ -75,7 +90,9 @@ class GoalChallengeOne extends React.Component {
             isFacebookVisitEnabledrepeat: false,
 
             // challenge form
-            formDetails: [],
+            formDetails: {
+                'details': {}
+            },
             challengeTitle: '',
             title: ''
         }
@@ -93,6 +110,10 @@ class GoalChallengeOne extends React.Component {
         this.socialOpenOptions = this.socialOpenOptions.bind(this);
         this.socialCloseOptions = this.socialCloseOptions.bind(this);
         this.toogleConvertActionToPoints = this.toogleConvertActionToPoints.bind(this);
+        this.toogleAllowPenalty = this.toogleAllowPenalty.bind(this);
+        this.toogleChangeChallengePrivacy = this.toogleChangeChallengePrivacy.bind(this);
+        this.toogleSelectSpecificLocation = this.toogleSelectSpecificLocation.bind(this);
+        this.toogleEnableFormAfterJoining = this.toogleEnableFormAfterJoining.bind(this);
 
         // social popup
         this.toogleFacebookLogin = this.toogleFacebookLogin.bind(this);
@@ -211,8 +232,40 @@ class GoalChallengeOne extends React.Component {
     }
 
     toogleConvertActionToPoints(){
-        this.setState({convertActionToPoints: !this.state.convertActionToPoints});
+        let newState = !this.state.convertActionToPoints;
+        this.setState({convertActionToPoints: newState});
+        
+        this.populateInput('convert_action_to_points', newState)
     }
+
+    toogleAllowPenalty(){
+        this.setState({allowPenalty: !this.state.allowPenalty});
+        
+    }
+
+    toogleChangeChallengePrivacy(){
+        console.log();
+    }
+
+    toogleSelectSpecificLocation(e){
+        console.log('istrue -> ', e);
+        if(e == 'select_location'){
+            this.populateInput('selected_location', 'specific')
+            this.setState({participantsLocation: true});
+        } else {
+            this.populateInput('selected_location', 'anywhere')
+            this.setState({participantsLocation: false});
+        }
+    }
+
+    toogleEnableFormAfterJoining(){
+        let enableForm = !this.state.enableFormAfterJoining;
+        this.setState({enableFormAfterJoining: enableForm});
+        this.populateInput('enable_form_after_joining', enableForm)
+    }
+    
+
+
 
 
 
@@ -246,6 +299,7 @@ class GoalChallengeOne extends React.Component {
       let dform = this.state.formDetails;
       dform[state] = e;
       this.setState({formDetails: dform});
+    //   console.log('changed '+state+' -> ', e);
     }
 
     // twitter
@@ -350,20 +404,25 @@ class GoalChallengeOne extends React.Component {
     activateItem(showOption){
         console.log('show option ->', showOption);
 
+
+
         if(showOption == "option_one"){
             this.setState({showOptionOne: true})
             this.setState({showOptionTwo: false})
+            this.populateInput('challenge_duration', 'fixed')
         }
 
         if(showOption == "option_two"){
             this.setState({showOptionOne: false})
             this.setState({showOptionTwo: true})
+            this.populateInput('challenge_duration', 'ranged')
         }
     }
 
     changeColor(vals){
         // console.log(vals);
         this.setState({selectedColor: vals});
+        this.populateInput('challenge_color', vals)
     }
 
     changePrevHeader(selectedTodo){
@@ -371,7 +430,9 @@ class GoalChallengeOne extends React.Component {
     }
 
     onSocialActionChange(){
-        this.setState({socialActionSLide: !this.state.socialActionSLide});
+        let socialActions = !this.state.socialActionSLide;
+        this.setState({socialActionSLide: socialActions});
+        this.populateInput('social_action', socialActions)
     }
 
     socialOpenOptions(){
@@ -384,7 +445,60 @@ class GoalChallengeOne extends React.Component {
     }
 
     submitChallengeForm(){
+        console.log(this.state.formDetails);
 
+        let formDetails = this.state.formDetails;
+
+        let params = [];
+
+        params['name'] = formDetails.challengeTitle;
+        params['description'] = formDetails.instructions_rules;
+        params['is_template'] = 'No';
+        params['owner_id'] = '1';
+        params['details'] = [];
+
+        Object.keys(formDetails).forEach(function(key) {
+            let subdetails = [];
+            console.log('dkeys ->', key);
+            if(key != 'details' || key != 'challengeTitle' || key != 'instructions_rules'){
+                subdetails['field'] = key;
+                subdetails['data'] = formDetails[key];
+                console.log('subdetails ->', subdetails);
+                params['details'].push(subdetails);
+            }
+        });
+
+        let parameters = JSON.stringify(params);
+
+        api.post('/challenge', parameters)
+        .then((response) => {
+            console.log(response);
+        });
+
+    //     api.get('challenge/'+this.state.challengeID).then(
+    //     (response) => {
+    //       console.log('response -> ', response.data.challenges);
+    //       let challenges = response.data.challenges[0];
+
+    //       let challenge_details = [];
+    //       challenge_details['name'] = challenges.name;
+    //       challenge_details['description'] = challenges.description;
+    //       this.setState({challengeDetails: challenge_details});
+          
+    //     //   this.setState({challengeActions: challenges.actions});
+
+    //       // challenge actions
+    //     }
+    //   ).catch((error) => {
+    //     console.log('error -> ', error);
+    //   });
+
+
+        
+        
+
+
+        console.log('params ->', params);
     }
 
     render () {
@@ -1244,7 +1358,7 @@ class GoalChallengeOne extends React.Component {
                                   <h2>How to Measure the Goal?</h2>
 
                                   <div className={"cg-item " + (this.state.activepart == 'two_main_goal' ? 'active_item' : '')} onFocus={() => this.createActive('two_main_goal') }>
-                                      <div className="cg-label">Main Goal - {this.state.formDetails['goal_type']}</div>
+                                      <div className="cg-label">Main Goal</div>
                                       <div className="cg-input">
                                           <div className="dmultiple">
                                               <div className="dm-left">
@@ -1376,7 +1490,7 @@ class GoalChallengeOne extends React.Component {
                                   <div className={"cg-item " + (this.state.activepart == 'two_penalty' ? 'active_item' : '')} onFocus={() => this.createActive('two_penalty') }>
                                       <div className="cg-label">
                                           <div className="cgl-name">Penalty</div>
-                                          <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
+                                          <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.toogleAllowPenalty} checked={this.state.allowPenalty} /></div>
                                       </div>
                                       <div className="cg-input dactivity">
                                           <div className="subheader">Add penalty if goal has not been met.</div>
@@ -1443,7 +1557,7 @@ class GoalChallengeOne extends React.Component {
                                       <div className="cg-label">Challenge Privacy</div>
                                       <div className="cg-input dactivity">
                                           <div className="dc_privacy">
-                                              <select name="" className="dc_privacy_setting">
+                                              <select name="" className="dc_privacy_setting" onChange={(e) => this.populateInput('challenge_privacy', e.target.value)}>
                                                   <option >Invite Only</option>
                                                   <option >Invite Only</option>
                                                   <option >Invite Only</option>
@@ -1459,17 +1573,17 @@ class GoalChallengeOne extends React.Component {
                                           <div className="dlp-inner">
                                               <div className="dlp-item">
                                                   <div className="dlp-radio">
-                                                      <input type="radio" name="anywhere" />
+                                                      <input type="radio" name="participants_location" onChange={() => this.toogleSelectSpecificLocation('anywhere')} />
                                                   </div>
                                                   <div className="dlp-label"><FontAwesomeIcon icon={faGlobeEurope} /> Anywhere</div>
                                               </div>
                                               <div className="dlp-item">
                                                   <div className="dlp-radio">
-                                                      <input type="radio" name="select_locations" />
+                                                      <input type="radio" name="participants_location" onChange={() => this.toogleSelectSpecificLocation('select_location')} />
                                                   </div>
                                                   <div className="dlp-label select_locations"><FontAwesomeIcon icon={faMapMarkerAlt} /> Select Locations</div>
                                               </div>
-                                              <div className="dlp-item ddown_list">
+                                              <div className={"dlp-item ddown_list " + (this.state.participantsLocation ? 'active_item' : '')}>
                                                   <div className="dselectlocation" onClick={() => this.showDropBase()}>Select Location</div>
                                                   <div className={"dlocationlist " + (this.state.showDropOptions == true ? 'show-location-options': 'hide-location-options')}>
                                                       <div className="dll-item">
@@ -1592,7 +1706,7 @@ class GoalChallengeOne extends React.Component {
                                       <div className="cg-label">Enable form</div>
                                       <div className="cg-input dactivity">
                                           <div className="subheader">Collect additional information from participants</div>
-                                          <div className="ditem-flow"><div className="dflowtext">Show after joining</div> <Switch height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
+                                          <div className="ditem-flow"><div className="dflowtext">Show after joining</div> <Switch height={20} width={40} onChange={this.toogleEnableFormAfterJoining} checked={this.state.enableFormAfterJoining} /></div>
                                       </div>
                                   </div>
 
@@ -1609,20 +1723,20 @@ class GoalChallengeOne extends React.Component {
                                                   <div className={"cd-option-one dshowoptions " + (this.state.showOptionOne ? 'active_item' : 'inactive_item')}>
                                                       <div className="cd-option-item">
                                                           <div className="cd-input-item">
-                                                              <input type="text" name="" placeholder="Start Date" />
+                                                              <input type="text" name="" placeholder="Start Date" onChange={(e) => this.populateInput('challenge_duration_fixed_start_date', e.target.value)} />
                                                           </div>
                                                           <div className="cd-input-item">
-                                                              <input type="text" name="" placeholder="End Date" />
+                                                              <input type="text" name="" placeholder="End Date" onChange={(e) => this.populateInput('challenge_duration_fixed_end_date', e.target.value)} />
                                                           </div>
                                                           <div className="cd-input-item">
-                                                              <input type="text" name="" placeholder="11:00 am" />
+                                                              <input type="text" name="" placeholder="11:00 am" onChange={(e) => this.populateInput('challenge_duration_fixed_end_time', e.target.value)} />
                                                           </div>
                                                       </div>
                                                   </div>
                                                   <div className={"cd-option-two dshowoptions " + (this.state.showOptionTwo ? 'active_item' : 'inactive_item')}>
                                                       <div className="cd-option-item">
                                                           <div className="cd-input-item">
-                                                              <select name="" id="">
+                                                              <select name="" id="" onChange={(e) => this.populateInput('challenge_duration_ranged_frequency', e.target.value)}>
                                                                   <option >Once</option>
                                                                   <option >Daily</option>
                                                                   <option >Weekly</option>
@@ -1631,13 +1745,13 @@ class GoalChallengeOne extends React.Component {
                                                               </select>
                                                           </div>
                                                           <div className="cd-input-item">
-                                                              <select name="" id="">
+                                                              <select name="" id="" onChange={(e) => this.populateInput('challenge_duration_ranged_repeat', e.target.value)}>
                                                                   <option >End On</option>
                                                                   <option >Repeat</option>
                                                               </select>
                                                           </div>
                                                           <div className="cd-input-item">
-                                                              <input type="text" name="" placeholder="11:00 am" />
+                                                              <input type="text" name="" placeholder="11:00 am" onChange={(e) => this.populateInput('challenge_duration_ranged_start_time', e.target.value)} />
                                                           </div>
                                                       </div>
                                                   </div>
@@ -1699,7 +1813,7 @@ class GoalChallengeOne extends React.Component {
 
                                   <div className="dnext-button">
                                       <button className="prev-arrow" onClick={() => this.proceedToPrev()}>Back</button>
-                                      <button className="next-arrow" onClick={() => this.proceedToNext()}>Publish Challenge &rarr;</button>
+                                      <button className="next-arrow" onClick={() => this.submitChallengeForm()}>Publish Challenge &rarr;</button>
                                   </div>
                               </div>
                           </div>
