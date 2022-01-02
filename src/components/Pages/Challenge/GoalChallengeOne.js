@@ -1,5 +1,5 @@
 import './../../styles/challenge.css';
-import React from 'react';
+import React, {useRef} from 'react';
 
 import Menu from './Segments/Menu'
 import ChallengeGoalActions from './Segments/ChallengeGoalActions'
@@ -16,15 +16,28 @@ import { HexColorPicker } from "react-colorful";
 
 import ReactTooltip from 'react-tooltip';
 
+import axios from 'axios'
+
+const api = axios.create({
+  baseURL: 'https://api.vici.life/api/',
+  headers: {
+    'Content-Type' : 'application/json',
+    'Accept' : 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Authorization' : 'Bearer 1|74Q5WHcDLDhCb5M9NtabCridB2ZN68CGFaS5r2yN',
+    'X-CSRF-TOKEN': '1|74Q5WHcDLDhCb5M9NtabCridB2ZN68CGFaS5r2yN'
+  }
+})
 
 class GoalChallengeOne extends React.Component {
+
     constructor(props){
         super(props);
         this.state = {
             uinfo: this.props.uinfo,
             activepart: 'title',
-            stepnumber: 1,
-            menuActive: 2,
+            stepnumber: 0,
+            menuActive: 1,
             activityList: [{"activity": ""}],
             checked: false,
             showCountry: false,
@@ -37,7 +50,11 @@ class GoalChallengeOne extends React.Component {
             selectedPreviewHeaderImage: '/img/prev-header.png',
             socialActionSLide: false,
             socialType: 'youtube',
-            isOpenSingleRewardModal: false, // open social action modal
+            isOpenSingleRewardModal: false, // open social action modal,
+            convertActionToPoints: false,
+            allowPenalty: false,
+            participantsLocation: false,
+            enableFormAfterJoining: false,
 
             // facebook options
             isFacebookLoginEnabled: false,
@@ -71,6 +88,13 @@ class GoalChallengeOne extends React.Component {
             // facebook Visit Options
             isFacebookVisitAllowToLikePage: false,
             isFacebookVisitEnabledrepeat: false,
+
+            // challenge form
+            formDetails: {
+                'details': {}
+            },
+            challengeTitle: '',
+            title: ''
         }
         this.createActive = this.createActive.bind(this);
         this.proceedToNext = this.proceedToNext.bind(this);
@@ -85,6 +109,11 @@ class GoalChallengeOne extends React.Component {
         this.onSocialActionChange = this.onSocialActionChange.bind(this);
         this.socialOpenOptions = this.socialOpenOptions.bind(this);
         this.socialCloseOptions = this.socialCloseOptions.bind(this);
+        this.toogleConvertActionToPoints = this.toogleConvertActionToPoints.bind(this);
+        this.toogleAllowPenalty = this.toogleAllowPenalty.bind(this);
+        this.toogleChangeChallengePrivacy = this.toogleChangeChallengePrivacy.bind(this);
+        this.toogleSelectSpecificLocation = this.toogleSelectSpecificLocation.bind(this);
+        this.toogleEnableFormAfterJoining = this.toogleEnableFormAfterJoining.bind(this);
 
         // social popup
         this.toogleFacebookLogin = this.toogleFacebookLogin.bind(this);
@@ -125,6 +154,9 @@ class GoalChallengeOne extends React.Component {
         this.toogleTwitterActions = this.toogleTwitterActions.bind(this);
         this.toogleYoutubeActions = this.toogleYoutubeActions.bind(this);
         this.toogleTiktokActions = this.toogleTiktokActions.bind(this);
+
+        this.populateInput = this.populateInput.bind(this);
+        this.submitChallengeForm = this.submitChallengeForm.bind(this);
 
         this.activity_list = [
             {"activity": ""}
@@ -199,6 +231,42 @@ class GoalChallengeOne extends React.Component {
         this.setState({isFacebookVisitEnabled: !this.state.isFacebookVisitEnabled});
     }
 
+    toogleConvertActionToPoints(){
+        let newState = !this.state.convertActionToPoints;
+        this.setState({convertActionToPoints: newState});
+        
+        this.populateInput('convert_action_to_points', newState)
+    }
+
+    toogleAllowPenalty(){
+        this.setState({allowPenalty: !this.state.allowPenalty});
+        
+    }
+
+    toogleChangeChallengePrivacy(){
+        console.log();
+    }
+
+    toogleSelectSpecificLocation(e){
+        console.log('istrue -> ', e);
+        if(e == 'select_location'){
+            this.populateInput('selected_location', 'specific')
+            this.setState({participantsLocation: true});
+        } else {
+            this.populateInput('selected_location', 'anywhere')
+            this.setState({participantsLocation: false});
+        }
+    }
+
+    toogleEnableFormAfterJoining(){
+        let enableForm = !this.state.enableFormAfterJoining;
+        this.setState({enableFormAfterJoining: enableForm});
+        this.populateInput('enable_form_after_joining', enableForm)
+    }
+    
+
+
+
 
 
     // instagram options
@@ -225,6 +293,13 @@ class GoalChallengeOne extends React.Component {
     createActive(setactive){
         console.log('Type ->', setactive);
         this.setState({activepart: setactive})
+    }
+
+    populateInput(state, e){
+      let dform = this.state.formDetails;
+      dform[state] = e;
+      this.setState({formDetails: dform});
+    //   console.log('changed '+state+' -> ', e);
     }
 
     // twitter
@@ -329,20 +404,25 @@ class GoalChallengeOne extends React.Component {
     activateItem(showOption){
         console.log('show option ->', showOption);
 
+
+
         if(showOption == "option_one"){
             this.setState({showOptionOne: true})
             this.setState({showOptionTwo: false})
+            this.populateInput('challenge_duration', 'fixed')
         }
 
         if(showOption == "option_two"){
             this.setState({showOptionOne: false})
             this.setState({showOptionTwo: true})
+            this.populateInput('challenge_duration', 'ranged')
         }
     }
 
     changeColor(vals){
         // console.log(vals);
         this.setState({selectedColor: vals});
+        this.populateInput('challenge_color', vals)
     }
 
     changePrevHeader(selectedTodo){
@@ -350,7 +430,9 @@ class GoalChallengeOne extends React.Component {
     }
 
     onSocialActionChange(){
-        this.setState({socialActionSLide: !this.state.socialActionSLide});
+        let socialActions = !this.state.socialActionSLide;
+        this.setState({socialActionSLide: socialActions});
+        this.populateInput('social_action', socialActions)
     }
 
     socialOpenOptions(){
@@ -360,6 +442,63 @@ class GoalChallengeOne extends React.Component {
 
     socialCloseOptions(){
         this.setState({isOpenSingleRewardModal: false});
+    }
+
+    submitChallengeForm(){
+        console.log(this.state.formDetails);
+
+        let formDetails = this.state.formDetails;
+
+        let params = [];
+
+        params['name'] = formDetails.challengeTitle;
+        params['description'] = formDetails.instructions_rules;
+        params['is_template'] = 'No';
+        params['owner_id'] = '1';
+        params['details'] = [];
+
+        Object.keys(formDetails).forEach(function(key) {
+            let subdetails = [];
+            console.log('dkeys ->', key);
+            if(key != 'details' || key != 'challengeTitle' || key != 'instructions_rules'){
+                subdetails['field'] = key;
+                subdetails['data'] = formDetails[key];
+                console.log('subdetails ->', subdetails);
+                params['details'].push(subdetails);
+            }
+        });
+
+        let parameters = JSON.stringify(params);
+
+        api.post('/challenge', parameters)
+        .then((response) => {
+            console.log(response);
+        });
+
+    //     api.get('challenge/'+this.state.challengeID).then(
+    //     (response) => {
+    //       console.log('response -> ', response.data.challenges);
+    //       let challenges = response.data.challenges[0];
+
+    //       let challenge_details = [];
+    //       challenge_details['name'] = challenges.name;
+    //       challenge_details['description'] = challenges.description;
+    //       this.setState({challengeDetails: challenge_details});
+          
+    //     //   this.setState({challengeActions: challenges.actions});
+
+    //       // challenge actions
+    //     }
+    //   ).catch((error) => {
+    //     console.log('error -> ', error);
+    //   });
+
+
+        
+        
+
+
+        console.log('params ->', params);
     }
 
     render () {
@@ -1177,507 +1316,508 @@ class GoalChallengeOne extends React.Component {
                     </div>
 
                     <div className="cgoal-center">
-                        <div className={"dstep step_one " + (this.state.stepnumber == 0 ? 'isactive_tab' : '')}>
-                            <div className="cgoal-center-inner">
-                                <h2>Title and Description</h2>
 
-                                <div className={"cg-item " + (this.state.activepart == 'title' ? 'active_item' : '')} onFocus={() => this.createActive('title') }>
-                                    <div className="cg-label">Challenge Title</div>
-                                    <div className="cg-input">
-                                        <input type="text" />
-                                    </div>
-                                </div>
+                          <div className={"dstep step_one " + (this.state.stepnumber == 0 ? 'isactive_tab' : '')}>
+                              <div className="cgoal-center-inner">
+                                  <h2>Title and Description</h2>
+                                  <div className={"cg-item " + (this.state.activepart == 'title' ? 'active_item' : '')} onFocus={() => this.createActive('title') }>
+                                      <div className="cg-label">Challenge Title</div>
+                                      <div className="cg-input">
+                                          <input type="text" onChange={(e) => this.populateInput('challengeTitle', e.target.value)} />
+                                      </div>
+                                  </div>
 
-                                <div className={"cg-item " + (this.state.activepart == 'hashtags' ? 'active_item' : '')}  onFocus={() => this.createActive('hashtags') }>
-                                    <div className="cg-label">Hashtags</div>
-                                    <div className="cg-input">
-                                        <input type="text" />
-                                    </div>
-                                </div>
+                                  <div className={"cg-item " + (this.state.activepart == 'hashtags' ? 'active_item' : '')}  onFocus={() => this.createActive('hashtags') }>
+                                      <div className="cg-label">Hashtags</div>
+                                      <div className="cg-input">
+                                          <input type="text" onChange={(e) => this.populateInput('hashtags', e.target.value)} />
+                                      </div>
+                                  </div>
 
-                                <div className={"cg-item " + (this.state.activepart == 'tagline' ? 'active_item' : '')}  onFocus={() => this.createActive('tagline') }>
-                                    <div className="cg-label">Tagline</div>
-                                    <div className="cg-input">
-                                        <textarea name="" id=""></textarea>
-                                    </div>
-                                </div>
+                                  <div className={"cg-item " + (this.state.activepart == 'tagline' ? 'active_item' : '')}  onFocus={() => this.createActive('tagline') }>
+                                      <div className="cg-label">Tagline</div>
+                                      <div className="cg-input">
+                                          <textarea name="" id="" onChange={(e) => this.populateInput('tagline', e.target.value)}></textarea>
+                                      </div>
+                                  </div>
 
-                                <div className={"cg-item " + (this.state.activepart == 'rules' ? 'active_item' : '')}  onFocus={() => this.createActive('rules') }>
-                                    <div className="cg-label">Instructions and rules</div>
-                                    <div className="cg-input">
-                                        <textarea name="" id=""></textarea>
-                                    </div>
-                                </div>
-                                <div className="dnext-button">
-                                    <button className="next-arrow" onClick={() => this.proceedToNext()}>Next &rarr;</button>
-                                </div>
-                            </div>
-                        </div>
+                                  <div className={"cg-item " + (this.state.activepart == 'rules' ? 'active_item' : '')}  onFocus={() => this.createActive('rules') }>
+                                      <div className="cg-label">Instructions and rules</div>
+                                      <div className="cg-input">
+                                          <textarea name="" id="" onChange={(e) => this.populateInput('instructions_rules', e.target.value)}></textarea>
+                                      </div>
+                                  </div>
+                                  <div className="dnext-button">
+                                      <button className="next-arrow" onClick={() => this.proceedToNext()}>Next &rarr;</button>
+                                  </div>
+                              </div>
+                          </div>
 
-                        <div className={"dstep step_one " + (this.state.stepnumber == 1 ? 'isactive_tab' : '')}>
-                            <div className="cgoal-center-inner">
-                                <h2>How to Measure the Goal?</h2>
+                          <div className={"dstep step_one " + (this.state.stepnumber == 1 ? 'isactive_tab' : '')}>
+                              <div className="cgoal-center-inner">
+                                  <h2>How to Measure the Goal?</h2>
 
-                                <div className={"cg-item " + (this.state.activepart == 'two_main_goal' ? 'active_item' : '')} onFocus={() => this.createActive('two_main_goal') }>
-                                    <div className="cg-label">Main Goal</div>
-                                    <div className="cg-input">
-                                        <div className="dmultiple">
-                                            <div className="dm-left">
-                                                <div className="dradiobt">
-                                                    <input type="radio" name="gender" />
-                                                </div>
-                                                <div className="dtextone">
-                                                    Single Goal
-                                                </div>
-                                            </div>
-                                            <div className="dm-right">
-                                                <div className="dradiobt">
-                                                    <input type="radio" name="gender" />
-                                                </div>
-                                                <div className="dtextone">
-                                                    Multiple Milestones
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="dsdesc">Description</div>
-                                        <div className="dsdesc">Single Goal. Only has one goal with multiple actions, enable multiple milestones to create milestones.</div>
-                                        <input type="text" />
-                                    </div>
-                                </div>
+                                  <div className={"cg-item " + (this.state.activepart == 'two_main_goal' ? 'active_item' : '')} onFocus={() => this.createActive('two_main_goal') }>
+                                      <div className="cg-label">Main Goal</div>
+                                      <div className="cg-input">
+                                          <div className="dmultiple">
+                                              <div className="dm-left">
+                                                  <div className="dradiobt">
+                                                      <input type="radio" name="gender" onChange={(e) => this.populateInput('goal_type', 'single')}/>
+                                                  </div>
+                                                  <div className="dtextone">
+                                                      Single Goal
+                                                  </div>
+                                              </div>
+                                              <div className="dm-right">
+                                                  <div className="dradiobt">
+                                                      <input type="radio" name="gender" onChange={(e) => this.populateInput('goal_type', 'multiple')}/>
+                                                  </div>
+                                                  <div className="dtextone">
+                                                      Multiple Milestones
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div className="dsdesc">Description</div>
+                                          <div className="dsdesc">Single Goal. Only has one goal with multiple actions, enable multiple milestones to create milestones.</div>
+                                          <input type="text" />
+                                      </div>
+                                  </div>
 
-                                <div className={"cg-item " + (this.state.activepart == 'two_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_actions') }>
+                                  <div className={"cg-item " + (this.state.activepart == 'two_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_actions') }>
 
-                                    <div className="cg-label">Actions</div>
-                                    <ChallengeGoalActions />
-                                </div>
+                                      <div className="cg-label">Actions</div>
+                                      <ChallengeGoalActions />
+                                  </div>
 
-                                <div className={"cg-item " + (this.state.activepart == 'two_social_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_social_actions') }>
-                                    <div className="cg-label">
-                                        <div className="cgl-name">Social Actions</div>
-                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.onSocialActionChange} checked={this.state.socialActionSLide} /></div>
-                                    </div>
-                                    <div className="cg-input dactivity">
-                                        <div className="subheader">Actions that help spread the word, build awareness and increase challenge engagement</div>
-                                        <div className="social-action-list"></div>
-                                        <div className="add-social-action">
-                                            <button onClick={() => this.socialOpenOptions()}><span><FontAwesomeIcon icon={faPlus} /></span> Add Social Action</button>
-                                        </div>
-                                    </div>
-                                    <ReactModal
-                                        isOpen={this.state.isOpenSingleRewardModal}
-                                        contentLabel="Example Modal"
-                                        className="social_action_modal"
-                                        ariaHideApp={false}
-                                    >
-                                        <div className="d-rewards-settings-modal d-social-modal-size">
-                                            <h4>Social Actions</h4>
-                                            <div className="d-social-settings-list">
-                                                <div className="d-social-left-side" >
-                                                    <div className="d-social-settings">
-                                                        <div className="d-social-settings-dropdown">
-                                                            <select>
-                                                                <option >Choose from saved settings</option>
-                                                            </select>
-                                                        </div>
-                                                        <div className="d-social-setting-sub">
-                                                            <button>Save social settings</button>
-                                                        </div>
-                                                    </div>
-                                                    <div className="d-social-show-items">
-                                                        <div className={"d-social-show-item " + (this.state.socialType == 'facebook' ? 'active' : '')} onClick={() => this.toogleFacebookActions()}>
-                                                            <div className="d-social-item-icon">
-                                                                <span className="facebook"><FontAwesomeIcon icon={faFacebook} /></span>
-                                                            </div>
-                                                            <div className="d-social-item-text">Facebook</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                        <div className={"d-social-show-item " + (this.state.socialType == 'instagram' ? 'active' : '')} onClick={() => this.toogleInstagramActions()}>
-                                                            <div className="d-social-item-icon">
-                                                                <span className="instagram"><FontAwesomeIcon icon={faInstagram} /></span>
-                                                            </div>
-                                                            <div className="d-social-item-text">Instagram</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                        <div className={"d-social-show-item " + (this.state.socialType == 'twitter' ? 'active' : '')} onClick={() => this.toogleTwitterActions()}>
-                                                            <div className="d-social-item-icon">
-                                                                <span className="twitter"><FontAwesomeIcon icon={faTwitter} /></span>
-                                                            </div>
-                                                            <div className="d-social-item-text">Twitter</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                        <div className={"d-social-show-item " + (this.state.socialType == 'youtube' ? 'active' : '')} onClick={() => this.toogleYoutubeActions()}>
-                                                            <div className="d-social-item-icon">
-                                                                <span className="youtube"><FontAwesomeIcon icon={faYoutube} /></span>
-                                                            </div>
-                                                            <div className="d-social-item-text">Youtube</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                        <div className={"d-social-show-item " + (this.state.socialType == 'tiktok' ? 'active' : '')} onClick={() => this.toogleTiktokActions()}>
-                                                            <div className="d-social-item-icon">
-                                                                <span className="tiktok"><FontAwesomeIcon icon={faTiktok} /></span>
-                                                            </div>
-                                                            <div className="d-social-item-text">Tiktok</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                        <div className={"d-social-show-item no-icon-part " + (this.state.socialType == 'invite_friend' ? 'active' : '')} onClick={() => this.toogleInviteFriendsActions()}>
-                                                            <div className="d-social-item-text">Invite Friends</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                        <div className={"d-social-show-item no-icon-part " + (this.state.socialType == 'custom_social_action' ? 'active' : '')} onClick={() => this.toogleCustomSocialActions()}>
-                                                            <div className="d-social-item-text">Custom Social Action</div>
-                                                            <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="d-social-right-side" >
-                                                    {socialOptions()}
-                                                </div>
-                                            </div>
-                                            {socialActionBottomOptions()}
-                                        </div>
-                                    </ReactModal>
-                                </div>
+                                  <div className={"cg-item " + (this.state.activepart == 'two_social_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_social_actions') }>
+                                      <div className="cg-label">
+                                          <div className="cgl-name">Social Actions</div>
+                                          <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.onSocialActionChange} checked={this.state.socialActionSLide} /></div>
+                                      </div>
+                                      <div className="cg-input dactivity">
+                                          <div className="subheader">Actions that help spread the word, build awareness and increase challenge engagement</div>
+                                          <div className="social-action-list"></div>
+                                          <div className="add-social-action">
+                                              <button onClick={() => this.socialOpenOptions()}><span><FontAwesomeIcon icon={faPlus} /></span> Add Social Action</button>
+                                          </div>
+                                      </div>
+                                      <ReactModal
+                                          isOpen={this.state.isOpenSingleRewardModal}
+                                          contentLabel="Example Modal"
+                                          className="social_action_modal"
+                                          ariaHideApp={false}
+                                      >
+                                          <div className="d-rewards-settings-modal d-social-modal-size">
+                                              <h4>Social Actions</h4>
+                                              <div className="d-social-settings-list">
+                                                  <div className="d-social-left-side" >
+                                                      <div className="d-social-settings">
+                                                          <div className="d-social-settings-dropdown">
+                                                              <select>
+                                                                  <option >Choose from saved settings</option>
+                                                              </select>
+                                                          </div>
+                                                          <div className="d-social-setting-sub">
+                                                              <button>Save social settings</button>
+                                                          </div>
+                                                      </div>
+                                                      <div className="d-social-show-items">
+                                                          <div className={"d-social-show-item " + (this.state.socialType == 'facebook' ? 'active' : '')} onClick={() => this.toogleFacebookActions()}>
+                                                              <div className="d-social-item-icon">
+                                                                  <span className="facebook"><FontAwesomeIcon icon={faFacebook} /></span>
+                                                              </div>
+                                                              <div className="d-social-item-text">Facebook</div>
+                                                              <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
+                                                          </div>
+                                                          <div className={"d-social-show-item " + (this.state.socialType == 'instagram' ? 'active' : '')} onClick={() => this.toogleInstagramActions()}>
+                                                              <div className="d-social-item-icon">
+                                                                  <span className="instagram"><FontAwesomeIcon icon={faInstagram} /></span>
+                                                              </div>
+                                                              <div className="d-social-item-text">Instagram</div>
+                                                              <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
+                                                          </div>
+                                                          <div className={"d-social-show-item " + (this.state.socialType == 'twitter' ? 'active' : '')} onClick={() => this.toogleTwitterActions()}>
+                                                              <div className="d-social-item-icon">
+                                                                  <span className="twitter"><FontAwesomeIcon icon={faTwitter} /></span>
+                                                              </div>
+                                                              <div className="d-social-item-text">Twitter</div>
+                                                              <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
+                                                          </div>
+                                                          <div className={"d-social-show-item " + (this.state.socialType == 'youtube' ? 'active' : '')} onClick={() => this.toogleYoutubeActions()}>
+                                                              <div className="d-social-item-icon">
+                                                                  <span className="youtube"><FontAwesomeIcon icon={faYoutube} /></span>
+                                                              </div>
+                                                              <div className="d-social-item-text">Youtube</div>
+                                                              <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
+                                                          </div>
+                                                          <div className={"d-social-show-item " + (this.state.socialType == 'tiktok' ? 'active' : '')} onClick={() => this.toogleTiktokActions()}>
+                                                              <div className="d-social-item-icon">
+                                                                  <span className="tiktok"><FontAwesomeIcon icon={faTiktok} /></span>
+                                                              </div>
+                                                              <div className="d-social-item-text">Tiktok</div>
+                                                              <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
+                                                          </div>
+                                                          <div className={"d-social-show-item no-icon-part " + (this.state.socialType == 'invite_friend' ? 'active' : '')} onClick={() => this.toogleInviteFriendsActions()}>
+                                                              <div className="d-social-item-text">Invite Friends</div>
+                                                              <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
+                                                          </div>
+                                                          <div className={"d-social-show-item no-icon-part " + (this.state.socialType == 'custom_social_action' ? 'active' : '')} onClick={() => this.toogleCustomSocialActions()}>
+                                                              <div className="d-social-item-text">Custom Social Action</div>
+                                                              <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div className="d-social-right-side" >
+                                                      {socialOptions()}
+                                                  </div>
+                                              </div>
+                                              {socialActionBottomOptions()}
+                                          </div>
+                                      </ReactModal>
+                                  </div>
 
-                                <div className={"cg-item " + (this.state.activepart == 'two_convert_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_convert_actions') }>
-                                    <div className="cg-label">
-                                        <div className="cgl-name">Convert all actions into points</div>
-                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
-                                    </div>
-                                    <div className="cg-input dactivity">
-                                        <div className="subheader">Set how many points participant can get for each action</div>
-                                    </div>
-                                </div>
+                                  <div className={"cg-item " + (this.state.activepart == 'two_convert_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_convert_actions') }>
+                                      <div className="cg-label">
+                                          <div className="cgl-name">Convert all actions into points</div>
+                                          <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.toogleConvertActionToPoints} checked={this.state.convertActionToPoints} /></div>
+                                      </div>
+                                      <div className="cg-input dactivity">
+                                          <div className="subheader">Set how many points participant can get for each action</div>
+                                      </div>
+                                  </div>
 
-                                <div className={"cg-item " + (this.state.activepart == 'two_penalty' ? 'active_item' : '')} onFocus={() => this.createActive('two_penalty') }>
-                                    <div className="cg-label">
-                                        <div className="cgl-name">Penalty</div>
-                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
-                                    </div>
-                                    <div className="cg-input dactivity">
-                                        <div className="subheader">Add penalty if goal has not been met.</div>
-                                        <div className="activity-list">
-                                            <div className="activity-items">
-                                                <div className="ac-item">
-                                                    <div className="dleftitems">
-                                                        <span className="dicon"><FontAwesomeIcon icon={faBars} /></span>
-                                                        <span className="dtext">Drink 8 glasses of water everyday</span>
-                                                    </div>
-                                                    <div className="drightitems">
-                                                        <span className="doptions"><FontAwesomeIcon icon={faEllipsisV} /></span>
-                                                    </div>
-                                                </div>
-                                                <div className="ac-item">
-                                                    <div className="dleftitems">
-                                                        <span className="dicon"><FontAwesomeIcon icon={faBars} /></span>
-                                                        <span className="dtext">Drink 8 glasses of water everyday</span>
-                                                    </div>
-                                                    <div className="drightitems">
-                                                        <span className="doptions"><FontAwesomeIcon icon={faEllipsisV} /></span>
-                                                    </div>
-                                                </div>
-                                                <div className="ac-item">
-                                                    <div className="dleftitems">
-                                                        <span className="dicon"><FontAwesomeIcon icon={faBars} /></span>
-                                                        <span className="dtext">Drink 8 glasses of water everyday</span>
-                                                    </div>
-                                                    <div className="drightitems">
-                                                        <span className="doptions"><FontAwesomeIcon icon={faEllipsisV} /></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="activity-add-button">
-                                                <div className="daddactions" onClick={() => this.addActivity()}>
-                                                    <span className="dicon"><FontAwesomeIcon icon={faPlus} /></span>
-                                                    <span className="dtext">Add penalty action</span>
-                                                </div>
-                                                <div className="daddactions" onClick={() => this.addActivity()}>
-                                                    <span className="dicon"><FontAwesomeIcon icon={faPlus} /></span>
-                                                    <span className="dtext">Add social action</span>
-                                                </div>
-                                                <div className="daddactions" onClick={() => this.addActivity()}>
-                                                    <span className="dicon"><FontAwesomeIcon icon={faPlus} /></span>
-                                                    <span className="dtext">Lose Vici tokens</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                  <div className={"cg-item " + (this.state.activepart == 'two_penalty' ? 'active_item' : '')} onFocus={() => this.createActive('two_penalty') }>
+                                      <div className="cg-label">
+                                          <div className="cgl-name">Penalty</div>
+                                          <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.toogleAllowPenalty} checked={this.state.allowPenalty} /></div>
+                                      </div>
+                                      <div className="cg-input dactivity">
+                                          <div className="subheader">Add penalty if goal has not been met.</div>
+                                          <div className="activity-list">
+                                              <div className="activity-items">
+                                                  <div className="ac-item">
+                                                      <div className="dleftitems">
+                                                          <span className="dicon"><FontAwesomeIcon icon={faBars} /></span>
+                                                          <span className="dtext">Drink 8 glasses of water everyday</span>
+                                                      </div>
+                                                      <div className="drightitems">
+                                                          <span className="doptions"><FontAwesomeIcon icon={faEllipsisV} /></span>
+                                                      </div>
+                                                  </div>
+                                                  <div className="ac-item">
+                                                      <div className="dleftitems">
+                                                          <span className="dicon"><FontAwesomeIcon icon={faBars} /></span>
+                                                          <span className="dtext">Drink 8 glasses of water everyday</span>
+                                                      </div>
+                                                      <div className="drightitems">
+                                                          <span className="doptions"><FontAwesomeIcon icon={faEllipsisV} /></span>
+                                                      </div>
+                                                  </div>
+                                                  <div className="ac-item">
+                                                      <div className="dleftitems">
+                                                          <span className="dicon"><FontAwesomeIcon icon={faBars} /></span>
+                                                          <span className="dtext">Drink 8 glasses of water everyday</span>
+                                                      </div>
+                                                      <div className="drightitems">
+                                                          <span className="doptions"><FontAwesomeIcon icon={faEllipsisV} /></span>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div className="activity-add-button">
+                                                  <div className="daddactions" onClick={() => this.addActivity()}>
+                                                      <span className="dicon"><FontAwesomeIcon icon={faPlus} /></span>
+                                                      <span className="dtext">Add penalty action</span>
+                                                  </div>
+                                                  <div className="daddactions" onClick={() => this.addActivity()}>
+                                                      <span className="dicon"><FontAwesomeIcon icon={faPlus} /></span>
+                                                      <span className="dtext">Add social action</span>
+                                                  </div>
+                                                  <div className="daddactions" onClick={() => this.addActivity()}>
+                                                      <span className="dicon"><FontAwesomeIcon icon={faPlus} /></span>
+                                                      <span className="dtext">Lose Vici tokens</span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
 
-                                <div className="dnext-button">
-                                    <button className="prev-arrow" onClick={() => this.proceedToPrev()}>Back</button>
-                                    <button className="next-arrow" onClick={() => this.proceedToNext()}>Next &rarr;</button>
-                                </div>
-                            </div>
-                        </div>
+                                  <div className="dnext-button">
+                                      <button className="prev-arrow" onClick={() => this.proceedToPrev()}>Back</button>
+                                      <button className="next-arrow" onClick={() => this.proceedToNext()}>Next &rarr;</button>
+                                  </div>
+                              </div>
+                          </div>
 
-                        <div className={"dstep step_one " + (this.state.stepnumber == 2 ? 'isactive_tab' : '')}>
-                            <div className="cgoal-center-inner">
-                                <h2>Audience & Duration</h2>
+                          <div className={"dstep step_one " + (this.state.stepnumber == 2 ? 'isactive_tab' : '')}>
+                              <div className="cgoal-center-inner">
+                                  <h2>Audience & Duration</h2>
 
-                                <div className={"cg-item " + (this.state.activepart == 'three_challenge_privacy' ? 'active_item' : '')} onFocus={() => this.createActive('three_challenge_privacy') }>
-                                    <div className="cg-label">Challenge Privacy</div>
-                                    <div className="cg-input dactivity">
-                                        <div className="dc_privacy">
-                                            <select name="" className="dc_privacy_setting">
-                                                <option >Invite Only</option>
-                                                <option >Invite Only</option>
-                                                <option >Invite Only</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
+                                  <div className={"cg-item " + (this.state.activepart == 'three_challenge_privacy' ? 'active_item' : '')} onFocus={() => this.createActive('three_challenge_privacy') }>
+                                      <div className="cg-label">Challenge Privacy</div>
+                                      <div className="cg-input dactivity">
+                                          <div className="dc_privacy">
+                                              <select name="" className="dc_privacy_setting" onChange={(e) => this.populateInput('challenge_privacy', e.target.value)}>
+                                                  <option >Invite Only</option>
+                                                  <option >Invite Only</option>
+                                                  <option >Invite Only</option>
+                                              </select>
+                                          </div>
+                                      </div>
+                                  </div>
 
-                                <div className={"cg-item " + (this.state.activepart == 'three_locations_of_participants' ? 'active_item' : '')} onFocus={() => this.createActive('three_locations_of_participants') }>
-                                    <div className="cg-label">Location of participants</div>
-                                    <div className="cg-input dactivity">
+                                  <div className={"cg-item " + (this.state.activepart == 'three_locations_of_participants' ? 'active_item' : '')} onFocus={() => this.createActive('three_locations_of_participants') }>
+                                      <div className="cg-label">Location of participants</div>
+                                      <div className="cg-input dactivity">
 
-                                        <div className="dlp-inner">
-                                            <div className="dlp-item">
-                                                <div className="dlp-radio">
-                                                    <input type="radio" name="anywhere" />
-                                                </div>
-                                                <div className="dlp-label"><FontAwesomeIcon icon={faGlobeEurope} /> Anywhere</div>
-                                            </div>
-                                            <div className="dlp-item">
-                                                <div className="dlp-radio">
-                                                    <input type="radio" name="select_locations" />
-                                                </div>
-                                                <div className="dlp-label select_locations"><FontAwesomeIcon icon={faMapMarkerAlt} /> Select Locations</div>
-                                            </div>
-                                            <div className="dlp-item ddown_list">
-                                                <div className="dselectlocation" onClick={() => this.showDropBase()}>Select Location</div>
-                                                <div className={"dlocationlist " + (this.state.showDropOptions == true ? 'show-location-options': 'hide-location-options')}>
-                                                    <div className="dll-item">
-                                                        <div className="dll-item-label" onClick={() => this.openCountry()}>By Country <span>></span></div>
-                                                        <div className={"dll-item-dropdown " + (this.state.showCountry == true ? 'show-me': 'hide-me')}>
-                                                            <div className="dlistofcountry">
-                                                                <div className="dinputselect">
-                                                                    <input type="text" placeholder="Search.." />
-                                                                </div>
-                                                                <div className="dcountrylist">
-                                                                    <ul>
-                                                                        <li>Afghanistan</li>
-                                                                        <li>Albania</li>
-                                                                        <li>Algeria</li>
-                                                                        <li>American Samoa</li>
-                                                                        <li>Andorra</li>
-                                                                        <li>Angola</li>
-                                                                        <li>Anguilla</li>
-                                                                        <li>Antigua & Barbuda</li>
-                                                                        <li>Argentina</li>
-                                                                        <li>Armenia</li>
-                                                                        <li>Aruba</li>
-                                                                        <li>Australia</li>
-                                                                        <li>Austria</li>
-                                                                        <li>Azerbaijan</li>
-                                                                        <li>Bahamas</li>
-                                                                        <li>Bahrain</li>
-                                                                        <li>Bangladesh</li>
-                                                                        <li>Barbados</li>
-                                                                        <li>Belarus</li>
-                                                                        <li>Belgium</li>
-                                                                        <li>Belize</li>
-                                                                        <li>Benin</li>
-                                                                        <li>Bermuda</li>
-                                                                        <li>Bhutan</li>
-                                                                        <li>Bolivia</li>
-                                                                        <li>Bonaire</li>
-                                                                        <li>Bosnia & Herzegovina</li>
-                                                                        <li>Botswana</li>
-                                                                        <li>Brazil</li>
-                                                                        <li>British Indian Ocean Ter</li>
-                                                                        <li>Brunei</li>
-                                                                        <li>Bulgaria</li>
-                                                                        <li>Burkina Faso</li>
-                                                                        <li>Burundi</li>
-                                                                        <li>Cambodia</li>
-                                                                        <li>Cameroon</li>
-                                                                        <li>Canada</li>
-                                                                        <li>Canary Islands</li>
-                                                                        <li>Cape Verde</li>
-                                                                        <li>Cayman Islands</li>
-                                                                        <li>Central African Republic</li>
-                                                                        <li>Chad</li>
-                                                                        <li>Channel Islands</li>
-                                                                        <li>Chile</li>
-                                                                        <li>China</li>
-                                                                        <li>Christmas Island</li>
-                                                                        <li>Cocos Island</li>
-                                                                        <li>Colombia</li>
-                                                                        <li>Comoros</li>
-                                                                        <li>Congo</li>
-                                                                        <li>Cook Islands</li>
-                                                                        <li>Costa Rica</li>
-                                                                        <li>Cote DIvoire</li>
-                                                                        <li>Croatia</li>
-                                                                        <li>Cuba</li>
-                                                                        <li>Curacao</li>
-                                                                        <li>Cyprus</li>
-                                                                        <li>Czech Republic</li>
-                                                                        <li>Denmark</li>
-                                                                        <li>Djibouti</li>
-                                                                        <li>Dominica</li>
-                                                                        <li>Dominican Republic</li>
-                                                                        <li>East Timor</li>
-                                                                        <li>Ecuador</li>
-                                                                        <li>Egypt</li>
-                                                                        <li>El Salvador</li>
-                                                                        <li>Equatorial Guinea</li>
-                                                                        <li>Eritrea</li>
-                                                                        <li>Estonia</li>
-                                                                        <li>Ethiopia</li>
-                                                                        <li>Falkland Islands</li>
-                                                                        <li>Faroe Islands</li>
-                                                                        <li>Fiji</li>
-                                                                        <li>Finland</li>
-                                                                        <li>France</li>
-                                                                        <li>French Guiana</li>
-                                                                        <li>French Polynesia</li>
-                                                                        <li>French Southern Ter</li>
-                                                                        <li>Gabon</li>
-                                                                        <li>Gambia</li>
-                                                                        <li>Georgia</li>
-                                                                        <li>Germany</li>
-                                                                        <li>Ghana</li>
-                                                                        <li>Gibraltar</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="dll-item">
-                                                        <div className="dll-item-label" onClick={() => this.openState()}>By State <span>></span></div>
-                                                        <div className={"dll-item-dropdown " + (this.state.showState == true ? 'show-me': 'hide-me')}>
-                                                            show dropdown
-                                                        </div>
-                                                    </div>
-                                                    <div className="dll-item">
-                                                        <div className="dll-item-label" onClick={() => this.openCity()}>By City <span>></span></div>
-                                                        <div className={"dll-item-dropdown " + (this.state.showCity == true ? 'show-me': 'hide-me')}>
-                                                            show dropdown
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                          <div className="dlp-inner">
+                                              <div className="dlp-item">
+                                                  <div className="dlp-radio">
+                                                      <input type="radio" name="participants_location" onChange={() => this.toogleSelectSpecificLocation('anywhere')} />
+                                                  </div>
+                                                  <div className="dlp-label"><FontAwesomeIcon icon={faGlobeEurope} /> Anywhere</div>
+                                              </div>
+                                              <div className="dlp-item">
+                                                  <div className="dlp-radio">
+                                                      <input type="radio" name="participants_location" onChange={() => this.toogleSelectSpecificLocation('select_location')} />
+                                                  </div>
+                                                  <div className="dlp-label select_locations"><FontAwesomeIcon icon={faMapMarkerAlt} /> Select Locations</div>
+                                              </div>
+                                              <div className={"dlp-item ddown_list " + (this.state.participantsLocation ? 'active_item' : '')}>
+                                                  <div className="dselectlocation" onClick={() => this.showDropBase()}>Select Location</div>
+                                                  <div className={"dlocationlist " + (this.state.showDropOptions == true ? 'show-location-options': 'hide-location-options')}>
+                                                      <div className="dll-item">
+                                                          <div className="dll-item-label" onClick={() => this.openCountry()}>By Country <span>></span></div>
+                                                          <div className={"dll-item-dropdown " + (this.state.showCountry == true ? 'show-me': 'hide-me')}>
+                                                              <div className="dlistofcountry">
+                                                                  <div className="dinputselect">
+                                                                      <input type="text" placeholder="Search.." />
+                                                                  </div>
+                                                                  <div className="dcountrylist">
+                                                                      <ul>
+                                                                          <li>Afghanistan</li>
+                                                                          <li>Albania</li>
+                                                                          <li>Algeria</li>
+                                                                          <li>American Samoa</li>
+                                                                          <li>Andorra</li>
+                                                                          <li>Angola</li>
+                                                                          <li>Anguilla</li>
+                                                                          <li>Antigua & Barbuda</li>
+                                                                          <li>Argentina</li>
+                                                                          <li>Armenia</li>
+                                                                          <li>Aruba</li>
+                                                                          <li>Australia</li>
+                                                                          <li>Austria</li>
+                                                                          <li>Azerbaijan</li>
+                                                                          <li>Bahamas</li>
+                                                                          <li>Bahrain</li>
+                                                                          <li>Bangladesh</li>
+                                                                          <li>Barbados</li>
+                                                                          <li>Belarus</li>
+                                                                          <li>Belgium</li>
+                                                                          <li>Belize</li>
+                                                                          <li>Benin</li>
+                                                                          <li>Bermuda</li>
+                                                                          <li>Bhutan</li>
+                                                                          <li>Bolivia</li>
+                                                                          <li>Bonaire</li>
+                                                                          <li>Bosnia & Herzegovina</li>
+                                                                          <li>Botswana</li>
+                                                                          <li>Brazil</li>
+                                                                          <li>British Indian Ocean Ter</li>
+                                                                          <li>Brunei</li>
+                                                                          <li>Bulgaria</li>
+                                                                          <li>Burkina Faso</li>
+                                                                          <li>Burundi</li>
+                                                                          <li>Cambodia</li>
+                                                                          <li>Cameroon</li>
+                                                                          <li>Canada</li>
+                                                                          <li>Canary Islands</li>
+                                                                          <li>Cape Verde</li>
+                                                                          <li>Cayman Islands</li>
+                                                                          <li>Central African Republic</li>
+                                                                          <li>Chad</li>
+                                                                          <li>Channel Islands</li>
+                                                                          <li>Chile</li>
+                                                                          <li>China</li>
+                                                                          <li>Christmas Island</li>
+                                                                          <li>Cocos Island</li>
+                                                                          <li>Colombia</li>
+                                                                          <li>Comoros</li>
+                                                                          <li>Congo</li>
+                                                                          <li>Cook Islands</li>
+                                                                          <li>Costa Rica</li>
+                                                                          <li>Cote DIvoire</li>
+                                                                          <li>Croatia</li>
+                                                                          <li>Cuba</li>
+                                                                          <li>Curacao</li>
+                                                                          <li>Cyprus</li>
+                                                                          <li>Czech Republic</li>
+                                                                          <li>Denmark</li>
+                                                                          <li>Djibouti</li>
+                                                                          <li>Dominica</li>
+                                                                          <li>Dominican Republic</li>
+                                                                          <li>East Timor</li>
+                                                                          <li>Ecuador</li>
+                                                                          <li>Egypt</li>
+                                                                          <li>El Salvador</li>
+                                                                          <li>Equatorial Guinea</li>
+                                                                          <li>Eritrea</li>
+                                                                          <li>Estonia</li>
+                                                                          <li>Ethiopia</li>
+                                                                          <li>Falkland Islands</li>
+                                                                          <li>Faroe Islands</li>
+                                                                          <li>Fiji</li>
+                                                                          <li>Finland</li>
+                                                                          <li>France</li>
+                                                                          <li>French Guiana</li>
+                                                                          <li>French Polynesia</li>
+                                                                          <li>French Southern Ter</li>
+                                                                          <li>Gabon</li>
+                                                                          <li>Gambia</li>
+                                                                          <li>Georgia</li>
+                                                                          <li>Germany</li>
+                                                                          <li>Ghana</li>
+                                                                          <li>Gibraltar</li>
+                                                                      </ul>
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                      <div className="dll-item">
+                                                          <div className="dll-item-label" onClick={() => this.openState()}>By State <span>></span></div>
+                                                          <div className={"dll-item-dropdown " + (this.state.showState == true ? 'show-me': 'hide-me')}>
+                                                              show dropdown
+                                                          </div>
+                                                      </div>
+                                                      <div className="dll-item">
+                                                          <div className="dll-item-label" onClick={() => this.openCity()}>By City <span>></span></div>
+                                                          <div className={"dll-item-dropdown " + (this.state.showCity == true ? 'show-me': 'hide-me')}>
+                                                              show dropdown
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
 
-                                <div className={"cg-item " + (this.state.activepart == 'three_enable_form' ? 'active_item' : '')} onFocus={() => this.createActive('three_enable_form')}>
-                                    <div className="cg-label">Enable form</div>
-                                    <div className="cg-input dactivity">
-                                        <div className="subheader">Collect additional information from participants</div>
-                                        <div className="ditem-flow"><div className="dflowtext">Show after joining</div> <Switch height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
-                                    </div>
-                                </div>
-
-
-                                <div className={"cg-item " + (this.state.activepart == 'three_challenge_duration' ? 'active_item' : '')} onFocus={() => this.createActive('three_challenge_duration') }>
-                                    <div className="cg-label">Challenge Duration</div>
-                                    <div className="cg-input dactivity">
-                                        <div className="cd-dropbase">
-                                            <div className="cd-toprions-items">
-                                                <div className={"cd-tp-item-left cd-item-part " + (this.state.showOptionOne ? 'active_item' : 'inactive_item')} onClick={() => this.activateItem('option_one')}>Fixed Duration</div>
-                                                <div className={"cd-tp-item-right cd-item-part " + (this.state.showOptionTwo ? 'active_item' : 'inactive_item')} onClick={() => this.activateItem('option_two')}>Recurring Frequency</div>
-                                            </div>
-                                            <div className="dshowitems">
-                                                <div className={"cd-option-one dshowoptions " + (this.state.showOptionOne ? 'active_item' : 'inactive_item')}>
-                                                    <div className="cd-option-item">
-                                                        <div className="cd-input-item">
-                                                            <input type="text" name="" placeholder="Start Date" />
-                                                        </div>
-                                                        <div className="cd-input-item">
-                                                            <input type="text" name="" placeholder="End Date" />
-                                                        </div>
-                                                        <div className="cd-input-item">
-                                                            <input type="text" name="" placeholder="11:00 am" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className={"cd-option-two dshowoptions " + (this.state.showOptionTwo ? 'active_item' : 'inactive_item')}>
-                                                    <div className="cd-option-item">
-                                                        <div className="cd-input-item">
-                                                            <select name="" id="">
-                                                                <option >Once</option>
-                                                                <option >Daily</option>
-                                                                <option >Weekly</option>
-                                                                <option >Monthly</option>
-                                                                <option >Set Duration</option>
-                                                            </select>
-                                                        </div>
-                                                        <div className="cd-input-item">
-                                                            <select name="" id="">
-                                                                <option >End On</option>
-                                                                <option >Repeat</option>
-                                                            </select>
-                                                        </div>
-                                                        <div className="cd-input-item">
-                                                            <input type="text" name="" placeholder="11:00 am" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                  <div className={"cg-item " + (this.state.activepart == 'three_enable_form' ? 'active_item' : '')} onFocus={() => this.createActive('three_enable_form')}>
+                                      <div className="cg-label">Enable form</div>
+                                      <div className="cg-input dactivity">
+                                          <div className="subheader">Collect additional information from participants</div>
+                                          <div className="ditem-flow"><div className="dflowtext">Show after joining</div> <Switch height={20} width={40} onChange={this.toogleEnableFormAfterJoining} checked={this.state.enableFormAfterJoining} /></div>
+                                      </div>
+                                  </div>
 
 
-                                <div className="dnext-button">
-                                    <button className="prev-arrow" onClick={() => this.proceedToPrev()}>Back</button>
-                                    <button className="next-arrow" onClick={() => this.proceedToNext()}>Next &rarr;</button>
-                                </div>
-                            </div>
-                        </div>
+                                  <div className={"cg-item " + (this.state.activepart == 'three_challenge_duration' ? 'active_item' : '')} onFocus={() => this.createActive('three_challenge_duration') }>
+                                      <div className="cg-label">Challenge Duration</div>
+                                      <div className="cg-input dactivity">
+                                          <div className="cd-dropbase">
+                                              <div className="cd-toprions-items">
+                                                  <div className={"cd-tp-item-left cd-item-part " + (this.state.showOptionOne ? 'active_item' : 'inactive_item')} onClick={() => this.activateItem('option_one')}>Fixed Duration</div>
+                                                  <div className={"cd-tp-item-right cd-item-part " + (this.state.showOptionTwo ? 'active_item' : 'inactive_item')} onClick={() => this.activateItem('option_two')}>Recurring Frequency</div>
+                                              </div>
+                                              <div className="dshowitems">
+                                                  <div className={"cd-option-one dshowoptions " + (this.state.showOptionOne ? 'active_item' : 'inactive_item')}>
+                                                      <div className="cd-option-item">
+                                                          <div className="cd-input-item">
+                                                              <input type="text" name="" placeholder="Start Date" onChange={(e) => this.populateInput('challenge_duration_fixed_start_date', e.target.value)} />
+                                                          </div>
+                                                          <div className="cd-input-item">
+                                                              <input type="text" name="" placeholder="End Date" onChange={(e) => this.populateInput('challenge_duration_fixed_end_date', e.target.value)} />
+                                                          </div>
+                                                          <div className="cd-input-item">
+                                                              <input type="text" name="" placeholder="11:00 am" onChange={(e) => this.populateInput('challenge_duration_fixed_end_time', e.target.value)} />
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div className={"cd-option-two dshowoptions " + (this.state.showOptionTwo ? 'active_item' : 'inactive_item')}>
+                                                      <div className="cd-option-item">
+                                                          <div className="cd-input-item">
+                                                              <select name="" id="" onChange={(e) => this.populateInput('challenge_duration_ranged_frequency', e.target.value)}>
+                                                                  <option >Once</option>
+                                                                  <option >Daily</option>
+                                                                  <option >Weekly</option>
+                                                                  <option >Monthly</option>
+                                                                  <option >Set Duration</option>
+                                                              </select>
+                                                          </div>
+                                                          <div className="cd-input-item">
+                                                              <select name="" id="" onChange={(e) => this.populateInput('challenge_duration_ranged_repeat', e.target.value)}>
+                                                                  <option >End On</option>
+                                                                  <option >Repeat</option>
+                                                              </select>
+                                                          </div>
+                                                          <div className="cd-input-item">
+                                                              <input type="text" name="" placeholder="11:00 am" onChange={(e) => this.populateInput('challenge_duration_ranged_start_time', e.target.value)} />
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
 
-                        <div className={"dstep step_one " + (this.state.stepnumber == 3 ? 'isactive_tab' : '')}>
-                            <div className="cgoal-center-inner">
-                                <h2>Customize Appearance</h2>
 
-                                <div className="dshowstep4">
-                                    <div className={"dshowsitem " + (this.state.activepart == 'four_change_photo' ? 'active_item' : '')} onFocus={() => this.createActive('four_change_photo')}>
-                                        <div className="dtitle">
-                                            <div className="diconbase"><FontAwesomeIcon icon={faImage} /></div>
-                                            <div className="dheaderb">Challenge Photo or Icon</div>
-                                        </div>
-                                        <div className="dinfosection">
-                                            <div className="dheaderpart">
-                                                dropdown
-                                            </div>
-                                            <div className="dphotoslist">
-                                                <ul>
-                                                    <li><img src="/img/s4img0.png" className=""/></li>
-                                                    {todoItems}
+                                  <div className="dnext-button">
+                                      <button className="prev-arrow" onClick={() => this.proceedToPrev()}>Back</button>
+                                      <button className="next-arrow" onClick={() => this.proceedToNext()}>Next &rarr;</button>
+                                  </div>
+                              </div>
+                          </div>
 
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="dshowsitem">
-                                        <div className="dtitle">
-                                            <div className="diconbase"><FontAwesomeIcon icon={faCrosshairs} /></div>
-                                            <div className="dheaderb">Challenge Color</div>
-                                        </div>
-                                        <div className="dinfosection">
-                                            <div className="designcolorbase">
-                                                <div className="designcolorleft"><HexColorPicker color={this.state.selectedColor} onChange={this.changeColor} /></div>
-                                                <div className="designcolorright">
-                                                    <div className="dcolorbasetext">Color Code</div>
-                                                    <div className="dcolorvals">
-                                                        <div className="dcolorprev" style={{backgroundColor: this.state.selectedColor}}>&nbsp;</div>
-                                                        <div className="dcolortext">{this.state.selectedColor}</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                          <div className={"dstep step_one " + (this.state.stepnumber == 3 ? 'isactive_tab' : '')}>
+                              <div className="cgoal-center-inner">
+                                  <h2>Customize Appearance</h2>
 
-                                <div className="dnext-button">
-                                    <button className="prev-arrow" onClick={() => this.proceedToPrev()}>Back</button>
-                                    <button className="next-arrow" onClick={() => this.proceedToNext()}>Publish Challenge &rarr;</button>
-                                </div>
-                            </div>
-                        </div>
+                                  <div className="dshowstep4">
+                                      <div className={"dshowsitem " + (this.state.activepart == 'four_change_photo' ? 'active_item' : '')} onFocus={() => this.createActive('four_change_photo')}>
+                                          <div className="dtitle">
+                                              <div className="diconbase"><FontAwesomeIcon icon={faImage} /></div>
+                                              <div className="dheaderb">Challenge Photo or Icon</div>
+                                          </div>
+                                          <div className="dinfosection">
+                                              <div className="dheaderpart">
+                                                  dropdown
+                                              </div>
+                                              <div className="dphotoslist">
+                                                  <ul>
+                                                      <li><img src="/img/s4img0.png" className=""/></li>
+                                                      {todoItems}
+
+                                                  </ul>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div className="dshowsitem">
+                                          <div className="dtitle">
+                                              <div className="diconbase"><FontAwesomeIcon icon={faCrosshairs} /></div>
+                                              <div className="dheaderb">Challenge Color</div>
+                                          </div>
+                                          <div className="dinfosection">
+                                              <div className="designcolorbase">
+                                                  <div className="designcolorleft"><HexColorPicker color={this.state.selectedColor} onChange={this.changeColor} /></div>
+                                                  <div className="designcolorright">
+                                                      <div className="dcolorbasetext">Color Code</div>
+                                                      <div className="dcolorvals">
+                                                          <div className="dcolorprev" style={{backgroundColor: this.state.selectedColor}}>&nbsp;</div>
+                                                          <div className="dcolortext">{this.state.selectedColor}</div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+
+                                  <div className="dnext-button">
+                                      <button className="prev-arrow" onClick={() => this.proceedToPrev()}>Back</button>
+                                      <button className="next-arrow" onClick={() => this.submitChallengeForm()}>Publish Challenge &rarr;</button>
+                                  </div>
+                              </div>
+                          </div>
+
 
                     </div>
                     <div className="cgoal-right">

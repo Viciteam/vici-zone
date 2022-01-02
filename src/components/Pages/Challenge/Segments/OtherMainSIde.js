@@ -286,12 +286,12 @@ class OtherMainSIde extends React.Component {
                 <div className="dshageimage">
                     <img src="/img/share.png" alt="" />
                 </div>
-                <h2>{this.props.name}</h2>
+                <h2>{this.props.details['name']}</h2>
                 <div className="subtitle">Goal</div>
                 <div className="ms-main-image">
                     <img src="/img/watch_main.png" alt="" />
                 </div>
-                <div className="ms-sub-title">A morning routine challenge for those who want to start their day with a healthy mindset!</div>
+                <div className="ms-sub-title">{this.props.details['description']}</div>
                 <div className="dinfodetails">
                     <div className="dinfoitem">
                         <div className="din-left">CREATED BY:</div>

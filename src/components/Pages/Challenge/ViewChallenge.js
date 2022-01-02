@@ -34,7 +34,7 @@ class ViewChallenge extends React.Component {
             isWatching: false,
             isWatchingText: 'Watch Challenge',
             challengeDetails: [],
-            challengeName: '',
+            challengeActions: []
         }
 
         // this.getChallengeInfo();
@@ -48,8 +48,26 @@ class ViewChallenge extends React.Component {
         (response) => {
           console.log('response -> ', response.data.challenges);
           let challenges = response.data.challenges[0];
-          this.setState({challengeName: challenges.name});
 
+          let challenge_details = [];
+          challenge_details['name'] = challenges.name;
+          challenge_details['description'] = challenges.description;
+          this.setState({challengeDetails: challenge_details});
+
+          // set actioms
+          // let actions = [];
+          // challenges.actions.map((item, index) => {
+          //   let info = [];
+          //
+          //   // conert trackings
+          //   info.push(item);
+          //   console.log('info ->', info);
+          //   actions.push(info);
+          // })
+          // console.log('actions ->', actions);
+          this.setState({challengeActions: challenges.actions});
+
+          // challenge actions
         }
       ).catch((error) => {
         console.log('error -> ', error);
@@ -89,13 +107,26 @@ class ViewChallenge extends React.Component {
 
     render () {
 
+      const ActionList = () => {
+
+        return (
+          Object.entries(this.state.challengeActions).map(([key, value]) => (
+              <li key={key}>
+                <div className="dradiobutton"><input type="radio" name="" id="" /></div>
+                <div className="dtextlist">{value.name}</div>
+                <div className="ddoaction">Do Action</div>
+              </li>
+          ))
+        )
+      }
+
         return (
             <div className="challenges-page-inner">
                 <div className="dview-left">
                     <div className="dv-left-inner">
                         <div className="dvl-main-sidebar">
 
-                            <OtherMainSIde name={this.state.challengeName} />
+                            <OtherMainSIde details={this.state.challengeDetails} />
                         </div>
                         <div className="dvl-main-sidebar">
                             <WatchRewards />
@@ -127,26 +158,7 @@ class ViewChallenge extends React.Component {
                                 <h2>Actions</h2>
                                 <div className="dvr-item-content">
                                     <ul>
-                                        <li>
-                                            <div className="dradiobutton"><input type="radio" name="" id="" /></div>
-                                            <div className="dtextlist">Run 1 km - Due today</div>
-                                            <div className="ddoaction">Do Action</div>
-                                        </li>
-                                        <li>
-                                            <div className="dradiobutton"><input type="radio" name="" id="" /></div>
-                                            <div className="dtextlist">Lorem Ipsum another action - Due today</div>
-                                            <div className="ddoaction">Do Action</div>
-                                        </li>
-                                        <li>
-                                            <div className="dradiobutton"><input type="radio" name="" id="" /></div>
-                                            <div className="dtextlist">Eat a healthy breakfast - Due today</div>
-                                            <div className="ddoaction">Do Action</div>
-                                        </li>
-                                        <li>
-                                            <div className="dradiobutton"><input type="radio" name="" id="" /></div>
-                                            <div className="dtextlist">Eat a healthy breakfast - Due today</div>
-                                            <div className="ddoaction">Do Action</div>
-                                        </li>
+                                      { ActionList() }
                                     </ul>
                                 </div>
                             </div>
