@@ -24,8 +24,7 @@ const api = axios.create({
     'Content-Type' : 'application/json',
     'Accept' : 'application/json',
     'Access-Control-Allow-Origin': '*',
-    'Authorization' : 'Bearer 1|74Q5WHcDLDhCb5M9NtabCridB2ZN68CGFaS5r2yN',
-    'X-CSRF-TOKEN': '1|74Q5WHcDLDhCb5M9NtabCridB2ZN68CGFaS5r2yN'
+    'Authorization' : 'Bearer 1|74Q5WHcDLDhCb5M9NtabCridB2ZN68CGFaS5r2yN'
   }
 })
 
@@ -432,6 +431,13 @@ class GoalChallengeOne extends React.Component {
     onSocialActionChange(){
         let socialActions = !this.state.socialActionSLide;
         this.setState({socialActionSLide: socialActions});
+
+        let social_action_value = '';
+        if(socialActions){
+            social_action_value = '';
+        } else {
+            social_action_value = '';
+        }
         this.populateInput('social_action', socialActions)
     }
 
@@ -449,55 +455,41 @@ class GoalChallengeOne extends React.Component {
 
         let formDetails = this.state.formDetails;
 
-        let params = [];
+        let params = {
+            'name': formDetails.challengeTitle,
+            'description': formDetails.instructions_rules,
+            'is_template': 'No',
+            'owner_id': 1,
+            'details': [],
+        };
 
-        params['name'] = formDetails.challengeTitle;
-        params['description'] = formDetails.instructions_rules;
-        params['is_template'] = 'No';
-        params['owner_id'] = '1';
-        params['details'] = [];
+        // params['name'] = formDetails.challengeTitle;
+        // params['description'] = formDetails.instructions_rules;
+        // params['is_template'] = 'No';
+        // params['owner_id'] = '1';
+        // params['details'] = [];
 
         Object.keys(formDetails).forEach(function(key) {
-            let subdetails = [];
             console.log('dkeys ->', key);
             if(key != 'details' || key != 'challengeTitle' || key != 'instructions_rules'){
-                subdetails['field'] = key;
-                subdetails['data'] = formDetails[key];
-                console.log('subdetails ->', subdetails);
-                params['details'].push(subdetails);
+                let subdetails = {
+                    'field': key,
+                    'data': formDetails[key]
+                }
+                params.details.push(subdetails);
             }
         });
 
-        let parameters = JSON.stringify(params);
+        // let params = JSON.stringify(params);
 
-        api.post('/challenge', parameters)
+        console.log('dinal -> ', params);
+        api.post('/challenge', params)
         .then((response) => {
             console.log(response);
+        }).catch((err) => {
+            console.log('error ->', err);
         });
-
-    //     api.get('challenge/'+this.state.challengeID).then(
-    //     (response) => {
-    //       console.log('response -> ', response.data.challenges);
-    //       let challenges = response.data.challenges[0];
-
-    //       let challenge_details = [];
-    //       challenge_details['name'] = challenges.name;
-    //       challenge_details['description'] = challenges.description;
-    //       this.setState({challengeDetails: challenge_details});
-          
-    //     //   this.setState({challengeActions: challenges.actions});
-
-    //       // challenge actions
-    //     }
-    //   ).catch((error) => {
-    //     console.log('error -> ', error);
-    //   });
-
-
         
-        
-
-
         console.log('params ->', params);
     }
 
