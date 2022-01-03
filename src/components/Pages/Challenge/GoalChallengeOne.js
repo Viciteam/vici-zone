@@ -19,13 +19,7 @@ import ReactTooltip from 'react-tooltip';
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'https://api.vici.life/api/',
-  headers: {
-    'Content-Type' : 'application/json',
-    'Accept' : 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Authorization' : 'Bearer 1|74Q5WHcDLDhCb5M9NtabCridB2ZN68CGFaS5r2yN'
-  }
+  baseURL: 'https://api.vici.life/api/'
 })
 
 class GoalChallengeOne extends React.Component {
@@ -233,13 +227,13 @@ class GoalChallengeOne extends React.Component {
     toogleConvertActionToPoints(){
         let newState = !this.state.convertActionToPoints;
         this.setState({convertActionToPoints: newState});
-        
+
         this.populateInput('convert_action_to_points', newState)
     }
 
     toogleAllowPenalty(){
         this.setState({allowPenalty: !this.state.allowPenalty});
-        
+
     }
 
     toogleChangeChallengePrivacy(){
@@ -262,7 +256,7 @@ class GoalChallengeOne extends React.Component {
         this.setState({enableFormAfterJoining: enableForm});
         this.populateInput('enable_form_after_joining', enableForm)
     }
-    
+
 
 
 
@@ -463,6 +457,11 @@ class GoalChallengeOne extends React.Component {
             'details': [],
         };
 
+        const headers = {
+          "Content-Type" : "application/json",
+          "Authorization" : "Bearer 1|74Q5WHcDLDhCb5M9NtabCridB2ZN68CGFaS5r2yN"
+        };
+
         // params['name'] = formDetails.challengeTitle;
         // params['description'] = formDetails.instructions_rules;
         // params['is_template'] = 'No';
@@ -471,7 +470,7 @@ class GoalChallengeOne extends React.Component {
 
         Object.keys(formDetails).forEach(function(key) {
             console.log('dkeys ->', key);
-            if(key != 'details' || key != 'challengeTitle' || key != 'instructions_rules'){
+            if(key != "details" && key != "challengeTitle" && key != "instructions_rules"){
                 let subdetails = {
                     'field': key,
                     'data': formDetails[key]
@@ -480,16 +479,18 @@ class GoalChallengeOne extends React.Component {
             }
         });
 
-        // let params = JSON.stringify(params);
+        // params = JSON.stringify(params);
 
         console.log('dinal -> ', params);
-        api.post('/challenge', params)
+        api.post('/challenge', params, {headers})
         .then((response) => {
             console.log(response);
+            const id = response.data.challenge.id;
+            window.location.href = "/challenge/"+id;
         }).catch((err) => {
             console.log('error ->', err);
         });
-        
+
         console.log('params ->', params);
     }
 
