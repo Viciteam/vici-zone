@@ -3,16 +3,33 @@ import React from 'react';
 
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
+import AuthService from '../../../services/AuthService';
+
 
 class Login extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            active: this.props.active
+            active: this.props.active,
+            email: '',
+            password: '',
         }
 
         this.responseFacebook = this.responseFacebook.bind(this);
         this.responseGoogle = this.responseGoogle.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
+    }
+
+
+    async handleLogin() {
+        const postData = {
+            email: this.state.email,
+            password: this.state.password
+        }
+
+        console.log(postData)
+        const response = await AuthService.doUserLogin(postData)
+        console.log('response-', response)
     }
 
     responseFacebook(response){
@@ -24,6 +41,9 @@ class Login extends React.Component {
     }
 
     render () {
+
+        const { email, password } = this.state
+
         return (
             <div className="dloginpage">
                 <div className="dlogin-inner">
@@ -31,10 +51,10 @@ class Login extends React.Component {
                         <h2>Login to Vici</h2>
                         <div className="dformpart">
                             <div className="dusername">
-                                <input type="text" name="" id="" placeholder="Username"/>
+                                <input type="email" placeholder="Email" value={email} onChange={event => this.setState({email: event.target.value})}/>
                             </div>
                             <div className="dpass">
-                                <input type="password" name="" id="" placeholder="Password"/>
+                                <input type="password"  placeholder="Password" value={password} onChange={event => this.setState({password: event.target.value})} />
                             </div>
                         </div>
                         <div className="orseparator">
@@ -66,7 +86,7 @@ class Login extends React.Component {
                         </div>
                         <div className="dloginnow">
                             <div className="dloginbutton">
-                                <button>Log in</button>
+                                <button onClick={this.handleLogin}>Log in</button>
                             </div>
                             <div className="forgotpass">
                                 <a href="#">Forgot Password?</a>

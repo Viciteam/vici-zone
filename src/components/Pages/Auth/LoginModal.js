@@ -1,11 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
 
-function LoginModal ({ closeModal }) {
+import AuthService from '../../../services/AuthService';
 
+
+function LoginModal ({ closeModal }) {
+    let [name, setName] = useState('');
+    let [email, setEmail] = useState('');
+    let [password, setPassword] = useState('');
+    let [password_confirmation, setConfirmPassword] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [valid, setValid] = useState(true);
+    let [register, setRegister] = useState(false);
+
+
+    async function handleLogin(){
+        setLoading(true)
+        if(register){
+            const postData = { name, email, password, password_confirmation }
+            const response = await AuthService.doUserRegister(postData)
+            console.log('response register-', response)
+            if(response){
+                AuthService.handleLoginSuccess(response)
+                setValid(true)
+                setLoading(false)
+                closeModal()
+                window.location.href = "/";
+            }else{
+                setValid(false)
+                setLoading(false)
+                console.log('The given data was invalid')
+            }
+        }else{
+            const postData = { email, password }
+            const response = await AuthService.doUserLogin(postData)
+            console.log('response-', response)
+            if(response){
+                AuthService.handleLoginSuccess(response)
+                setValid(true)
+                setLoading(false)
+                closeModal()
+                window.location.href = "/";
+            }else{
+                setValid(false)
+                setLoading(false)
+                console.log('Invalid email or password')
+            }
+        }
+                
+    }
+
+    function handleKeyPress(event) {
+        if(event.key === 'Enter' && !register){
+            handleLogin()
+        }
+    }
+    
     return (
-        <div className="bg-vici_black bg-opacity-50 absolute inset-0 flex justify-center items-center z-10">
+        <div className="bg-vici_black bg-opacity-50 fixed inset-0 min-h-screen flex justify-center  items-center z-20">
             <div className="bg-white_color w-1/4 rounded-lg p-6">
                 <div className="flex justify-end pb-3">
                     <div>
@@ -18,14 +71,26 @@ function LoginModal ({ closeModal }) {
                 </div>
                 <div className="px-20 pb-20 pt-15">
                     <div className="text-center font-bold text-2xl">
-                        Please log in to continue
+                        { register ? 'Create a Vici account' : 'Please log in to continue'}
                     </div>
-                    <div className="mt-6 w-full">
-                        <input className="w-full px-5 py-2 rounded-full border border-bottom_gray" type="email" name="" id="" placeholder="Email"/>
+                    {
+                        register &&
+                        <div className="mt-6 w-full">
+                            <input className="w-full px-5 py-2 rounded-full border border-bottom_gray" type="text" value={name} onChange={event => setName(name = event.target.value)} placeholder="Name"/>
+                        </div>
+                    }
+                    <div className="mt-3 w-full">
+                        <input className="w-full px-5 py-2 rounded-full border border-bottom_gray" type="email" value={email} onChange={event => setEmail(email = event.target.value)} placeholder="Email"/>
                     </div>
                     <div className="mt-3 w-full">
-                        <input className="w-full px-5 py-2 rounded-full border border-bottom_gray" type="password" name="" id="" placeholder="Password"/>
+                        <input onKeyPress={handleKeyPress} className="w-full px-5 py-2 rounded-full border border-bottom_gray" type="password" value={password} onChange={event => setPassword(password = event.target.value)} placeholder="Password"/>
                     </div>
+                    {
+                        register &&
+                        <div className="mt-3 w-full">
+                            <input className="w-full px-5 py-2 rounded-full border border-bottom_gray" type="password" value={password_confirmation} onChange={event => setConfirmPassword(password_confirmation = event.target.value)} placeholder="Confirm password"/>
+                        </div>
+                    }
                     <div className="mt-6 relative">
                         <hr />
                         <div className="absolute top-0 px-3 -mt-2 bg-white_color left-28 text-xs">OR</div>
@@ -47,25 +112,30 @@ function LoginModal ({ closeModal }) {
                                 autoLoad={false}
                                 fields="name,email,picture"
                                 /* callback={this.responseFacebook} */
-                                cssClass="google-style"
+                                cssClass="google-style py-3"
                                 textButton="Continue with Facebook"
                                 icon="fa-facebook"
                             />
                         </div>
                     </div>
                     <div className="mt-3">
-                        <div className="bg-primary_color text-white_color py-3 cursor-pointer rounded-full">Log in</div>
+                        <div onClick={handleLogin} className="bg-primary_color text-white_color py-3 text-center cursor-pointer rounded-full">{ loading ? 'Logging in...' : register ? 'Get started' : 'Log in'}</div>
                     </div>
                     <div className="my-5">
-                        <div className="text-medium_gray cursor-pointer">Forgot password?</div>
+                        <div className="text-medium_gray text-center cursor-pointer">Forgot password?</div>
                     </div>
                     <div>
-                        <div className="text-medium_gray cursor-pointer">Dont have an account?
-                            <span className="text-primary_color cursor-pointer pl-3 font-bold">Sign up</span>
+                        <div className="text-medium_gray cursor-pointer text-center">{register ? 'Already have an account?' : 'Dont have an account?'} 
+                            <span onClick={() => setRegister(register = !register)} className="text-primary_color cursor-pointer pl-3 font-bold">{register ? 'Log in' : 'Sign up'}</span>
                         </div>
                     </div>
                 </div>
+                {
+                    !valid &&
+                    <div className="text-red">{register ? 'The given data was invalid!' : 'Invalid email or password!'}</div>
+                }
             </div>
+            
         </div>
     )
 }

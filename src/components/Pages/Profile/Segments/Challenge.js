@@ -3,6 +3,7 @@ import React from 'react';
 
 import ChallengeList from './ChallengeList'
 import LoginModal from '../../Auth/LoginModal';
+import auth from '../../../../services/auth';
 
 class Challenge extends React.Component {
     constructor(props){
@@ -17,7 +18,9 @@ class Challenge extends React.Component {
     }
 
     handleOpenModal () {
-        this.setState({ openModal: true });
+        if(!auth.isAuthenticated()){
+            this.setState({ openModal: true });
+        }
     }
 
     handleCloseModal () {
