@@ -3743,12 +3743,217 @@
     font-size: 15px;
     line-height: 1.3em;
 }
-.d-action-current-step .d-add-action-modal-inner {
+.d-add-action-modal-inner {
     margin: 5% auto;
-    width: 760px;
+    width: 570px;
     background: #fff;
     box-shadow: 0 0 12px #ccc;
     border-radius: 10px;
+    font-size: 13px;
+    font-family: nunito, sans-serif;
+}
+
+.d-add-action-modal-inner.d-add-step-two {
+    width: 660px;
+}
+
+.d-add-action-modal-inner .d-action-step-items {
+    width: 70%;
+    margin: 40px auto;
+}
+
+.d-action-current-step.step-two-selected .d-action-step-items {
+    width: 100%;
+    margin: 0;
+}
+
+
+.d-add-action-modal-inner .d-action-step-items .d-action-step-one-options .cgl-name {
+    display: inline-block;
+    width: 70%;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.d-add-action-modal-inner .d-action-step-items .d-action-step-one-options .cgl-doptions {
+    display: inline-block;
+    width: 30%;
+    text-align: right;
+}
+
+.d-add-action-modal-inner .d-action-step-items .d-action-step-one-options .cg-input .subheader {
+    font-size: 13px;
+    line-height: 1.2em;
+    margin-top: 10px;
+}
+
+.d-add-action-modal-inner .d-action-step-items .d-action-step-name input {
+    font-size: 18px;
+    width: 100%;
+    line-height: 1em;
+    padding: 13px 15px;
+    border-bottom: 1px solid #a8a8b0;
+    margin-bottom: 15px;
+}
+
+.d-action-step-inner .dm-main-title {
+    display: inline-block;
+    width: 85%;
+    line-height: 1em;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.d-action-step-inner .dm-main-icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 15%;
+    text-align: right;
+    font-size: 15px;
+    line-height: 1em;
+}
+
+.dmenu-menu-item .dmtitle .dm-main-title {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1em;
+    width: 85%;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.dmenu-menu-item .dmtitle .dm-main-icon {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1em;
+    width: 14%;
+}
+
+.dmenu-menu-item .dmtitle {
+    line-height: 1em;
+    margin-bottom: 10px;
+}
+
+.dmenu-menu-item .dm-items {
+    margin-left: 10px;
+}
+
+.d-action-current-step.step-two-selected .d-action-step-items .d-action-step-menu {
+    display: inline-block;
+    vertical-align: top;
+    width: 40%;
+    border-right: 1px solid #ccc;
+    padding: 10px 10px 10px 20px;
+}
+
+.d-action-current-step.step-two-selected .d-action-step-items .d-action-step-content {
+    display: inline-block;
+    vertical-align: top;
+    width: 60%;
+    padding: 10px;
+}
+
+.d-action-step-menu h2 {
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1em;
+    margin-bottom: 5px;
+}
+
+.d-action-step-menu .dmenu-subheader {
+    line-height: 1.2em;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.dmenu-menu-item {
+    margin-bottom: 10px;
+}
+
+.dmenu-menu-item .dm-items .dm-item .dm-item-checkbox {
+    display: inline-block;
+    width: 10%;
+    text-align: center;
+    line-height: 1em;
+    vertical-align: middle;
+}
+
+.dmenu-menu-item .dm-items .dm-item .dm-item-text {
+    display: inline-block;
+    width: 90%;
+    text-align: left;
+    line-height: 1em;
+    vertical-align: middle;
+    padding-left: 3%;
+}
+
+.dm-integrated-tems .has-data-selected .dm-integrated-points h4,
+.dm-integrated-tems .has-data-selected .dm-integrated-measurements h4 {
+    font-size: 13px;
+    padding: 0;
+    border: 0;
+    margin-bottom: 5px;
+}
+
+.dm-integrated-tems .has-data-selected .dm-integrated-measurements {
+    margin-bottom: 10px;
+}
+
+.dm-integrated-tems .has-data-selected .dm-integrated-points .d-number-full label {
+    display: block;
+}
+
+.dm-integrated-tems .has-data-selected .dm-integrated-points .d-number-full select {
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 7px 15px;
+    line-height: 1em;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.has-data-selected .dm-integrated-measurements .d-number-main {
+    display: inline-block;
+    vertical-align: middle;
+    width: 40%;
+    padding-right: 10px;
+}
+
+.has-data-selected .dm-integrated-measurements .d-number-main input[type="text"] {
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 7px 15px;
+    line-height: 1em;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.has-data-selected .dm-integrated-measurements .d-number-metric {
+    display: inline-block;
+    vertical-align: middle;
+    width: 60%;
+}
+
+.has-data-selected .dm-integrated-measurements .d-number-metric select {
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 7px 15px;
+    line-height: 1em;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+
+.d-action-step-one-options {
+    margin-bottom: 20px;
+}
+
+.d-add-insctuctions-and-link {
+    margin-bottom: 15px;
+}
+
+.d-add-insctuctions-and-link button span {
+    margin-left: 10px;
 }
 
 .add-action-modal .d-add-action-modal-inner h4 {
@@ -3885,4 +4090,20 @@
 
 .dcreatechallenge {
     cursor: pointer;
+}
+
+.dm-customize-point-scale {
+    margin: 5px 0;
+}
+
+.dm-integrated-values .dm-integrated-item {
+    display: inline-block;
+    margin-right: 7px;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.dm-integrated-values {
+    margin-bottom: 10px;
 }
