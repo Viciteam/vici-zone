@@ -1,6 +1,8 @@
 import './../../styles/challenge.css';
 import React, {useRef} from 'react';
 
+import { withRouter } from 'react-router-dom'
+
 import Menu from './Segments/Menu'
 import ChallengeGoalActions from './Segments/ChallengeGoalActions'
 
@@ -34,6 +36,7 @@ class GoalChallengeOne extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            challengeID: this.props.match.params.id,
             uinfo: this.props.uinfo,
             activepart: 'title',
             stepnumber: 0,
@@ -161,6 +164,12 @@ class GoalChallengeOne extends React.Component {
         this.activity_list = [
             {"activity": ""}
         ];
+    }
+
+    componentDidMount(){
+        console.log('this is a test -> ', this.state.challengeID);
+
+
     }
 
     toogleCustomSocialActions(){
@@ -1895,4 +1904,4 @@ class GoalChallengeOne extends React.Component {
     }
 }
 
-export default GoalChallengeOne
+export default withRouter(GoalChallengeOne)
