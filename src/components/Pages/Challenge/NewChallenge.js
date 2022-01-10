@@ -36,7 +36,7 @@ class NewChallenge extends React.Component {
                                     <div className="dtiletext">goal</div>
                                     <div className="dshowtext">
                                         <h2 className="greenbg">Goal Challenge</h2>
-                                        <div class="ddesc">anyone who achieves a goal/milestone wins.</div>
+                                        <div className="ddesc">anyone who achieves a goal/milestone wins.</div>
                                     </div>
                                 </div>
                             </a>
@@ -49,7 +49,7 @@ class NewChallenge extends React.Component {
                                 <div className="dtiletext">leaderboard</div>
                                 <div className="dshowtext">
                                     <h2 className="purplebg">LEADERBOARD</h2>
-                                    <div class="ddesc">Anyone with the highest score wins.</div>
+                                    <div className="ddesc">Anyone with the highest score wins.</div>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@ class NewChallenge extends React.Component {
                                 <div className="dtiletext">contest</div>
                                 <div className="dshowtext">
                                     <h2 className="bluebg">CONTEST</h2>
-                                    <div class="ddesc">Winner is decided by votes or by a judge.</div>
+                                    <div className="ddesc">Winner is decided by votes or by a judge.</div>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +73,7 @@ class NewChallenge extends React.Component {
                                 <div className="dtiletext">challenge yourself</div>
                                 <div className="dshowtext">
                                     <h2 className="yellowbg">CHALLENGE YOURSELF</h2>
-                                    <div class="ddesc">Create goals and keep yourself accountable</div>
+                                    <div className="ddesc">Create goals and keep yourself accountable</div>
                                 </div>
                             </div>
                         </div>
@@ -85,7 +85,7 @@ class NewChallenge extends React.Component {
                                 <div className="dtiletext">debate</div>
                                 <div className="dshowtext">
                                     <h2 className="redbg">DEBATE</h2>
-                                    <div class="ddesc">Build consensus on a topic and win with better reasoning</div>
+                                    <div className="ddesc">Build consensus on a topic and win with better reasoning</div>
                                 </div>
                             </div>
                         </div>

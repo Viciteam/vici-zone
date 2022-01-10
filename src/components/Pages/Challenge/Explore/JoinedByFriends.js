@@ -63,7 +63,7 @@ class JoinedByFriends extends React.Component {
                         </button>
                         <button className="px-3 py-2 bg-white_color mx-1 rounded-full text-sm shadow-xl flex">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                                <path strokeLinejoin="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                             </svg>
                             <span className="pl-2">List view</span>
                         </button>
@@ -112,7 +112,7 @@ class JoinedByFriends extends React.Component {
                         <div className="absolute right-0 bottom-44">
                             <button className="p-3 rounded-full bg-white_color shadow-xl">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                    <path strokeLinejoin="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                 </svg>
                             </button>
                         </div>

@@ -36,7 +36,7 @@ function BrandProfileInviteModal ({ closeInvite, isCreateBrand }) {
                             </div>
                             <button>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-medium_gray" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                             </button>
                         </div>
@@ -58,7 +58,7 @@ function BrandProfileInviteModal ({ closeInvite, isCreateBrand }) {
                             </div>
                             <button>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-medium_gray" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                             </button>
                         </div>
@@ -66,7 +66,7 @@ function BrandProfileInviteModal ({ closeInvite, isCreateBrand }) {
                     <div className="my-3 flex p-3 rounded-2xl shadow-vici cursor-pointer">
                         <button className="p-1 border rounded-xl border-light_gray text-vici_secondary">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                <path strokeLinecap="round" strokeLinejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                             </svg>
                         </button>
                         <div className="font-bold text-vici_secondary pl-6 pt-1">

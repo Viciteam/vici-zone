@@ -14,12 +14,12 @@ class PopularChallenges extends React.Component {
                     <div className="w-full flex justify-between pl-12 absolute bottom-20">
                         <button className="py-3 pl-2 pr-8 bg-white_color shadow-xl rounded-full">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                                <path strokeLinecap="round" strokeLinejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
                             </svg>
                         </button>
                         <button className="py-3 pr-2 mr-6 pl-8 bg-white_color shadow-xl rounded-full">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                <path strokeLinecap="round" strokeLinejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                             </svg>
                         </button>
                     </div>

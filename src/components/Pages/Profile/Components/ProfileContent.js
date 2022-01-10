@@ -135,7 +135,7 @@ class ProfileContent extends React.Component {
                                                     cy="50"
                                                 />
                                                 <circle class={ item.progress_color } 
-                                                    stroke-linecap=""  
+                                                    strokeLinecap=""  
                                                     cx="50"
                                                     cy="50"
                                                     r="40"

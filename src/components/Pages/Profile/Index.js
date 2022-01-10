@@ -78,7 +78,7 @@ class Index extends React.Component {
                                 <div className="">
                                     <button className="text-sm flex text-vici_secondary px-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                            <path strokeLinecap="round" strokeLinejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                         </svg>
                                         Add Friends
                                     </button>
@@ -86,7 +86,7 @@ class Index extends React.Component {
                                 <div className="mt-2">
                                     <button onClick={this.handleOpenEditProfileModal} className="text-sm flex bg-vici_secondary w-full text-white_color px-3 py-1 rounded">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                            <path strokeLinecap="round" strokeLinejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                         </svg>
                                         Edit Profile
                                     </button>
