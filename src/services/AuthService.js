@@ -46,6 +46,7 @@ class AuthService {
         date.setTime(date.getTime() + expiresAt * 60 * 1000);
         const options = { path: "/", expires: date };
         CookieService.set("access_token", response.token, options);
+        CookieService.set("user_info", response.user, options);
         return true;
     }
 

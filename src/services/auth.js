@@ -23,11 +23,17 @@ class Auth {
 
     async logout() {
         CookieService.remove("access_token");
+        CookieService.remove("user_info");
         this.authenticated = false;
     }
 
     isAuthenticated() {
         return this.authenticated;
+    }
+
+    user() {
+        const name = CookieService.get("user_info");
+        return name
     }
 
     getAccessToken() {
