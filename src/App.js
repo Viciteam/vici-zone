@@ -12,6 +12,10 @@ import ProfileContent from './components/Pages/Profile/mainProfileContent';
 
 import Profile from './components/Pages/Profile/Index'
 
+import PrivacyPolicy from './components/Pages/Privacy/PrivacyPolicy'
+import TermsConditions from './components/Pages/Privacy/TermsConditions';
+import CookiePolicy from './components/Pages/Privacy/CookiePolicy';
+
 import GuestContent from './components/Pages/Guest/GuestContent';
 
 import ContactHeader from './components/Pages/ContactUs/ContactHeader'
@@ -134,6 +138,15 @@ function App() {
             <Route path="/messages">
               <ClanHeader />
               <Messages />
+            </Route>
+            <Route path="/privacy-policy">
+              <PrivacyPolicy />
+            </Route>
+            <Route path="/terms-and-conditions">
+              <TermsConditions />
+            </Route>
+            <Route path="/cookie-policy">
+              <CookiePolicy />
             </Route>
           </Switch>
       </div>

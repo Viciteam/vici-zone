@@ -322,17 +322,17 @@ class ClanHeader extends React.Component {
                                             <div className="mx-6 pb-6">
                                                 <div className="text-xs">
                                                     <span className="px-1">
-                                                        <a href="https://www.iubenda.com/privacy-policy/46586081" class="iubenda-white no-brand iubenda-noiframe iubenda-embed iubenda-noiframe iub-body-embed" title="Privacy Policy">
+                                                        <a href="/privacy-policy" class="iubenda-white no-brand iubenda-noiframe iubenda-embed iubenda-noiframe iub-body-embed" title="Privacy Policy">
                                                             Privacy Policy
                                                         </a>                                                       
                                                     </span> • 
                                                     <span className="px-1">
-                                                        <a href="https://www.iubenda.com/terms-and-conditions/46586081" class="iubenda-white no-brand iubenda-noiframe iubenda-embed iubenda-noiframe iub-body-embed" title="Terms and Conditions">
+                                                        <a href="/terms-and-conditions" class="iubenda-white no-brand iubenda-noiframe iubenda-embed iubenda-noiframe iub-body-embed" title="Terms and Conditions">
                                                             Terms and Conditions
                                                         </a>
                                                     </span> • 
                                                     <span className="px-1">
-                                                        <a href="https://www.iubenda.com/privacy-policy/46586081/cookie-policy" class="iubenda-white no-brand iubenda-noiframe iubenda-embed iubenda-noiframe iub-body-embed" title="Cookie Policy">
+                                                        <a href="/cookie-policy" class="iubenda-white no-brand iubenda-noiframe iubenda-embed iubenda-noiframe iub-body-embed" title="Cookie Policy">
                                                             Cookie Policy
                                                         </a>
                                                     </span> • 
