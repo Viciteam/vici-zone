@@ -319,6 +319,26 @@ class ClanHeader extends React.Component {
                                             <div className="px-6 py-3 mb-3 mt-2 text-sm font-bold hover:bg-light_gray cursor-pointer">
                                             Logout
                                             </div>
+                                            <div className="mx-6 pb-6">
+                                                <div className="text-xs">
+                                                    <span className="px-1">
+                                                        <a href="https://www.iubenda.com/privacy-policy/46586081" class="iubenda-white no-brand iubenda-noiframe iubenda-embed iubenda-noiframe iub-body-embed" title="Privacy Policy">
+                                                            Privacy Policy
+                                                        </a>                                                       
+                                                    </span> • 
+                                                    <span className="px-1">
+                                                        <a href="https://www.iubenda.com/terms-and-conditions/46586081" class="iubenda-white no-brand iubenda-noiframe iubenda-embed iubenda-noiframe iub-body-embed" title="Terms and Conditions">
+                                                            Terms and Conditions
+                                                        </a>
+                                                    </span> • 
+                                                    <span className="px-1">
+                                                        <a href="https://www.iubenda.com/privacy-policy/46586081/cookie-policy" class="iubenda-white no-brand iubenda-noiframe iubenda-embed iubenda-noiframe iub-body-embed" title="Cookie Policy">
+                                                            Cookie Policy
+                                                        </a>
+                                                    </span> • 
+                                                    <span className="px-1">Vici Life Pte. Ltd. © 2022</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 }
