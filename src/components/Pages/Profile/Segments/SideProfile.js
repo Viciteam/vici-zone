@@ -207,7 +207,7 @@ class SideProfile extends React.Component {
                         <div className="avatar flex justify-center">
                             <div className="d-profile-avatar">
                                 <div className="d-profile-avatar-inner">
-                                    <img src="/img/user-profile.png" alt="" />
+                                    <img src={auth.userProfile() ? auth.userProfile().profpic_link : '/img/avatarguest.png'} alt="" className="object-cover rounded-full w-40 h-40" />
                                 </div>
                             </div>
                         </div>
@@ -221,7 +221,7 @@ class SideProfile extends React.Component {
                     
                     <div className="user-details">
                         <div className="ud-inner">
-                            <h3>{ auth.isAuthenticated() ? auth.user().name : 'Guest User'}</h3>
+                            <h3>{ auth.isAuthenticated() ? auth.userProfile() ? auth.userProfile().name : auth.user().name : 'Guest User'}</h3>
                             <div className="stats">
                                 <ul>
                                     <li>

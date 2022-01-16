@@ -24,6 +24,7 @@ class Auth {
     async logout() {
         CookieService.remove("access_token");
         CookieService.remove("user_info");
+        CookieService.remove("user_profile");
         this.authenticated = false;
     }
 
@@ -34,6 +35,11 @@ class Auth {
     user() {
         const name = CookieService.get("user_info");
         return name
+    }
+
+    userProfile() {
+        const user = CookieService.get("user_profile");
+        return user
     }
 
     getAccessToken() {

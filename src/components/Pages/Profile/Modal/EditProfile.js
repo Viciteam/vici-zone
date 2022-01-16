@@ -1,9 +1,90 @@
 import React from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+import AuthService from '../../../../services/AuthService';
+import CookieService from '../../../../services/CookieService';
+//import axios from 'axios';
 
 function EditProfile ({ closeModal }) {
+    let [profpic_link, setProfLink] = useState('/img/avatarguest.png');
+    let [bgcolor, setBgColor] = useState('#FFCA28');
+    let [txtcolor, setTextColor] = useState('white');
+    let [username, setUsername] = useState('');
+    let [name, setName] = useState('');
+    let [pref_pronoun, setPrefPronoun] = useState('She/Her');
+    let [bday, setBday] = useState(new Date());
+    let [bio, setBio] = useState('');
+    let [mission, setMission] = useState('');
+    let [country, setCountry] = useState('');
+    let [imgType, setImgType] = useState('');
+    let [imgName, setImgName] = useState('');
+    let [imgFile, setImgFile] = useState(null);
+
+    const profileUploader = useRef(null)
+
+    const uploadProfile = () => {
+        profileUploader.current.click();
+    };
+
+    useEffect(() => {
+        getUserProfile();
+    }, []);
+
+    async function getUserProfile(){
+        const response = await AuthService.getUserProfile()
+        if(response){
+            setProfLink(response.user.profpic_link)
+            setBgColor(response.user.bgcolor)
+            setTextColor(response.user.txtcolor)
+            setUsername(response.user.username)
+            setName(response.user.name)
+            setPrefPronoun(response.user.pref_pronoun)
+            setBday(response.user.bday)
+            setBio(response.user.bio)
+            setMission(response.user.mission)
+            setCountry(response.user.country)
+        }
+    }
+
+    function setProfile(event) {
+        const objectUrl = URL.createObjectURL(event.target.files[0])
+        setImgFile(event.target.files[0])
+        setImgType(event.target.files[0].type.split('/')[1])
+        setImgName(objectUrl.substring(objectUrl.lastIndexOf("/") + 1, objectUrl.length))
+        //setProfilePreview(objectUrl)
+        setProfLink(objectUrl)
+    }
+
+    function handleChangeTextColor(event) {
+        setTextColor(event.target.value)
+    }
+
+    async function handleSubmit(){
+        const data = {
+            profpic_link,
+            bgcolor,
+            txtcolor,
+            username,
+            name,
+            pref_pronoun,
+            bday,
+            bio,
+            mission,
+            country
+        }
+
+        console.log(data)
+        const response = await AuthService.registerUserProfile(data)
+        if(response){
+            console.log('uesr',response)
+            CookieService.set("user_profile", response.user);
+            window.location.href = "/profile";
+        }
+        closeModal()
+    }
 
     return (
-        <div className="bg-vici_black bg-opacity-50 absolute inset-0 flex justify-center items-center z-10">
+        <div className="bg-vici_black bg-opacity-50 fixed inset-0 flex justify-center items-center z-10">
             <div className="bg-white_color w-1/2 rounded-lg h-screen overflow-auto">
                 <div className="flex justify-between p-6 bg-primary_background rounded-lg">
                     <div className="text-lg font-bold">
@@ -20,10 +101,11 @@ function EditProfile ({ closeModal }) {
                 <div className="w-full">
                     <div className="w-1/2 mx-auto my-3 rounded-2xl border border-medium_gray">
                         <div className="flex justify-center pt-3">
-                            <img src="/img/avatarguest.png" width="100" />
+                            <img src={profpic_link}  className="object-cover rounded-full w-28 h-28" />
                         </div>
                         <div className="flex justify-center my-3">
-                            <button className="text-vici_secondary">Upload Profile</button>
+                            <button onClick={uploadProfile} className="text-vici_secondary">Upload Profile</button>
+                            <input type="file" id="file" onChange={setProfile.bind(this)}  ref={profileUploader} style={{display: "none"}}/>
                         </div>
                         <div className="mt-3 p-3">
                             <div className="flex">
@@ -35,8 +117,8 @@ function EditProfile ({ closeModal }) {
                                         </button>
                                     </div>
                                     <div className="flex mt-3">
-                                        <input type="color" className="h-10 rounded" value="#FFCA28" />
-                                        <div className="pl-3 pt-2">#FFCA28</div>
+                                        <input type="color" value={bgcolor} onChange={event => setBgColor(bgcolor = event.target.value)} className="h-10 rounded" />
+                                        <div className="pl-3 pt-2 uppercase">{ bgcolor }</div>
                                     </div>
                                 </div>
                                 <div className="pl-12 ">
@@ -47,15 +129,15 @@ function EditProfile ({ closeModal }) {
                                         </button>
                                     </div>
                                     <div className="flex mt-3">
-                                        <div className="px-3 py-2 rounded-lg bg-vici_secondary text-white_color">
+                                        <div className={`px-3 py-2 rounded-lg ${txtcolor == 'white' ? 'bg-vici_secondary text-white_color' : ''} hover:bg-vici_secondary hover:text-white_color`}>
                                             <label class="inline-flex items-center">
-                                                <input type="radio" class="form-radio" name="textColor" value="1" />
+                                                <input onChange={handleChangeTextColor} type="radio" class="form-radio" name="textColor" value="white" />
                                                 <span class="ml-2 text-sm">White</span>
                                             </label>
                                         </div>
-                                        <div className="px-3 ml-3 py-2 rounded-lg hover:bg-vici_secondary hover:text-white_color border border-medium_gray">
+                                        <div className={`px-3 ml-3 py-2 rounded-lg ${txtcolor == 'black' ? 'bg-vici_secondary text-white_color' : ''} hover:bg-vici_secondary hover:text-white_color border border-medium_gray`}>
                                             <label class="inline-flex items-center">
-                                                <input type="radio" class="form-radio" name="textColor" value="2" />
+                                                <input onChange={handleChangeTextColor} type="radio" class="form-radio" name="textColor" value="black" />
                                                 <span class="ml-2 text-sm">Black</span>
                                             </label>
                                         </div>
@@ -66,8 +148,8 @@ function EditProfile ({ closeModal }) {
                         <div className="p-3">
                             <div className="text-sm text-vici_secondary_text font-bold">Preview</div>
                             <div className="w-full mt-3">
-                                <button className="w-full py-2 rounded-lg text-white_color bg-vici_secondary">
-                                    John Doe
+                                <button style={{background: bgcolor }} className={`w-full py-2 rounded-lg ${txtcolor == 'white' ? 'text-white_color' : ''}`}>
+                                    { name ? name : 'John Doe' }
                                 </button>
                             </div>
                         </div>
@@ -78,7 +160,7 @@ function EditProfile ({ closeModal }) {
                                 Username
                             </div>
                             <div className="w-3/4">
-                                <input type="text" className="w-full py-2 px-3 rounded-xl border border-medium_gray" placeholder="Username" />
+                                <input type="text" value={username} onChange={event => setUsername(username = event.target.value)} className="w-full py-2 px-3 rounded-xl border border-medium_gray" placeholder="Username" />
                             </div>
                         </div>
                         <div className="flex p-3">
@@ -86,7 +168,7 @@ function EditProfile ({ closeModal }) {
                                 Name
                             </div>
                             <div className="w-3/4">
-                                <input type="text" className="w-full py-2 px-3 rounded-xl border border-medium_gray" placeholder="Name" />
+                                <input type="text" value={name} onChange={event => setName(name = event.target.value)} className="w-full py-2 px-3 rounded-xl border border-medium_gray" placeholder="Name" />
                             </div>
                         </div>
                         <div className="flex p-3">
@@ -94,8 +176,11 @@ function EditProfile ({ closeModal }) {
                                 Preferred pronouns
                             </div>
                             <div className="w-3/4">
-                                <select  className="w-full py-2 px-3 rounded-xl border border-medium_gray" placeholder="Name">
+                                <select value={pref_pronoun} onChange={event => setPrefPronoun(pref_pronoun = event.target.value)} className="w-full py-2 px-3 rounded-xl border border-medium_gray" placeholder="Name">
                                     <option>She/Her</option>
+                                    <option>Mr</option>
+                                    <option>Ms</option>
+                                    <option>Mrs</option>
                                 </select>
                             </div>
                         </div>
@@ -104,7 +189,7 @@ function EditProfile ({ closeModal }) {
                                 Birthdate
                             </div>
                             <div className="w-3/4">
-                                <input type="text" className="w-full py-2 px-3 rounded-xl border border-medium_gray" placeholder="DD/MM/YY" />
+                                <input type="date" value={bday} onChange={event => setBday(bday = event.target.value)} className="w-full py-2 px-3 rounded-xl border border-medium_gray" placeholder="DD/MM/YY" />
                             </div>
                         </div>
                         <div className="flex p-3">
@@ -112,7 +197,7 @@ function EditProfile ({ closeModal }) {
                                 Bio
                             </div>
                             <div className="w-3/4">
-                               <textarea className="w-full py-2 px-3 rounded-xl border border-medium_gray" placeholder="Tell us something about yourself"></textarea>
+                               <textarea value={bio} onChange={event => setBio(bio = event.target.value)} className="w-full py-2 px-3 rounded-xl border border-medium_gray" placeholder="Tell us something about yourself"></textarea>
                             </div>
                         </div>
                         <div className="flex p-3">
@@ -120,7 +205,7 @@ function EditProfile ({ closeModal }) {
                                 Mission
                             </div>
                             <div className="w-3/4">
-                               <textarea className="w-full py-2 px-3 rounded-xl border border-medium_gray" placeholder="What is your mission in life?"></textarea>
+                               <textarea value={mission} onChange={event => setMission(mission = event.target.value)} className="w-full py-2 px-3 rounded-xl border border-medium_gray" placeholder="What is your mission in life?"></textarea>
                             </div>
                         </div>
                         <div className="flex p-3">
@@ -128,7 +213,7 @@ function EditProfile ({ closeModal }) {
                                 Country
                             </div>
                             <div className="w-3/4">
-                                <select  className="w-full py-2 px-3 rounded-xl border border-medium_gray" placeholder="Name">
+                                <select value={country} onChange={event => setCountry(country = event.target.value)} className="w-full py-2 px-3 rounded-xl border border-medium_gray" placeholder="Name">
                                     <option>Philippines</option>
                                     <option>Vietnam</option>
                                     <option>Singapore</option>
@@ -139,7 +224,7 @@ function EditProfile ({ closeModal }) {
                     <div className="my-6">
                         <div className="flex justify-center">
                             <button onClick={() => {closeModal()}} className="py-2 px-3 border border-medium_gray rounded-lg">Cancel</button>
-                            <button onClick={() => {closeModal()}} className="py-2 px-5 border ml-3 bg-primary_color text-white_color rounded-lg">Save</button>
+                            <button onClick={() => {handleSubmit()}} className="py-2 px-5 border ml-3 bg-primary_color text-white_color rounded-lg">Save</button>
                         </div>
                     </div>
                 </div>

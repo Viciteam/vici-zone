@@ -40,6 +40,15 @@ import Onboarding from './components/Pages/Onboarding/Onboarding';
 
 import Messages from './components/Pages/Messages/Messages'
 import SearchResults from './components/Pages/Search/SearchResults';
+import CookieService from './services/CookieService';
+import axios from 'axios';
+
+axios.interceptors.request.use(function (config){
+  const token = CookieService.get("access_token");
+  config.headers.Authorization = token ? `Bearer ${token}` : '';
+  return config;
+});
+
 
 function App() {
   return (

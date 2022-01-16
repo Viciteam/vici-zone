@@ -132,7 +132,12 @@ function LoginModal ({ closeModal }) {
                 </div>
                 {
                     !valid &&
-                    <div className="text-red">{register ? 'The given data was invalid!' : 'Invalid email or password!'}</div>
+                    <div className="text-center">{register ? 'The given data was invalid!' : 'There\'s no account associated with this email address.'}
+                        {
+                            !register &&
+                            <span onClick={() => setRegister(register = !register)} className="cursor-pointer font-bold text-primary_color"> Create an account</span>
+                        }
+                    </div>
                 }
             </div>
             

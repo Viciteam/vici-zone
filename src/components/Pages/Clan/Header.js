@@ -7,6 +7,7 @@ import { faComment, faBell, faSearch } from '@fortawesome/free-solid-svg-icons'
 import BrandProfileModal from './Components/BrandProfileModal';
 import { ProfileContext } from '../Profile/ProfileContext'
 import auth from '../../../services/auth';
+import AuthService from '../../../services/AuthService';
 
 class ClanHeader extends React.Component {
     constructor(props){
@@ -41,10 +42,14 @@ class ClanHeader extends React.Component {
         setBannerValue(val)
     }
 
-    handleLogout() {
-        auth.logout()
-        this.setState({ openAccountSettings: false });
-        window.location.href = "/";
+    async handleLogout() {
+        const response = await AuthService.doUserLogout()
+        if(response){
+            auth.logout();
+            this.setState({ openAccountSettings: false });
+            window.location.href = "/";
+        }
+        
     }
 
     handleProfileImage (val) {
@@ -277,7 +282,7 @@ class ClanHeader extends React.Component {
                             <div className="relative">
                                 {
                                     auth.isAuthenticated() ?
-                                    <img onClick={this.handleOpenAccountSettings} src="/img/user_main.jpg" className="cursor-pointer"/>
+                                    <img onClick={this.handleOpenAccountSettings} src={auth.userProfile() ? auth.userProfile().profpic_link : '/img/avatarguest.png'} className="cursor-pointer"/>
                                     :
                                     <img src="/img/guestusericon.png" className="cursor-pointer w-10" />
                                 }

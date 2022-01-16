@@ -4,6 +4,8 @@ import ProfileContent from './Components/ProfileContent';
 import RightSidebar from './Components/RightSidebar';
 import EditProfile from './Modal/EditProfile';
 import { ProfileContext } from '../Profile/ProfileContext'
+
+import auth from '../../../services/auth';
 class Index extends React.Component {
 
     constructor(props){
@@ -50,12 +52,12 @@ class Index extends React.Component {
                         <div className="flex">
                             <div className="half-circle relative">
                                 <div className="rounded-full absolute ml-1 w-28 mt-1">
-                                    <img src={profileValue} className="rounded-full object-cover" />
+                                    <img src={auth.userProfile() ? auth.userProfile().profpic_link : '/img/avatarguest.png'} className="rounded-full object-cover w-28 h-28" />
                                 </div>
                                 <div className="h-10 w-10 bg-primary_color rounded-full text-center pt-2 absolute -bottom-2 left-10 font-bold">150</div>
                             </div>
                             <div className="ml-20 pt-7">
-                                <div className="text-2xl font-bold">Daphne Winter</div>
+                                <div className="text-2xl font-bold">{auth.userProfile() ? auth.userProfile().name : auth.user().name}</div>
                                 <div className="flex">
                                     <img src="/img/coil.png" className="h-5" />
                                     <div className="ml-2">250</div>
