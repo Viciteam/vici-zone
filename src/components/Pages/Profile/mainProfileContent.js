@@ -15,7 +15,8 @@ import OngoingChallenge from './Segments/OngoingChallenge'
 import PopularClans from '../Clan/PopularClans'
 import WhoToFollow from '../Clan/WhoToFollow';
 import Friends from '../Clan/Friends';
-
+import auth from '../../../services/auth';
+import LoginModal from '../Auth/LoginModal';
 
 class mainProfileContent extends React.Component{
     constructor(props){
@@ -35,8 +36,19 @@ class mainProfileContent extends React.Component{
                     following: 2,
                     friends: 98
                 }
-            }
+            },
+            openModal: false,
         }
+        this.handleOpenModal = this.handleOpenModal.bind(this);
+        this.handleCloseModal = this.handleCloseModal.bind(this);
+    }
+
+    handleOpenModal () {
+        this.setState({ openModal: true });
+    }
+
+    handleCloseModal () {
+        this.setState({ openModal: false });
     }
 
     render(){
@@ -44,24 +56,38 @@ class mainProfileContent extends React.Component{
         return (
             <div className="container mx-auto mt-20">
                 <div className="main-content">
-                    <div className="profile-part">
+                    <div className="profile-part pt-4">
                         <SideProfile uinfo={user_information} />
                     </div>
                     <div className="content-part">
                         <div className="content-inner">
                             <div className="timeline">
                                 <div className="top-part">
-                                    <div className="wall-of-achievement">
-                                        <WallofAchievements />
-                                    </div>
-                                    <div className="top-activities">
-                                        <TopActivities />
-                                    </div>
-                                    <br className="clear"/>
+                                    {
+                                        auth.isAuthenticated() ? 
+                                        <div>
+                                            <div className="wall-of-achievement">
+                                                <WallofAchievements />
+                                            </div>
+                                            <div className="top-activities">
+                                                <TopActivities />
+                                            </div>
+                                            <br className="clear"/>
+                                        </div>
+                                        :
+                                        <div>
+                                            <div className='flex w-full h-36 justify-center pt-14 border border-medium_gray rounded-xl'>
+                                                Log in to Vici to create and participate in challenges. <span onClick={this.handleOpenModal} className="font-bold cursor-pointer pl-1">Login</span> 
+                                            </div>
+                                            {this.state.openModal && <LoginModal closeModal={this.handleCloseModal } />}
+                                        </div>
+                                    }
+                                    
+
                                 </div>
                                 <div className="middle-part">
                                     <div className="mp-inner">
-                                        <Tabs defaultIndex={1}>
+                                        <Tabs defaultIndex={0}>
                                             <TabList className="tabtitles">
                                                 <Tab>Challenges & Achievements</Tab>
                                                 <Tab>Timeline</Tab>

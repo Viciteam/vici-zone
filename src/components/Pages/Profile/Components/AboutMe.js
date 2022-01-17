@@ -1,5 +1,7 @@
 import React from 'react';
 
+import auth from '../../../../services/auth';
+
 class AboutMe extends React.Component {
     render () {
         return (
@@ -8,32 +10,42 @@ class AboutMe extends React.Component {
                 <div className="bg-white_color p-3 rounded-lg">
                     <div className="shadow-border_shadow pb-3">
                         <p>
-                            I am a streamer and influencer follow me on youtube to know more about my brand!
+                            {
+                                auth.userProfile() ? auth.userProfile().bio : ''
+                            }
                         </p>
                     </div>
                     <div className="py-3">
                         <div>
                             <div className="font-bold">Mission:</div>
                             <p>
-                                To live healthy life in a fun way with friends!
+                                {
+                                    auth.userProfile() ? auth.userProfile().mission : ''
+                                }  
                             </p>
                         </div>
                         <div className="pt-3">
                             <div className="font-bold">Preferred pronouns:</div>
                             <p>
-                                She/Her
+                                {
+                                    auth.userProfile() ? auth.userProfile().pref_pronoun : ''
+                                }  
                             </p>
                         </div>
                         <div className="pt-3">
                             <div className="font-bold">Birthdate:</div>
                             <p>
-                                1/03/99
+                                {
+                                    auth.userProfile() ? auth.userProfile().bday : ''
+                                }
                             </p>
                         </div>
                         <div className="pt-3">
                             <div className="font-bold">Country:</div>
                             <p>
-                                Philippines
+                                {
+                                    auth.userProfile() ? auth.userProfile().country : ''
+                                }
                             </p>
                         </div>
                     </div>

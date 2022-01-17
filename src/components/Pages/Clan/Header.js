@@ -6,6 +6,8 @@ import { faComment, faBell, faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import BrandProfileModal from './Components/BrandProfileModal';
 import { ProfileContext } from '../Profile/ProfileContext'
+import auth from '../../../services/auth';
+import AuthService from '../../../services/AuthService';
 
 class ClanHeader extends React.Component {
     constructor(props){
@@ -28,6 +30,7 @@ class ClanHeader extends React.Component {
 
         this.handleBannerChanges = this.handleBannerChanges.bind(this);
         this.handleProfileImage = this.handleProfileImage.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
     static contextType = ProfileContext;
@@ -37,6 +40,16 @@ class ClanHeader extends React.Component {
         const [bannerValue, setBannerValue] = banner;
         //const [profileValue, setProfileValue] = profile;
         setBannerValue(val)
+    }
+
+    async handleLogout() {
+        const response = await AuthService.doUserLogout()
+        if(response){
+            auth.logout();
+            this.setState({ openAccountSettings: false });
+            window.location.href = "/";
+        }
+        
     }
 
     handleProfileImage (val) {
@@ -135,11 +148,11 @@ class ClanHeader extends React.Component {
                         <img src="/img/vici.png"/>
                     </div>
                     <div className="ditems">
-                        <div className="dmenu">
-                            <ul>
-                                <li><a href="/home">Home</a></li>
-                                <li><a href="#">Explore</a></li>
-                                <li><a href="#">Learn</a></li>
+                        <div className="dmenu w-1/2">
+                            <ul className="flex justify-center w-full">
+                                <li className="px-6"><a href="/">Home</a></li>
+                                <li className="px-6"><a href="#">Explore</a></li>
+                                <li className="px-6"><a href="#">Learn</a></li>
                             </ul>
                         </div>
                         <div className="dsearch relative">
@@ -267,7 +280,12 @@ class ClanHeader extends React.Component {
                         </div>
                         <div className="dproficon">
                             <div className="relative">
-                                <img onClick={this.handleOpenAccountSettings} src="/img/user_main.jpg" className="cursor-pointer"/>
+                                {
+                                    auth.isAuthenticated() ?
+                                    <img onClick={this.handleOpenAccountSettings} src={auth.userProfile() ? auth.userProfile().profpic_link : '/img/avatarguest.png'} className="cursor-pointer"/>
+                                    :
+                                    <img src="/img/guestusericon.png" className="cursor-pointer w-10" />
+                                }
                                 {
                                     this.state.openAccountSettings &&
                                     <div className="absolute bg-white_color right-0 shadow-vici rounded z-10" style={{width: '270px'}}>
@@ -316,8 +334,8 @@ class ClanHeader extends React.Component {
                                             Language - English (US)
                                             </div>
                                             <div className="mx-6 border border-bottom_gray mt-2"></div>
-                                            <div className="px-6 py-3 mb-3 mt-2 text-sm font-bold hover:bg-light_gray cursor-pointer">
-                                            Logout
+                                            <div onClick={this.handleLogout} className="px-6 py-3 mb-3 mt-2 text-sm font-bold hover:bg-light_gray cursor-pointer">
+                                                Logout
                                             </div>
                                         </div>
                                     </div>
@@ -325,10 +343,10 @@ class ClanHeader extends React.Component {
                             </div>
                         </div>
                         <div className="dcoin">
-                            <div className="dcoin-inner"><img src="/img/coil.png"/> <span>250</span></div>
+                            <div className="dcoin-inner"><img src="/img/coil.png"/> <span>0</span></div>
                         </div>
                         <div className="dmedals">
-                            <div className="dmedal-inner"><img src="/img/medal.png"/> <span>10</span></div>
+                            <div className="dmedal-inner"><img src="/img/medal.png"/> <span>0</span></div>
                         </div>
                     </div>
                 </div>

@@ -2,6 +2,7 @@ import './../../../styles/profiles.css';
 import React from 'react';
 import ReactModal from 'react-modal';
 import { HexColorPicker } from "react-colorful";
+import auth from '../../../../services/auth';
 
 // add avatar component
 import Avatar from "./Avatar.jsx";
@@ -201,21 +202,31 @@ class SideProfile extends React.Component {
                             <br className="clear"/>
                         </div>
                     </div>
-                    <div className="avatar">
-                        <div className="d-profile-avatar">
-                            <div className="d-profile-avatar-inner">
-                                <img src="/img/user-profile.png" alt="" />
+                    {
+                        auth.isAuthenticated() ? 
+                        <div className="avatar flex justify-center">
+                            <div className="d-profile-avatar">
+                                <div className="d-profile-avatar-inner">
+                                    <img src={auth.userProfile() ? auth.userProfile().profpic_link : '/img/avatarguest.png'} alt="" className="object-cover rounded-full w-40 h-40" />
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        :
+                        <div className="flex justify-center p-6 bg-primary_color">
+                            <div>
+                                <img src="/img/avatarguest.png"></img>
+                            </div>
+                        </div>
+                    }
+                    
                     <div className="user-details">
                         <div className="ud-inner">
-                            <h3>{user_info.name}</h3>
+                            <h3>{ auth.isAuthenticated() ? auth.userProfile() ? auth.userProfile().name : auth.user().name : 'Guest User'}</h3>
                             <div className="stats">
                                 <ul>
                                     <li>
                                         <div className="dpointicon" style={{background: "#ffca28"}}>&nbsp;</div>
-                                        <div className="dpointtext">250</div>
+                                        <div className="dpointtext">0</div>
                                     </li>
                                     <li>
                                         <div className="dpointicon" style={{background: "#9b51e0"}}>&nbsp;</div>
