@@ -25,6 +25,7 @@
     "react-facebook-login": "^4.1.1",
     "react-google-login": "^5.2.2",
     "react-helmet": "^6.1.0",
+    "react-iubenda-policy": "^0.1.1",
     "react-modal": "^3.14.3",
     "react-router-dom": "^5.2.1",
     "react-scripts": "4.0.3",
