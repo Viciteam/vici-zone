@@ -36,8 +36,8 @@ class GoalChallengeOne extends React.Component {
         this.state = {
             uinfo: this.props.uinfo,
             activepart: 'title',
-            stepnumber: 0,
-            menuActive: 1,
+            stepnumber: 1,
+            menuActive: 2,
             activityList: [{"activity": ""}],
             checked: false,
             showCountry: false,
@@ -50,7 +50,7 @@ class GoalChallengeOne extends React.Component {
             selectedPreviewHeaderImage: '/img/prev-header.png',
             socialActionSLide: false,
             socialType: 'youtube',
-            isOpenSingleRewardModal: false, // open social action modal,
+            isOpenSingleRewardModal: true, // open social action modal,
             convertActionToPoints: false,
             allowPenalty: false,
             participantsLocation: false,
@@ -716,32 +716,32 @@ class GoalChallengeOne extends React.Component {
                         <h3>Facebook Actions</h3>
                         <div className="d-social-options-container">
                             <div className="d-social-item">
-                                <div className="d-social-item-text">Login with Facebook <span data-tip="The Facebook Entry action allows you to award an entry for logging into Facebook within the widget.<br />The action has two states, you can award the entry right away, or you can optionally ask the user to<br />Like your Facebook page after login." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                <div className="d-social-item-text">Login with Facebook <span data-tip="This action will award the user with an entry for logging into Facebook -- award<br />the entry during login or ask the user to Like your Facebook page after login." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
                                 <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookLogin} checked={this.state.isFacebookLoginEnabled} /></div>
                                 {LoginWithFacebookInput()}
                             </div>
                             <div className="d-social-item">
-                                <div className="d-social-item-text">Visit on Facebook <span data-tip="The Facebook Visit action allows you to ask a user to visit a specific Facebook page." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                <div className="d-social-item-text">Visit on Facebook <span data-tip="This action allows you to ask participants to visit a Facebook Page." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
                                 <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookVisit} checked={this.state.isFacebookVisitEnabled} /></div>
                                 {VisitFacebookOption()}
                             </div>
                             <div className="d-social-item">
                                 <div className="d-social-header">
-                                    <div className="d-social-item-text">View Post <span data-tip="test ." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                    <div className="d-social-item-text">View Post <span data-tip="This action allows you to ask participants to view a Facebook Post." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
                                     <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookViewPost} checked={this.state.isFacebookViewPostEnabled} /></div>
                                 </div>
                                 {ViewPostOption()}
                             </div>
                             <div className="d-social-item">
                                 <div className="d-social-header">
-                                    <div className="d-social-item-text">Join Facebook Group <span data-tip="test ." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                    <div className="d-social-item-text">Join Facebook Group <span data-tip="This action allows you to ask participants to join a Facebook Group." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
                                     <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookJoinGroup} checked={this.state.isFacebookJoinGroupEnabled} /></div>
                                 </div>
                                 {JoinGroupOption()}
                             </div>
                             <div className="d-social-item">
                                 <div className="d-social-header">
-                                    <div className="d-social-item-text">Select image/photo <span data-tip="test ." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                    <div className="d-social-item-text">Select image/photo <span data-tip="Select an image that corresponds to your page/post." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
                                     <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookSelectPhotoVideo} checked={this.state.isFacebookSelectPhotoVideoEnabled} /></div>
                                 </div>
                                 {SelectPhotoVideoOption()}
@@ -949,28 +949,28 @@ class GoalChallengeOne extends React.Component {
                         <div className="d-social-options-container">
                             <div className="d-social-item">
                                 <div className="d-social-header">
-                                    <div className="d-social-item-text">Follow a user <span data-tip="test ." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                    <div className="d-social-item-text">Follow a user <span data-tip="This action allows you to ask participants to follow a Twitter Account." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
                                     <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleTwitterFollowAUser} checked={this.state.isTwitterFollowAUserEnabled} /></div>
                                 </div>
                                 {FollowAUser()}
                             </div>
                             <div className="d-social-item">
                                 <div className="d-social-header">
-                                    <div className="d-social-item-text">View a Tweet <span data-tip="test ." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                    <div className="d-social-item-text">View a Tweet <span data-tip="This action allows you to ask participants to view a Tweet." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
                                     <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleTwitterViewATweet} checked={this.state.isTwitterViewATweetEnabled} /></div>
                                 </div>
                                 {ViewATweet()}
                             </div>
                             <div className="d-social-item">
                                 <div className="d-social-header">
-                                    <div className="d-social-item-text">Retweet a tweet <span data-tip="test ." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                    <div className="d-social-item-text">Retweet a tweet <span data-tip="This action allows you to ask participants to Retweet a Tweet." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
                                     <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleTwitterRetweetaTweet} checked={this.state.isTwitterRetweetATweetEnabled} /></div>
                                 </div>
                                 {ReTweet()}
                             </div>
                             <div className="d-social-item">
                                 <div className="d-social-header">
-                                    <div className="d-social-item-text">Tweet <span data-tip="test ." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                    <div className="d-social-item-text">Tweet <span data-tip="This action allows you to ask participants to Tweet." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
                                     <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleTwitterTweet} checked={this.state.isTwitterTweetEnabled} /></div>
                                 </div>
                                 {Tweet()}
@@ -1122,25 +1122,26 @@ class GoalChallengeOne extends React.Component {
                         <h3>Instagram</h3>
                         <div className="d-social-item">
                             <div className="d-social-header">
-                                <div className="d-social-item-text">Select image/photo <span data-tip="test ." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                <div className="d-social-item-text">Select image/photo <span data-tip="This action allows you to ask participants to visit an Instagram Profile." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
                                 <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramSelectPhotoVideo} checked={this.state.isInstagramSelectPhotoVideoEnabled} /></div>
                             </div>
                             {SelectPhotoVideoOption()}
                         </div>
                         <div className="d-social-item">
                             <div className="d-social-header">
-                                <div className="d-social-item-text">Visit a Post <span data-tip="test ." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                <div className="d-social-item-text">Visit a Post <span data-tip="This action allows you to ask participants to view an Instagram Post." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
                                 <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramVisitAPost} checked={this.state.isInstagramSelectVisitAPost} /></div>
                             </div>
                             {VisitAPost()}
                         </div>
                         <div className="d-social-item">
                             <div className="d-social-header">
-                                <div className="d-social-item-text">Visit a Profile <span data-tip="test ." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                <div className="d-social-item-text">Visit a Profile <span data-tip="Select an image that corresponds to your page/post." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
                                 <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramVisitAProfile} checked={this.state.isInstagramSelectVisitAProfile} /></div>
                             </div>
                             {VisitAPProfile()}
                         </div>
+                        <ReactTooltip html="true" />
                     </div>
                 );
             }
@@ -1199,26 +1200,26 @@ class GoalChallengeOne extends React.Component {
                         <h3>Youtube</h3>
                         <div className="d-social-item">
                             <div className="d-social-header">
-                                <div className="d-social-item-text">Visit youtube channel <span data-tip="The YouTube Visit allows you to send users from<br />your campaign to your YouTube Channel." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                <div className="d-social-item-text">Visit youtube channel <span data-tip="This action allows you to ask participants to visit a YouTube Channel." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
                                 <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleYoutubeVisitChannel} checked={this.state.isYoutubeVisitChannelEnabled} /></div>
                             </div>
                             {VisitChannel()}
                         </div>
                         <div className="d-social-item">
                             <div className="d-social-header">
-                                <div className="d-social-item-text">Subscribe to channel <span data-tip="YouTube Subscribe actions are no longer available<br />due to YouTube’s Fake Engagement Policy updates" className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                <div className="d-social-item-text">Subscribe to channel <span data-tip="This action allows you to ask participants to subscribe to a YouTube Channel." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
                                 <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleYoutubeVisitChannel} checked={false} disabled/></div>
                             </div>
                         </div>
                         <div className="d-social-item">
                             <div className="d-social-header">
-                                <div className="d-social-item-text">Watch a video <span data-tip="YouTube Watch a video are no longer available<br />due to YouTube’s Fake Engagement Policy updates" className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                <div className="d-social-item-text">Watch a video <span data-tip="This action allows you to ask participants to watch a YouTube video." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
                                 <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleYoutubeVisitChannel} checked={false} disabled/></div>
                             </div>
                         </div>
                         <div className="d-social-item">
                             <div className="d-social-header">
-                                <div className="d-social-item-text">Comment a video <span data-tip="YouTube Comment a video are no longer available<br />due to YouTube’s Fake Engagement Policy updates" className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
+                                <div className="d-social-item-text">Comment a video <span data-tip="This action allows you to ask participants to comment on a YouTube video." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
                                 <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleYoutubeVisitChannel} checked={false} disabled/></div>
                             </div>
                         </div>
@@ -1451,13 +1452,13 @@ class GoalChallengeOne extends React.Component {
                                                               <div className="d-social-item-text">Youtube</div>
                                                               <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
                                                           </div>
-                                                          <div className={"d-social-show-item " + (this.state.socialType == 'tiktok' ? 'active' : '')} onClick={() => this.toogleTiktokActions()}>
+                                                          {/* <div className={"d-social-show-item " + (this.state.socialType == 'tiktok' ? 'active' : '')} onClick={() => this.toogleTiktokActions()}>
                                                               <div className="d-social-item-icon">
                                                                   <span className="tiktok"><FontAwesomeIcon icon={faTiktok} /></span>
                                                               </div>
                                                               <div className="d-social-item-text">Tiktok</div>
                                                               <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
-                                                          </div>
+                                                          </div> */}
                                                           <div className={"d-social-show-item no-icon-part " + (this.state.socialType == 'invite_friend' ? 'active' : '')} onClick={() => this.toogleInviteFriendsActions()}>
                                                               <div className="d-social-item-text">Invite Friends</div>
                                                               <div className="d-social-item-action"><FontAwesomeIcon icon={faPlus} /></div>
