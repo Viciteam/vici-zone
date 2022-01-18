@@ -17,7 +17,7 @@ const api = axios.create({
     'Content-Type' : 'application/json',
     'Accept' : 'application/json',
     'Access-Control-Allow-Origin': '*',
-    'Authorization' : 'Bearer 1|74Q5WHcDLDhCb5M9NtabCridB2ZN68CGFaS5r2yN',
+    'Authorization' : 'Bearer 54|nDXR6RW6gzfF0P20tPIrjg68h6xpnZmNGdzSVVBM',
   }
 })
 
@@ -52,17 +52,18 @@ class Challenge extends React.Component {
         // window.location.href = "/challenge/new";
         console.log('create from scratchj')
 
-        let params = [];
-
+        let params = {};
         params['name'] = this.state.challengeName;
         params['description'] = this.state.challengeDesc;
         params['is_template'] = 'No';
         params['owner_id'] = '1';
         params['details'] = [];
 
-        console.log('save new token -> ', params);
+        console.log('save new token sd -> ', params);
 
         let parameters = JSON.stringify(params);
+
+         console.log('save new token -> ', parameters);
 
         api.post('/challenge', parameters)
         .then((response) => {
