@@ -7,3 +7,22 @@
       height: 580px;
     }
   }
+
+.above-fold-info {
+  margin-top: -70px;
+}
+
+.above-fold-info .black-header-title {
+  line-height: 1em;
+  padding-bottom: 15px;
+}
+
+.above-fold-info .yellow-header-title {
+  line-height: 1em;
+  padding-top: 0;
+  padding-bottom: 15px;
+}
+
+.above-fold-info .black-sub-header-title {
+  line-height: 1.3em;
+}
