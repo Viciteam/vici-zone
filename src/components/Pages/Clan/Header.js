@@ -9,6 +9,8 @@ import { ProfileContext } from '../Profile/ProfileContext'
 import auth from '../../../services/auth';
 import AuthService from '../../../services/AuthService';
 
+import LoginModal from '../Auth/LoginModal';
+
 class ClanHeader extends React.Component {
     constructor(props){
         super(props);
@@ -21,6 +23,7 @@ class ClanHeader extends React.Component {
             openCreateBrandProfileInvite: false,
             search: '',
             banner: null,
+            openModal: false
         }
         this.handleOpenMessages = this.handleOpenMessages.bind(this);
         this.handleOpenAccountSettings = this.handleOpenAccountSettings.bind(this);
@@ -31,6 +34,9 @@ class ClanHeader extends React.Component {
         this.handleBannerChanges = this.handleBannerChanges.bind(this);
         this.handleProfileImage = this.handleProfileImage.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
+
+        this.handleOpenLogin = this.handleOpenLogin.bind(this);
+        this.handleCloseLogin = this.handleCloseLogin.bind(this);
     }
 
     static contextType = ProfileContext;
@@ -89,6 +95,14 @@ class ClanHeader extends React.Component {
         }
     }
 
+    handleOpenLogin(){
+        this.setState({ openModal: true });
+    }
+
+    handleCloseLogin(){
+        this.setState({ openModal: false });
+    }
+
     render () {
 
         const messages = [
@@ -140,69 +154,11 @@ class ClanHeader extends React.Component {
                 title: 'Jello eating contest',
             }
         ]
-        
-        return (
-            <div className="clan-header-main">
-                <div className="clan-header-inner">
-                    <div className="dlogo">
-                        <img src="/img/vici.png"/>
-                    </div>
-                    <div className="ditems">
-                        <div className="dmenu w-1/2">
-                            <ul className="flex justify-center w-full">
-                                <li className="px-6"><a href="/">Home</a></li>
-                                <li className="px-6"><a href="#">Explore</a></li>
-                                <li className="px-6"><a href="#">Learn</a></li>
-                            </ul>
-                        </div>
-                        <div className="dsearch relative">
-                            <span><FontAwesomeIcon icon={faSearch} /></span>
-                            <input onKeyPress={this.handleKeyPress.bind(this)} type="text" name="" id="" />
-                            {
-                                this.state.search.length > 0 &&
-                                <div className="absolute w-96 bg-white_color shadow-lg z-50 rounded-b-3xl">
-                                    <div className="py-3 shadow-border_shadow px-5 text-left">
-                                        Results for: {this.state.search}
-                                    </div>
-                                    <div className="py-3 px-5 text-left">
-                                        <div className="font-bold text-vici_secondary_text">People</div>
-                                        {
-                                            people.map((item, i) => (
-                                                <div className="px-3 py-2 flex">
-                                                    <div>
-                                                        <img src={ item.img } className="rounded-full" />
-                                                    </div>
-                                                    <div className="pl-3">
-                                                        <div className="font-bold">{ item.name }</div>
-                                                        <div className="">{ item.subtitle}</div>
-                                                    </div>
-                                                </div>
-                                            ))
-                                        }
-                                        <div className="font-bold text-vici_secondary_text">Challenges</div>
-                                        {
-                                            challenges.map((item, i) => (
-                                                <div className="px-3 py-2 flex">
-                                                    <div>
-                                                        <img src={ item.img } className="rounded-lg" width="54" />
-                                                    </div>
-                                                    <div className="pl-3 pt-2">
-                                                        <div className="font-bold">{ item.title }</div>
-                                                    </div>
-                                                </div>
-                                            ))
-                                        }
-                                        <div className="font-bold text-vici_secondary_text">Clans</div>
-                                        <div className="flex justify-center p-3">
-                                            <div>0 results for “{this.state.search}” in clans</div>
-                                        </div>
-                                    </div>
-                                    <div className="flex justify-center pb-3">
-                                        <button className="text-vici_secondary font-bold"><a href="/search-results">See more results</a></button>
-                                    </div>
-                                </div>
-                            }
-                        </div>
+
+        const isAuthHeader = () => {
+            if(auth.isAuthenticated()){
+                return (
+                    <div className="isauthheader">
                         <div className="dnotif">
                             <div className="relative">
                                 <div onClick={this.handleOpenMessages} className="dmessage cursor-pointer"><FontAwesomeIcon icon={faComment} /><span className="notifone">&nbsp;</span></div>
@@ -280,12 +236,7 @@ class ClanHeader extends React.Component {
                         </div>
                         <div className="dproficon">
                             <div className="relative">
-                                {
-                                    auth.isAuthenticated() ?
-                                    <img onClick={this.handleOpenAccountSettings} src={auth.userProfile() ? auth.userProfile().profpic_link : '/img/avatarguest.png'} className="cursor-pointer"/>
-                                    :
-                                    <img src="/img/guestusericon.png" className="cursor-pointer w-10" />
-                                }
+                                <img onClick={this.handleOpenAccountSettings} src={auth.userProfile() ? auth.userProfile().profpic_link : '/img/avatarguest.png'} className="cursor-pointer"/>
                                 {
                                     this.state.openAccountSettings &&
                                     <div className="absolute bg-white_color right-0 shadow-vici rounded z-10" style={{width: '270px'}}>
@@ -368,6 +319,84 @@ class ClanHeader extends React.Component {
                         <div className="dmedals">
                             <div className="dmedal-inner"><img src="/img/medal.png"/> <span>0</span></div>
                         </div>
+                    </div>
+                );
+            } else {
+                return (
+                    <div className="login_buttons">
+                        <button onClick={this.handleOpenLogin} className="login_button">login</button>
+                        <button  onClick={this.handleOpenLogin} className="signup_button">sign up</button>
+
+                        {this.state.openModal && <LoginModal closeModal={this.handleCloseLogin } />}
+                    </div>
+                );
+            }
+        }
+        
+        return (
+            <div className="clan-header-main">
+                <div className="clan-header-inner">
+                    <div className="dlogo">
+                        <a href="/"><img src="/img/vici.png"/></a>
+                    </div>
+                    <div className="ditems">
+                        <div className="dmenu w-1/2">
+                            <ul className="flex justify-center w-full">
+                                <li className="px-6"><a href="/">Home</a></li>
+                                <li className="px-6"><a href="#">Explore</a></li>
+                                <li className="px-6"><a href="#">Learn</a></li>
+                            </ul>
+                        </div>
+                        <div className="dsearch relative">
+                            <span><FontAwesomeIcon icon={faSearch} /></span>
+                            <input onKeyPress={this.handleKeyPress.bind(this)} type="text" name="" id="" />
+                            {
+                                this.state.search.length > 0 &&
+                                <div className="absolute w-96 bg-white_color shadow-lg z-50 rounded-b-3xl">
+                                    <div className="py-3 shadow-border_shadow px-5 text-left">
+                                        Results for: {this.state.search}
+                                    </div>
+                                    <div className="py-3 px-5 text-left">
+                                        <div className="font-bold text-vici_secondary_text">People</div>
+                                        {
+                                            people.map((item, i) => (
+                                                <div className="px-3 py-2 flex">
+                                                    <div>
+                                                        <img src={ item.img } className="rounded-full" />
+                                                    </div>
+                                                    <div className="pl-3">
+                                                        <div className="font-bold">{ item.name }</div>
+                                                        <div className="">{ item.subtitle}</div>
+                                                    </div>
+                                                </div>
+                                            ))
+                                        }
+                                        <div className="font-bold text-vici_secondary_text">Challenges</div>
+                                        {
+                                            challenges.map((item, i) => (
+                                                <div className="px-3 py-2 flex">
+                                                    <div>
+                                                        <img src={ item.img } className="rounded-lg" width="54" />
+                                                    </div>
+                                                    <div className="pl-3 pt-2">
+                                                        <div className="font-bold">{ item.title }</div>
+                                                    </div>
+                                                </div>
+                                            ))
+                                        }
+                                        <div className="font-bold text-vici_secondary_text">Clans</div>
+                                        <div className="flex justify-center p-3">
+                                            <div>0 results for “{this.state.search}” in clans</div>
+                                        </div>
+                                    </div>
+                                    <div className="flex justify-center pb-3">
+                                        <button className="text-vici_secondary font-bold"><a href="/search-results">See more results</a></button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        
+                        {isAuthHeader()}
                     </div>
                 </div>
                 {this.state.openCreateBrandProfile && <BrandProfileModal closeModal={this.handleCloseCreateBrandProfile } bannerUpdate={this.handleBannerChanges} profileUpdate={this.handleProfileImage} />}
