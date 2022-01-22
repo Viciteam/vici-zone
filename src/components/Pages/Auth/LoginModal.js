@@ -3,6 +3,7 @@ import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
 
 import AuthService from '../../../services/AuthService';
+import CookieService from '../../../services/CookieService';
 
 
 function LoginModal ({ closeModal }) {
@@ -37,7 +38,8 @@ function LoginModal ({ closeModal }) {
             const response = await AuthService.doUserLogin(postData)
             console.log('response-', response)
             if(response){
-                AuthService.handleLoginSuccess(response)
+                const loginSuccessResponse = await AuthService.handleLoginSuccess(response);
+                CookieService.set("user_profile", loginSuccessResponse.user);
                 setValid(true)
                 setLoading(false)
                 closeModal()

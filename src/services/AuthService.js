@@ -51,6 +51,7 @@ class AuthService {
         const user_id = user.id
         try {
             const response = await axios.get(UrlService.getUserProfile(user_id));
+            // console.log('get user data -> ', response);
             CookieService.set("user_profile", response.data.user);
             return response.data
         } catch (error) {
@@ -75,7 +76,9 @@ class AuthService {
         const options = { path: "/", expires: date };
         CookieService.set("access_token", response.token, options);
         CookieService.set("user_info", response.user, options);
-        return true;
+        const userProfile = this.getUserProfile(response.user.id);
+        // console.log('user id ->', response.user.id);
+        return userProfile;
     }
 
 }
