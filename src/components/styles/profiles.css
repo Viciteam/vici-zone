@@ -1577,3 +1577,46 @@ ul.tabtitles > li {
     color: #2d9cdb;
     font-weight: 600;
 }
+
+.login_buttons .login_button {
+    background: linear-gradient(180deg, #fec946 0%, #f4aa3c 100%);
+    line-height: 1em;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px 20px;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.login_buttons .signup_button {
+    background: linear-gradient(180deg, #fec946 0%, #f4aa3c 100%);
+    line-height: 1em;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    padding: 10px 20px;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.isauthheader > div {   
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.isauthheader .dproficon {
+    margin-right: 15px;
+}
+
+.isauthheader .dcoin {
+    margin-right: 15px;
+}
+
+.isauthheader .dmedals {
+    margin-right: 15px;
+}
