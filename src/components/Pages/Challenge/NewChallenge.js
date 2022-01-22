@@ -94,7 +94,7 @@ class NewChallenge extends React.Component {
                                 <div className="dic-icon">
                                     <img src="/img/challenge_question.png"/>
                                 </div>
-                                <div className="dtiletext">instant win</div>
+                                <div className="dtiletext">Quick win</div>
                             </div>
                         </div>
                     </div>
