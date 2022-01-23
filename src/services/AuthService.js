@@ -60,15 +60,17 @@ class AuthService {
         }
     }
 
-    /* async uploadProfPic(data){
+    async uploadProfPic(data){
         try {
-            const response = await axios.post(UrlService.uploadProfPic(), data);
+            const formData = new FormData();
+            formData.append('image', data);
+            const response = await axios.post(UrlService.uploadProfPic(), formData);
             return response.data
         } catch (error) {
             console.log(error)
             return false
         }
-    } */
+    }
 
     handleLoginSuccess(response) {
         let date = new Date();

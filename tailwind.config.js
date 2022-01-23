@@ -75,6 +75,8 @@ module.exports = {
       other_challenges: '#25345C',
       vici_light_gray: '#F2F2F2',
       vici_request: '#030612',
+      vici_prof_bg: '#C4C4C4',
+      vici_bg_button: '#ffffff33',
     },
     extend: {
       width: {
