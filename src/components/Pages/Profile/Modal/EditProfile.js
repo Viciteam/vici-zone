@@ -46,13 +46,21 @@ function EditProfile ({ closeModal }) {
         }
     }
 
-    function setProfile(event) {
+    async function setProfile(event) {
         const objectUrl = URL.createObjectURL(event.target.files[0])
         setImgFile(event.target.files[0])
         setImgType(event.target.files[0].type.split('/')[1])
         setImgName(objectUrl.substring(objectUrl.lastIndexOf("/") + 1, objectUrl.length))
         //setProfilePreview(objectUrl)
         setProfLink(objectUrl)
+        
+        const response = await AuthService.uploadProfPic(event.target.files[0]);
+        //console.log('upload prof', response)
+        if(response){
+            setProfLink(response.image_url)
+        }
+
+
     }
 
     function handleChangeTextColor(event) {

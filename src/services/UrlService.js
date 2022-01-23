@@ -20,9 +20,9 @@ class UrlService {
         return apiDomain + `api/userprofile/${id}`;
     }
 
-    /* static uploadProfPic() {
-        return domain + "/profilepics";
-    } */
+    static uploadProfPic() {
+        return apiDomain + "api/uploadFile";
+    }
 }
 
 export default UrlService
