@@ -100,7 +100,7 @@ class SideProfile extends React.Component {
             <div className="sd-inner">
                 { data_i() }
                 <div className="main-profile">
-                    <div className="header">
+                    <div className="header relative">
                         <div className="header-inner">
                             <div className="hi-left">
                                 <div className="levelrate">Lvl {user_info.level}</div>
@@ -201,10 +201,17 @@ class SideProfile extends React.Component {
                             </div>
                             <br className="clear"/>
                         </div>
+                        
+                        <a href="/profile" className="p-2 absolute top-28 bg-vici_bg_button rounded-lg text-white_color">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                            </svg>
+                        </a>
+                        
                     </div>
                     {
                         auth.isAuthenticated() ? 
-                        <div className="avatar flex justify-center">
+                        <div className="avatar flex justify-center bg-vici_prof_bg py-10">
                             <div className="d-profile-avatar">
                                 <div className="d-profile-avatar-inner">
                                     <img src={auth.userProfile() ? auth.userProfile().profpic_link : '/img/avatarguest.png'} alt="" className="object-cover rounded-full w-40 h-40" />
