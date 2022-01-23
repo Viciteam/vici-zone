@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 
 import AuthService from '../../../../services/AuthService';
 import CookieService from '../../../../services/CookieService';
+import mParticleService  from '../../../../services/mParticleService';
 //import axios from 'axios';
 
 function EditProfile ({ closeModal }) {
@@ -24,10 +25,11 @@ function EditProfile ({ closeModal }) {
     const [profile_banner_link, setBanner] = useState()
     const fileUploader = useRef(null)
     const profileUploader = useRef(null)
-
     const uploadProfile = () => {
         profileUploader.current.click();
     };
+
+    const mparticle = mParticleService;
 
     useEffect(() => {
         getUserProfile();
@@ -47,10 +49,23 @@ function EditProfile ({ closeModal }) {
             setBanner(response.image_url)
         }
 
+        var mnpartdata = {
+          image_url:response.image_url,
+        }
+        var mpartevent = 'Set Profile Banner';
+        const mpart = await mparticle.sendEvent(mpartevent,mnpartdata);
+
     }
 
     async function getUserProfile(){
         const response = await AuthService.getUserProfile()
+
+        var mnpartdata = {
+          username:response.user.name,
+        }
+        var mpartevent = 'Edit User Profile';
+        const mpart = await mparticle.sendEvent(mpartevent,mnpartdata);
+
         console.log('edit propfile', response)
         if(response){
             setBanner(response.user.profile_banner_link ? response.user.profile_banner_link : '/img/default_banner.png')
@@ -74,7 +89,7 @@ function EditProfile ({ closeModal }) {
         setImgName(objectUrl.substring(objectUrl.lastIndexOf("/") + 1, objectUrl.length))
         //setProfilePreview(objectUrl)
         setProfLink(objectUrl)
-        
+
         const response = await AuthService.uploadProfPic(event.target.files[0]);
         //console.log('upload prof', response)
         if(response){

@@ -1,5 +1,6 @@
 let apiDomain = 'https://api.vici.life/'
 let domain = 'https://vici.life/'
+let mparticleDomain = 'https://s2s.mparticle.com/'
 class UrlService {
 
     static loginUrl() {
