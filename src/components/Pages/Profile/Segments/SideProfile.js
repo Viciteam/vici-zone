@@ -228,7 +228,7 @@ class SideProfile extends React.Component {
                     
                     <div className="user-details">
                         <div className="ud-inner">
-                            <h3>{ auth.isAuthenticated() ? auth.userProfile() ? auth.userProfile().name : auth.user().name : 'Guest User'}</h3>
+                            <h3><a href='/profile'>{ auth.isAuthenticated() ? auth.userProfile() ? auth.userProfile().name : auth.user().name : 'Guest User'}</a></h3>
                             <div className="stats">
                                 <ul>
                                     <li>

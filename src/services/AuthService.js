@@ -51,9 +51,15 @@ class AuthService {
         const user_id = user.id
         try {
             const response = await axios.get(UrlService.getUserProfile(user_id));
-            // console.log('get user data -> ', response);
-            CookieService.set("user_profile", response.data.user);
-            return response.data
+            console.log('get user data -> ', response);
+            if(response.data.user){
+                CookieService.set("user_profile", response.data.user);
+                return response.data
+            }else{
+                return false
+            }
+            
+            
         } catch (error) {
             console.log(error)
             return false

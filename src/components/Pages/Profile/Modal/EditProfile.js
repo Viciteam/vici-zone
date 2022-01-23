@@ -15,7 +15,7 @@ function EditProfile ({ closeModal }) {
     let [bday, setBday] = useState(new Date());
     let [bio, setBio] = useState('');
     let [mission, setMission] = useState('');
-    let [country, setCountry] = useState('');
+    let [country, setCountry] = useState('Philippines');
     let [imgType, setImgType] = useState('');
     let [imgName, setImgName] = useState('');
     let [imgFile, setImgFile] = useState(null);
@@ -32,8 +32,9 @@ function EditProfile ({ closeModal }) {
 
     async function getUserProfile(){
         const response = await AuthService.getUserProfile()
+        console.log('edit propfile', response)
         if(response){
-            setProfLink(response.user.profpic_link)
+            setProfLink(response.user.profpic_link ? response.user.profpic_link : '/img/avatarguest.png')
             setBgColor(response.user.bgcolor)
             setTextColor(response.user.txtcolor)
             setUsername(response.user.username)
@@ -112,7 +113,7 @@ function EditProfile ({ closeModal }) {
                             <img src={profpic_link}  className="object-cover rounded-full w-28 h-28" />
                         </div>
                         <div className="flex justify-center my-3">
-                            <button onClick={uploadProfile} className="text-vici_secondary">Upload Profile</button>
+                            <button onClick={uploadProfile} className="text-vici_secondary">Upload Profile Picture</button>
                             <input type="file" id="file" onChange={setProfile.bind(this)}  ref={profileUploader} style={{display: "none"}}/>
                         </div>
                         <div className="mt-3 p-3">
