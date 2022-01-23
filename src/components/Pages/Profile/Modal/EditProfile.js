@@ -10,6 +10,8 @@ function EditProfile ({ closeModal }) {
     let [bgcolor, setBgColor] = useState('#FFCA28');
     let [txtcolor, setTextColor] = useState('white');
     let [username, setUsername] = useState('');
+    let [validUsername, setValidUsername] = useState(true);
+    let [validName, setValidName] = useState(true);
     let [name, setName] = useState('');
     let [pref_pronoun, setPrefPronoun] = useState('She/Her');
     let [bday, setBday] = useState(new Date());
@@ -19,7 +21,8 @@ function EditProfile ({ closeModal }) {
     let [imgType, setImgType] = useState('');
     let [imgName, setImgName] = useState('');
     let [imgFile, setImgFile] = useState(null);
-
+    const [profile_banner_link, setBanner] = useState()
+    const fileUploader = useRef(null)
     const profileUploader = useRef(null)
 
     const uploadProfile = () => {
@@ -30,10 +33,27 @@ function EditProfile ({ closeModal }) {
         getUserProfile();
     }, []);
 
+    const uploadBanner = () => {
+        fileUploader.current.click();
+      };
+
+    async function setFile(event) {
+        const objectUrl = URL.createObjectURL(event.target.files[0])
+        setBanner(objectUrl)
+
+        const response = await AuthService.uploadProfPic(event.target.files[0]);
+        //console.log('upload prof', response)
+        if(response){
+            setBanner(response.image_url)
+        }
+
+    }
+
     async function getUserProfile(){
         const response = await AuthService.getUserProfile()
         console.log('edit propfile', response)
         if(response){
+            setBanner(response.user.profile_banner_link ? response.user.profile_banner_link : '/img/default_banner.png')
             setProfLink(response.user.profpic_link ? response.user.profpic_link : '/img/avatarguest.png')
             setBgColor(response.user.bgcolor)
             setTextColor(response.user.txtcolor)
@@ -68,8 +88,23 @@ function EditProfile ({ closeModal }) {
         setTextColor(event.target.value)
     }
 
+    function handleValidation() {
+        if(name == ''){
+            setValidName(false)
+            return false
+        }else if(username == ''){
+            setValidUsername(false)
+            return false
+        }else {
+            setValidUsername(true)
+            setValidName(true)
+            return true
+        }
+    }
+
     async function handleSubmit(){
         const data = {
+            profile_banner_link,
             profpic_link,
             bgcolor,
             txtcolor,
@@ -77,19 +112,21 @@ function EditProfile ({ closeModal }) {
             name,
             pref_pronoun,
             bday,
-            bio,
-            mission,
+            bio: bio == '' ? '-' : bio,
+            mission: mission == '' ? '-' : mission,
             country
         }
-
-        console.log(data)
-        const response = await AuthService.registerUserProfile(data)
-        if(response){
-            console.log('uesr',response)
-            CookieService.set("user_profile", response.user);
-            window.location.href = "/profile";
+        setValidName(true)
+        setValidUsername(true)
+        if(handleValidation()){
+            const response = await AuthService.registerUserProfile(data)
+            if(response){
+                console.log('uesr',response)
+                CookieService.set("user_profile", response.user);
+                window.location.href = "/profile";
+            }
+            closeModal()
         }
-        closeModal()
     }
 
     return (
@@ -109,6 +146,14 @@ function EditProfile ({ closeModal }) {
                 </div>
                 <div className="w-full">
                     <div className="w-1/2 mx-auto my-3 rounded-2xl border border-medium_gray">
+
+                    <div className="h-28 flex relative justify-center bg-vici_gray rounded-xl">
+                        <img src={profile_banner_link} className="absolute w-full rounded-xl object-cover h-28" />
+                        <button onClick={uploadBanner} className="text-vici_secondary cursor-pointer z-10">Upload Banner</button>
+                        <input type="file" id="file" onChange={setFile.bind(this)}  ref={fileUploader} style={{display: "none"}}/>
+                    </div>
+
+
                         <div className="flex justify-center pt-3">
                             <img src={profpic_link}  className="object-cover rounded-full w-28 h-28" />
                         </div>
@@ -170,6 +215,10 @@ function EditProfile ({ closeModal }) {
                             </div>
                             <div className="w-3/4">
                                 <input type="text" value={username} onChange={event => setUsername(username = event.target.value)} className="w-full py-2 px-3 rounded-xl border border-medium_gray" placeholder="Username" />
+                                {
+                                    !validUsername &&
+                                    <div className="text-sm text-red">Please enter username</div>
+                                }
                             </div>
                         </div>
                         <div className="flex p-3">
@@ -178,6 +227,10 @@ function EditProfile ({ closeModal }) {
                             </div>
                             <div className="w-3/4">
                                 <input type="text" value={name} onChange={event => setName(name = event.target.value)} className="w-full py-2 px-3 rounded-xl border border-medium_gray" placeholder="Name" />
+                                {
+                                    !validName &&
+                                <div className="text-sm text-red">Please enter name</div>
+                                }
                             </div>
                         </div>
                         <div className="flex p-3">
