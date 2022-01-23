@@ -61,7 +61,7 @@ function LoginModal ({ closeModal }) {
     
     return (
         <div className="bg-vici_black bg-opacity-50 fixed inset-0 min-h-screen flex justify-center  items-center z-20">
-            <div className="bg-white_color w-1/4 rounded-lg p-6">
+            <div className="bg-white_color xl:w-1/3 lg:w-1/2 md:w-8/12 rounded-lg p-6">
                 <div className="flex justify-end pb-3">
                     <div>
                         <div onClick={() => {closeModal();}}>
