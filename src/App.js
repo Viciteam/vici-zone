@@ -48,20 +48,15 @@ import SearchResults from './components/Pages/Search/SearchResults';
 import CookieService from './services/CookieService';
 import axios from 'axios';
 
+import mParticle from './services/mParticle';
+
 axios.interceptors.request.use(function (config){
   const token = CookieService.get("access_token");
   config.headers.Authorization = token ? `Bearer ${token}` : '';
   return config;
 });
 
-//mParticle
-var mParticle = require('mparticle');
 
-var mapi = new mParticle.EventsApi(new mParticle.Configuration(
-    'us1-b1e387f78b309744b5ee9ef4be89bb4e',
-    'yMg8DLEZKYf7XQ6xYLvwCRat3sfh8wbicrllSxAfrnR1id6FuqamMSujsbg79ryH'));
-
-//mParticle
 
 function App() {
   return (
