@@ -223,7 +223,8 @@ function LoginModal ({ closeModal }) {
                         </div>
                         <div className="mt-3">
                             <FacebookLogin
-                                appId="352743490013922"
+                                // appId="352743490013922"
+                                appId="622982895460474"
                                 autoLoad={false}
                                 returnScopes={true}
                                 fields="name,email,picture"
