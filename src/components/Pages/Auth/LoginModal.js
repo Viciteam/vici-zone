@@ -14,7 +14,8 @@ function LoginModal ({ closeModal }) {
     const [loading, setLoading] = useState(false);
     const [valid, setValid] = useState(true);
     let [register, setRegister] = useState(false);
-
+    const [fbImage, setFbImage] = useState('');
+ 
 
     async function handleLogin(){
         setLoading(true)
@@ -58,6 +59,117 @@ function LoginModal ({ closeModal }) {
             handleLogin()
         }
     }
+
+   async function LoginWithFacebook(response) {
+       setLoading(true)
+        console.log('fb response ->', response);
+        
+        let name = response.name;
+        let email = response.email;
+        let password = response.userID;
+        let password_confirmation = response.userID;
+        let picture = response.picture.data.url;
+        
+
+        // register user
+        const postData = { name, email, password, password_confirmation }
+        console.log('user login -> ', postData);
+
+        const registerResponse = await AuthService.doSocialRegister(postData)
+        console.log('response social register one ->', registerResponse)
+
+        let isRegistrationSuccessful = '';
+        if(registerResponse.status == 201){
+            isRegistrationSuccessful = 'go_login';
+        } else if(registerResponse.data.errors.email[0] == 'The email has already been taken.'){
+            isRegistrationSuccessful = 'user_exist'
+        }   
+
+        // if(registerResponse.data.errors.email[0] == 'The email has already been taken.'){
+        if(isRegistrationSuccessful == 'user_exist'){
+            console.log('do user login in normal way');
+            const loginAccount = { email, password }
+            const socialLoginResponse = await AuthService.doUserLogin(loginAccount)
+            console.log('response-', socialLoginResponse)
+            if(socialLoginResponse){
+                const loginSuccessResponse = await AuthService.handleLoginSuccess(socialLoginResponse);
+                
+                if(loginSuccessResponse.user === undefined || loginSuccessResponse.user === null){
+                    console.log('build a new user info');
+
+                    let new_user_information = {
+                        "id":1,
+                        "user_id":socialLoginResponse.user.id,
+                        "profpic_link": picture,
+                        "bgcolor":"#867996",
+                        "txtcolor":"black",
+                        "username": name,
+                        "name": name,
+                        "pref_pronoun":"",
+                        "bday":"",
+                        "bio":"",
+                        "mission":"",
+                        "country":"",
+                        "created_at":"",
+                        "updated_at":"",
+                        "profile_banner_link":""
+                    };
+
+                    console.log('new user info ->', new_user_information);
+                    CookieService.set("user_profile", new_user_information);
+                }
+                // CookieService.set("user_profile", loginSuccessResponse.user);
+                setValid(true)
+                setLoading(false)
+                closeModal()
+                window.location.href = "/";
+            }else{
+                setValid(false)
+                setLoading(false)
+                console.log('Invalid email or password')
+            }
+        }
+        
+        if(isRegistrationSuccessful == 'go_login'){
+            const loginAccount = { email, password }
+            const socialLoginResponse = await AuthService.doUserLogin(loginAccount)
+            console.log('response-', socialLoginResponse)
+            const loginSuccessResponse = await AuthService.handleLoginSuccess(socialLoginResponse);
+
+            if(loginSuccessResponse.user === undefined || loginSuccessResponse.user === null){
+                console.log('build a new user info');
+
+                let new_user_information = {
+                    "id":1,
+                    "user_id": '',
+                    "profpic_link": picture,
+                    "bgcolor":"#867996",
+                    "txtcolor":"black",
+                    "username": name,
+                    "name": name,
+                    "pref_pronoun":"",
+                    "bday":"",
+                    "bio":"",
+                    "mission":"",
+                    "country":"",
+                    "created_at":"",
+                    "updated_at":"",
+                    "profile_banner_link":""
+                };
+
+                console.log('new user info ->', new_user_information);
+                CookieService.set("user_profile", new_user_information);
+            }
+            // CookieService.set("user_profile", loginSuccessResponse.user);
+            setValid(true)
+            setLoading(false)
+            closeModal()
+            window.location.href = "/";
+            
+        }
+        
+
+    }
     
     return (
         <div className="bg-vici_black bg-opacity-50 fixed inset-0 min-h-screen flex justify-center  items-center z-20">
@@ -71,6 +183,7 @@ function LoginModal ({ closeModal }) {
                         </div>
                     </div>
                 </div>
+                <img src={fbImage} alt="" />
                 <div className="px-20 pb-20 pt-15">
                     <div className="text-center font-bold text-2xl">
                         { register ? 'Create a Vici account' : 'Please log in to continue'}
@@ -100,7 +213,7 @@ function LoginModal ({ closeModal }) {
                     <div className="">
                         <div className="mt-6">
                             <GoogleLogin
-                                clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                                clientId="919545217754-heu4l9hob9suvbd7u36u0hsg4emqen7o.apps.googleusercontent.com"
                                 buttonText="Continue with Google"
                                 /* onSuccess={this.responseGoogle}
                                 onFailure={this.responseGoogle} */
@@ -110,10 +223,13 @@ function LoginModal ({ closeModal }) {
                         </div>
                         <div className="mt-3">
                             <FacebookLogin
-                                appId="1088597931155576"
+                                appId="352743490013922"
                                 autoLoad={false}
+                                returnScopes={true}
                                 fields="name,email,picture"
+                                scope="public_profile,email,user_birthday"
                                 /* callback={this.responseFacebook} */
+                                callback={LoginWithFacebook}
                                 cssClass="google-style py-3"
                                 textButton="Continue with Facebook"
                                 icon="fa-facebook"

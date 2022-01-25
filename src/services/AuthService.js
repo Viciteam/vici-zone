@@ -26,6 +26,19 @@ class AuthService {
         }
     }
 
+    async doSocialRegister(data){
+        try {
+            const response = await axios.post(UrlService.registerUrl(), data).then().catch(function (error) {
+                return error.response;
+            });
+            return response
+        } catch (error) {
+            console.log("social registration error -> ", error.message)
+            console.log("social registration response -> ", error.response)
+            return error
+        }
+    }
+
     async doUserLogout(){
         try {
             const response = await axios.post(UrlService.logoutUrl());
