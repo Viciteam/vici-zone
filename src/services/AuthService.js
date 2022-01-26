@@ -11,7 +11,6 @@ class AuthService {
             const response = await axios.post(UrlService.loginUrl(), data);
             return response.data
         } catch (error) {
-            console.log(error)
             return false
         }
     }
@@ -21,7 +20,6 @@ class AuthService {
             const response = await axios.post(UrlService.registerUrl(), data);
             return response.data
         } catch (error) {
-            console.log(error)
             return false
         }
     }
@@ -44,7 +42,6 @@ class AuthService {
             const response = await axios.post(UrlService.logoutUrl());
             return response.data
         } catch (error) {
-            console.log(error)
             return false
         }
     }
@@ -54,7 +51,6 @@ class AuthService {
             const response = await axios.post(UrlService.userProfile(), data);
             return response.data
         } catch (error) {
-            console.log(error)
             return false
         }
     }
@@ -64,7 +60,6 @@ class AuthService {
         const user_id = user.id
         try {
             const response = await axios.get(UrlService.getUserProfile(user_id));
-            console.log('get user data -> ', response);
             if(response.data.user){
                 CookieService.set("user_profile", response.data.user);
                 return response.data
@@ -74,7 +69,6 @@ class AuthService {
 
 
         } catch (error) {
-            console.log(error)
             return false
         }
     }
@@ -86,7 +80,6 @@ class AuthService {
             const response = await axios.post(UrlService.uploadProfPic(), formData);
             return response.data
         } catch (error) {
-            console.log(error)
             return false
         }
     }

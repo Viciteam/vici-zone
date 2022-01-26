@@ -146,7 +146,7 @@ function EditProfile ({ closeModal }) {
 
     return (
         <div className="bg-vici_black bg-opacity-50 fixed inset-0 flex justify-center items-center z-10">
-            <div className="bg-white_color w-1/2 rounded-lg h-screen overflow-auto">
+            <div className="bg-white_color xl:w-1/2 lg:w-1/2 md:w-8/12 sm:w-full rounded-lg h-screen overflow-auto">
                 <div className="flex justify-between p-6 bg-primary_background rounded-lg">
                     <div className="text-lg font-bold">
                         Edit Profile
@@ -160,7 +160,7 @@ function EditProfile ({ closeModal }) {
                     </div>
                 </div>
                 <div className="w-full">
-                    <div className="w-1/2 mx-auto my-3 rounded-2xl border border-medium_gray">
+                    <div className="lg:w-11/12 xl:w-2/3 mx-auto my-3 rounded-2xl border border-medium_gray">
 
                     <div className="h-28 flex relative justify-center bg-vici_gray rounded-xl">
                         <img src={profile_banner_link} className="absolute w-full rounded-xl object-cover h-28" />
