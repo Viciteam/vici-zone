@@ -1,7 +1,13 @@
 import React from 'react';
+import { Channel } from './Channel'
 
 class MessagesLeftSidebar extends React.Component {
+    handleClick = id => {
+        this.props.onSelectChannel(id);
+    }
+
      render () {
+        let list = `There is no channels to show`;
         const messages = [
             {
                 image: '/img/dummy/1.png',
@@ -32,7 +38,20 @@ class MessagesLeftSidebar extends React.Component {
                 isActive: false,
             }
         ]
-         return (
+
+        if (this.props.channels) {
+            list = this.props.channels.map((c) => (
+                <Channel
+                    key={c.id}
+                    id={c.id}
+                    name={c.name}
+                    participants={c.participants}
+                    onClick={this.handleClick}
+                />
+            ));
+        }
+        return <div className="channel-list">{list}</div>;
+         /* return (
              <div className="shadow-border_shadow_right">
                  <div className="p-5 flex justify-between shadow-border_shadow">
                     <div>
@@ -83,7 +102,7 @@ class MessagesLeftSidebar extends React.Component {
                     }
                  </div>
              </div>
-         )
+         ) */
      }
 }
 
