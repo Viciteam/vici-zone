@@ -1,4 +1,3 @@
-import { applyProps } from "@react-three/fiber";
 import React, { useState, createContext, useEffect } from "react";
 
 export const JoinContext = createContext();
