@@ -1,8 +1,8 @@
 import './../../../styles/profiles.css';
 
 import React, {useRef, useState} from 'react';
-import {useGLTF} from "@react-three/drei";
-import { Canvas, useFrame } from "@react-three/fiber"
+// import {useGLTF} from "@react-three/drei";
+// import { Canvas, useFrame } from "@react-three/fiber"
 
 export function Avatarvtwo(props) {
   const group = useRef()
@@ -26,4 +26,4 @@ export function Avatarvtwo(props) {
 	)
 }
 
-useGLTF.preload('img/demo-avatar.glb')
+// useGLTF.preload('img/demo-avatar.glb')
