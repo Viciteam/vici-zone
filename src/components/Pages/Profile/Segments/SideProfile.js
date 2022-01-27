@@ -4,8 +4,6 @@ import ReactModal from 'react-modal';
 import { HexColorPicker } from "react-colorful";
 import auth from '../../../../services/auth';
 
-// add avatar component
-import Avatar from "./Avatar.jsx";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
