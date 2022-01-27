@@ -1,5 +1,4 @@
 import React from 'react';
-import { DefaultLoadingManager } from 'three';
 
 class OnboardingContent extends React.Component {
     render () {
