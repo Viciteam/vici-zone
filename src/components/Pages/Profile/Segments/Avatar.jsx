@@ -1,8 +1,6 @@
 import './../../../styles/profiles.css';
 
 import React, {useRef, Suspense} from 'react';
-// import { useGLTF, useFBX, OrbitControls, OrthographicCamera, PerspectiveCamera, CubeCamera} from "@react-three/drei";
-// import { Canvas, useFrame } from "@react-three/fiber"
 
 function Model() {
   const ref = useRef()
