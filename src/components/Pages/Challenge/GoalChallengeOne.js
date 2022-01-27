@@ -36,8 +36,8 @@ class GoalChallengeOne extends React.Component {
         this.state = {
             uinfo: this.props.uinfo,
             activepart: 'title',
-            stepnumber: 1,
-            menuActive: 2,
+            stepnumber: 0,
+            menuActive: 1,
             activityList: [{"activity": ""}],
             checked: false,
             showCountry: false,
