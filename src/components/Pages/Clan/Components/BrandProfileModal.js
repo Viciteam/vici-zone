@@ -38,7 +38,7 @@ function BrandProfileModal ({ closeModal, bannerUpdate, profileUpdate }) {
     }
 
     return (
-        <div className="bg-vici_black bg-opacity-50 absolute inset-0 flex justify-center items-center z-10">
+        <div className="bg-vici_black bg-opacity-50 fixed inset-0 flex justify-center items-center z-10">
             <div className="bg-white_color w-5/12 rounded-xl p-6">
                 <div className="flex justify-between pb-3 border-b border-medium_gray">
                     <div className="font-bold text-xl">Create brand profile</div>
@@ -113,7 +113,7 @@ function BrandProfileModal ({ closeModal, bannerUpdate, profileUpdate }) {
                     </div>
                 </div>
                 <div className="mx-24 mt-6 pb-6 border-b">
-                    <div className="flex p-3">
+                    <div className="flex" style={{"margin-bottom": '10px'}}>
                         <div className="font-bold w-1/4 pt-2">
                             Brand Name
                         </div>
@@ -121,7 +121,7 @@ function BrandProfileModal ({ closeModal, bannerUpdate, profileUpdate }) {
                             <input type="text" className="w-full py-2 px-3 rounded-xl border border-bottom_gray" placeholder="Brand Name" />
                         </div>
                     </div>
-                    <div className="flex p-3">
+                    <div className="flex" style={{"margin-bottom": '10px'}}>
                         <div className="font-bold w-1/4 pt-2">
                             Brand Desc.
                         </div>
@@ -129,7 +129,7 @@ function BrandProfileModal ({ closeModal, bannerUpdate, profileUpdate }) {
                             <textarea className="w-full py-2 px-3 rounded-xl border border-bottom_gray" placeholder="Tell us something about your brand"></textarea>
                         </div>
                     </div>
-                    <div className="flex p-3">
+                    <div className="flex" style={{"margin-bottom": '10px'}}>
                         <div className="font-bold w-1/4 pt-2">
                             Country
                         </div>

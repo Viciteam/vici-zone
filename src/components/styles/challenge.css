@@ -356,7 +356,7 @@
 
 .challenges-goal-page-inner .cgoal-center-inner .dmultiple > * {
     display: inline-block;
-    width: 47%;
+    width: 45%;
     background: #fff;
     padding: 11px 20px;
     vertical-align: middle;
@@ -374,6 +374,32 @@
     vertical-align: middle;
     line-height: 1em;
     font-weight: bold;
+    padding-left: 15px;
+    text-align: left;
+}
+
+.challenges-goal-page-inner .cgoal-center-inner .dmultiple .dradiobt .dradiobase {
+    background: #fff;
+    width: 17px;
+    height: 17px;
+    border-radius: 30px;
+    padding: 2px;
+    border: 1px solid #ccc;
+}
+
+.challenges-goal-page-inner .cgoal-center-inner .dmultiple .dradiobt .dradiobase .dradio-inner {
+    background: #fff;
+    height: 11px;
+    width: 11px;
+    border-radius: 30px;
+}
+
+.challenges-goal-page-inner .cgoal-center-inner .dmultiple .dradiobt .dradiobase .dradio-inner.active_radio_itemn {
+    background: #ffca28;
+}
+
+.challenges-goal-page-inner .cgoal-center-inner .dmultiple .toogle-clickable {
+    cursor: pointer;
 }
 
 .challenges-goal-page-inner .cgoal-center-inner .dmultiple .dm-left {
@@ -3885,4 +3911,8 @@
 
 .dcreatechallenge {
     cursor: pointer;
+}
+
+.challenges-goal-page-inner .cgoal-center-inner .dmultiple .dm-left.active_main_goal_item {
+    background: #ffca28;
 }
