@@ -50,11 +50,12 @@ class GoalChallengeOne extends React.Component {
             selectedPreviewHeaderImage: '/img/prev-header.png',
             socialActionSLide: false,
             socialType: 'youtube',
-            isOpenSingleRewardModal: true, // open social action modal,
+            isOpenSingleRewardModal: false, // open social action modal,
             convertActionToPoints: false,
             allowPenalty: false,
             participantsLocation: false,
             enableFormAfterJoining: false,
+            mainGoalValue: 'single',
 
             // facebook options
             isFacebookLoginEnabled: false,
@@ -114,6 +115,7 @@ class GoalChallengeOne extends React.Component {
         this.toogleChangeChallengePrivacy = this.toogleChangeChallengePrivacy.bind(this);
         this.toogleSelectSpecificLocation = this.toogleSelectSpecificLocation.bind(this);
         this.toogleEnableFormAfterJoining = this.toogleEnableFormAfterJoining.bind(this);
+        this.toogleMainGoalValues = this.toogleMainGoalValues.bind(this);
 
         // social popup
         this.toogleFacebookLogin = this.toogleFacebookLogin.bind(this);
@@ -195,7 +197,12 @@ class GoalChallengeOne extends React.Component {
     toogleFacebookSelectPhotoVideo(){
         this.setState({isFacebookSelectPhotoVideoEnabled: !this.state.isFacebookSelectPhotoVideoEnabled});
     }
-
+    
+    toogleMainGoalValues(toogleTo){
+        this.setState({mainGoalValue: toogleTo});
+        this.populateInput('goal_type', toogleTo);
+        this.createActive('two_main_goal')
+    }
 
     toogleFacebookViewPost(){
         this.setState({isFacebookViewPostEnabled: !this.state.isFacebookViewPostEnabled});
@@ -1362,26 +1369,32 @@ class GoalChallengeOne extends React.Component {
                                       <div className="cg-label">Main Goal</div>
                                       <div className="cg-input">
                                           <div className="dmultiple">
-                                              <div className="dm-left">
+                                              <div className={"dm-left toogle-clickable " + (this.state.mainGoalValue == 'single' ? 'active_main_goal_item' : '')} onClick={() => this.toogleMainGoalValues('single')}>
                                                   <div className="dradiobt">
-                                                      <input type="radio" name="gender" onChange={(e) => this.populateInput('goal_type', 'single')}/>
+                                                      {/* <input type="radio" name="gender" checked={this.state.mainGoalValue === "single"}/> */}
+                                                      <div className={"dradiobase " + (this.state.mainGoalValue == 'single' ? 'active_radio_main_itemn' : '')}>
+                                                        <div className={"dradio-inner " + (this.state.mainGoalValue == 'single' ? 'active_radio_itemn' : '')}>&nbsp;</div>
+                                                      </div>
                                                   </div>
                                                   <div className="dtextone">
                                                       Single Goal
                                                   </div>
                                               </div>
-                                              <div className="dm-right">
+                                              <div className={"dm-left toogle-clickable " + (this.state.mainGoalValue == 'multiple' ? 'active_main_goal_item' : '')} onClick={() => this.toogleMainGoalValues('multiple')}>
                                                   <div className="dradiobt">
-                                                      <input type="radio" name="gender" onChange={(e) => this.populateInput('goal_type', 'multiple')}/>
+                                                      {/* <input type="radio" name="gender" checked={this.state.mainGoalValue === "multiple"}/> */}
+                                                      <div className={"dradiobase " + (this.state.mainGoalValue == 'multiple' ? 'active_radio_main_itemn' : '')}>
+                                                        <div className={"dradio-inner " + (this.state.mainGoalValue == 'multiple' ? 'active_radio_itemn' : '')}>&nbsp;</div>
+                                                      </div>
                                                   </div>
-                                                  <div className="dtextone">
+                                                  <div className="dtextone ">
                                                       Multiple Milestones
                                                   </div>
                                               </div>
                                           </div>
                                           <div className="dsdesc">Description</div>
                                           <div className="dsdesc">Single Goal. Only has one goal with multiple actions, enable multiple milestones to create milestones.</div>
-                                          <input type="text" />
+                                          <input type="text" placeholder="What is the main goal? E.g. Be physically fit" />
                                       </div>
                                   </div>
 
