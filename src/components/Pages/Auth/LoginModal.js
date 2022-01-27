@@ -227,7 +227,7 @@ function LoginModal ({ closeModal }) {
                                 autoLoad={false}
                                 returnScopes={true}
                                 fields="name,email,picture"
-                                scope="public_profile,email,user_birthday"
+                                scope="public_profile,email"
                                 /* callback={this.responseFacebook} */
                                 callback={LoginWithFacebook}
                                 cssClass="google-style py-3"
