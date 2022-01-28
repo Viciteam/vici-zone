@@ -58,11 +58,21 @@ function EditProfile ({ closeModal }) {
     }
 
     async function getUserProfile(){
-        const response = await AuthService.getUserProfile()
+        let response = await AuthService.getUserProfile()
+
+        if(!response){
+            response = {
+                'user': ''
+            };
+            const user_information = CookieService.get("user_profile");
+            response.user = user_information;
+        }
+        
 
         var mnpartdata = {
-          username:response.user.name,
+          username: response.user.name,
         }
+
         var mpartevent = 'Edit User Profile';
         const mpart = await mparticle.sendEvent(mpartevent,mnpartdata);
 
