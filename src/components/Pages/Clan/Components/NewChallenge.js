@@ -9,7 +9,7 @@ class NewChallenge extends React.Component {
                     <div className="flex w-3/4 justify-between">
                         <div className="flex">
                             <div>
-                                <img className="rounded-md" src="/img/dummy/Rectangle1.png" />
+                                <img alt="" className="rounded-md" src="/img/dummy/Rectangle1.png" />
                             </div>
                             <div className="py-4 px-6">
                                 <div className="text-sm font-bold text-medium_gray">Day 20</div>
@@ -29,7 +29,7 @@ class NewChallenge extends React.Component {
                             <div className="flex p-5">
                                 <div className="text-xs pt-1">People Joined.</div>
                                 <div className="text-xs pl-3">
-                                    <img src="/img/dummy/Group.png" />
+                                    <img alt="" src="/img/dummy/Group.png" />
                                 </div>
                             </div>
                         </div>

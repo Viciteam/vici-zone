@@ -1,5 +1,5 @@
 import './../../styles/profiles.css';
-import React, { useContext } from 'react';
+import React from 'react';
 import JoinClanModal from './Components/JoinClanModal';
 import { JoinContext } from './JoinedContext';
 class ClanInfo extends React.Component {
@@ -25,14 +25,14 @@ class ClanInfo extends React.Component {
     }
 
     render () {
-        const {isJoined, joinedUser} = this.context;
+        const {isJoined} = this.context;
         return (
             <div className="dheaderbase">
                 <div className="dhb-inner">
                     <div className="flex">
                         <div className="dhb-image">
                             <div className="img-place">
-                                <img src="/img/prof_icon.png"/>
+                                <img alt="" src="/img/prof_icon.png"/>
                             </div>
                         </div>
                         <div className="flex justify-between w-full">

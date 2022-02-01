@@ -29,7 +29,7 @@ class PopularClans extends React.Component {
                     popularClans.map((item, i) => (
                         <div className="flex my-2">
                             <div>
-                                <img src={item.img}></img>
+                                <img alt="" src={item.img}></img>
                             </div>
                             <div className="pt-3">
                                 <div>{ item.title }</div>

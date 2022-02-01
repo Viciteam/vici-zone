@@ -7,7 +7,7 @@ import ReactModal from 'react-modal';
 
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faImage, faLink, faPaperPlane, faEllipsisV, faThumbsUp, faThumbsDown, faCommentAlt, faBars, faPlus} from '@fortawesome/free-solid-svg-icons'
+import {faEllipsisV, faBars, faPlus} from '@fortawesome/free-solid-svg-icons'
 
 class ChallengeGoalActions extends React.Component {
     constructor(props){
@@ -35,7 +35,7 @@ class ChallengeGoalActions extends React.Component {
 
     render () {
         const showSteps = () => {
-          if(this.state.actionCurrentStep == 1){
+          if(this.state.actionCurrentStep === 1){
             return (
               <div className="d-action-current-step step-one-selected">
                 <div className="d-action-step-items">
@@ -63,7 +63,7 @@ class ChallengeGoalActions extends React.Component {
             );
           }
 
-          if(this.state.actionCurrentStep == 2){
+          if(this.state.actionCurrentStep === 2){
             return (
               <div className="d-action-current-step step-two-selected">
                 <div className=""></div>

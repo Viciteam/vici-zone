@@ -19,19 +19,19 @@ class Menu extends React.Component {
         return (
             <div className="goal-menu-inner">
                 <div className="dmenu-main">
-                    <div className={"dmenu-item " + (selectedMenu == 1 ? 'active_tab' : (selectedMenu >= 2 ? 'done_tab' : ''))}>
+                    <div className={"dmenu-item " + (selectedMenu === 1 ? 'active_tab' : (selectedMenu >= 2 ? 'done_tab' : ''))}>
                         <div className="ditem-stage">1</div>
                         <div className="ditem-title">Title & Description</div>
                     </div>
-                    <div className={"dmenu-item " + (selectedMenu == 2 ? 'active_tab' : (selectedMenu >= 3 ? 'done_tab' : ''))}>
+                    <div className={"dmenu-item " + (selectedMenu === 2 ? 'active_tab' : (selectedMenu >= 3 ? 'done_tab' : ''))}>
                         <div className="ditem-stage">2</div>
                         <div className="ditem-title">Set Goals & Milestones</div>
                     </div>
-                    <div className={"dmenu-item " + (selectedMenu == 3 ? 'active_tab' : (selectedMenu >= 4 ? 'done_tab' : ''))}>
+                    <div className={"dmenu-item " + (selectedMenu === 3 ? 'active_tab' : (selectedMenu >= 4 ? 'done_tab' : ''))}>
                         <div className="ditem-stage">3</div>
                         <div className="ditem-title">Audience & Duration</div>
                     </div>
-                    <div className={"dmenu-item " + (selectedMenu == 4 ? 'active_tab' : '')}>
+                    <div className={"dmenu-item " + (selectedMenu === 4 ? 'active_tab' : '')}>
                         <div className="ditem-stage">4</div>
                         <div className="ditem-title">Customize Appearance</div>
                     </div>

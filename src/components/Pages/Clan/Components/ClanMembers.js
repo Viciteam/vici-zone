@@ -40,7 +40,7 @@ class ClanMembers extends React.Component {
                         members.map((member, i) => (
                             <div className="flex py-2" key={i}>
                                 <div>
-                                    <img src={member.avatar} className="rounded-md h-11 w-11"/>
+                                    <img alt="" src={member.avatar} className="rounded-md h-11 w-11"/>
                                 </div>
                                 <div className="pl-3 pt-2">
                                     { member.name }

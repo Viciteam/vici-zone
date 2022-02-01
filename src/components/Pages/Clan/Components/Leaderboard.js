@@ -35,7 +35,7 @@ class Leaderboard extends React.Component {
                             <div>200</div>
                         </div>
                         <div className="text-center pt-3 pb-2">
-                            <div className="flex justify-center"><img src="/img/user_main.jpg" className="rounded-full h-11 w-11"/></div>
+                            <div className="flex justify-center"><img alt="" src="/img/user_main.jpg" className="rounded-full h-11 w-11"/></div>
                             <div>You</div>
                         </div>
                         <div className="text-center pt-3 pb-2">
@@ -48,7 +48,7 @@ class Leaderboard extends React.Component {
                             users.map((user, i) => (
                                 <div className="flex w-full px-3 py-3" key={i}>
                                     <div className="w-1/8 px-3">{ user.id }</div>
-                                    <div className="w-1/4 flex justify-center"><img src={user.avatar} className="rounded-full h-11 w-11"/></div>
+                                    <div className="w-1/4 flex justify-center"><img alt="" src={user.avatar} className="rounded-full h-11 w-11"/></div>
                                     <div className="w-5/8">
                                         <div>{ user.name }</div>
                                         <div className="font-bold">{ user.steps } Steps</div>

@@ -23,7 +23,7 @@ class SideContent extends React.Component {
                     </div>
                     <div>
                         <div className="flex justify-center">
-                            <img src="/img/challenge_question.png" width="46"/>
+                            <img alt="" src="/img/challenge_question.png" width="46"/>
                         </div>
                         <div className="text-xs text-primary_color">Challenge</div>
                     </div>
@@ -37,7 +37,7 @@ class SideContent extends React.Component {
                         </button>
                     </div>
                     <div className="flex justify-center mt-6">
-                        <img src="/img/avatarguest.png" width="180" />
+                        <img alt="" src="/img/avatarguest.png" width="180" />
                     </div>
                 </div>
                 <div className="p-6">
@@ -45,7 +45,7 @@ class SideContent extends React.Component {
                         Guest User
                     </div>
                     <div className="py-3 flex">
-                        <img src="/img/medal.png" width="20" />
+                        <img alt="" src="/img/medal.png" width="20" />
                         <div className="pl-3">0</div>
                         <div className="ml-6">
                             <button className="text-primary_color font-bold">Visit Store</button>

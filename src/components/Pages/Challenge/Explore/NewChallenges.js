@@ -81,7 +81,7 @@ class NewChallenges extends React.Component {
                           newChallenges.map((item, i) => (  
                             <div style={{width: '300px'}} className="bg-white_color shadow-xl rounded-b-xl relative">
                                 <div>
-                                    <img src={item.image} />
+                                    <img alt="" src={item.image} />
                                 </div>
                                 <div className="text-xs uppercase py-5 flex justify-center">
                                     { item.date }
@@ -101,7 +101,7 @@ class NewChallenges extends React.Component {
                                 </div>
                                 <div className="mt-6 px-3 flex justify-between">
                                     <div className="flex">
-                                        <img src={item.avatar} />
+                                        <img alt="" src={item.avatar} />
                                         <div className="text-sm pl-3 pt-1"> {item.name} </div>
                                     </div>
                                     <div className="text-sm pt-1">{ item.joined }</div>

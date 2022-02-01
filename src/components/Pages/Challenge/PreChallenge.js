@@ -4,7 +4,7 @@ import React from 'react';
 import PreChallengeOptions from './Segments/PreChallengeOptions'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faPlus, faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 class PreChallenge extends React.Component {
     constructor(props){

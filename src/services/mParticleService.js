@@ -26,4 +26,4 @@ class mParticleService {
     }
 }
 
-export default new mParticleService
+export default new mParticleService()

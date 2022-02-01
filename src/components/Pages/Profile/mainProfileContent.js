@@ -10,9 +10,9 @@ import WallofAchievements from './Segments/WallofAchievements'
 import TopActivities from './Segments/TopActivities'
 import Challenge from './Segments/Challenge'
 import Timeline from './Segments/Timeline'
-import DailyChallenge from './Segments/DailyChallenge'
-import OngoingChallenge from './Segments/OngoingChallenge'
-import PopularClans from '../Clan/PopularClans'
+// import DailyChallenge from './Segments/DailyChallenge'
+// import OngoingChallenge from './Segments/OngoingChallenge'
+// import PopularClans from '../Clan/PopularClans'
 import WhoToFollow from '../Clan/WhoToFollow';
 import Friends from '../Clan/Friends';
 import auth from '../../../services/auth';

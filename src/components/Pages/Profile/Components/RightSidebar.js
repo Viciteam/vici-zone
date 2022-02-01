@@ -22,7 +22,7 @@ class RightSidebar extends React.Component {
                         clans.map((item, i) => (
                             <div className="flex my-2">
                                 <div>
-                                    <img src={ item.img } />
+                                    <img alt="" src={ item.img } />
                                 </div>
                                 <div className="pl-3 pt-3">
                                     <div className="text-xl">{ item.title }</div>
@@ -36,7 +36,7 @@ class RightSidebar extends React.Component {
                 <div className="bg-white_color p-3 rounded-lg h-60">
                     <div className="flex shadow-border_shadow py-3">
                         <div className="pl-3">
-                            <img src="/img/dummy/clans/Rectangle 17.png" />
+                            <img alt="" src="/img/dummy/clans/Rectangle 17.png" />
                         </div>
                         <div className="pl-6">
                             <div className="font-bold">Google Fit</div>

@@ -13,9 +13,9 @@ class CookieService {
     }
 
     remove(key){
-        cookie.remove(key)
+        (cookie).remove(key)
     }
 
 }
 
-export default new CookieService
+export default new CookieService()
