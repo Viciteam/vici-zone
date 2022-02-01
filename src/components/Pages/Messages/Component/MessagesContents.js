@@ -1,5 +1,6 @@
 import React from 'react';
 import { Message } from './Message'
+import '../../../styles/messages.css'
 class MessagesContents extends React.Component {
 
     state = { input_value: "" };
@@ -65,7 +66,7 @@ class MessagesContents extends React.Component {
                 </div>
                 <div className="h-screen-auto flex relative bg-white_color shadow-border_shadow_right">
                     <div className="absolute bottom-0 text-medium_gray w-full">
-                        <div className="shadow-border_shadow h-full overflow-y-auto">
+                        <div className="shadow-border_shadow content-messages-h overflow-y-auto">
                         ‍
                         <div className="messages-list overflow-y-auto">{list}</div>‍
                             {/* <div className="flex p-5 w-full">
