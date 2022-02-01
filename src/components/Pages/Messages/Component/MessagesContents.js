@@ -15,6 +15,13 @@ class MessagesContents extends React.Component {
         this.setState({ input_value: e.target.value });
     };
 
+    keyPress = (e) => {
+        if(e.keyCode == 13){
+            this.send();
+            this.setState({ input_value: '' });
+        }
+     }
+
      render () {
         let list = (
             <div className="no-content-message">There is no messages to show</div>
@@ -31,7 +38,7 @@ class MessagesContents extends React.Component {
             ));
         }
 
-        return (
+        /* return (
             <div className="messages-panel">
               ‍<div className="meesages-list">{list}</div>‍
               <div className="messages-input">
@@ -43,9 +50,9 @@ class MessagesContents extends React.Component {
                 ‍<button onClick={this.send}>Send</button>‍
               </div>
             </div>
-          );
+          ); */
 
-         /* return (
+         return (
              <div className="shadow-border_shadow_right"> 
                 <div className="px-5 py-3 flex shadow-border_shadow">
                     <div>
@@ -59,8 +66,9 @@ class MessagesContents extends React.Component {
                 <div className="h-screen-auto flex relative bg-white_color shadow-border_shadow_right">
                     <div className="absolute bottom-0 text-medium_gray w-full">
                         <div className="shadow-border_shadow h-full overflow-y-auto">
-
-                            <div className="flex p-5 w-full">
+                        ‍
+                        <div className="messages-list overflow-y-auto">{list}</div>‍
+                            {/* <div className="flex p-5 w-full">
                                 <div className="w-1/2 flex">
                                     <div className="pt-5">
                                         <img src="/img/dummy/1.png" width="32" className="rounded-full" />
@@ -116,7 +124,7 @@ class MessagesContents extends React.Component {
                                     </div>
                                 </div>
                             </div>
-
+ */}
 
 
                         </div>
@@ -128,7 +136,7 @@ class MessagesContents extends React.Component {
                                     </svg>
                                 </button>
                                 <div className="w-full pl-3">
-                                    <input placeholder="Type your message.." type="text" className="w-full py-2 px-5 rounded-full border border-medium_gray" />
+                                    <input onChange={this.handleInput} onKeyUp={this.keyPress} value={this.state.input_value} placeholder="Type your message.." type="text" className="w-full py-2 px-5 rounded-full border border-medium_gray" />
                                 </div>
                             </div>
                             <div className="flex">
@@ -153,7 +161,7 @@ class MessagesContents extends React.Component {
                     </div>
                 </div>
              </div>
-         ) */
+         )
      }
 }
 
