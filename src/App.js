@@ -6,6 +6,7 @@ import Content  from './components/Content'
 import Footer from './components/Footer'
 import Thankyou from './components/ThankyouPage/Thankyou';
 import ThankyouHeader from './components/ThankyouPage/Header';
+import NewThankyouPage from './components/ThankyouPage/NewThankyouPage';
 
 import ProfileHeader from './components/Pages/Profile/Header';
 import ProfileContent from './components/Pages/Profile/mainProfileContent';
@@ -79,7 +80,8 @@ function App() {
             </Route>
             <Route path="/waitlist-thanks">
               <ThankyouHeader />
-              <Thankyou />
+              {/* <Thankyou /> */}
+              <NewThankyouPage />
             </Route>
 
             <Route path="/profile">

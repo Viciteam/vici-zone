@@ -42,6 +42,8 @@ module.exports = {
         '7xl': '5rem',
         '28': '28px',
         '10': '10px',
+        '64': '64px',
+        '60': '60px',
      },
     fontFamily: {
       'nunito': ['nunito', 'sans-serif'],
