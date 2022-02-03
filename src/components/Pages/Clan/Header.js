@@ -340,7 +340,7 @@ class ClanHeader extends React.Component {
                         <a href="/"><img src="/img/vici.png"/></a>
                     </div>
                     <div className="ditems">
-                        <div className="dmenu w-1/2">
+                        <div className="dmenu m-0 w-1/2">
                             <ul className="flex justify-center w-full">
                                 <li className="px-6"><a href="/">Home</a></li>
                                 <li className="px-6"><a href="#">Explore</a></li>

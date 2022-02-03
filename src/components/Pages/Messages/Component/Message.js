@@ -3,15 +3,19 @@ export class Message extends React.Component {
   render() {
     return (
       <div
-        className="message-item"
+        className="message-item p-3 rounded-xl"
         style={
           this.props?.userId === this.props.senderName
             ? styles.selfMessage
             : styles.otherMessage
         }
       >
-        <div>{this.props.senderName}</div>
-        <span style={{ fontSize: "24px" }}>
+        {
+          this.props?.userId === this.props.senderName ? ''
+          :
+          <div>{this.props.senderName}</div>
+        }
+        <span style={{ fontSize: "14px" }}>
           <b>{this.props.text}</b>
         </span>
       </div>
@@ -21,11 +25,13 @@ export class Message extends React.Component {
 
 const styles = {
   selfMessage: {
-    color: "#0e62da",
+    background: "#FCAF38",
+    color: "#ffffff",
     textAlign: "right",
     marginLeft: "auto",
   },
   otherMessage: {
+    background: "#F2F2F2",
     color: "black",
     textAlign: "left",
   },

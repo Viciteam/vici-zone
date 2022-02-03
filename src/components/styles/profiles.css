@@ -962,7 +962,7 @@ ul.tabtitles > li {
 .clan-header-inner .ditems > div {
     display: inline-block;
     vertical-align: middle;
-    margin: 0 10px;
+   /*  margin: 0 10px; */
     position: relative;
 }
 

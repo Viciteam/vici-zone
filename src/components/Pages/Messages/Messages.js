@@ -3,6 +3,8 @@ import MessagesLeftSidebar from './Component/MessagesLeftSidebar';
 import MessagesContents from './Component/MessagesContents';
 import MessagesRightSidebar from './Component/MessagesRightSidebar';
 import socketClient from "socket.io-client";
+import auth from '../../../services/auth';
+
 const SERVER = "http://44.241.49.47:8080";
 
 class Messages extends React.Component {
@@ -71,7 +73,7 @@ class Messages extends React.Component {
     }
 
     handleSendMessage = (channel_id, text) => {
-        this.socket.emit('send-message', { channel_id, text, senderName: this.socket.id, id: Date.now() });
+        this.socket.emit('send-message', { channel_id, text, senderName: auth.userProfile().name, id: Date.now() });
     }
 
     render () {
