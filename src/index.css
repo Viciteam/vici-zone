@@ -26,3 +26,16 @@
 .above-fold-info .black-sub-header-title {
   line-height: 1.3em;
 }
+
+.fb-login-error {
+  text-align: center;
+  margin: 19px 0;
+  line-height: 1.2em;
+  font-size: 12px;
+  background: #ff6a6a;
+  color: #fff;
+  padding: 10px 0px;
+  border-radius: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}

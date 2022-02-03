@@ -13,6 +13,7 @@ function LoginModal ({ closeModal }) {
     let [password_confirmation, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [valid, setValid] = useState(true);
+    const [socialValid, setSocialValid] = useState(true);
     let [register, setRegister] = useState(false);
     const [fbImage, setFbImage] = useState('');
  
@@ -124,7 +125,7 @@ function LoginModal ({ closeModal }) {
                 closeModal()
                 window.location.href = "/";
             }else{
-                setValid(false)
+                setSocialValid(false)
                 setLoading(false)
                 console.log('Invalid email or password')
             }
@@ -169,6 +170,14 @@ function LoginModal ({ closeModal }) {
         }
         
 
+    }
+
+    let showFacebookLoginError = () => {
+        if(!socialValid){
+            return (
+                <div className="fb-login-error">User has already been regestered to the site.<br />please login using regular login </div>
+            );
+        }
     }
     
     return (
@@ -223,7 +232,8 @@ function LoginModal ({ closeModal }) {
                         </div>
                         <div className="mt-3">
                             <FacebookLogin
-                                appId="1397019250754280"
+                                // appId="1397019250754280"
+                                appId="352743490013922"
                                 autoLoad={false}
                                 returnScopes={true}
                                 fields="name,email,picture"
@@ -235,6 +245,7 @@ function LoginModal ({ closeModal }) {
                                 icon="fa-facebook"
                             />
                         </div>
+                        {showFacebookLoginError()}
                     </div>
                     <div className="mt-3">
                         <div onClick={handleLogin} className="bg-primary_color text-white_color py-3 text-center cursor-pointer rounded-full">{ loading ? 'Logging in...' : register ? 'Get started' : 'Log in'}</div>
