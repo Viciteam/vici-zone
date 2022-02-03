@@ -18,11 +18,11 @@ const Header = () => {
                 <div onClick={handleRedirect} className="pt-3 cursor-pointer">
                     <img src="/img/vici.png" alt="header_logo" width="135"/>
                 </div>
-                <div className="flex">
+                {/* <div className="flex">
                     <div className="pt-6">
                         <button onClick={demo} className="mr-8 font-bold shadow-lg px-6 py-2 text-primary_color bg-white_color">Demo</button>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )
