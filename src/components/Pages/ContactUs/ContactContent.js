@@ -50,7 +50,7 @@ const ContactContent = () => {
                     <div className="mt-20 grid grid-rows-1 grid-cols-3 gap-4 pb-16">
                         <div className="text-center">
                             <div className="flex justify-center">
-                                <img src="/img/emailus.png" />
+                                <img alt="" src="/img/emailus.png" />
                             </div>
                             <div className="mt-12 text-2xl font-bold">Email us</div>
                             <div className="w-3/4 mx-auto pt-3">Email us for general queries, including marketing and partnership opportunities.</div>
@@ -58,7 +58,7 @@ const ContactContent = () => {
                         </div>
                         <div className="text-center">
                             <div className="flex justify-center">
-                                <img src="/img/chat.png" />
+                                <img alt="" src="/img/chat.png" />
                             </div>
                             <div className="mt-12 text-2xl font-bold">Live chat</div>
                             <div className="w-3/4 mx-auto pt-3">Chat to a member of our team. We are always happy to help.</div>
@@ -70,7 +70,7 @@ const ContactContent = () => {
                         </div>
                         <div className="text-center">
                             <div className="flex justify-center">
-                                <img src="/img/location.png" />
+                                <img alt="" src="/img/location.png" />
                             </div>
                             <div className="mt-12 text-2xl font-bold">Address</div>
                             <div className="w-3/4 mx-auto pt-3">68 Circular Road #02-01, Singapore, 049422</div>

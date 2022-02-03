@@ -80,7 +80,7 @@ class Timeline extends React.Component {
             }
             if (index !== -1) {
                 array.forEach((elem, i) =>{
-                    if(index == i){
+                    if(index === i){
                         const data = {
                             avatar: '/img/user_main.jpg',
                             name: 'John Peter Doe',
@@ -129,7 +129,7 @@ class Timeline extends React.Component {
                 <div className="tm-onmind">
                     <div className="om-inner">
                         <div className="dprofpic">
-                            <img src="/img/user_main.jpg"/>
+                            <img alt="" src="/img/user_main.jpg"/>
                         </div>
                         <div className="dtextarea">
                             <textarea value={this.state.postMessage} onChange={this.handleChange} placeholder="Write Something.."></textarea>
@@ -144,7 +144,7 @@ class Timeline extends React.Component {
                                 </div>
                                 <div onClick={this.handleClick} className="mt-12 cursor-pointer">
                                     <div className="w-full flex justify-center">
-                                        <img src="/img/Group 1270.png"/>
+                                        <img alt="" src="/img/Group 1270.png"/>
                                     </div>
                                     <div className="text-vici_secondary font-bold">Add Attachments</div>
                                 </div>
@@ -154,18 +154,18 @@ class Timeline extends React.Component {
                         <div className="doptions">
                             <div className="leftops">
                                 <div className="ditmone">
-                                    <img src="/img/addimage.png"/>
+                                    <img alt="" src="/img/addimage.png"/>
                                 </div>
                                 <button onClick={this.handleOpenAttach} className="ditmone">
-                                    <img src="/img/clip.png"/>
+                                    <img alt="" src="/img/clip.png"/>
                                 </button>
                                 <button className="ditmone">
-                                    <img src="/img/notes.png"/>
+                                    <img alt="" src="/img/notes.png"/>
                                 </button>
                             </div>
                             <div className="rightops">
                                 <button onClick={this._handleKeyDown} className="ditmone">
-                                    <img src="/img/send.png"/>
+                                    <img alt="" src="/img/send.png"/>
                                 </button>
                             </div>
                         </div>
@@ -184,7 +184,7 @@ class Timeline extends React.Component {
                                         <div className="dtm-header">
                                             <div className="dtm-item-image">
                                                 <div className="dtm-item-image-inner">
-                                                    <img src="/img/user_main.jpg"/>
+                                                    <img alt="" src="/img/user_main.jpg"/>
                                                 </div>
                                             </div>
                                             <div className="dtm-item-info">
@@ -210,7 +210,7 @@ class Timeline extends React.Component {
                                                     <div className="dc-left-item">
                                                         <div className="dicon">
                                                             <div className="dclikable">
-                                                                <img src="/img/like.png"/>
+                                                                <img alt="" src="/img/like.png"/>
                                                             </div>
                                                         </div>
                                                         <div className="dvals">
@@ -222,7 +222,7 @@ class Timeline extends React.Component {
                                                     <div className="dc-left-item">
                                                         <div className="dicon">
                                                             <div className="dclikable">
-                                                                <img src="/img/dislike.png"/>
+                                                                <img alt="" src="/img/dislike.png"/>
                                                             </div>
                                                         </div>
                                                         <div className="dvals">
@@ -234,7 +234,7 @@ class Timeline extends React.Component {
                                                 </div>
                                                 <div className="dcright">
                                                     <div className="dccomment">
-                                                        <img src="/img/comment.png"/>
+                                                        <img alt="" src="/img/comment.png"/>
                                                     </div>
                                                 </div>
                                                 <br className="clear" />
@@ -247,7 +247,7 @@ class Timeline extends React.Component {
                                                 post.comments.map((comment, index) => (
                                                     <div className="dtm-comment-inner">
                                                         <div className="dtm-comment-image">
-                                                            <img src={comment.avatar} />
+                                                            <img alt="" src={comment.avatar} />
                                                         </div>
                                                         <div className="dtm-comment-content">
                                                             <div className="dpagetitle">{ comment.name }<span className="dtime">{ comment.time }</span></div>
@@ -258,7 +258,7 @@ class Timeline extends React.Component {
                                                                         <div className="dc-left-item">
                                                                             <div className="dicon">
                                                                                 <div className="dclikable">
-                                                                                    <img src="/img/like.png"/>
+                                                                                    <img alt="" src="/img/like.png"/>
                                                                                 </div>
                                                                             </div>
                                                                             <div className="dvals">
@@ -270,7 +270,7 @@ class Timeline extends React.Component {
                                                                         <div className="dc-left-item">
                                                                             <div className="dicon">
                                                                                 <div className="dclikable">
-                                                                                    <img src="/img/dislike.png"/>
+                                                                                    <img alt="" src="/img/dislike.png"/>
                                                                                 </div>
                                                                             </div>
                                                                             <div className="dvals">
@@ -336,7 +336,7 @@ class Timeline extends React.Component {
                                             <div className="dreplypart">
                                                 <div className="dr-inner">
                                                     <div className="dpartimage">
-                                                        <div className="dpimage"><img src="/img/user_main.jpg"/></div>
+                                                        <div className="dpimage"><img alt="" src="/img/user_main.jpg"/></div>
                                                     </div>
                                                     <div className="dformpart">
                                                         <div className="dforminner">

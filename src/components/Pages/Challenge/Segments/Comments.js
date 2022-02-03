@@ -5,7 +5,7 @@ import ShowComment from './ShowComment';
 import ShowActivity from './ShowActivity'; 
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faImage, faLink, faPaperPlane, faEllipsisV, faThumbsUp, faThumbsDown, faCommentAlt} from '@fortawesome/free-solid-svg-icons'
+import {faImage, faLink, faPaperPlane} from '@fortawesome/free-solid-svg-icons'
 
 class Comments extends React.Component {
     constructor(props){
@@ -44,7 +44,7 @@ class Comments extends React.Component {
     render () {
         const activities = this.state.userComments;
         const renderComments = activities.map(item => {
-            if(item.type == 'comment'){
+            if(item.type === 'comment'){
                 return <ShowComment info={item} key={item.id} />
             }
                 

@@ -5,7 +5,7 @@ import BreadCrumbs from './BreadCrumbs'
 import ClanInfo from './ClanInfo'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faComment, faBell, faSearch, faEllipsisV } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faEllipsisV } from '@fortawesome/free-solid-svg-icons'
 
 class Members extends React.Component {
     constructor(props){
@@ -51,7 +51,7 @@ class Members extends React.Component {
                                                         <div className="mem-list-item">
                                                             <div className="dprofimage">
                                                                 <div className="dprofimage-inner">
-                                                                    <img src="/img/user_main.jpg"/>
+                                                                    <img alt="" src="/img/user_main.jpg"/>
                                                                 </div>
                                                             </div>
                                                             <div className="dinfo">
@@ -67,7 +67,7 @@ class Members extends React.Component {
                                                         <div className="mem-list-item">
                                                             <div className="dprofimage">
                                                                 <div className="dprofimage-inner">
-                                                                    <img src="/img/user_main.jpg"/>
+                                                                    <img alt="" src="/img/user_main.jpg"/>
                                                                 </div>
                                                             </div>
                                                             <div className="dinfo">

@@ -1,5 +1,5 @@
 import './../../styles/profiles.css';
-import React, { useState, useContext } from 'react';
+import React from 'react';
 
 import BreadCrumbs from './BreadCrumbs'
 import ClanInfo from './ClanInfo'
@@ -21,7 +21,7 @@ class Index extends React.Component {
 
     render () {
 
-        const {isJoined, joinedUser} = this.context;
+        const {isJoined} = this.context;
 
         return (
             <div className="clan-inner container mx-auto mt-20">
@@ -38,7 +38,7 @@ class Index extends React.Component {
                                         isJoined ?
                                         <div className="dinfostats">
                                             <div className="creator">
-                                                <div className="dimage"><img src="/img/user_main.jpg"/></div>
+                                                <div className="dimage"><img alt="" src="/img/user_main.jpg"/></div>
                                                 <div className="dname">Joined 10/06/2021</div>
                                             </div>
                                             <div className="rank">Rank 1</div>
@@ -47,7 +47,7 @@ class Index extends React.Component {
                                         :
                                         <div className="dinfostats">
                                             <div className="creator">
-                                                <div className="dimage"><img src="/img/user_main.jpg"/></div>
+                                                <div className="dimage"><img alt="" src="/img/user_main.jpg"/></div>
                                                 <div className="dname">Creator</div>
                                             </div>
                                             <div className="rank">Rank/Level --</div>
@@ -75,7 +75,7 @@ class Index extends React.Component {
                                                             <div className="tm-onmind">
                                                                 <div className="om-inner">
                                                                     <div className="dprofpic">
-                                                                        <img src="/img/user_main.jpg"/>
+                                                                        <img alt="" src="/img/user_main.jpg"/>
                                                                     </div>
                                                                     <div className="dtextarea">
                                                                         <textarea placeholder="Write Something.."></textarea>
@@ -83,15 +83,15 @@ class Index extends React.Component {
                                                                     <div className="doptions">
                                                                         <div className="leftops">
                                                                             <div className="ditmone">
-                                                                                <img src="/img/addimage.png"/>
+                                                                                <img alt="" src="/img/addimage.png"/>
                                                                             </div>
                                                                             <div className="ditmone">
-                                                                                <img src="/img/clip.png"/>
+                                                                                <img alt="" src="/img/clip.png"/>
                                                                             </div>
                                                                         </div>
                                                                         <div className="rightops">
                                                                             <div className="ditmone">
-                                                                                <img src="/img/send.png"/>
+                                                                                <img alt="" src="/img/send.png"/>
                                                                             </div>
                                                                         </div>
                                                                     </div>

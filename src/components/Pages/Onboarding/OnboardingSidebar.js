@@ -19,7 +19,7 @@ class OnboardingSidebar extends React.Component {
                         <div className="uppercase text-10">Vici Action</div>
                     </div>
                     <div>
-                        <img className="rounded-xl w-full" src="/img/dummy/Rectangle182.png" />
+                        <img alt="" className="rounded-xl w-full" src="/img/dummy/Rectangle182.png" />
                     </div>
                     <div className="text-center my-3 border-b pb-3">
                         Set up your account to make yourself more discoverable!
@@ -30,7 +30,7 @@ class OnboardingSidebar extends React.Component {
                         </div>
                         <div className="col-span-2 flex">
                             <div>
-                                <img src="/img/Vici Logo.png" width="24" />
+                                <img alt="" src="/img/Vici Logo.png" width="24" />
                             </div>
                             <div className="text-xs font-bold pl-3 pt-1">Vici</div>
                         </div>
@@ -38,7 +38,7 @@ class OnboardingSidebar extends React.Component {
                             People Joined:
                         </div>
                         <div className="col-span-2">
-                            <img src="/img/dummy/Group.png" />
+                            <img alt="" src="/img/dummy/Group.png" />
                         </div>
                         <div className="uppercase text-sm text-vici_secondary_text">
                             Instructions
@@ -66,7 +66,7 @@ class OnboardingSidebar extends React.Component {
                     <div className="font-bold">Rewards</div>
                     <div className="flex justify-between border-b px-3 my-3 pb-3">
                         <div className="flex">
-                            <img src="/img/medal.png" width="21" />
+                            <img alt="" src="/img/medal.png" width="21" />
                             <div className="pt-2 pl-3">10 VIP Tokens</div>
                         </div>
                         <div>
@@ -79,7 +79,7 @@ class OnboardingSidebar extends React.Component {
                     </div>
                     <div className="flex justify-between px-3 my-3 pb-3">
                         <div className="flex">
-                            <img className="" src="/img/achievebadge.png" width="24" height="24" />
+                            <img alt="" className="" src="/img/achievebadge.png" width="24" height="24" />
                             <div className="pt-2 pl-3">Achievement Badge</div>
                         </div>
                         <div>

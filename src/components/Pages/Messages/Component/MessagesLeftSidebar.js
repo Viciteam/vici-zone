@@ -8,36 +8,36 @@ class MessagesLeftSidebar extends React.Component {
 
      render () {
         let list = `There is no channels to show`;
-        const messages = [
-            {
-                image: '/img/dummy/1.png',
-                sender: 'John Green',
-                message: 'That’s too hard to do :(',
-                time: '30m',
-                isActive: false,
-            },
-            {
-                image: '/img/dummy/2.png',
-                sender: 'John White',
-                message: 'Yeah, the other challenge is hard..',
-                time: '4h',
-                isActive: false,
-            },
-            {
-                image: '/img/dummy/3.png',
-                sender: 'John Red',
-                message: 'Yeah, the other challenge is hard..',
-                time: '3m',
-                isActive: true,
-            },
-            {
-                image: '/img/dummy/4.png',
-                sender: 'John Brown',
-                message: 'Yeah, the other challenge is hard..',
-                time: '3m',
-                isActive: false,
-            }
-        ]
+        // const messages = [
+        //     {
+        //         image: '/img/dummy/1.png',
+        //         sender: 'John Green',
+        //         message: 'That’s too hard to do :(',
+        //         time: '30m',
+        //         isActive: false,
+        //     },
+        //     {
+        //         image: '/img/dummy/2.png',
+        //         sender: 'John White',
+        //         message: 'Yeah, the other challenge is hard..',
+        //         time: '4h',
+        //         isActive: false,
+        //     },
+        //     {
+        //         image: '/img/dummy/3.png',
+        //         sender: 'John Red',
+        //         message: 'Yeah, the other challenge is hard..',
+        //         time: '3m',
+        //         isActive: true,
+        //     },
+        //     {
+        //         image: '/img/dummy/4.png',
+        //         sender: 'John Brown',
+        //         message: 'Yeah, the other challenge is hard..',
+        //         time: '3m',
+        //         isActive: false,
+        //     }
+        // ]
 
         if (this.props.channels) {
             list = this.props.channels.map((c) => (

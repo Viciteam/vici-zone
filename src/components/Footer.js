@@ -4,9 +4,9 @@ const Footer = () => {
             <div className="container mx-auto">
                 <div className="flex justify-center pt-20">
                     <ul className="flex">
-                        <li className="px-6"><a href="#">About</a></li>
-                        <li className="px-6"><a href="#">Terms of Service</a></li>
-                        <li className="px-6"><a href="#">Privacy Policy</a></li>
+                        <li className="px-6"><a href="/">About</a></li>
+                        <li className="px-6"><a href="/">Terms of Service</a></li>
+                        <li className="px-6"><a href="/">Privacy Policy</a></li>
                         <li className="px-6"><a href="/contact-us" target="_blank">Contact Us</a></li>
                     </ul>
                 </div>

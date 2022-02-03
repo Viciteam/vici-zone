@@ -169,11 +169,11 @@ class PreChallengeOptions extends React.Component {
 
         const selectedOpts = this.state.selectedOption;
         let renderElement;
-        if(selectedOpts == 'Paragraph'){
+        if(selectedOpts === 'Paragraph'){
             renderElement = this.showTextArea();
-        } else if(selectedOpts == 'Multiple Choice' || selectedOpts == 'Checkbox' || selectedOpts == 'Dropdown'){
+        } else if(selectedOpts === 'Multiple Choice' || selectedOpts === 'Checkbox' || selectedOpts === 'Dropdown'){
             renderElement = this.showMultipleChoice(selectedOpts);
-        } else if(selectedOpts == 'Connect to social account'){
+        } else if(selectedOpts === 'Connect to social account'){
             renderElement = this.showConnectToSocial();
         } else {
             renderElement = this.showText();

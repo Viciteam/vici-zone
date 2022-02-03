@@ -8,7 +8,7 @@ class Newsfeed extends React.Component {
                     <div className="flex pb-5 px-5 justify-between">
                         <div className="flex">
                             <div>
-                                <img src="/img/user_main.jpg" className="w-20 h-20 rounded-md"/>
+                                <img alt="" src="/img/user_main.jpg" className="w-20 h-20 rounded-md"/>
                             </div>
                             <div className="pl-3">
                                 <div><span className="font-bold">Daphne Winter</span> <span className="font-bold text-primary_color">Completed</span> a challenge!</div>
@@ -28,7 +28,7 @@ class Newsfeed extends React.Component {
                         </div>
                     </div>
                     <div>
-                        <img src="/img/dummy/Frame2.png" className="w-full"/>
+                        <img alt="" src="/img/dummy/Frame2.png" className="w-full"/>
                     </div>
                 </div>
                 <div className="flex justify-between">

@@ -42,8 +42,8 @@ class ClanHeader extends React.Component {
     static contextType = ProfileContext;
 
     handleBannerChanges (val) {
-        const { banner, profile } = this.context;
-        const [bannerValue, setBannerValue] = banner;
+        const { banner } = this.context;
+        const [setBannerValue] = banner;
         //const [profileValue, setProfileValue] = profile;
         setBannerValue(val)
     }
@@ -59,8 +59,8 @@ class ClanHeader extends React.Component {
     }
 
     handleProfileImage (val) {
-        const { banner, profile } = this.context;
-        const [profileValue, setProfileValue] = profile;
+        const { profile } = this.context;
+        const [setProfileValue] = profile;
         setProfileValue(val)
     }
 
@@ -192,7 +192,7 @@ class ClanHeader extends React.Component {
                                             <div className="flex cursor-pointer justify-between pt-5">
                                                 <div className="flex">
                                                     <div>
-                                                        <img src="/img/dummy/message.png" width="54"/>
+                                                        <img alt="" src="/img/dummy/message.png" width="54"/>
                                                     </div>
                                                     <div className="px-3">
                                                         <div className="text-lg">Message Requests</div>
@@ -210,7 +210,7 @@ class ClanHeader extends React.Component {
                                                     <div className="flex cursor-pointer justify-between pt-5">
                                                         <div className="flex">
                                                             <div>
-                                                                <img className="rounded-full" src={item.image} width="54"/>
+                                                                <img alt="" className="rounded-full" src={item.image} width="54"/>
                                                             </div>
                                                             <div className="px-3 text-left">
                                                                 <div className="text-lg font-normal">{ item.sender }</div>
@@ -236,7 +236,7 @@ class ClanHeader extends React.Component {
                         </div>
                         <div className="dproficon">
                             <div className="relative">
-                                <img onClick={this.handleOpenAccountSettings} src={auth.userProfile() ? auth.userProfile().profpic_link : '/img/avatarguest.png'} className="cursor-pointer"/>
+                                <img alt="" onClick={this.handleOpenAccountSettings} src={auth.userProfile() ? auth.userProfile().profpic_link : '/img/avatarguest.png'} className="cursor-pointer"/>
                                 {
                                     this.state.openAccountSettings &&
                                     <div className="absolute bg-white_color right-0 shadow-vici rounded z-10" style={{width: '270px'}}>
@@ -314,10 +314,10 @@ class ClanHeader extends React.Component {
                             </div>
                         </div>
                         <div className="dcoin">
-                            <div className="dcoin-inner"><img src="/img/coil.png"/> <span>0</span></div>
+                            <div className="dcoin-inner"><img alt="" src="/img/coil.png"/> <span>0</span></div>
                         </div>
                         <div className="dmedals">
-                            <div className="dmedal-inner"><img src="/img/medal.png"/> <span>0</span></div>
+                            <div className="dmedal-inner"><img alt="" src="/img/medal.png"/> <span>0</span></div>
                         </div>
                     </div>
                 );
@@ -337,14 +337,14 @@ class ClanHeader extends React.Component {
             <div className="clan-header-main">
                 <div className="clan-header-inner">
                     <div className="dlogo">
-                        <a href="/"><img src="/img/vici.png"/></a>
+                        <a href="/"><img alt="" src="/img/vici.png"/></a>
                     </div>
                     <div className="ditems">
                         <div className="dmenu m-0 w-1/2">
                             <ul className="flex justify-center w-full">
                                 <li className="px-6"><a href="/">Home</a></li>
-                                <li className="px-6"><a href="#">Explore</a></li>
-                                <li className="px-6"><a href="#">Learn</a></li>
+                                <li className="px-6"><a href="/">Explore</a></li>
+                                <li className="px-6"><a href="/">Learn</a></li>
                             </ul>
                         </div>
                         <div className="dsearch relative">
@@ -362,7 +362,7 @@ class ClanHeader extends React.Component {
                                             people.map((item, i) => (
                                                 <div className="px-3 py-2 flex">
                                                     <div>
-                                                        <img src={ item.img } className="rounded-full" />
+                                                        <img alt="" src={ item.img } className="rounded-full" />
                                                     </div>
                                                     <div className="pl-3">
                                                         <div className="font-bold">{ item.name }</div>
@@ -376,7 +376,7 @@ class ClanHeader extends React.Component {
                                             challenges.map((item, i) => (
                                                 <div className="px-3 py-2 flex">
                                                     <div>
-                                                        <img src={ item.img } className="rounded-lg" width="54" />
+                                                        <img alt="" src={ item.img } className="rounded-lg" width="54" />
                                                     </div>
                                                     <div className="pl-3 pt-2">
                                                         <div className="font-bold">{ item.title }</div>

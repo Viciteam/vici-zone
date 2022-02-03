@@ -52,13 +52,13 @@ function BrandProfileModal ({ closeModal, bannerUpdate, profileUpdate }) {
                 </div>  
                 <div className="mx-12 my-3 p-3 rounded-xl border border-bottom_gray">
                     <div className="h-28 flex relative justify-center bg-vici_gray rounded-xl">
-                        <img src={preview} className="absolute w-full rounded-xl object-cover h-28" />
+                        <img alt="" src={preview} className="absolute w-full rounded-xl object-cover h-28" />
                         <button onClick={uploadBanner} className="text-vici_secondary cursor-pointer z-10">Upload Banner</button>
                         <input type="file" id="file" onChange={setFile.bind(this)}  ref={fileUploader} style={{display: "none"}}/>
                     </div>
                     <div className="w-2/3 mx-auto my-3 rounded-2xl">
                         <div className="flex justify-center pt-3">
-                            <img src={profile} width="100" className="rounded-full" />
+                            <img alt="" src={profile} width="100" className="rounded-full" />
                         </div>
                         <div className="flex justify-center my-3">
                             <button onClick={uploadProfile} className="text-vici_secondary">Upload Profile</button>
@@ -70,7 +70,7 @@ function BrandProfileModal ({ closeModal, bannerUpdate, profileUpdate }) {
                                     <div className="flex">
                                         <div className="text-sm text-vici_secondary_text font-bold">Profile BG Color</div>
                                         <button className="ml-2">
-                                            <img src="/img/dummy/Vector.png" />
+                                            <img alt="" src="/img/dummy/Vector.png" />
                                         </button>
                                     </div>
                                     <div className="flex mt-3">
@@ -82,7 +82,7 @@ function BrandProfileModal ({ closeModal, bannerUpdate, profileUpdate }) {
                                     <div className="flex">
                                         <div className="text-sm text-vici_secondary_text font-bold">Text Color</div>
                                         <button className="ml-2">
-                                            <img src="/img/dummy/Vector.png" />
+                                            <img alt="" src="/img/dummy/Vector.png" />
                                         </button>
                                     </div>
                                     <div className="flex mt-3">

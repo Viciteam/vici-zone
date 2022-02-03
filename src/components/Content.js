@@ -15,7 +15,7 @@ const Content = () => {
                     </div>
                 </div>
                 <div className="hidden xl:block">
-                    <img src="/img/vici-com.png" className="-mt-24 absolute right-0 xl:w-2/5 w-1/4" />
+                    <img alt="" src="/img/vici-com.png" className="-mt-24 absolute right-0 xl:w-2/5 w-1/4" />
                 </div>
             </div>
             <div className="bg-primary_color mt-52">
@@ -24,14 +24,14 @@ const Content = () => {
                         Achieving goals and motivating others don't need to be hard.
                     </div>
                     <div className="flex justify-end">
-                        <img src="/img/Vici Logo.png" className="" width="300"/>
+                        <img alt="" src="/img/Vici Logo.png" className="" width="300"/>
                     </div>
                 </div>
             </div>
             <div>
                 <div className="container mx-auto grid grid-rows-1 sm:grid-cols-7 grid-cols-1 gap-4 p-20">
                     <div className="col-span-3">
-                        <img src="/img/frame.png" className="" width="600"/>
+                        <img alt="" src="/img/frame.png" className="" width="600"/>
                     </div>
                     <div className="col-span-4 pt-12">
                         <div className="text-3xl font-bold text-right">
@@ -50,7 +50,7 @@ const Content = () => {
                 <div className="container mx-auto grid grid-rows-2 sm:grid-cols-2 grid-cols-1 gap-4 p-20">
                     <div>
                         <div className="flex justify-center">
-                            <img src="/img/vector1.png" className="bg-white_color p-3 rounded-full shadow-lg" width="150"/>
+                            <img alt="" src="/img/vector1.png" className="bg-white_color p-3 rounded-full shadow-lg" width="150"/>
                         </div>
                         <div className="text-center text-3xl pt-6 w-3/4 mx-auto">
                             Collective unity amongst individuals and the community
@@ -58,7 +58,7 @@ const Content = () => {
                     </div>
                     <div>
                         <div className="flex justify-center">
-                            <img src="/img/vector2.png" className="bg-white_color p-3 rounded-full shadow-lg" width="150"/>
+                            <img alt="" src="/img/vector2.png" className="bg-white_color p-3 rounded-full shadow-lg" width="150"/>
                         </div>
                         <div className="text-center text-3xl pt-6 w-3/4 mx-auto">
                             Inspiring and encouraging others to triumph in life
@@ -66,7 +66,7 @@ const Content = () => {
                     </div>
                     <div className="pt-6">
                         <div className="flex justify-center">
-                            <img src="/img/vector3.png" className="bg-white_color p-3 rounded-full shadow-lg" width="150"/>
+                            <img alt="" src="/img/vector3.png" className="bg-white_color p-3 rounded-full shadow-lg" width="150"/>
                         </div>
                         <div className="text-center text-3xl pt-6 w-3/4 mx-auto">
                             Inserting the fun in the usual unexciting journey to achieving goals
@@ -74,7 +74,7 @@ const Content = () => {
                     </div>
                     <div className="pt-6">
                         <div className="flex justify-center">
-                            <img src="/img/vector4.png" className="bg-white_color p-3 rounded-full shadow-lg" width="150"/>
+                            <img alt="" src="/img/vector4.png" className="bg-white_color p-3 rounded-full shadow-lg" width="150"/>
                         </div>
                         <div className="text-center text-3xl pt-6 mx-auto">
                             Extending support to others by sharing or promoting your knowledge & expertise

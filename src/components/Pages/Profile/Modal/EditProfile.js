@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 
 import AuthService from '../../../../services/AuthService';
 import CookieService from '../../../../services/CookieService';
-import mParticleService  from '../../../../services/mParticleService';
+// import mParticleService  from '../../../../services/mParticleService';
 //import axios from 'axios';
 
 function EditProfile ({ closeModal }) {
@@ -19,9 +19,9 @@ function EditProfile ({ closeModal }) {
     let [bio, setBio] = useState('');
     let [mission, setMission] = useState('');
     let [country, setCountry] = useState('Philippines');
-    let [imgType, setImgType] = useState('');
-    let [imgName, setImgName] = useState('');
-    let [imgFile, setImgFile] = useState(null);
+    let [setImgType] = useState('');
+    let [setImgName] = useState('');
+    let [setImgFile] = useState(null);
     const [profile_banner_link, setBanner] = useState()
     const fileUploader = useRef(null)
     const profileUploader = useRef(null)
@@ -29,10 +29,10 @@ function EditProfile ({ closeModal }) {
         profileUploader.current.click();
     };
 
-    const mparticle = mParticleService;
+    // const mparticle = mParticleService;
 
     useEffect(() => {
-        getUserProfile();
+        // getUserProfile();
     }, []);
 
     const uploadBanner = () => {
@@ -49,11 +49,11 @@ function EditProfile ({ closeModal }) {
             setBanner(response.image_url)
         }
 
-        var mnpartdata = {
-          image_url:response.image_url,
-        }
-        var mpartevent = 'Set Profile Banner';
-        const mpart = await mparticle.sendEvent(mpartevent,mnpartdata);
+        // var mnpartdata = {
+        //   image_url:response.image_url,
+        // }
+        // var mpartevent = 'Set Profile Banner';
+        // const mpart = await mparticle.sendEvent(mpartevent,mnpartdata);
 
     }
 
@@ -74,7 +74,7 @@ function EditProfile ({ closeModal }) {
         }
 
         var mpartevent = 'Edit User Profile';
-        const mpart = await mparticle.sendEvent(mpartevent,mnpartdata);
+        // const mpart = await mparticle.sendEvent(mpartevent,mnpartdata);
 
         console.log('edit propfile', response)
         if(response){
@@ -114,10 +114,10 @@ function EditProfile ({ closeModal }) {
     }
 
     function handleValidation() {
-        if(name == ''){
+        if(name === ''){
             setValidName(false)
             return false
-        }else if(username == ''){
+        }else if(username === ''){
             setValidUsername(false)
             return false
         }else {
@@ -137,8 +137,8 @@ function EditProfile ({ closeModal }) {
             name,
             pref_pronoun,
             bday,
-            bio: bio == '' ? '-' : bio,
-            mission: mission == '' ? '-' : mission,
+            bio: bio === '' ? '-' : bio,
+            mission: mission === '' ? '-' : mission,
             country
         }
         setValidName(true)
@@ -173,14 +173,14 @@ function EditProfile ({ closeModal }) {
                     <div className="lg:w-11/12 xl:w-2/3 mx-auto my-3 rounded-2xl border border-medium_gray">
 
                     <div className="h-28 flex relative justify-center bg-vici_gray rounded-xl">
-                        <img src={profile_banner_link} className="absolute w-full rounded-xl object-cover h-28" />
+                        <img alt="" src={profile_banner_link} className="absolute w-full rounded-xl object-cover h-28" />
                         <button onClick={uploadBanner} className="text-vici_secondary cursor-pointer z-10">Upload Banner</button>
                         <input type="file" id="file" onChange={setFile.bind(this)}  ref={fileUploader} style={{display: "none"}}/>
                     </div>
 
 
                         <div className="flex justify-center pt-3">
-                            <img src={profpic_link}  className="object-cover rounded-full w-28 h-28" />
+                            <img alt="" src={profpic_link}  className="object-cover rounded-full w-28 h-28" />
                         </div>
                         <div className="flex justify-center my-3">
                             <button onClick={uploadProfile} className="text-vici_secondary">Upload Profile Picture</button>
@@ -192,7 +192,7 @@ function EditProfile ({ closeModal }) {
                                     <div className="flex">
                                         <div className="text-sm text-vici_secondary_text font-bold">Profile BG Color</div>
                                         <button className="ml-2">
-                                            <img src="/img/dummy/Vector.png" />
+                                            <img alt="" src="/img/dummy/Vector.png" />
                                         </button>
                                     </div>
                                     <div className="flex mt-3">
@@ -204,17 +204,17 @@ function EditProfile ({ closeModal }) {
                                     <div className="flex">
                                         <div className="text-sm text-vici_secondary_text font-bold">Text Color</div>
                                         <button className="ml-2">
-                                            <img src="/img/dummy/Vector.png" />
+                                            <img alt="" src="/img/dummy/Vector.png" />
                                         </button>
                                     </div>
                                     <div className="flex mt-3">
-                                        <div className={`px-3 py-2 rounded-lg ${txtcolor == 'white' ? 'bg-vici_secondary text-white_color' : ''} hover:bg-vici_secondary hover:text-white_color`}>
+                                        <div className={`px-3 py-2 rounded-lg ${txtcolor === 'white' ? 'bg-vici_secondary text-white_color' : ''} hover:bg-vici_secondary hover:text-white_color`}>
                                             <label class="inline-flex items-center">
                                                 <input onChange={handleChangeTextColor} type="radio" class="form-radio" name="textColor" value="white" />
                                                 <span class="ml-2 text-sm">White</span>
                                             </label>
                                         </div>
-                                        <div className={`px-3 ml-3 py-2 rounded-lg ${txtcolor == 'black' ? 'bg-vici_secondary text-white_color' : ''} hover:bg-vici_secondary hover:text-white_color border border-medium_gray`}>
+                                        <div className={`px-3 ml-3 py-2 rounded-lg ${txtcolor === 'black' ? 'bg-vici_secondary text-white_color' : ''} hover:bg-vici_secondary hover:text-white_color border border-medium_gray`}>
                                             <label class="inline-flex items-center">
                                                 <input onChange={handleChangeTextColor} type="radio" class="form-radio" name="textColor" value="black" />
                                                 <span class="ml-2 text-sm">Black</span>
@@ -227,7 +227,7 @@ function EditProfile ({ closeModal }) {
                         <div className="p-3">
                             <div className="text-sm text-vici_secondary_text font-bold">Preview</div>
                             <div className="w-full mt-3">
-                                <button style={{background: bgcolor }} className={`w-full py-2 rounded-lg ${txtcolor == 'white' ? 'text-white_color' : ''}`}>
+                                <button style={{background: bgcolor }} className={`w-full py-2 rounded-lg ${txtcolor === 'white' ? 'text-white_color' : ''}`}>
                                     { name ? name : 'John Doe' }
                                 </button>
                             </div>

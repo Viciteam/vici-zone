@@ -1,9 +1,9 @@
 import './../../../styles/profiles.css';
 import React from 'react';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faThumbsUp } from '@fortawesome/free-regular-svg-icons'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faThumbsUp } from '@fortawesome/free-regular-svg-icons'
+// import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 class ChallengeList extends React.Component {
     constructor(props){
@@ -20,7 +20,7 @@ class ChallengeList extends React.Component {
                     <div className="dchallengeheadpart">
                         <div className="dpartimage">
                             <div className="dpimageinner">
-                                <img src="/img/user_main.jpg"/>
+                                <img alt="" src="/img/user_main.jpg"/>
                             </div>
                         </div>
                         <div className="dheadtile">
@@ -36,7 +36,7 @@ class ChallengeList extends React.Component {
                         <div className="cc_inner">
                             <div className="dimage">
                                 <div className="dimg-inner">
-                                    <img src="/img/cards.JPG"/>
+                                    <img alt="" src="/img/cards.JPG"/>
                                 </div>
                             </div>
                             <div className="dinfo">
@@ -69,7 +69,7 @@ class ChallengeList extends React.Component {
                                 <div className="dc-left-item">
                                     <div className="dicon">
                                         <div className="dclikable">
-                                            <img src="/img/like.png"/>
+                                            <img alt="" src="/img/like.png"/>
                                         </div>
                                     </div>
                                     <div className="dvals">
@@ -81,7 +81,7 @@ class ChallengeList extends React.Component {
                                 <div className="dc-left-item">
                                     <div className="dicon">
                                         <div className="dclikable">
-                                            <img src="/img/dislike.png"/>
+                                            <img alt="" src="/img/dislike.png"/>
                                         </div>
                                     </div>
                                     <div className="dvals">
@@ -93,7 +93,7 @@ class ChallengeList extends React.Component {
                             </div>
                             <div className="dcright">
                                 <div className="dccomment">
-                                    <img src="/img/comment.png"/>
+                                    <img alt="" src="/img/comment.png"/>
                                 </div>
                             </div>
                             <br className="clear" />

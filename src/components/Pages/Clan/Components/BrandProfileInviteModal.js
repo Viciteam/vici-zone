@@ -22,7 +22,7 @@ function BrandProfileInviteModal ({ closeInvite, isCreateBrand }) {
                     <div className="flex justify-between py-3 border-b border-medium_gray">
                         <div className="flex">
                             <input type="checkbox" className="mt-4 mr-6" />
-                            <img src="/img/dummy/2.png" className="w-30 rounded-full" />
+                            <img alt="" src="/img/dummy/2.png" className="w-30 rounded-full" />
                             <div className="pl-6">
                                 <div className="text-sm text-vici_secondary_text">Angelo</div>
                                 <div className="text-sm text-medium_gray">Angelo@company.com</div>
@@ -44,7 +44,7 @@ function BrandProfileInviteModal ({ closeInvite, isCreateBrand }) {
                     <div className="flex justify-between py-3 border-b border-medium_gray">
                         <div className="flex">
                             <input type="checkbox" className="mt-4 mr-6" />
-                            <img src="/img/dummy/3.png" className="w-30 rounded-full" />
+                            <img alt="" src="/img/dummy/3.png" className="w-30 rounded-full" />
                             <div className="pl-6">
                                 <div className="text-sm text-vici_secondary_text">Duke</div>
                                 <div className="text-sm text-medium_gray">Duke@company.com</div>

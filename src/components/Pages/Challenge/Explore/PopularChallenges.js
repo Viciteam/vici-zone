@@ -9,7 +9,7 @@ class PopularChallenges extends React.Component {
                         <div className="text-6xl font-bold">01</div>
                     </div>
                     <div className="w-full flex justify-center">
-                        <img src="/img/explore/challenge1.png" width="300" className="transform -rotate-3" />
+                        <img alt="" src="/img/explore/challenge1.png" width="300" className="transform -rotate-3" />
                     </div>
                     <div className="w-full flex justify-between pl-12 absolute bottom-20">
                         <button className="py-3 pl-2 pr-8 bg-white_color shadow-xl rounded-full">
@@ -25,7 +25,7 @@ class PopularChallenges extends React.Component {
                     </div>
                     <div className="w-full flex justify-center mt-12">
                         <button className="mx-1 text-xs bg-btn_dark text-white_color py-1 px-2 flex rounded-md">
-                            <img src="/img/explore/goalicon.png" className="pr-1" />
+                            <img alt="" src="/img/explore/goalicon.png" className="pr-1" />
                             Goal
                         </button>
                         <button className="mx-1 text-xs bg-btn_dark text-white_color py-1 px-2 rounded-md">

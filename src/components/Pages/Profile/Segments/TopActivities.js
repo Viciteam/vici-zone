@@ -1,7 +1,7 @@
 import './../../../styles/profiles.css';
 import React from 'react';
 
-import { CircularProgressbar, CircularProgressbarWithChildren  } from 'react-circular-progressbar';
+import { CircularProgressbarWithChildren  } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 class TopActivities extends React.Component {

@@ -137,7 +137,7 @@ class GoalContestOne extends React.Component {
     openCountry(){
         this.resetCount();
 
-        if(this.state.showCountry == false){
+        if(this.state.showCountry === false){
             this.setState({showCountry: true})
         } else {
             this.setState({showCountry: false})
@@ -147,7 +147,7 @@ class GoalContestOne extends React.Component {
     openState(){
         this.resetCount();
 
-        if(this.state.showState == false){
+        if(this.state.showState === false){
             this.setState({showState: true})
         } else {
             this.setState({showState: false})
@@ -157,7 +157,7 @@ class GoalContestOne extends React.Component {
     openCity(){
         this.resetCount();
 
-        if(this.state.showCity == false){
+        if(this.state.showCity === false){
             this.setState({showCity: true})
         } else {
             this.setState({showCity: false})
@@ -165,7 +165,7 @@ class GoalContestOne extends React.Component {
     }
 
     showDropBase(){
-        if(this.state.showDropOptions == false){
+        if(this.state.showDropOptions === false){
             this.setState({showDropOptions: true})
         } else {
             this.setState({showDropOptions: false})
@@ -176,12 +176,12 @@ class GoalContestOne extends React.Component {
     activateItem(showOption){
         console.log('show option ->', showOption);
 
-        if(showOption == "option_one"){
+        if(showOption === "option_one"){
             this.setState({showOptionOne: true})
             this.setState({showOptionTwo: false})
         }
 
-        if(showOption == "option_two"){
+        if(showOption === "option_two"){
             this.setState({showOptionOne: false})
             this.setState({showOptionTwo: true})
         }
@@ -260,7 +260,7 @@ class GoalContestOne extends React.Component {
         const todoItems = challenge_photo.map((todo, index) =>
             // Only do this if items have no stable IDs
             <li key={index}>
-                <div className={"dlistimage " + (this.state.selectedPreviewHeaderImage == todo ? 'ditem-active' : "")}>
+                <div className={"dlistimage " + (this.state.selectedPreviewHeaderImage === todo ? 'ditem-active' : "")}>
                     <div className="dlimg-base" onClick={() => this.changePrevHeader(todo)} style={{background: 'url('+todo+') no-repeat center center'}}>&nbsp;</div>
                 </div>
             </li>
@@ -343,7 +343,7 @@ class GoalContestOne extends React.Component {
         }
         
         const judgeShow = () => {
-            if(this.state.selectedJudgeOption == 'select'){
+            if(this.state.selectedJudgeOption === 'select'){
                 return (
                     <div className="show-select-judge">
                         <div className="ss-title">Select Judges</div>
@@ -394,7 +394,7 @@ class GoalContestOne extends React.Component {
                 );
             }
 
-            if(this.state.selectedJudgeOption == 'random'){
+            if(this.state.selectedJudgeOption === 'random'){
                 return (
                     <div className="show-random-winner">
                         <div className="ss-title">Random Winners</div>
@@ -447,32 +447,32 @@ class GoalContestOne extends React.Component {
                     </div>
                     
                     <div className="cgoal-center">
-                        <div className={"dstep step_one " + (this.state.stepnumber == 0 ? 'isactive_tab' : '')}>
+                        <div className={"dstep step_one " + (this.state.stepnumber === 0 ? 'isactive_tab' : '')}>
                             <div className="cgoal-center-inner">
                                 <h2>Title and Description</h2>
 
-                                <div className={"cg-item " + (this.state.activepart == 'title' ? 'active_item' : '')} onFocus={() => this.createActive('title') }>
+                                <div className={"cg-item " + (this.state.activepart === 'title' ? 'active_item' : '')} onFocus={() => this.createActive('title') }>
                                     <div className="cg-label">Challenge Title</div>
                                     <div className="cg-input">
                                         <input type="text" />
                                     </div>
                                 </div>
 
-                                <div className={"cg-item " + (this.state.activepart == 'hashtags' ? 'active_item' : '')}  onFocus={() => this.createActive('hashtags') }>
+                                <div className={"cg-item " + (this.state.activepart === 'hashtags' ? 'active_item' : '')}  onFocus={() => this.createActive('hashtags') }>
                                     <div className="cg-label">Hashtags</div>
                                     <div className="cg-input">
                                         <input type="text" />
                                     </div>
                                 </div>
 
-                                <div className={"cg-item " + (this.state.activepart == 'tagline' ? 'active_item' : '')}  onFocus={() => this.createActive('tagline') }>
+                                <div className={"cg-item " + (this.state.activepart === 'tagline' ? 'active_item' : '')}  onFocus={() => this.createActive('tagline') }>
                                     <div className="cg-label">Tagline</div>
                                     <div className="cg-input">
                                         <textarea name="" id=""></textarea>
                                     </div>
                                 </div>
 
-                                <div className={"cg-item " + (this.state.activepart == 'rules' ? 'active_item' : '')}  onFocus={() => this.createActive('rules') }>
+                                <div className={"cg-item " + (this.state.activepart === 'rules' ? 'active_item' : '')}  onFocus={() => this.createActive('rules') }>
                                     <div className="cg-label">Instructions and rules</div>
                                     <div className="cg-input">
                                         <textarea name="" id=""></textarea>
@@ -484,11 +484,11 @@ class GoalContestOne extends React.Component {
                             </div>
                         </div>
 
-                        <div className={"dstep step_one " + (this.state.stepnumber == 1 ? 'isactive_tab' : '')}>
+                        <div className={"dstep step_one " + (this.state.stepnumber === 1 ? 'isactive_tab' : '')}>
                             <div className="cgoal-center-inner">
                                 <h2>Entry Submission</h2>
 
-                                <div className={"cg-item " + (this.state.activepart == 'how_to_submit_entry' ? 'active_item' : '')} onFocus={() => this.createActive('how_to_submit_entry') }>
+                                <div className={"cg-item " + (this.state.activepart === 'how_to_submit_entry' ? 'active_item' : '')} onFocus={() => this.createActive('how_to_submit_entry') }>
                                     <div className="cg-label">
                                         <div className="dmaintitle">How will the contestants submit their entry?</div>
                                         <div className="dsubtitle">Can select more than one.</div>
@@ -526,7 +526,7 @@ class GoalContestOne extends React.Component {
                                     </div>
                                 </div>
 
-                                <div className={"cg-item " + (this.state.activepart == 'two_enable_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_enable_actions') }>
+                                <div className={"cg-item " + (this.state.activepart === 'two_enable_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_enable_actions') }>
                                     <div className="cg-label">
                                         <div className="cgl-name">
                                             <div className="cgl-name-title">Enable Actions</div>
@@ -560,31 +560,31 @@ class GoalContestOne extends React.Component {
 
                                 <h2>Judges</h2>
 
-                                <div className={"cg-item " + (this.state.activepart == 'item_decide_winner' ? 'active_item' : '')} onFocus={() => this.createActive('item_decide_winner') }>
+                                <div className={"cg-item " + (this.state.activepart === 'item_decide_winner' ? 'active_item' : '')} onFocus={() => this.createActive('item_decide_winner') }>
                                     <div className="cg-label">
                                         <div className="dmaintitle">Who decides the winner?</div>
                                     </div>
                                     <div className="cg-input">
                                         <div className="cg-decide-ops">
-                                            <div onClick={() => this.changeJudge('me')} className={"cd-decide-item " + (this.state.selectedJudgeOption == 'me' ? 'active_item' : '')}>
+                                            <div onClick={() => this.changeJudge('me')} className={"cd-decide-item " + (this.state.selectedJudgeOption === 'me' ? 'active_item' : '')}>
                                                 <div className="cditem-icon">
                                                     <img src="/img/judge_me.png" alt="" />
                                                 </div>
                                                 <div className="cditem-text">Me</div>
                                             </div>
-                                            <div onClick={() => this.changeJudge('audience')} className={"cd-decide-item " + (this.state.selectedJudgeOption == 'audience' ? 'active_item' : '')}>
+                                            <div onClick={() => this.changeJudge('audience')} className={"cd-decide-item " + (this.state.selectedJudgeOption === 'audience' ? 'active_item' : '')}>
                                                 <div className="cditem-icon">
                                                     <img src="/img/judge_audience.png" alt="" />
                                                 </div>
                                                 <div className="cditem-text">Audience Votes</div>
                                             </div>
-                                            <div onClick={() => this.changeJudge('select')} className={"cd-decide-item " + (this.state.selectedJudgeOption == 'select' ? 'active_item' : '')}>
+                                            <div onClick={() => this.changeJudge('select')} className={"cd-decide-item " + (this.state.selectedJudgeOption === 'select' ? 'active_item' : '')}>
                                                 <div className="cditem-icon">
                                                     <img src="/img/judge_select.png" alt="" />
                                                 </div>
                                                 <div className="cditem-text">Select Judges</div>
                                             </div>
-                                            <div onClick={() => this.changeJudge('random')} className={"cd-decide-item " + (this.state.selectedJudgeOption == 'random' ? 'active_item' : '')}>
+                                            <div onClick={() => this.changeJudge('random')} className={"cd-decide-item " + (this.state.selectedJudgeOption === 'random' ? 'active_item' : '')}>
                                                 <div className="cditem-icon">
                                                     <img src="/img/judge_random.png" alt="" />
                                                 </div>
@@ -607,11 +607,11 @@ class GoalContestOne extends React.Component {
                             </div>
                         </div>
 
-                        <div className={"dstep step_one " + (this.state.stepnumber == 2 ? 'isactive_tab' : '')}>
+                        <div className={"dstep step_one " + (this.state.stepnumber === 2 ? 'isactive_tab' : '')}>
                             <div className="cgoal-center-inner">
                                 <h2>Customize Rewards</h2>
 
-                                <div className={"cg-item " + (this.state.activepart == 'two_rewards' ? 'active_item' : '')} onFocus={() => this.createActive('two_rewards') }>
+                                <div className={"cg-item " + (this.state.activepart === 'two_rewards' ? 'active_item' : '')} onFocus={() => this.createActive('two_rewards') }>
                                     <div className="cg-label">Rewards</div>
                                     <div className="cg-input">
                                         <div className="d-rewards-select">
@@ -665,7 +665,7 @@ class GoalContestOne extends React.Component {
                                     </div>
                                 </div>
 
-                                <div className={"cg-item " + (this.state.activepart == 'two_penalty' ? 'active_item' : '')} onFocus={() => this.createActive('two_penalty') }>
+                                <div className={"cg-item " + (this.state.activepart === 'two_penalty' ? 'active_item' : '')} onFocus={() => this.createActive('two_penalty') }>
                                     <div className="cg-label">
                                         <div className="cgl-name">Penalty</div>
                                         <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
@@ -727,11 +727,11 @@ class GoalContestOne extends React.Component {
                             </div>
                         </div>
 
-                        <div className={"dstep step_one " + (this.state.stepnumber == 3 ? 'isactive_tab' : '')}>
+                        <div className={"dstep step_one " + (this.state.stepnumber === 3 ? 'isactive_tab' : '')}>
                             <div className="cgoal-center-inner">
                                 <h2>Audience & Duration</h2>
 
-                                <div className={"cg-item " + (this.state.activepart == 'three_challenge_privacy' ? 'active_item' : '')} onFocus={() => this.createActive('three_challenge_privacy') }>
+                                <div className={"cg-item " + (this.state.activepart === 'three_challenge_privacy' ? 'active_item' : '')} onFocus={() => this.createActive('three_challenge_privacy') }>
                                     <div className="cg-label">Challenge Privacy</div>
                                     <div className="cg-input dactivity">
                                         <div className="dc_privacy">
@@ -744,7 +744,7 @@ class GoalContestOne extends React.Component {
                                     </div>
                                 </div>
 
-                                <div className={"cg-item " + (this.state.activepart == 'three_locations_of_participants' ? 'active_item' : '')} onFocus={() => this.createActive('three_locations_of_participants') }>
+                                <div className={"cg-item " + (this.state.activepart === 'three_locations_of_participants' ? 'active_item' : '')} onFocus={() => this.createActive('three_locations_of_participants') }>
                                     <div className="cg-label">Location of participants</div>
                                     <div className="cg-input dactivity">
 
@@ -763,10 +763,10 @@ class GoalContestOne extends React.Component {
                                             </div>
                                             <div className="dlp-item ddown_list">
                                                 <div className="dselectlocation" onClick={() => this.showDropBase()}>Select Location</div>
-                                                <div className={"dlocationlist " + (this.state.showDropOptions == true ? 'show-location-options': 'hide-location-options')}>
+                                                <div className={"dlocationlist " + (this.state.showDropOptions === true ? 'show-location-options': 'hide-location-options')}>
                                                     <div className="dll-item">
                                                         <div className="dll-item-label" onClick={() => this.openCountry()}>By Country <span>></span></div>
-                                                        <div className={"dll-item-dropdown " + (this.state.showCountry == true ? 'show-me': 'hide-me')}>
+                                                        <div className={"dll-item-dropdown " + (this.state.showCountry === true ? 'show-me': 'hide-me')}>
                                                             <div className="dlistofcountry">
                                                                 <div className="dinputselect">
                                                                     <input type="text" placeholder="Search.." />
@@ -864,13 +864,13 @@ class GoalContestOne extends React.Component {
                                                     </div>
                                                     <div className="dll-item">
                                                         <div className="dll-item-label" onClick={() => this.openState()}>By State <span>></span></div>
-                                                        <div className={"dll-item-dropdown " + (this.state.showState == true ? 'show-me': 'hide-me')}>
+                                                        <div className={"dll-item-dropdown " + (this.state.showState === true ? 'show-me': 'hide-me')}>
                                                             show dropdown
                                                         </div>
                                                     </div>
                                                     <div className="dll-item">
                                                         <div className="dll-item-label" onClick={() => this.openCity()}>By City <span>></span></div>
-                                                        <div className={"dll-item-dropdown " + (this.state.showCity == true ? 'show-me': 'hide-me')}>
+                                                        <div className={"dll-item-dropdown " + (this.state.showCity === true ? 'show-me': 'hide-me')}>
                                                             show dropdown
                                                         </div>
                                                     </div>
@@ -880,7 +880,7 @@ class GoalContestOne extends React.Component {
                                     </div>
                                 </div>
 
-                                <div className={"cg-item " + (this.state.activepart == 'three_enable_form' ? 'active_item' : '')} onFocus={() => this.createActive('three_enable_form')}>
+                                <div className={"cg-item " + (this.state.activepart === 'three_enable_form' ? 'active_item' : '')} onFocus={() => this.createActive('three_enable_form')}>
                                     <div className="cg-label">Enable form</div>
                                     <div className="cg-input dactivity">
                                         <div className="subheader">Collect additional information from participants</div>
@@ -888,7 +888,7 @@ class GoalContestOne extends React.Component {
                                     </div>
                                 </div>
 
-                                <div className={"cg-item " + (this.state.activepart == 'three_challenge_duration' ? 'active_item' : '')} onFocus={() => this.createActive('three_challenge_duration') }>
+                                <div className={"cg-item " + (this.state.activepart === 'three_challenge_duration' ? 'active_item' : '')} onFocus={() => this.createActive('three_challenge_duration') }>
                                     <div className="cg-label">Challenge Duration</div>
                                     <div className="cg-input dactivity">
                                         <div className="cd-dropbase">
@@ -937,7 +937,7 @@ class GoalContestOne extends React.Component {
                                     </div>
                                 </div>
 
-                                <div className={"cg-item " + (this.state.activepart == 'three_challenge_duration' ? 'active_item' : '')} onFocus={() => this.createActive('three_challenge_duration') }>
+                                <div className={"cg-item " + (this.state.activepart === 'three_challenge_duration' ? 'active_item' : '')} onFocus={() => this.createActive('three_challenge_duration') }>
                                     <div className="cg-label">Voting Duration</div>
                                     <div className="cg-input dactivity">
                                         <div className="cd-dropbase">
@@ -968,12 +968,12 @@ class GoalContestOne extends React.Component {
                             </div>
                         </div>
 
-                        <div className={"dstep step_one " + (this.state.stepnumber == 4 ? 'isactive_tab' : '')}>
+                        <div className={"dstep step_one " + (this.state.stepnumber === 4 ? 'isactive_tab' : '')}>
                             <div className="cgoal-center-inner">
                                 <h2>Customize Appearance</h2>
 
                                 <div className="dshowstep4">
-                                    <div className={"dshowsitem " + (this.state.activepart == 'four_change_photo' ? 'active_item' : '')} onFocus={() => this.createActive('four_change_photo')}>
+                                    <div className={"dshowsitem " + (this.state.activepart === 'four_change_photo' ? 'active_item' : '')} onFocus={() => this.createActive('four_change_photo')}>
                                         <div className="dtitle">
                                             <div className="diconbase"><FontAwesomeIcon icon={faImage} /></div>
                                             <div className="dheaderb">Challenge Photo or Icon</div>
@@ -984,7 +984,7 @@ class GoalContestOne extends React.Component {
                                             </div>
                                             <div className="dphotoslist">
                                                 <ul>
-                                                    <li><img src="/img/s4img0.png" className=""/></li>
+                                                    <li><img alt="" src="/img/s4img0.png" className=""/></li>
                                                     {todoItems}
                                                     
                                                 </ul>
@@ -1025,7 +1025,7 @@ class GoalContestOne extends React.Component {
                             <div className="dtipbase">Tip { this.state.stepnumber + 1}</div>
                             <div className="dtextinfo">{tip_message[this.state.stepnumber]}</div>
                         </div>
-                        <div className="cgoal-right-inner withopts"  style={{display: this.state.stepnumber == 5 ? 'block' : 'none' }} >
+                        <div className="cgoal-right-inner withopts"  style={{display: this.state.stepnumber === 5 ? 'block' : 'none' }} >
                             <div className="withops-inner">
                                 <h3>Preview</h3>
                                 <div className="withops-show-card">

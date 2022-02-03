@@ -4,10 +4,10 @@ import './../styles/modalmain.css';
 import { withRouter } from 'react-router-dom';
 
 // axios
-import axios from 'axios';
+// import axios from 'axios';
 
 // font awesome
-import ReactDOM from 'react-dom'
+// import ReactDOM from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
@@ -65,20 +65,20 @@ class JoinWaitlist extends React.Component {
     async changeSegment(id){
         // console.log('changeSegment -> id ->', id);
 
-        const Mautic = require('mautic');
-        const client = new Mautic({
-            baseUrl: 'https://send.ibial.com/api',
-            auth: {
-                username: 'ibialdev',
-                password: 'ibialdevpassword'
-            }
-        });
+        // const Mautic = require('mautic');
+        // const client = new Mautic({
+        //     baseUrl: 'https://send.ibial.com/api',
+        //     auth: {
+        //         username: 'ibialdev',
+        //         password: 'ibialdevpassword'
+        //     }
+        // });
 
-        const segmentinfo = await client.segments.addContact(25, id).then(resp => {
-            console.log('segment info -> ', resp);
-        }).catch(serror => {
-            console.log('serror -> ', serror);
-        });
+        // const segmentinfo = await client.segments.addContact(25, id).then(resp => {
+        //     console.log(' info -> ', resp);
+        // }).catch(serror =>{
+        //     console.log('serror -> ', serror);
+        // });
     }
 
     async addToWaitlist(){

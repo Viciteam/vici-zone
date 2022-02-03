@@ -5,7 +5,7 @@ import ReactModal from 'react-modal';
 import Switch from "react-switch";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft, faEye, faExclamationCircle} from '@fortawesome/free-solid-svg-icons'
+import { faEye, faExclamationCircle} from '@fortawesome/free-solid-svg-icons'
 
 class OtherMainSIde extends React.Component {
     constructor(props){
@@ -54,9 +54,9 @@ class OtherMainSIde extends React.Component {
 
     handleChange(item){
         console.log('changed -> ', item);
-        if(item == 'one'){ this.setState({ switchOne: !this.state.switchOne}); }
-        if(item == 'two'){ this.setState({ switchTwo: !this.state.switchTwo}); }
-        if(item == 'three'){ this.setState({ switchThree: !this.state.switchThree}); }
+        if(item === 'one'){ this.setState({ switchOne: !this.state.switchOne}); }
+        if(item === 'two'){ this.setState({ switchTwo: !this.state.switchTwo}); }
+        if(item === 'three'){ this.setState({ switchThree: !this.state.switchThree}); }
     }
 
     cancelWatch(){
@@ -97,7 +97,7 @@ class OtherMainSIde extends React.Component {
     render () {
 
         let joinChallenge = () => {
-            if(this.state.joinChallengeStep == 1){
+            if(this.state.joinChallengeStep === 1){
                 // let individualOptions = () => {
                 //     if(this.state.joinChallengeSelected == 'individual'){
                 //         return (
@@ -109,7 +109,7 @@ class OtherMainSIde extends React.Component {
                 // }
 
                 let clanOptions = () => {
-                    if(this.state.joinChallengeSelected == 'clan'){
+                    if(this.state.joinChallengeSelected === 'clan'){
                         return (
                             <div className="join-challenge-idv-options">
                                 <div className="join-challenge-idv-options-items">
@@ -129,7 +129,7 @@ class OtherMainSIde extends React.Component {
                 }
 
                 let squadOptions = () => {
-                    if(this.state.joinChallengeSelected == 'squad'){
+                    if(this.state.joinChallengeSelected === 'squad'){
                         return (
                             <div className="join-challenge-idv-options">
                                 <div className="join-challenge-idv-options-items">
@@ -196,7 +196,7 @@ class OtherMainSIde extends React.Component {
                 );
             }
 
-            if(this.state.joinChallengeStep == 2){
+            if(this.state.joinChallengeStep === 2){
                 return (
                     <div className="join-challenge-steps challenge-step-two">
                         <div className="ms-watch-modal">
@@ -222,15 +222,15 @@ class OtherMainSIde extends React.Component {
         };
 
         let quitChallenge = () => {
-            if(this.state.quitChallengeStep == 1){
+            if(this.state.quitChallengeStep === 1){
 
-                let hasPenalty = () => {
-                    return (
-                        <div className="showPenalty">
-                            test
-                        </div>
-                    );
-                }
+                // let hasPenalty = () => {
+                //     return (
+                //         <div className="showPenalty">
+                //             test
+                //         </div>
+                //     );
+                // }
 
                 return (
                     <div className="quit-challenge-steps challenge-step-one">
@@ -258,7 +258,7 @@ class OtherMainSIde extends React.Component {
                 );
             }
 
-            if(this.state.quitChallengeStep == 2){
+            if(this.state.quitChallengeStep === 2){
                 return (
                     <div className="quit-challenge-steps challenge-step-two">
                         <div className="ms-watch-modal">

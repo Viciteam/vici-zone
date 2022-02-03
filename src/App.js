@@ -8,7 +8,7 @@ import Thankyou from './components/ThankyouPage/Thankyou';
 import ThankyouHeader from './components/ThankyouPage/Header';
 import NewThankyouPage from './components/ThankyouPage/NewThankyouPage';
 
-import ProfileHeader from './components/Pages/Profile/Header';
+// import ProfileHeader from './components/Pages/Profile/Header';
 import ProfileContent from './components/Pages/Profile/mainProfileContent';
 
 import Profile from './components/Pages/Profile/Index'
@@ -30,7 +30,7 @@ import { JoinProvider } from './components/Pages/Clan/JoinedContext';
 import { ProfileProvider } from './components/Pages/Profile/ProfileContext';
 
 import LoginPage from './components/Pages/Auth/Login';
-import auth from './services/auth';
+// import auth from './services/auth';
 
 import NewChallenge from './components/Pages/Challenge/NewChallenge';
 import GoalChallengeOne from './components/Pages/Challenge/GoalChallengeOne';
