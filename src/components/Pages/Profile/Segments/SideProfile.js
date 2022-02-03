@@ -4,6 +4,8 @@ import ReactModal from 'react-modal';
 import { HexColorPicker } from "react-colorful";
 import auth from '../../../../services/auth';
 
+import CookieService from '../../../../services/CookieService';
+
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -92,6 +94,21 @@ class SideProfile extends React.Component {
             // console.log('dinfo', dstats);
         }
         const user_info = this.state.uinfo;
+
+        const profile_main_image = () => {
+            let show_image = '';
+            const user_profile = CookieService.get("user_profile");
+            if(user_profile !== undefined ){
+                if(user_profile.fb_user_id !== undefined){
+                    console.log('user profile from sideber -> ', user_profile.fb_user_id);
+                    return "https://graph.facebook.com/"+user_profile.fb_user_id+"/picture?type=large&width=320&height=320";
+                } else {
+                    return auth.userProfile() ? auth.userProfile().profpic_link : '/img/avatarguest.png';
+                }
+            } else {
+                return auth.userProfile() ? auth.userProfile().profpic_link : '/img/avatarguest.png';
+            }
+        }
 
         
         return (
@@ -212,7 +229,7 @@ class SideProfile extends React.Component {
                         <div className="avatar flex justify-center bg-vici_prof_bg py-10">
                             <div className="d-profile-avatar">
                                 <div className="d-profile-avatar-inner">
-                                    <img src={auth.userProfile() ? auth.userProfile().profpic_link : '/img/avatarguest.png'} alt="" className="object-cover rounded-full w-40 h-40" />
+                                    <img src={profile_main_image()} alt="" className="object-cover rounded-full w-40 h-40" />
                                 </div>
                             </div>
                         </div>
