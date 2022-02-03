@@ -65,20 +65,20 @@ class JoinWaitlist extends React.Component {
     async changeSegment(id){
         // console.log('changeSegment -> id ->', id);
 
-        // const Mautic = require('mautic');
-        // const client = new Mautic({
-        //     baseUrl: 'https://send.ibial.com/api',
-        //     auth: {
-        //         username: 'ibialdev',
-        //         password: 'ibialdevpassword'
-        //     }
-        // });
+        const Mautic = require('mautic');
+        const client = new Mautic({
+            baseUrl: 'https://send.ibial.com/api',
+            auth: {
+                username: 'ibialdev',
+                password: 'ibialdevpassword'
+            }
+        });
 
-        // const segmentinfo = await client.segments.addContact(25, id).then(resp => {
-        //     console.log(' info -> ', resp);
-        // }).catch(serror =>{
-        //     console.log('serror -> ', serror);
-        // });
+        const segmentinfo = await client.segments.addContact(25, id).then(resp => {
+            console.log(' info -> ', resp);
+        }).catch(serror =>{
+            console.log('serror -> ', serror);
+        });
     }
 
     async addToWaitlist(){
@@ -95,11 +95,18 @@ class JoinWaitlist extends React.Component {
         } else {
 
             const Mautic = require('mautic');
+            // const client = new Mautic({
+            //     baseUrl: 'https://send.ibial.com/api',
+            //     auth: {
+            //         username: 'ibialdev',
+            //         password: 'ibialdevpassword'
+            //     }
+            // });
             const client = new Mautic({
-                baseUrl: 'https://send.ibial.com/api',
+                baseUrl: 'https://send.vici.website/api',
                 auth: {
-                    username: 'ibialdev',
-                    password: 'ibialdevpassword'
+                    username: 'admin',
+                    password: 'viciteam'
                 }
             });
 
