@@ -30,7 +30,8 @@ import { JoinProvider } from './components/Pages/Clan/JoinedContext';
 import { ProfileProvider } from './components/Pages/Profile/ProfileContext';
 
 import LoginPage from './components/Pages/Auth/Login';
-// import auth from './services/auth';
+import auth from './services/auth';
+import LoginModal from './components/Pages/Auth/LoginModal';
 
 import NewChallenge from './components/Pages/Challenge/NewChallenge';
 import GoalChallengeOne from './components/Pages/Challenge/GoalChallengeOne';
@@ -64,7 +65,13 @@ var mapi = new mParticle.EventsApi(new mParticle.Configuration(
 
 //mParticle
 
+
 function App() {
+
+  function handleCloseModal () {
+    return true
+  }
+
   return (
     <Router>
       <div className="bg-primary_background font-nunito">
@@ -155,10 +162,16 @@ function App() {
               <ClanHeader />
               <SearchResults />
             </Route>
-            <Route path="/messages">
-              <ClanHeader />
-              <Messages />
-            </Route>
+            {
+              auth.isAuthenticated() ? 
+              <Route path="/messages">
+                <ClanHeader />
+                <Messages />
+              </Route>
+              :
+              <LoginModal closeModal={handleCloseModal} />
+            }
+            
             <Route path="/privacy-policy">
               <PrivacyPolicy />
             </Route>

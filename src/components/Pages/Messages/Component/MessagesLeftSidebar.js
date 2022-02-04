@@ -50,8 +50,8 @@ class MessagesLeftSidebar extends React.Component {
                 />
             ));
         }
-        return <div className="channel-list">{list}</div>;
-         /* return (
+       /*  return <div className="channel-list">{list}</div>; */
+         return (
              <div className="shadow-border_shadow_right">
                  <div className="p-5 flex justify-between shadow-border_shadow">
                     <div>
@@ -78,10 +78,13 @@ class MessagesLeftSidebar extends React.Component {
                         Requested
                     </button>
                  </div>
-                 <div className="px-5 py-3 text-xs shadow-border_shadow bg-white_color">
-                    Friends
+                 <div className="px-5 font-bold py-3 text-xs shadow-border_shadow bg-white_color">
+                    Channels
                  </div>
                  <div className="px-1">
+                    <div className="channel-list">{list}</div>
+                 </div>
+                 {/* <div className="px-1">
                     {
                     messages.map((item, i) => (
                         <div className={`${ item.isActive ? 'active' : ''} hover:bg-light_gray flex cursor-pointer justify-between py-2 px-3 rounded-xl bg-white_color`}>
@@ -100,9 +103,9 @@ class MessagesLeftSidebar extends React.Component {
                         </div>
                     ))
                     }
-                 </div>
+                 </div> */}
              </div>
-         ) */
+         )
      }
 }
 

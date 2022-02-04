@@ -17,9 +17,15 @@ class MessagesContents extends React.Component {
     };
 
     keyPress = (e) => {
-        if(e.keyCode == 13){
-            this.send();
-            this.setState({ input_value: '' });
+        if(this.props.channel){
+            if(e.keyCode == 13){
+                this.send();
+                this.setState({ input_value: '' });
+            }
+        }else{
+            if(e.keyCode == 13){
+                this.setState({ input_value: 'Please select channel' });
+            }
         }
      }
 
@@ -27,14 +33,15 @@ class MessagesContents extends React.Component {
         let list = (
             <div className="no-content-message">There is no messages to show</div>
           );
+
         if (this.props.channel && this.props.channel.messages) {
             list = this.props.channel.messages.map((m) => (
                 <Message
-                key={m.id}
-                id={m.id}
-                senderName={m.senderName}
-                userId={this.props.userId}
-                text={m.text}
+                    key={m.id}
+                    id={m.id}
+                    senderName={m.senderName}
+                    userId={this.props.userId}
+                    text={m.text}
                 />
             ));
         }
@@ -60,7 +67,7 @@ class MessagesContents extends React.Component {
                         <img src="/img/dummy/4.png" className="rounded-full" width="40"/>
                     </div>
                     <div className="pl-5">
-                        <div className="font-bold">Name</div>
+                        <div className="font-bold">{this.props.channel ? this.props.channel.name : 'Please select channel'}</div>
                         <div className="text-sm text-medium_gray">Active now</div>
                     </div>
                 </div>
@@ -68,7 +75,7 @@ class MessagesContents extends React.Component {
                     <div className="absolute bottom-0 text-medium_gray w-full">
                         <div className="shadow-border_shadow content-messages-h overflow-y-auto">
                         ‍
-                        <div className="messages-list overflow-y-auto">{list}</div>‍
+                        <div className="messages-list overflow-y-auto px-3">{list}</div>‍
                             {/* <div className="flex p-5 w-full">
                                 <div className="w-1/2 flex">
                                     <div className="pt-5">
