@@ -43,7 +43,7 @@ class PopularCreators extends React.Component {
                             creators.map((item, i) => (
                                 <div className="p-6 shadow-xl">
                                     <div className="flex justify-center">
-                                        <img src={item.image} />
+                                        <img alt="" src={item.image} />
                                     </div>
                                     <div className="text-sm py-2 flex justify-center">
                                         {item.name}

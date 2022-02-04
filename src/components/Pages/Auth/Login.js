@@ -89,10 +89,10 @@ class Login extends React.Component {
                                 <button onClick={this.handleLogin}>Log in</button>
                             </div>
                             <div className="forgotpass">
-                                <a href="#">Forgot Password?</a>
+                                <a href="/">Forgot Password?</a>
                             </div>
                             <div className="dreg">
-                                Don't have an account? <a href="#">Sign up</a>
+                                Don't have an account? <a href="#/">Sign up</a>
                             </div>
                         </div>
                     </div>

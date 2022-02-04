@@ -1,7 +1,7 @@
 import './../../../styles/profiles.css';
 import React from 'react';
 
-import ChallengeList from './ChallengeList'
+// import ChallengeList from './ChallengeList'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
@@ -20,7 +20,7 @@ class DailyChallenge extends React.Component {
 
     showInfo() {
 
-        if(this.state.contentStatus == false){
+        if(this.state.contentStatus === false){
             this.setState({ contentStatus : true })
             this.setState({ isOpenClass : 'close_content' })
             this.setState({ diconbrace : faChevronUp })
@@ -44,7 +44,7 @@ class DailyChallenge extends React.Component {
                 <div className={"sri_content"}> 
                     <div className="sri_inner">
                         <div className="dicon">
-                            <img src="/img/cursor.png"/>
+                            <img alt="" src="/img/cursor.png"/>
                         </div>
                         <div className="dcontent">
                             <h2>Healthy Spirits!</h2>

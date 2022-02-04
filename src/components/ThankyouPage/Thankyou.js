@@ -51,7 +51,7 @@ const Thankyou = () => {
                 </div>
                 <div>
                     <div className="flex justify-end">
-                        <img src="/img/image_thankyou.png" />
+                        <img alt="" src="/img/image_thankyou.png" />
                     </div>
                     <div className="text-center pl-36 font-semibold mt-6">More updates from us soon!</div>
                 </div>

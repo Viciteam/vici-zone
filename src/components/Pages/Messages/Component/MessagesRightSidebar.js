@@ -62,13 +62,13 @@ class MessagesRightSidebar extends React.Component {
                 <div className="flex justify-center">
                     <div className="py-5 bg-vici_light_gray w-full">
                         <div className="flex justify-center">
-                            <img src="/img/dummy/Frame 2483.png" width="120" />
+                            <img alt="" src="/img/dummy/Frame 2483.png" width="120" />
                         </div>
                         <div className="text-center font-bold pt-1">
                             Phillipe
                         </div>
                         <div className="flex justify-center pt-1">
-                            <img src="/img/dummy/fitness.png" className="pr-3" />
+                            <img alt="" src="/img/dummy/fitness.png" className="pr-3" />
                             Fitness Clan
                         </div>
                     </div> 
@@ -85,7 +85,7 @@ class MessagesRightSidebar extends React.Component {
                 <div className="px-5 flex justify-between">
                     <div className="flex">
                         <div className="pt-1">
-                            <img src="/img/dummy/Vector1.png" width="20" height="15"/>
+                            <img alt="" src="/img/dummy/Vector1.png" width="20" height="15"/>
                         </div>
                         <div className="pl-2">Change color</div>
                     </div>

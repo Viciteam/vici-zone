@@ -32,10 +32,10 @@ class WhoToFollow extends React.Component {
                 </div>
                 {
                     whoToFollow.map((item, i) => (
-                        <div className="flex justify-between my-3">
+                        <div className="flex justify-between my-3" key={i}>
                             <div className="flex">
                                 <div>
-                                    <img src={item.img} className="rounded-full"></img>
+                                    <img alt="" src={item.img} className="rounded-full"></img>
                                 </div>
                                 <div className="pt-1 pl-3">
                                     <div className="font-bold">{ item.name }</div>

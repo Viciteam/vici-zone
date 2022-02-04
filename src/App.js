@@ -8,7 +8,7 @@ import Thankyou from './components/ThankyouPage/Thankyou';
 import ThankyouHeader from './components/ThankyouPage/Header';
 import NewThankyouPage from './components/ThankyouPage/NewThankyouPage';
 
-import ProfileHeader from './components/Pages/Profile/Header';
+// import ProfileHeader from './components/Pages/Profile/Header';
 import ProfileContent from './components/Pages/Profile/mainProfileContent';
 
 import Profile from './components/Pages/Profile/Index'

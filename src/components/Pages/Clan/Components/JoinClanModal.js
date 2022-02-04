@@ -7,7 +7,7 @@ function JoinClanModal ({ closeModal }) {
 
     const [openCalculating, setCalculating] = useState(false)
     const [passRequirement, setPassRequirement] = useState(null)
-    const { isJoined, joinedUser } = useContext(JoinContext);
+    const {joinedUser } = useContext(JoinContext);
 
 
     return (

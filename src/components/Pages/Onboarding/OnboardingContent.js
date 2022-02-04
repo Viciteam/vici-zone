@@ -56,7 +56,7 @@ class OnboardingContent extends React.Component {
                 </div>
                 <div className="bg-white_color rounded-2xl shadow-vici p-4 flex w-full mt-5">
                     <div className="w-1/5 p-6 border-r pl-12 border-medium_gray">
-                        <img src="/img/usericon.png" />
+                        <img alt="" src="/img/usericon.png" />
                     </div>
                     <div className="relative pl-6 pt-3 flex">
                         <div className="w-24 h-24 border-8 rounded-full border-medium_gray text-center pt-4">
@@ -97,7 +97,7 @@ class OnboardingContent extends React.Component {
                             participants.map((user, i) => (
                                 <div className="w-full flex px-3 py-2">
                                     <div className="w-1/3 flex">
-                                       <img src={ user.avatar} width="30" className="rounded-full"/>
+                                       <img alt="" src={ user.avatar} width="30" className="rounded-full"/>
                                        <div className="pl-3 text-sm pt-1">{user.name}</div>
                                     </div>
                                     <div className="w-1/3">
@@ -106,7 +106,7 @@ class OnboardingContent extends React.Component {
                                     <div className="w-1/3">
                                         <div className="flex w-full">
                                             {
-                                                user.progress == 'failed' ?
+                                                user.progress === 'failed' ?
                                                 <div className="w-5/6 h-3 bg-failed_secondary rounded-full mt-1">
                                                     <div className="w-1/6 h-3 bg-red rounded-full">
                                                     </div>
@@ -119,14 +119,14 @@ class OnboardingContent extends React.Component {
                                             }
                                             <div className="pl-3">
                                                 {
-                                                    user.progress == '6/6' ?
+                                                    user.progress === '6/6' ?
                                                         <div className="w-5 h-5 bg-primary_color rounded-full text-white_color">
                                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                                                             </svg>
                                                         </div>
                                                     :
-                                                    <div className={`${user.progress == 'failed' ? 'uppercase text-xs text-red' : '' }`}>
+                                                    <div className={`${user.progress === 'failed' ? 'uppercase text-xs text-red' : '' }`}>
                                                         { user.progress }
                                                     </div>
                                                 }
@@ -155,7 +155,7 @@ class OnboardingContent extends React.Component {
                     <div className="bg-white_color rounded shadow-vici px-3 pt-6 pb-3">
                         <div className="flex w-full">
                             <div className="w-1/12 pl-3">
-                                <img src="/img/usericon.png" width="30" />
+                                <img alt="" src="/img/usericon.png" width="30" />
                             </div>
                             <div className="w-11/12">
                                 <textarea className="w-full p-1" rows="1" placeholder="Write something..."></textarea>
@@ -185,7 +185,7 @@ class OnboardingContent extends React.Component {
                     </div>
                     <div className="p-6 flex border-b border-medium_gray">
                         <div>
-                            <img src="/img/user_main.jpg" width="50" className="rounded" height="50" />
+                            <img alt="" src="/img/user_main.jpg" width="50" className="rounded" height="50" />
                         </div>
                         <div className="pl-3">
                             <div>Daphne Winter - Joined the challenge</div>
@@ -194,7 +194,7 @@ class OnboardingContent extends React.Component {
                     </div>
                     <div className="p-6 flex border-b border-medium_gray mb-6">
                         <div>
-                            <img src="/img/prof_icon.png" width="50" className="rounded" height="50" />
+                            <img alt="" src="/img/prof_icon.png" width="50" className="rounded" height="50" />
                         </div>
                         <div className="pl-3">
                             <div>Lorem Ipsum - Failed the challenge</div>
@@ -206,7 +206,7 @@ class OnboardingContent extends React.Component {
                         <div className="flex justify-between w-full pl-3">
                             <div className="flex">
                                 <div>
-                                    <img src="/img/user_main.jpg" width="50" className="rounded" height="50" />
+                                    <img alt="" src="/img/user_main.jpg" width="50" className="rounded" height="50" />
                                 </div>
                                 <div className="pl-3">
                                     <div>Daphne Winter</div>

@@ -1,14 +1,14 @@
 import './../../../styles/profiles.css';
 import React from 'react';
-import ReactModal from 'react-modal';
-import { HexColorPicker } from "react-colorful";
+// import ReactModal from 'react-modal';
+// import { HexColorPicker } from "react-colorful";
 import auth from '../../../../services/auth';
 
 import CookieService from '../../../../services/CookieService';
 
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 class SideProfile extends React.Component {
     constructor(props){
@@ -89,7 +89,7 @@ class SideProfile extends React.Component {
         const data_i = () => {
             // this.data_initialize()
             // return this.state.uinfo;
-            const dstats = this.state.uinfo;
+            // const dstats = this.state.uinfo;
 
             // console.log('dinfo', dstats);
         }
@@ -209,7 +209,7 @@ class SideProfile extends React.Component {
                             <div className="hi-right">
                                 <div className="dcreatechallenge">
                                     <a href="/challenge/new">
-                                        <div className="dimage"><img src="/img/challenge_question.png"/></div>
+                                        <div className="dimage"><img alt="" src="/img/challenge_question.png"/></div>
                                         <div className="dtext">Challenge</div>
                                     </a>
                                 </div>
@@ -218,8 +218,8 @@ class SideProfile extends React.Component {
                         </div>
                         
                         <a href="/profile" className="p-2 absolute top-28 bg-vici_bg_button rounded-lg text-white_color">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                             </svg>
                         </a>
                         
@@ -236,7 +236,7 @@ class SideProfile extends React.Component {
                         :
                         <div className="flex justify-center p-6 bg-primary_color">
                             <div>
-                                <img src="/img/avatarguest.png"></img>
+                                <img alt="" src="/img/avatarguest.png"></img>
                             </div>
                         </div>
                     }
@@ -255,7 +255,7 @@ class SideProfile extends React.Component {
                                         <div className="dpointtext">0</div>
                                     </li>
                                     <li>
-                                        <a href="">visit store</a>
+                                        <a href="/">visit store</a>
                                     </li>
                                 </ul>
                             </div>

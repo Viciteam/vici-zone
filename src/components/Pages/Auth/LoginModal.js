@@ -15,7 +15,7 @@ function LoginModal ({ closeModal }) {
     const [valid, setValid] = useState(true);
     const [socialValid, setSocialValid] = useState(true);
     let [register, setRegister] = useState(false);
-    const [fbImage, setFbImage] = useState('');
+    const [fbImage] = useState('');
  
 
     async function handleLogin(){
@@ -81,14 +81,14 @@ function LoginModal ({ closeModal }) {
         console.log('response social register one ->', registerResponse)
 
         let isRegistrationSuccessful = '';
-        if(registerResponse.status == 201){
+        if(registerResponse.status === 201){
             isRegistrationSuccessful = 'go_login';
-        } else if(registerResponse.data.errors.email[0] == 'The email has already been taken.'){
+        } else if(registerResponse.data.errors.email[0] === 'The email has already been taken.'){
             isRegistrationSuccessful = 'user_exist'
         }   
 
         // if(registerResponse.data.errors.email[0] == 'The email has already been taken.'){
-        if(isRegistrationSuccessful == 'user_exist'){
+        if(isRegistrationSuccessful === 'user_exist'){
             console.log('do user login in normal way');
             const loginAccount = { email, password }
             const socialLoginResponse = await AuthService.doUserLogin(loginAccount)
@@ -133,7 +133,7 @@ function LoginModal ({ closeModal }) {
             }
         }
         
-        if(isRegistrationSuccessful == 'go_login'){
+        if(isRegistrationSuccessful === 'go_login'){
             const loginAccount = { email, password }
             const socialLoginResponse = await AuthService.doUserLogin(loginAccount)
             console.log('response-', socialLoginResponse)

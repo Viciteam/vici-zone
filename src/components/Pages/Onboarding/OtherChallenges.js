@@ -1,5 +1,5 @@
 import React from 'react';
-import Challenge from '../Clan/Challenge';
+// import Challenge from '../Clan/Challenge';
 
 class OtherChallenges extends React.Component {
     render () {
@@ -38,7 +38,7 @@ class OtherChallenges extends React.Component {
                     {
                         challenges.map((challenge, i) => (
                             <div className="rounded-xl">
-                                <img src="/img/dummy/Frame 1794.png" className="w-full" />
+                                <img alt="" src="/img/dummy/Frame 1794.png" className="w-full" />
                                 <div className="p-3 bg-primary_color h-64">
                                     <div className="text-center uppercase text-10 pt-2 font-bold tracking-widest">
                                         Vici Challenge
@@ -51,7 +51,7 @@ class OtherChallenges extends React.Component {
                                     <div className="flex justify-between px-3">
                                         <div className="flex">
                                             <div className="bg-white_color p-1 rounded-full">
-                                                <img src="/img/Vici Logo.png" width="16" />
+                                                <img alt="" src="/img/Vici Logo.png" width="16" />
                                             </div>
                                             <div className="text-xs font-bold pl-3 pt-1">Vici</div>
                                         </div>

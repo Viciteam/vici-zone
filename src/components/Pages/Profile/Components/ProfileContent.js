@@ -94,7 +94,7 @@ class ProfileContent extends React.Component {
                     <div className="flex p-6">
                         {
                             badges.map((badge, i) => (
-                                <img src={ badge.img } className="mx-2" />
+                                <img alt="" src={ badge.img } className="mx-2" />
                             ))
                         }
                     </div>
@@ -197,7 +197,7 @@ class ProfileContent extends React.Component {
                     <div className="flex p-6">
                         <div className="flex p-5 shadow-card_border rounded-lg border border-bottom_gray">
                             <div>
-                                <img src="/img/Vici Token.png" />
+                                <img alt="" src="/img/Vici Token.png" />
                             </div>
                             <div className="pl-3 pr-6">
                                 <div className="text-sm">Clan Reward</div>
@@ -206,7 +206,7 @@ class ProfileContent extends React.Component {
                         </div>
                         <div className="flex p-5 shadow-card_border rounded-lg ml-3 border border-bottom_gray">
                             <div>
-                                <img src="/img/Vector (1).png" />
+                                <img alt="" src="/img/Vector (1).png" />
                             </div>
                             <div className="pl-3 pr-6">
                                 <div className="text-sm">Challenge Reward</div>

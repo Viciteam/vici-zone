@@ -1,7 +1,7 @@
 import './../../../styles/profiles.css';
 import React from 'react';
 
-import ChallengeList from './ChallengeList'
+// import ChallengeList from './ChallengeList'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
@@ -20,7 +20,7 @@ class OngoingChallenge extends React.Component {
 
     showInfo() {
 
-        if(this.state.contentStatus == false){
+        if(this.state.contentStatus === false){
             this.setState({ contentStatus : true })
             this.setState({ isOpenClass : 'close_content' })
             this.setState({ diconbrace : faChevronUp })
@@ -44,7 +44,7 @@ class OngoingChallenge extends React.Component {
                 <div className={"sri_content " + (this.props.showContent ? 'open_content' : 'close_content')}> 
                     <div className="sri_inner dlistitem">
                         <div className="dicon">
-                            <img src="/img/purple_thrp.png"/>
+                            <img alt="" src="/img/purple_thrp.png"/>
                         </div>
                         <div className="dcontent">
                             <h2>Run Run Run!</h2>
@@ -53,7 +53,7 @@ class OngoingChallenge extends React.Component {
                     </div>
                     <div className="sri_inner dlistitem">
                         <div className="dicon">
-                            <img src="/img/purple_thrp.png"/>
+                            <img alt="" src="/img/purple_thrp.png"/>
                         </div>
                         <div className="dcontent">
                             <h2>Muscle Man</h2>

@@ -19,25 +19,25 @@ class SearchResults extends React.Component {
                     <div className="w-1/4 shadow-border_shadow_right">
                         <div className="text-xs py-2 bg-white_color px-3">Filters</div>
                         <div className="flex cursor-pointer border-t border-medium_gray bg-vici_light_gray py-2 px-3">
-                            <img src="/img/dummy/Group 1260.png"></img>
+                            <img alt="" src="/img/dummy/Group 1260.png"></img>
                             <div className="pl-3 pt-3">
                                 All
                             </div>
                         </div>
                         <div className="flex cursor-pointer hover:bg-vici_light_gray py-2 px-3">
-                            <img src="/img/dummy/Group 1260 (1).png"></img>
+                            <img alt="" src="/img/dummy/Group 1260 (1).png"></img>
                             <div className="pl-3 pt-3">
                                 People
                             </div>
                         </div>
                         <div className="flex cursor-pointer hover:bg-vici_light_gray py-2 px-3">
-                            <img src="/img/dummy/Group 1260 (2).png"></img>
+                            <img alt="" src="/img/dummy/Group 1260 (2).png"></img>
                             <div className="pl-3 pt-3">
                                 Clan
                             </div>
                         </div>
                         <div className="flex cursor-pointer hover:bg-vici_light_gray py-2 px-3">
-                            <img src="/img/dummy/Group 1260 (3).png"></img>
+                            <img alt="" src="/img/dummy/Group 1260 (3).png"></img>
                             <div className="pl-3 pt-3">
                                 Challenges
                             </div>
@@ -49,7 +49,7 @@ class SearchResults extends React.Component {
                             <div className="flex justify-between my-3">
                                 <div className="flex">
                                     <div className="relative">
-                                        <img src="/img/dummy/1.png" className="rounded-full"></img>
+                                        <img alt="" src="/img/dummy/1.png" className="rounded-full"></img>
                                         <div className="h-3 w-3 bg-tag_success rounded-full absolute right-0 -mt-3 border border-white_color"></div>
                                     </div>
                                     <div className="pl-6">
@@ -64,7 +64,7 @@ class SearchResults extends React.Component {
                             <div className="flex justify-between my-6">
                                 <div className="flex">
                                     <div className="relative">
-                                        <img src="/img/dummy/3.png" className="rounded-full"></img>
+                                        <img alt="" src="/img/dummy/3.png" className="rounded-full"></img>
                                         <div className="h-3 w-3 bg-tag_success rounded-full absolute right-0 -mt-3 border border-white_color"></div>
                                     </div>
                                     <div className="pl-6">
@@ -73,13 +73,13 @@ class SearchResults extends React.Component {
                                     </div>
                                 </div>
                                 <div className="mx-6">
-                                    <img src="/img/dummy/Path.png" className=""></img>
+                                    <img alt="" src="/img/dummy/Path.png" className=""></img>
                                 </div>
                             </div>
                             <div className="flex justify-between my-6">
                                 <div className="flex">
                                     <div className="relative">
-                                        <img src="/img/dummy/2.png" className="rounded-full"></img>
+                                        <img alt="" src="/img/dummy/2.png" className="rounded-full"></img>
                                         <div className="h-3 w-3 bg-tag_success rounded-full absolute right-0 -mt-3 border border-white_color"></div>
                                     </div>
                                     <div className="pl-6">
@@ -88,7 +88,7 @@ class SearchResults extends React.Component {
                                     </div>
                                 </div>
                                 <div className="mx-6">
-                                    <img src="/img/dummy/Path.png" className=""></img>
+                                    <img alt="" src="/img/dummy/Path.png" className=""></img>
                                 </div>
                             </div>
                             <div className="flex justify-center my-3">
@@ -116,7 +116,7 @@ class SearchResults extends React.Component {
                             <div className="flex justify-between my-3">
                                 <div className="flex">
                                     <div>
-                                        <img src="/img/user_main.jpg" width="60" className="rounded" />
+                                        <img alt="" src="/img/user_main.jpg" width="60" className="rounded" />
                                     </div>
                                     <div className="pl-6">
                                         <div>Daphne Winter</div>
@@ -139,7 +139,7 @@ class SearchResults extends React.Component {
                             <div className="flex justify-between my-3">
                                 <div className="flex">
                                     <div>
-                                        <img src="/img/user_main.jpg" width="60" className="rounded" />
+                                        <img alt="" src="/img/user_main.jpg" width="60" className="rounded" />
                                     </div>
                                     <div className="pl-6">
                                         <div>Daphne Winter</div>
@@ -158,8 +158,8 @@ class SearchResults extends React.Component {
                                 Saperet euripidis an cum. Pro ea quas epicurei, ad eam iriure albucius constituam. Eum cu cetero ornatus, cum no nobis interpretaris concludaturque, an bonorum eruditi electram usu. Eos mazim tritani imperdiet no, percipit gloriatur ne his. 
                             </p>
                             <div className="flex py-3">
-                                <img src="/img/dummy/Rectangle 12.png"></img>
-                                <img src="/img/dummy/Rectangle 11.png" className="pl-3"></img>
+                                <img alt="" src="/img/dummy/Rectangle 12.png"></img>
+                                <img alt="" src="/img/dummy/Rectangle 11.png" className="pl-3"></img>
                             </div>
                         </div>
                     </div>

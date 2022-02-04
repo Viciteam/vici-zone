@@ -2,7 +2,7 @@ import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Challenge from '../Profile/Segments/Challenge'
 import Timeline from '../Profile/Segments/Timeline'
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 class MainContent extends React.Component {
     render () {

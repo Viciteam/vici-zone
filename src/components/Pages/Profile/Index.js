@@ -30,15 +30,15 @@ class Index extends React.Component {
     render () {
 
         //const { banner, userBanner } = this.context;
-        const { banner, profile } = this.context;
-        const [bannerValue, setBannerValue] = banner;
-        const [profileValue, setProfileValue] = profile;
+        // const { profile } = this.context;
+        // const [bannerValue, setBannerValue] = banner;
+        // const [profileValue, setProfileValue] = profile;
 
 
         return (
             <div>
                 <div className="">
-                    <img src={auth.userProfile() ? auth.userProfile().profile_banner_link ? auth.userProfile().profile_banner_link : '/img/default_banner.png' : '/img/default_banner.png'} className="w-full h-56 object-cover" />
+                  <img alt="" src={auth.userProfile() ? auth.userProfile().profile_banner_link ? auth.userProfile().profile_banner_link : '/img/default_banner.png' : '/img/default_banner.png'} className="w-full h-56 object-cover" />
                 </div>
                 <div className="container mx-auto">
                     {/* <div className="mx-12 flex">
@@ -52,16 +52,16 @@ class Index extends React.Component {
                         <div className="flex">
                             <div className="half-circle relative">
                                 <div className="rounded-full absolute ml-1 w-28 mt-1">
-                                    <img src={auth.userProfile() ? auth.userProfile().profpic_link : '/img/avatarguest.png'} className="rounded-full object-cover w-28 h-28" />
+                                    <img alt="" src={auth.userProfile() ? auth.userProfile().profpic_link : '/img/avatarguest.png'} className="rounded-full object-cover w-28 h-28" />
                                 </div>
                                 <div className="h-10 w-10 bg-primary_color rounded-full text-center pt-2 absolute -bottom-2 left-10 font-bold">150</div>
                             </div>
                             <div className="ml-20 pt-7">
                                 <div className="text-2xl font-bold">{auth.userProfile() ? auth.userProfile().name : auth.user().name}</div>
                                 <div className="flex">
-                                    <img src="/img/coil.png" className="h-5" />
+                                    <img alt="" src="/img/coil.png" className="h-5" />
                                     <div className="ml-2">250</div>
-                                    <img src="/img/medal.png" className="ml-3 h-5" />
+                                    <img alt="" src="/img/medal.png" className="ml-3 h-5" />
                                     <div className="ml-2">10</div>
                                     <div className="ml-3 font-bold cursor-pointer text-primary_color">visit store</div>
                                 </div>
@@ -100,14 +100,14 @@ class Index extends React.Component {
                     <div className="flex px-24 py-5 bg-white_color justify-between">
                         <div className="flex">
                             <div className="flex w-52 bg-vici_light_gray rounded-full py-1 px-2">
-                                <img src="/img/badge-question.png" className="h-10" />
+                                <img alt="" src="/img/badge-question.png" className="h-10" />
                                 <div>
                                     <div className="font-bold">200</div>
                                     <div className="">Challenges Joined</div>
                                 </div>
                             </div>
                             <div className="flex w-52 bg-vici_light_gray rounded-full py-1 px-2 mx-6">
-                                <div className="pt-3"><img src="/img/Groups Icon.png" className="h-6 px-3" /></div>
+                                <div className="pt-3"><img alt="" src="/img/Groups Icon.png" className="h-6 px-3" /></div>
                                 <div>
                                     <div className="font-bold">201</div>
                                     <div className="">Clans Joined</div>
@@ -116,7 +116,7 @@ class Index extends React.Component {
                         </div>
                         <div>
                             <button className="flex py-2 px-3 border rounded-2xl border-vici_button_txt shadow-border_shadow_button">
-                                <img src="/img/Frame 1989.png" />
+                                <img alt="" src="/img/Frame 1989.png" />
                                 <div className="px-2 pt-1 text-vici_button_txt">New Challenge</div>
                             </button>
                         </div>

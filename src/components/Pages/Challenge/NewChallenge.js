@@ -31,7 +31,7 @@ class NewChallenge extends React.Component {
                             <a href="/challenge/goal">
                                 <div className="dic-item-inner">
                                     <div className="dic-icon">
-                                        <img src="/img/ch_goal.png"/>
+                                        <img alt="" src="/img/ch_goal.png"/>
                                     </div>
                                     <div className="dtiletext">goal</div>
                                     <div className="dshowtext">
@@ -44,7 +44,7 @@ class NewChallenge extends React.Component {
                         <div className="dic-item">
                             <div className="dic-item-inner">
                                 <div className="dic-icon">
-                                    <img src="/img/ch_leaderboard.png"/>
+                                    <img alt="" src="/img/ch_leaderboard.png"/>
                                 </div>
                                 <div className="dtiletext">leaderboard</div>
                                 <div className="dshowtext">
@@ -56,7 +56,7 @@ class NewChallenge extends React.Component {
                         <div className="dic-item">
                             <div className="dic-item-inner">
                                 <div className="dic-icon">
-                                    <img src="/img/ch_contest.png"/>
+                                    <img alt="" src="/img/ch_contest.png"/>
                                 </div>
                                 <div className="dtiletext">contest</div>
                                 <div className="dshowtext">
@@ -68,7 +68,7 @@ class NewChallenge extends React.Component {
                         <div className="dic-item">
                             <div className="dic-item-inner">
                                 <div className="dic-icon">
-                                    <img src="/img/ch_challenge_yourself.png"/>
+                                    <img alt="" src="/img/ch_challenge_yourself.png"/>
                                 </div>
                                 <div className="dtiletext">challenge yourself</div>
                                 <div className="dshowtext">
@@ -80,7 +80,7 @@ class NewChallenge extends React.Component {
                         <div className="dic-item">
                             <div className="dic-item-inner">
                                 <div className="dic-icon">
-                                    <img src="/img/ch_debate.png"/>
+                                    <img alt="" src="/img/ch_debate.png"/>
                                 </div>
                                 <div className="dtiletext">debate</div>
                                 <div className="dshowtext">
@@ -92,7 +92,7 @@ class NewChallenge extends React.Component {
                         <div className="dic-item">
                             <div className="dic-item-inner">
                                 <div className="dic-icon">
-                                    <img src="/img/challenge_question.png"/>
+                                    <img alt="" src="/img/challenge_question.png"/>
                                 </div>
                                 <div className="dtiletext">Quick win</div>
                             </div>

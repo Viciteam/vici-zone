@@ -20,10 +20,10 @@ class ExploreChallenge extends React.Component {
                     </div>
                     <div className="flex w-3/4 justify-center">
                         <ul className="flex uppercase">
-                            <li className={active == 'all' ? 'bg-primary_color px-4 pt-3 cursor-pointer rounded-full shadow-xl' : 'px-4 pt-3 cursor-pointer hover:bg-primary_color rounded-full hover:shadow-xl'}>All</li>
-                            <li className={active == 'challenges' ? 'bg-primary_color px-4 pt-3 cursor-pointer rounded-full shadow-xl ' : 'px-4 pt-3 cursor-pointer hover:bg-primary_color rounded-full hover:shadow-xl'} >Challenges</li>
-                            <li className={active == 'people' ? 'bg-primary_color px-4 pt-3 cursor-pointer rounded-full shadow-xl' : 'px-4 pt-3 cursor-pointer hover:bg-primary_color rounded-full hover:shadow-xl'}>People</li>
-                            <li className={active == 'surprise' ? 'bg-primary_color px-4 pt-3 cursor-pointer rounded-full shadow-xl' : 'px-4 pt-3 cursor-pointer hover:bg-primary_color rounded-full hover:shadow-xl'}>Surprise Me!</li>
+                            <li className={active === 'all' ? 'bg-primary_color px-4 pt-3 cursor-pointer rounded-full shadow-xl' : 'px-4 pt-3 cursor-pointer hover:bg-primary_color rounded-full hover:shadow-xl'}>All</li>
+                            <li className={active === 'challenges' ? 'bg-primary_color px-4 pt-3 cursor-pointer rounded-full shadow-xl ' : 'px-4 pt-3 cursor-pointer hover:bg-primary_color rounded-full hover:shadow-xl'} >Challenges</li>
+                            <li className={active === 'people' ? 'bg-primary_color px-4 pt-3 cursor-pointer rounded-full shadow-xl' : 'px-4 pt-3 cursor-pointer hover:bg-primary_color rounded-full hover:shadow-xl'}>People</li>
+                            <li className={active === 'surprise' ? 'bg-primary_color px-4 pt-3 cursor-pointer rounded-full shadow-xl' : 'px-4 pt-3 cursor-pointer hover:bg-primary_color rounded-full hover:shadow-xl'}>Surprise Me!</li>
                         </ul>
                     </div>
                 </div>
