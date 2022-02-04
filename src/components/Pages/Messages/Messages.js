@@ -12,7 +12,8 @@ class Messages extends React.Component {
     state = {
         channels: null,
         socket: null,
-        channel: null
+        channel: null,
+        name: null,
     }
 
     socket;
@@ -73,7 +74,17 @@ class Messages extends React.Component {
     }
 
     handleSendMessage = (channel_id, text) => {
-        this.socket.emit('send-message', { channel_id, text, senderName: auth.userProfile().name, id: Date.now() });
+
+        let profile_img = ''
+        if(auth.userProfile()){
+            this.name = auth.userProfile().name + '|' + auth.userProfile().profpic_link
+            //profile_img = auth.userProfile().profpic_link
+        }else{
+            this.name = auth.user().name + '|' + '/img/avatarguest.png'
+            //profile_img = '/img/avatarguest.png'
+        }
+
+        this.socket.emit('send-message', { channel_id, text, senderName: this.name, id: Date.now() });
     }
 
     render () {
@@ -84,7 +95,7 @@ class Messages extends React.Component {
                         <MessagesLeftSidebar channels={this.state.channels} onSelectChannel={this.handleChannelSelect} />
                     </div>
                     <div className="w-1/2">
-                        <MessagesContents onSendMessage={this.handleSendMessage} channel={this.state.channel} userId={this.socket?.id} />
+                        <MessagesContents onSendMessage={this.handleSendMessage} channel={this.state.channel} userId={this.name} />
                     </div>
                     <div className="w-1/4">
                         <MessagesRightSidebar />

@@ -225,7 +225,7 @@ class ClanHeader extends React.Component {
                                              }
                                         </div>
                                         <div className="flex justify-center p-5">
-                                             <div className="text-lg font-bold text-vici_secondary cursor-pointer">See all messages</div>
+                                             <div className="text-lg font-bold text-vici_secondary cursor-pointer"><a href="/messages">See all messages</a></div>
                                         </div>
                                     </div>
                                 </div>

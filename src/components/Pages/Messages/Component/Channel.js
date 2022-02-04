@@ -7,10 +7,9 @@ export class Channel extends React.Component {
     render() {
 
         return (
-            <div className="channel-item" onClick={this.click}>‍
-                <div>{this.props.name}</div>
-                ‍
-                <span>{this.props.participants}</span>
+            <div className="channel-item py-3" onClick={this.click}>
+                <div className="font-bold cursor-pointer">{this.props.name}</div>
+                <span className="text-sm">No. of participants: {this.props.participants}</span>
             </div>
         )
     }
