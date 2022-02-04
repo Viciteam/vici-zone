@@ -67,6 +67,7 @@ function LoginModal ({ closeModal }) {
         
         let name = response.name;
         let email = response.email;
+        let fb_user_id = response.userID;
         let password = response.userID;
         let password_confirmation = response.userID;
         let picture = response.picture.data.url;
@@ -100,6 +101,7 @@ function LoginModal ({ closeModal }) {
 
                     let new_user_information = {
                         "id":1,
+                        "fb_user_id": fb_user_id,
                         "user_id":socialLoginResponse.user.id,
                         "profpic_link": picture,
                         "bgcolor":"#867996",
@@ -142,7 +144,8 @@ function LoginModal ({ closeModal }) {
 
                 let new_user_information = {
                     "id":1,
-                    "user_id": '',
+                    "fb_user_id": fb_user_id,
+                    "user_id": "",
                     "profpic_link": picture,
                     "bgcolor":"#867996",
                     "txtcolor":"black",
