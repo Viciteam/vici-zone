@@ -5,7 +5,8 @@ import MessagesRightSidebar from './Component/MessagesRightSidebar';
 import socketClient from "socket.io-client";
 import auth from '../../../services/auth';
 
-const SERVER = "http://44.241.49.47:8080";
+//const SERVER = "http://44.241.49.47:8080";
+const SERVER = "https://messages.vici.life";
 
 class Messages extends React.Component {
 
