@@ -69,13 +69,13 @@ function EditProfile ({ closeModal }) {
         }
         
 
-        var mnpartdata = {
-          username: response.user.name,
+        if(response){
+            var mnpartdata = {
+            username:response.user.name,
+            }
+            var mpartevent = 'Edit User Profile';
+            const mpart = await mparticle.sendEvent(mpartevent,mnpartdata);
         }
-
-        var mpartevent = 'Edit User Profile';
-        const mpart = await mparticle.sendEvent(mpartevent,mnpartdata);
-
         console.log('edit propfile', response)
         if(response){
             setBanner(response.user.profile_banner_link ? response.user.profile_banner_link : '/img/default_banner.png')
