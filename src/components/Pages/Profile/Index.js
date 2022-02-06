@@ -3,6 +3,9 @@ import AboutMe from './Components/AboutMe';
 import ProfileContent from './Components/ProfileContent';
 import RightSidebar from './Components/RightSidebar';
 import EditProfile from './Modal/EditProfile';
+
+import NewChallengeModal from './Segments/NewChallengeModal';
+
 import { ProfileContext } from '../Profile/ProfileContext'
 
 import auth from '../../../services/auth';
@@ -12,9 +15,11 @@ class Index extends React.Component {
         super(props);
         this.state = {
             openEditProfileModal: false,
+            newChallengeModal: false
         }
         this.handleOpenEditProfileModal = this.handleOpenEditProfileModal.bind(this);
         this.handleCloseEditProfileModal = this.handleCloseEditProfileModal.bind(this);      
+        this.newChallenge = this.newChallenge.bind(this);      
     }
 
     static contextType = ProfileContext;
@@ -25,6 +30,11 @@ class Index extends React.Component {
 
     handleCloseEditProfileModal () {
         this.setState({ openEditProfileModal: false });
+    }
+
+    newChallenge(){
+        console.log("open modal now");
+        this.setState({ newChallengeModal: true });
     }
 
     render () {
@@ -115,9 +125,10 @@ class Index extends React.Component {
                             </div>
                         </div>
                         <div>
-                            <button className="flex py-2 px-3 border rounded-2xl border-vici_button_txt shadow-border_shadow_button">
+                            <button className="flex py-2 px-3 border rounded-2xl border-vici_button_txt shadow-border_shadow_button" onClick={() => this.newChallenge() }>
                                 <img alt="" src="/img/Frame 1989.png" />
                                 <div className="px-2 pt-1 text-vici_button_txt">New Challenge</div>
+                                {this.state.newChallengeModal && <NewChallengeModal showModal={this.state.newChallengeModal} />}
                             </button>
                         </div>
                     </div>
