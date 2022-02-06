@@ -168,7 +168,7 @@ function EditProfile ({ closeModal }) {
                     <div>
                         <div onClick={() => {closeModal()}}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M20.7266 16.5L16.7266 20.5L10.7266 14.4983L4.72656 20.5L0.726562 16.5L6.72656 10.5L0.726562 4.5L4.72656 0.5L10.7266 6.5L16.7266 0.5L20.7266 4.5L14.7249 10.5L20.7266 16.5Z" fill="#EB5757"/>
+                                <path fillRule="evenodd" clipRule="evenodd" d="M20.7266 16.5L16.7266 20.5L10.7266 14.4983L4.72656 20.5L0.726562 16.5L6.72656 10.5L0.726562 4.5L4.72656 0.5L10.7266 6.5L16.7266 0.5L20.7266 4.5L14.7249 10.5L20.7266 16.5Z" fill="#EB5757"/>
                             </svg>
                         </div>
                     </div>
@@ -213,15 +213,15 @@ function EditProfile ({ closeModal }) {
                                     </div>
                                     <div className="flex mt-3">
                                         <div className={`px-3 py-2 rounded-lg ${txtcolor === 'white' ? 'bg-vici_secondary text-white_color' : ''} hover:bg-vici_secondary hover:text-white_color`}>
-                                            <label class="inline-flex items-center">
-                                                <input onChange={handleChangeTextColor} type="radio" class="form-radio" name="textColor" value="white" />
-                                                <span class="ml-2 text-sm">White</span>
+                                            <label className="inline-flex items-center">
+                                                <input onChange={handleChangeTextColor} type="radio" className="form-radio" name="textColor" value="white" />
+                                                <span className="ml-2 text-sm">White</span>
                                             </label>
                                         </div>
                                         <div className={`px-3 ml-3 py-2 rounded-lg ${txtcolor === 'black' ? 'bg-vici_secondary text-white_color' : ''} hover:bg-vici_secondary hover:text-white_color border border-medium_gray`}>
-                                            <label class="inline-flex items-center">
-                                                <input onChange={handleChangeTextColor} type="radio" class="form-radio" name="textColor" value="black" />
-                                                <span class="ml-2 text-sm">Black</span>
+                                            <label className="inline-flex items-center">
+                                                <input onChange={handleChangeTextColor} type="radio" className="form-radio" name="textColor" value="black" />
+                                                <span className="ml-2 text-sm">Black</span>
                                             </label>
                                         </div>
                                     </div>

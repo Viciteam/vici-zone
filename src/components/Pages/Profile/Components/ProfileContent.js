@@ -84,8 +84,8 @@ class ProfileContent extends React.Component {
                     <div className="py-3 px-6">
                         <button className="flex">
                             See all
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                             </svg>
                         </button>
                     </div>
@@ -94,7 +94,7 @@ class ProfileContent extends React.Component {
                     <div className="flex p-6">
                         {
                             badges.map((badge, i) => (
-                                <img alt="" src={ badge.img } className="mx-2" />
+                                <img alt="" src={ badge.img } key={i} className="mx-2" />
                             ))
                         }
                     </div>
@@ -107,8 +107,8 @@ class ProfileContent extends React.Component {
                     <div className="py-3 px-6">
                         <button className="flex">
                             See all
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                             </svg>
                         </button>
                     </div>
@@ -117,38 +117,38 @@ class ProfileContent extends React.Component {
                 <div className="bg-white_color rounded p-3 h-96 overflow-auto">
                     {
                         progress.map((item, i) => (
-                            <div className="flex justify-between shadow-border_shadow py-5">
+                            <div className="flex justify-between shadow-border_shadow py-5" key={i}>
                                 <div className="flex">
                                     <div className="relative">
                                         <div
                                             x-data="scrollProgress"
-                                            class="items-center justify-center overflow-hidden rounded-full"
+                                            className="items-center justify-center overflow-hidden rounded-full"
                                         >
                                             <svg width="100" height="100" viewBox="0 0 100 100">
                                                 <circle
-                                                    class="text-medium_gray"
-                                                    stroke-width="10"
+                                                    className="text-medium_gray"
+                                                    strokeWidth="10"
                                                     stroke="currentColor"
                                                     fill="transparent"
                                                     r="40"
                                                     cx="50"
                                                     cy="50"
                                                 />
-                                                <circle class={ item.progress_color } 
-                                                    stroke-linecap=""  
+                                                <circle className={ item.progress_color } 
+                                                    strokeLinecap=""  
                                                     cx="50"
                                                     cy="50"
                                                     r="40"
                                                     stroke="currentColor"
-                                                    stroke-width="10"
+                                                    strokeWidth="10"
                                                     fill="none"
-                                                    stroke-dasharray="315" 
-                                                    stroke-dashoffset="125" 
+                                                    strokeDasharray="315" 
+                                                    strokeDashoffset="125" 
                                                     stroke-mitterlimit="0"
                                                     transform="rotate(-90 ) translate(-100 0)"
                                                 />
                                             </svg>
-                                            <div class="absolute top-6 w-full">
+                                            <div className="absolute top-6 w-full">
                                                 <div className="font-bold text-center">{ item.progress }</div>
                                                 <div className="text-center text-xs">{ item.progress_desc }</div>
                                             </div>
@@ -187,8 +187,8 @@ class ProfileContent extends React.Component {
                     <div className="py-3 px-6">
                         <button className="flex">
                             See all
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                             </svg>
                         </button>
                     </div>

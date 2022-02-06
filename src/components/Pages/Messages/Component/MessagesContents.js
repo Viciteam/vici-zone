@@ -52,13 +52,13 @@ class MessagesContents extends React.Component {
 
     keyPress = (e) => {
         if(this.props.channel){
-            if(e.keyCode == 13){
+            if(e.keyCode === 13){
                 this.send();
                 this.setState({ input_value: '' });
                 //this.scrollToBottom();
             }
         }else{
-            if(e.keyCode == 13){
+            if(e.keyCode === 13){
                 this.setState({ input_value: 'Please select channel' });
             }
         }
