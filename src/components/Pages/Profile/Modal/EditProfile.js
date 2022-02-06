@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 
 import AuthService from '../../../../services/AuthService';
 import CookieService from '../../../../services/CookieService';
-// import mParticleService  from '../../../../services/mParticleService';
+import mParticleService  from '../../../../services/mParticleService';
 //import axios from 'axios';
 
 function EditProfile ({ closeModal }) {
@@ -67,7 +67,7 @@ function EditProfile ({ closeModal }) {
             const user_information = CookieService.get("user_profile");
             response.user = user_information;
         }
-        
+
 
         if(response){
             var mnpartdata = {
@@ -76,10 +76,10 @@ function EditProfile ({ closeModal }) {
             var mpartevent = 'Edit User Profile';
             const mpart = await mparticle.sendEvent(mpartevent,mnpartdata);
         }
-      
+
         var mpartevent = 'Edit User Profile';
         // const mpart = await mparticle.sendEvent(mpartevent,mnpartdata);
-      
+
         console.log('edit propfile', response)
         if(response){
             setBanner(response.user.profile_banner_link ? response.user.profile_banner_link : '/img/default_banner.png')
