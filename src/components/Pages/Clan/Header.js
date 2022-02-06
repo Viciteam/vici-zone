@@ -171,7 +171,7 @@ class ClanHeader extends React.Component {
                                             <div className="flex pr-3">
                                                 <button className="p-1 mr-3 border rounded border-light_gray">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                                        <path strokeLinecap="round" strokeLinejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                                     </svg>
                                                 </button>
                                                 <div className="text-lg text-vici_secondary pt-1">New Message</div>
@@ -201,7 +201,7 @@ class ClanHeader extends React.Component {
                                                 </div>
                                                 <div className="pt-2">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                                        <path strokeLinecap="round" strokeLinejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                                                     </svg>
                                                 </div>
                                             </div>
@@ -248,7 +248,7 @@ class ClanHeader extends React.Component {
                                                 <div>
                                                     <button className="p-1 border rounded border-medium_gray text-vici_secondary">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                                            <path strokeLinecap="round" strokeLinejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                                         </svg>
                                                     </button>
                                                 </div>
