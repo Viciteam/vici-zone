@@ -1,9 +1,12 @@
 import React from 'react';
 import { Message } from './Message'
 import '../../../styles/messages.css'
+import ReactScrollableFeed from 'react-scrollable-feed';
 class MessagesContents extends React.Component {
 
     state = { input_value: "" };
+
+    //mesRef = React.createRef();
 
     send = () => {
         if (this.state.input_value && this.state.input_value !== "") {
@@ -12,15 +15,47 @@ class MessagesContents extends React.Component {
         }
     };
     
+    /* componentDidMount() {   
+		this.scrollToBottom();
+	}
+
+    scrollToBottom = () => {
+        console.log('scrollTop--1', this.mesRef.current.scrollTop)
+        console.log('scrollHeight--1', this.mesRef.current.scrollHeight)
+		this.mesRef.current.scrollTop = this.mesRef.current.scrollHeight;
+        //this.mesRef.current?.scrollIntoView({ behavior: "smooth" })
+        console.log('scrollTop--', this.mesRef.current.scrollTop)
+        console.log('scrollHeight--', this.mesRef.current.scrollHeight)
+        
+	}; */
+
     handleInput = (e) => {
         this.setState({ input_value: e.target.value });
     };
+
+    /* onScroll = () => {
+        if (this.mesRef.current) {
+          const { scrollTop, scrollHeight, clientHeight } = this.mesRef.current;
+          console.log('scrollTop', scrollTop)
+          console.log('clientHeight', clientHeight)
+          console.log('scrollHeight', scrollHeight)
+
+          if (scrollTop + clientHeight === scrollHeight) {
+            // TO SOMETHING HERE
+            console.log('scrollTop', scrollTop)
+            console.log('clientHeight', clientHeight)
+            console.log('scrollHeight', scrollHeight)
+            console.log('Reached bottom')
+          }
+        }
+      } */
 
     keyPress = (e) => {
         if(this.props.channel){
             if(e.keyCode == 13){
                 this.send();
                 this.setState({ input_value: '' });
+                //this.scrollToBottom();
             }
         }else{
             if(e.keyCode == 13){
@@ -73,9 +108,10 @@ class MessagesContents extends React.Component {
                 </div>
                 <div className="h-screen-auto flex relative bg-white_color shadow-border_shadow_right">
                     <div className="absolute bottom-0 text-medium_gray w-full">
-                        <div className="shadow-border_shadow content-messages-h overflow-y-auto">
-                        ‍
-                        <div className="messages-list overflow-y-auto px-3">{list}</div>‍
+                        <div  className="shadow-border_shadow">
+                        ‍<ReactScrollableFeed>
+                            <div className="messages-list px-3">{list}</div>
+                        </ReactScrollableFeed>‍
                             {/* <div className="flex p-5 w-full">
                                 <div className="w-1/2 flex">
                                     <div className="pt-5">

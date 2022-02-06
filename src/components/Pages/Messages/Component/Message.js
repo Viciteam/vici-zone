@@ -31,7 +31,7 @@ export class Message extends React.Component {
             </span>
           </div>
         </div>
-        <div className={`${this.props?.userId === this.props.senderName ? 'text-right' : 'pl-10'} text-10`}>{moment(this.props.id).fromNow()}</div>
+        <div className={`${this.props?.userId === this.props.senderName ? 'text-right' : 'pl-10'} text-10`}>{ (this.props?.userId !== this.props.senderName ? this.props.senderName.split('|')[0] : 'You') + ' | ' + moment(this.props.id).fromNow()}</div>
       </div>
     );
   }

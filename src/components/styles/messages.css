@@ -1,3 +1,6 @@
 .content-messages-h{
     height: calc(100vh - 290px);
 }
+.styles_scrollable-div__prSCv{
+    height: calc(100vh - 307px) !important;
+}
