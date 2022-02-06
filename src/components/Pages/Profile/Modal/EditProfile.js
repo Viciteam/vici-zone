@@ -29,7 +29,7 @@ function EditProfile ({ closeModal }) {
         profileUploader.current.click();
     };
 
-    // const mparticle = mParticleService;
+    const mparticle = mParticleService;
 
     useEffect(() => {
         // getUserProfile();
