@@ -38,7 +38,7 @@ class Index extends React.Component {
         return (
             <div>
                 <div className="">
-                  <img alt="" src={auth.userProfile() ? auth.userProfile().profile_banner_link ? auth.userProfile().profile_banner_link : '/img/default_banner.png' : '/img/default_banner.png'} className="w-full h-56 object-cover" />
+                  <img alt="" src={auth.userProfile() ? auth.userProfile().profile_banner_link ? auth.userProfile().profile_banner_link : '/img/default_banner.jpg' : '/img/default_banner.jpg'} className="w-full h-56 object-cover" />
                 </div>
                 <div className="container mx-auto">
                     {/* <div className="mx-12 flex">
