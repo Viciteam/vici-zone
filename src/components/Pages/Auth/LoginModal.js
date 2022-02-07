@@ -70,6 +70,8 @@ function LoginModal ({ closeModal }) {
         let fb_user_id = response.userID;
         let password = response.userID;
         let password_confirmation = response.userID;
+
+        // change image sie
         let picture = response.picture.data.url;
         
 
@@ -183,8 +185,8 @@ function LoginModal ({ closeModal }) {
         let google_user_id = response.profileObj.googleId;
         let password = response.profileObj.googleId;
         let password_confirmation = response.profileObj.googleId;
-        let picture = response.profileObj.imageUrl;
-
+        let picture = response.profileObj.imageUrl.replace("s96-c", "s250-c");
+        
         const postData = { name, email, password, password_confirmation }
         console.log('user login -> ', postData);
 
