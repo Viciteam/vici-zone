@@ -61,7 +61,7 @@ function LoginModal ({ closeModal }) {
         }
     }
 
-   async function LoginWithFacebook(response) {
+    async function LoginWithFacebook(response) {
        setLoading(true)
         console.log('fb response ->', response);
         
@@ -175,6 +175,119 @@ function LoginModal ({ closeModal }) {
 
     }
 
+    async function LoginWithGoogle(response) {
+        console.log("show login with google ->", response);
+
+        let name = response.profileObj.name;
+        let email = response.profileObj.email;
+        let google_user_id = response.profileObj.googleId;
+        let password = response.profileObj.googleId;
+        let password_confirmation = response.profileObj.googleId;
+        let picture = response.profileObj.imageUrl;
+
+        const postData = { name, email, password, password_confirmation }
+        console.log('user login -> ', postData);
+
+        const registerResponse = await AuthService.doSocialRegister(postData)
+        console.log('response social register one ->', registerResponse)
+
+         let isRegistrationSuccessful = '';
+        if(registerResponse.status === 201){
+            isRegistrationSuccessful = 'go_login';
+        } else if(registerResponse.data.errors.email[0] === 'The email has already been taken.'){
+            isRegistrationSuccessful = 'user_exist'
+        }   
+
+        // console.log(isRegistrationSuccessful);
+        if(isRegistrationSuccessful === 'user_exist'){
+            console.log('do user login in normal way');
+            const loginAccount = { email, password }
+            const socialLoginResponse = await AuthService.doUserLogin(loginAccount)
+            console.log('response-', socialLoginResponse)
+            if(socialLoginResponse){
+                const loginSuccessResponse = await AuthService.handleLoginSuccess(socialLoginResponse);
+                
+                if(loginSuccessResponse.user === undefined || loginSuccessResponse.user === null){
+                    console.log('build a new user info');
+
+                    let new_user_information = {
+                        "id":1,
+                        "google_user_id": google_user_id,
+                        "user_id":socialLoginResponse.user.id,
+                        "profpic_link": picture,
+                        "bgcolor":"#867996",
+                        "txtcolor":"black",
+                        "username": name,
+                        "name": name,
+                        "pref_pronoun":"",
+                        "bday":"",
+                        "bio":"",
+                        "mission":"",
+                        "country":"",
+                        "created_at":"",
+                        "updated_at":"",
+                        "profile_banner_link":""
+                    };
+
+                    console.log('new user info ->', new_user_information);
+                    CookieService.set("user_profile", new_user_information);
+                }
+                // CookieService.set("user_profile", loginSuccessResponse.user);
+                setValid(true)
+                setLoading(false)
+                closeModal()
+                window.location.href = "/";
+            }else{
+                setSocialValid(false)
+                setLoading(false)
+                console.log('Invalid email or password')
+            }
+        }
+        
+        if(isRegistrationSuccessful === 'go_login'){
+            const loginAccount = { email, password }
+            const socialLoginResponse = await AuthService.doUserLogin(loginAccount)
+            console.log('response-', socialLoginResponse)
+            const loginSuccessResponse = await AuthService.handleLoginSuccess(socialLoginResponse);
+
+            if(loginSuccessResponse.user === undefined || loginSuccessResponse.user === null){
+                console.log('build a new user info');
+
+                let new_user_information = {
+                    "id":1,
+                    "google_user_id": google_user_id,
+                    "user_id": "",
+                    "profpic_link": picture,
+                    "bgcolor":"#867996",
+                    "txtcolor":"black",
+                    "username": name,
+                    "name": name,
+                    "pref_pronoun":"",
+                    "bday":"",
+                    "bio":"",
+                    "mission":"",
+                    "country":"",
+                    "created_at":"",
+                    "updated_at":"",
+                    "profile_banner_link":""
+                };
+
+                console.log('new user info ->', new_user_information);
+                CookieService.set("user_profile", new_user_information);
+            }
+            // CookieService.set("user_profile", loginSuccessResponse.user);
+            setValid(true)
+            setLoading(false)
+            closeModal()
+            window.location.href = "/";
+            
+        }
+
+
+    }
+
+
+
     let showFacebookLoginError = () => {
         if(!socialValid){
             return (
@@ -227,21 +340,19 @@ function LoginModal ({ closeModal }) {
                             <GoogleLogin
                                 clientId="919545217754-5f49t1u2bdg1j5vrshge709km7nmn73l.apps.googleusercontent.com"
                                 buttonText="Continue with Google"
-                                /* onSuccess={this.responseGoogle}
-                                onFailure={this.responseGoogle} */
+                                onSuccess={LoginWithGoogle}
+                                // onFailure={this.responseGoogle}
                                 cookiePolicy={'single_host_origin'}
                                 className="google-style"
                             />
                         </div>
                         <div className="mt-3">
                             <FacebookLogin
-                                // appId="1397019250754280"
-                                appId="352743490013922"
+                                appId="1397019250754280"
                                 autoLoad={false}
                                 returnScopes={true}
                                 fields="name,email,picture"
                                 scope="public_profile,email"
-                                /* callback={this.responseFacebook} */
                                 callback={LoginWithFacebook}
                                 cssClass="google-style py-3"
                                 textButton="Continue with Facebook"
