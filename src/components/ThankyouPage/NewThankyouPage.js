@@ -1,10 +1,11 @@
 import React from 'react';
+import '../styles/thankyou.css'
 
 class NewThankyouPage extends React.Component {
     render () {
         return (
             <div className="">
-                <div className="container mx-auto mt-20">
+                <div className="container mx-auto mt-3">
                     <div className="text-center text-28 font-bold">Thanks a bunch for joining our waitlist.</div>
                     <div className="text-center font-bold text-primary_color text-64">Become VIP waitlist member for just $1</div>
                 </div>
@@ -32,7 +33,7 @@ class NewThankyouPage extends React.Component {
                             </div>
                             <div className="mt-6">To take advantage of this offer, simply make a $1 deposit.</div>
                             <div className="mt-12">
-                                <button className="bg-primary_color px-12 shadow-border_shadow_button rounded-3xl text-28 xl:text-60 font-bold text-vici_secondary_text">
+                                <button className="bg-primary_color reserve-btn px-12 xl:px-6 shadow-border_shadow_button rounded-3xl text-28 xl:text-60 font-bold text-vici_secondary_text">
                                     <a href="https://go.vici.zone/vici-reservation/?ref=prelaunch-waitlist-page">Reserve now for only $1</a>
                                 </button>
                             </div>
