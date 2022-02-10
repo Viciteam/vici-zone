@@ -7,19 +7,30 @@ import ReactModal from 'react-modal';
 
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faEllipsisV, faBars, faPlus} from '@fortawesome/free-solid-svg-icons'
+import {faEllipsisV, faBars, faPlus, faTimes} from '@fortawesome/free-solid-svg-icons'
 
 class ChallengeGoalActions extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             isactive: this.props.isactive,
-            addActionModal: false,
-            actionCurrentStep: 1,
-            stageTwoSelectedOption: ''
+            addActionModal: true,
+            actionsInOrder: false,
+            actionCurrentStep: 2,
+            stageTwoSelectedOption: '',
+            simplipifyAction: false,
+            setAsRequired: false,
+            showInstructionForm: false,
+			integratedItems: []
         }
 
         this.openAddActionModal = this.openAddActionModal.bind(this);
+        this.onSimplfyActionChange = this.onSimplfyActionChange.bind(this);
+        this.onRequiredActionChange = this.onRequiredActionChange.bind(this);
+        this.AddNewInstructions = this.AddNewInstructions.bind(this);
+        this.CloneNewInstructions = this.CloneNewInstructions.bind(this);
+        this.goToNextStep = this.goToNextStep.bind(this);
+        this.addIntegratedItem = this.addIntegratedItem.bind(this);
     }
 
     addActivity(){
@@ -27,50 +38,201 @@ class ChallengeGoalActions extends React.Component {
     }
 
     openAddActionModal(){
-      this.setState({addActionModal: !this.state.addActionModal})
+      this.setState({addActionModal: true})
     }
 
+    closeAddActionModal(){
+      this.setState({addActionModal: false})
+    }
 
+    onSimplfyActionChange(){
+      this.setState({simplipifyAction: !this.state.simplipifyAction})
+    }
 
+    onRequiredActionChange(){
+      this.setState({setAsRequired: !this.state.setAsRequired})
+    }
+
+    AddNewInstructions(){
+      this.setState({showInstructionForm: true})
+    }
+
+    CloneNewInstructions(){
+      this.setState({showInstructionForm: false})
+    }
+    
+    goToNextStep(toStep){
+      this.setState({actionCurrentStep: toStep})
+    }
+
+	addIntegratedItem(event, item){
+		console.log('show item ->', item);
+		console.log('show selected ->', event.target.checked);
+		let integrated_items = this.state.integratedItems;
+
+		if(event.target.checked){
+			integrated_items.push(item);
+		} else {
+			let item_index = integrated_items.indexOf(item);
+			integrated_items.splice(item_index, 1);
+		}
+
+		this.setState({integratedItems: integrated_items})
+	}
 
     render () {
         const showSteps = () => {
-          if(this.state.actionCurrentStep === 1){
-            return (
-              <div className="d-action-current-step step-one-selected">
-                <div className="d-action-step-items">
-                  <div className="d-action-step-image">
-                    <img src="/img/reward_image.png" alt="" />
-                  </div>
-                  <div className="d-action-step-name">
-                    <input type="text" placeholder="Action Name"/>
-                  </div>
-                  <div className="d-action-step-one-options">
-                    <div className="cg-label">
-                        <div className="cgl-name">Social Actions</div>
-                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.onSocialActionChange} checked={this.state.socialActionSLide} /></div>
-                    </div>
-                    <div className="cg-input dactivity">
-                        <div className="subheader">Actions that help spread the word, build awareness and increase challenge engagement</div>
-                    </div>
-                  </div>
-                </div>
-                <div className="d-action-steps-options">
-                  <button className="d-cancel-action">Cancel</button>
-                  <button className="d-proceed-action">Next</button>
-                </div>
-              </div>
-            );
-          }
+        	let showInstrucitionsField = () => {
+				if(this.state.showInstructionForm){
+					return (
+						<div class="d-add-instructions-fields">
+							<div class="d-add-header">Instruction</div>
+							<div class="d-add-close">
+								<button onClick={() => this.CloneNewInstructions()}><FontAwesomeIcon icon={faTimes} /></button>
+							</div>
+							<div class="d-add-instruction-textarea">
+								<textarea placeholder="Add instruction on how to do this action"></textarea>
+							</div>
+							<div class="d-link-options">
+								<div class="d-link-option-checkarea">
+									<input type="checkbox" />
+								</div>
+								<div class="d-link-option-text">Action Link</div>
+								<div class="d-link-option-input">
+									<input type="text" placeholder="www.facebookpage.com" />
+								</div>
+							</div>
+						</div>
+					);
+				}
 
-          if(this.state.actionCurrentStep === 2){
-            return (
-              <div className="d-action-current-step step-two-selected">
-                <div className=""></div>
-              </div>
-            );
-          }
+				if(!this.state.showInstructionForm){
+					return (
+						<div class="d-add-instructions">
+							<button onClick={() => this.AddNewInstructions()}><FontAwesomeIcon icon={faPlus} /> <span>Add instruction and link</span></button>
+						</div>
+					);
+				}
+			}
+
+			let integrated_fields = () => {
+				if(this.state.integratedItems.length > 0){
+					let integratedItems = this.state.integratedItems;
+					// if google fit exist
+					let isGoogleFitSelected = integratedItems.indexOf('google_fit');
+					let googleFitInfo = (isGoogleFitSelected >= 0 ? <div className="d-integrated-selected-item"><img src="/img/logos_google-fit.png" alt="" /> <span className="d-integ-item">Google Fit</span></div> : '');
+					
+					// if apple health exist
+					let isAppleHealthSelected = integratedItems.indexOf('apple_health');
+					let AppleHealthInfo = (isAppleHealthSelected >= 0 ? <div className="d-integrated-selected-item"><img src="/img/ant-design_apple-filled.png" alt="" /> <span className="d-integ-item">Apple Health</span></div> : '');
+
+					return (
+						<div className="d-selected-integration">
+							{googleFitInfo}
+							{AppleHealthInfo}
+						</div>
+					);
+				} else {
+					return (
+						<div className="d-integrated-item no-item-message">No integrations yet</div>
+					);
+				}
+			}
+
+			if(this.state.actionCurrentStep === 1){
+				return (
+					<div className="d-action-current-step step-one-selected">
+						<div className="d-action-step-items">
+							<div className="d-action-step-image">
+								<img src="/img/reward_image.png" alt="" />
+							</div>
+							<div className="d-action-step-name">
+								<input type="text" placeholder="Action Name"/>
+							</div>
+							<div class="d-actions-instructions">
+								{showInstrucitionsField()}
+							</div>
+							<div className="d-action-step-one-options">
+								<div className="cg-label">
+									<div className="cgl-name">Simplify actions</div>
+									<div className="cgl-doptions"><Switch height={20} width={40} onChange={this.onSimplfyActionChange} checked={this.state.simplipifyAction} /></div>
+								</div>
+								<div className="cg-input dactivity">
+									<div className="subheader">Create actions with ease, these actions won’t need any tracking and can be marked as done with one click.</div>
+								</div>
+							</div>
+							<div className="d-action-step-one-options">
+								<div className="cg-label">
+									<div className="cgl-name">Set as required action</div>
+									<div className="cgl-doptions"><Switch height={20} width={40} onChange={this.onRequiredActionChange} checked={this.state.setAsRequired} /></div>
+								</div>
+							</div>
+						</div>
+						<div className="d-action-steps-options">
+							<button className="d-cancel-action" onClick={() => this.closeAddActionModal()}>Cancel</button>
+							<button className="d-proceed-action" onClick={() => this.goToNextStep(2)}>Next</button>
+						</div>
+					</div>
+				);
+			}
+
+			if(this.state.actionCurrentStep === 2){
+				return (
+					<div className="d-action-current-step step-two-selected">
+						<div className="d-action-step-items d-action-step-two">
+							<div className="d-action-sidebar">
+								<h3>Action tracking</h3>
+								<div className="d-action-sidebar-desc">How can participants verify their action completion?	</div>
+								<div className="d-action-sidebar-item">
+									<div className="d-sideitem-label">Integrated apps <span>></span></div>
+									<div className="d-sideitem-content">
+										<div className="d-sideitem-single"><span className="d-integ-checkbox"><input type="checkbox" name="integrate_item" onChange={(e) => this.addIntegratedItem(e, 'google_fit')} /></span> <img src="/img/logos_google-fit.png" alt="" /> <span className="d-integ-item">Google Fit</span></div>
+										<div className="d-sideitem-single"><span className="d-integ-checkbox"><input type="checkbox" name="integrate_item" onChange={(e) => this.addIntegratedItem(e, 'apple_health')} /></span> <img src="/img/ant-design_apple-filled.png" alt="" /> <span className="d-integ-item">Apple Health</span></div>
+										<div className="d-sideitem-single suggestive-item">Suggest Integration</div>
+									</div>
+								</div>
+								<div className="d-action-sidebar-item">
+									<div className="d-sideitem-label">Custom Tracking <span>></span></div>
+									<div className="d-sideitem-content">
+										<div className="d-sideitem-single"><span className="d-integ-checkbox"><input type="checkbox" /></span><img className="d-tracking-image" src="/img/link.png" alt="" /> Via Link</div>
+										<div className="d-sideitem-single"><span className="d-integ-checkbox"><input type="checkbox" /></span><img className="d-tracking-image" src="/img/notes.png" alt="" /> Write an Article</div>
+										<div className="d-sideitem-single"><span className="d-integ-checkbox"><input type="checkbox" /></span><img className="d-tracking-image" src="/img/upload.png" alt="" /> Upload</div>
+										<div className="d-sideitem-single"><span className="d-integ-checkbox"><input type="checkbox" /></span><img className="d-tracking-image" src="/img/text.png" alt="" /> Text Input</div>
+										<div className="d-sideitem-single"><span className="d-integ-checkbox"><input type="checkbox" /></span><img className="d-tracking-image" src="/img/camera.png" alt="" /> Via Camera</div>
+										<div className="d-sideitem-single suggestive-item"><span><input type="checkbox" /></span>Import from social media</div>
+									</div>
+								</div>
+							</div>
+							<div className="d-action-maincontent">
+								<div className="d-main-content">
+									<div className="d-maincontent-label">Integrated Apps <span>></span></div>
+									<div className="d-maincontent-items">
+										{integrated_fields()}
+									</div>
+								</div>
+								<div className="d-main-content">
+									<div className="d-maincontent-label">Custom Tracking <span>></span></div>
+									<div className="d-maincontent-items">
+										show items
+									</div>
+								</div>
+								<div className="d-main-content">
+									<div className="d-maincontent-label">Points</div>
+									<div className="d-maincontent-items">
+										show items
+									</div>
+								</div>
+							</div>
+						</div>
+						<div className="d-action-steps-options">
+							<button className="d-cancel-action" onClick={() => this.goToNextStep(1)}>Back</button>
+							<button className="d-proceed-action">Save and Add Action</button>
+						</div>
+					</div>
+				);
+			}
         }
+        
         return (
           <div className="cg-input dactivity">
               <div className="subheader">Specify the actions needed to complete the goal.</div>
@@ -107,7 +269,7 @@ class ChallengeGoalActions extends React.Component {
                   <div className="activity-add-button">
                       <div className="daddactions" onClick={() => this.openAddActionModal()}>
                           <span className="dicon"><FontAwesomeIcon icon={faPlus} /></span>
-                          <span className="dtext">Add an action</span>
+                          <span className="dtext">add action</span>
                       </div>
                       <ReactModal
                           isOpen={this.state.addActionModal}
@@ -115,7 +277,7 @@ class ChallengeGoalActions extends React.Component {
                           className="add-action-modal"
                           ariaHideApp={false}
                       >
-                          <div className="d-add-action-modal-inner">
+                          <div className="d-add-action-modal-inner d-rewards-settings-modal d-social-modal-size" style={{width: '690px'}}>
                               <h4>Actions</h4>
                               <div className="d-social-settings-list">
                                   {showSteps()}
