@@ -1,0 +1,14 @@
+.react-calendar {
+    border: unset !important;
+    font-family: 'nunito', 'sans-serif' !important;
+}
+
+.react-calendar__navigation__label {
+    font-weight: 700 !important;
+}
+.react-calendar__month-view__weekdays{
+    text-transform: capitalize !important;
+}
+.react-calendar__month-view__days {
+    font-size: 13px !important;
+}

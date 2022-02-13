@@ -1,9 +1,12 @@
 import React from 'react';
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import Calendar from 'react-calendar'
+import 'react-calendar/dist/Calendar.css';
 // import 'react-tabs/style/react-tabs.css';
 
 import './../../styles/profiles.css';
+import './../../styles/calendar-sidebar.css'
 import SideProfile from './Segments/SideProfile'
 
 import WallofAchievements from './Segments/WallofAchievements'
@@ -14,6 +17,8 @@ import Timeline from './Segments/Timeline'
 // import OngoingChallenge from './Segments/OngoingChallenge'
 // import PopularClans from '../Clan/PopularClans'
 import WhoToFollow from '../Clan/WhoToFollow';
+import PersonalAgenda from '../Clan/PersonalAgenda';
+import AllChallengesSidebar from '../Clan/AllChallengesSidebar';
 import Friends from '../Clan/Friends';
 import auth from '../../../services/auth';
 import LoginModal from '../Auth/LoginModal';
@@ -38,9 +43,11 @@ class mainProfileContent extends React.Component{
                 }
             },
             openModal: false,
+            openLeftScroll: false,
         }
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
+        this.boxRef = React.createRef();
     }
 
     handleOpenModal () {
@@ -50,6 +57,17 @@ class mainProfileContent extends React.Component{
     handleCloseModal () {
         this.setState({ openModal: false });
     }
+
+   scroll = (scrollOffset) => {
+       console.log(scrollOffset)
+        this.boxRef.current.scrollLeft += scrollOffset;
+        if(scrollOffset == 160){
+            this.setState({ openLeftScroll: true });
+        }else{
+            this.setState({ openLeftScroll: false });
+        }
+        
+      }
 
     render(){
         const user_information = this.state.userinfo;
@@ -65,14 +83,58 @@ class mainProfileContent extends React.Component{
                                 <div className="top-part">
                                     {
                                         auth.isAuthenticated() ? 
-                                        <div>
-                                            <div className="wall-of-achievement">
+                                        <div className="relative">
+                                            <div className="text-2xl font-bold">Good morning, start your day with:</div>
+                                            <div ref={this.boxRef} className="flex w-full overflow-x-hidden">
+                                                <div className="flex">
+                                                    <div className="w-36 bg-primary_color h-52 flex justify-center rounded-lg p-3 shadow-vici">
+                                                        <div className="text-center mt-12 cursor-pointer">
+                                                            <div className="flex justify-center"><img src="/img/new_challenge.png" /></div>
+                                                            <div className="text-sm text-white_color">New Challenge</div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="w-36 h-52 flex justify-center rounded-lg mx-3 p-3 shadow-vici">
+                                                        <div className="text-center mt-12 cursor-pointer">
+                                                            <div className="flex justify-center"><img src="/img/bi_sun-fill.png" /></div>
+                                                            <div className="text-sm mt-3 font-bold text-vici_secondary">Make my day</div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="w-36 h-52 flex justify-center rounded-lg shadow-vici">
+                                                        <img src="/img/dummy/Frame 1693.png" className="w-34" />
+                                                    </div>
+                                                    <div className="w-36 h-52 flex justify-center rounded-lg mx-3 shadow-vici">
+                                                        <img src="/img/dummy/Frame 294.png" className="w-34"/>
+                                                    </div>
+                                                    <div className="w-36 h-52 flex justify-center rounded-lg shadow-vici">
+                                                        <img src="/img/dummy/Frame 1692.png" className="w-34"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="absolute right-0 top-32 -mr-3 z-10">
+                                                <button onClick={() => this.scroll(160)} className="bg-white_color p-1 rounded-full text-vici_secondary">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                            {
+                                                this.state.openLeftScroll &&
+                                                <div className="absolute left-0 top-32 -ml-3 z-10">
+                                                    <button onClick={() => this.scroll(-160)} className="bg-white_color p-1 rounded-full text-vici_secondary">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            }
+                                            {/* <div className="wall-of-achievement">
                                                 <WallofAchievements />
                                             </div>
                                             <div className="top-activities">
                                                 <TopActivities />
                                             </div>
-                                            <br className="clear"/>
+                                            <br className="clear"/> */}
                                         </div>
                                         :
                                         <div>
@@ -108,7 +170,12 @@ class mainProfileContent extends React.Component{
                                     {/* <DailyChallenge />
                                     <OngoingChallenge /> */}
                                     {/* <PopularClans /> */}
-                                    <WhoToFollow />
+                                    {/* <WhoToFollow /> */}
+                                    <PersonalAgenda />
+                                    <AllChallengesSidebar />
+                                    <div className="bg-white_color p-3 rounded-xl shadow-vici mt-6">
+                                        <Calendar />
+                                    </div>
                                     <Friends />
                                 </div>
                             </div>
