@@ -19,7 +19,10 @@ class SideProfile extends React.Component {
             isModalOpen: false,
             mainColor: '#c6ad23',
             showColorChange: false,
-            createClanConfirm: false
+            createClanConfirm: false,
+            openEmojis: false,
+            emoji: '/img/emoticons/happy.png',
+            emojiText: 'happy',
         }
         this.data_initialize = this.data_initialize.bind(this);
         this.createClan = this.createClan.bind(this);
@@ -29,10 +32,20 @@ class SideProfile extends React.Component {
         this.changeColor = this.changeColor.bind(this);
         this.changeColorOption = this.changeColorOption.bind(this);
         this.createClanNow = this.createClanNow.bind(this);
+        this.handleOpenEmojis = this.handleOpenEmojis.bind(this);
     }
 
     data_initialize(){
         console.log('stats', this.state.uinfo.stats);
+    }
+
+    handleOpenEmojis(){
+        console.log('open imoji')
+        if(this.state.openEmojis){
+            this.setState({ openEmojis: false });
+        }else{
+            this.setState({ openEmojis: true });
+        }
     }
 
     createClan(){
@@ -110,6 +123,59 @@ class SideProfile extends React.Component {
             }
         }
 
+        let badges = [
+            {
+                id: 1,
+                badge: '/img/badge.png' 
+            },
+            {
+                id: 2,
+                badge: '/img/badge.png' 
+            },
+            {
+                id: 3,
+                badge: '/img/badge.png' 
+            },
+        ]
+
+        let emojis = [
+            {
+                name: 'happy',
+                emoji: '/img/emoticons/happy.png',
+            },
+            {
+                name: 'just fine',
+                emoji: '/img/emoticons/justfine.png',
+            },
+            {
+                name: 'sad',
+                emoji: '/img/emoticons/sad.png',
+            },
+            {
+                name: 'tired',
+                emoji: '/img/emoticons/tired.png',
+            },
+            {
+                name: 'angry',
+                emoji: '/img/emoticons/angry.png',
+            },
+            {
+                name: 'pressured',
+                emoji: '/img/emoticons/pressured.png',
+            },
+            {
+                name: 'burn-out',
+                emoji: '/img/emoticons/burn-out.png',
+            },
+            {
+                name: 'inspired',
+                emoji: '/img/emoticons/inspired.png',
+            },
+            {
+                name: 'other',
+                emoji: '/img/emoticons/other.png',
+            }
+        ]
         
         return (
             <div className="sd-inner">
@@ -119,6 +185,15 @@ class SideProfile extends React.Component {
                         <div className="header-inner">
                             <div className="hi-left">
                                 <div className="levelrate">Lvl {user_info.level}</div>
+                                <div className="flex cursor-pointer">
+                                   <img src="/img/dummy/fitness.png" />
+                                   <span className="pl-1">Fitness Clan</span>
+                                   <button>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                   </button>
+                                </div>
                                 {/* <div className="dshowclan">
                                     <div className="showedClan" onClick={this.openClanOptions}>{user_info.clan}</div>
                                     <div className={"clanlist " + (this.state.showOptions ? 'open_clan_option' : 'close_clan_option')}>
@@ -217,19 +292,30 @@ class SideProfile extends React.Component {
                             <br className="clear"/>
                         </div>
                         
-                        <a href="/profile" className="p-2 absolute top-28 bg-vici_bg_button rounded-lg text-white_color">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                            </svg>
-                        </a>
+                        <div className="p-2 absolute top-28 bg-vici_bg_button rounded-lg text-white_color">
+                            <a href="/profile" >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                </svg>
+                            </a>
+                            <a href="#" className="">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                            </a>
+                        </div>
                         
                     </div>
                     {
                         auth.isAuthenticated() ? 
-                        <div className="avatar flex justify-center bg-vici_prof_bg py-10">
-                            <div className="d-profile-avatar">
-                                <div className="d-profile-avatar-inner">
-                                    <img src={profile_main_image()} alt="" className="object-cover rounded-full w-40 h-40" />
+                        <div>
+                            <div className="h-2 w-1/2 bg-primary_color"></div>
+                            <div className="avatar flex justify-center bg-vici_prof_bg py-10">
+                                <div className="d-profile-avatar">
+                                    <div className="d-profile-avatar-inner">
+                                        <img src={profile_main_image()} alt="" className="object-cover rounded-full w-40 h-40" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -243,8 +329,71 @@ class SideProfile extends React.Component {
                     
                     <div className="user-details">
                         <div className="ud-inner">
-                            <h3><a href='/profile'>{ auth.isAuthenticated() ? auth.userProfile() ? auth.userProfile().name : auth.user().name : 'Guest User'}</a></h3>
-                            <div className="stats">
+                            <div className="flex justify-between">
+                                <div className="w-48 truncate">
+                                    <h3><a href='/profile' className="truncate">{ auth.isAuthenticated() ? auth.userProfile() ? auth.userProfile().name : auth.user().name : 'Guest User'}</a></h3>
+                                </div>
+                                <div className="flex">
+                                    {
+                                        badges.map((item, i) => (
+                                            <img src={item.badge} className="w-8 h-8 ml-2" />
+                                        ))
+                                    }
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-3 mt-3 pb-3 border-b border-vici_gray">
+                                    <div className="text-center">
+                                        <div className="font-bold">2</div>
+                                        <div>Following</div>
+                                    </div>
+                                    <div className="text-center">
+                                        <div className="font-bold">25</div>
+                                        <div>Followers</div>
+                                    </div>
+                                    <div className="text-center">
+                                        <div className="font-bold">259</div>
+                                        <div>Friends</div>
+                                    </div>
+                            </div>
+                            <div className="flex mt-6 justify-between">
+                                <div className="flex">
+                                    <img src="/img/waving.png" className="w-6 h-6 mt-2" />
+                                    <div className="pl-3 pt-2 text-sm font-bold text-vici_secondary_text">How do you feel today?</div>
+                                </div>
+                                <div className="relative">
+                                    <div onClick={this.handleOpenEmojis} className="flex border p-1 rounded-full border-bottom_gray cursor-pointer">
+                                        <img src={this.state.emoji} />
+                                        <span className="text-sm font-bold pl-2 pt-1 capitalize">{ this.state.emojiText }</span>
+                                        <div className="pt-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    {
+                                        this.state.openEmojis &&
+                                        <div className="absolute p-3 bg-white_color w-32 shadow-card_border rounded-md">
+                                            {
+                                                emojis.map((item, i) => (
+                                                    <div onClick={()=>this.setState({ emoji: item.emoji, emojiText: item.name, openEmojis: false})} className="flex py-2 cursor-pointer">
+                                                        <img src={item.emoji} />
+                                                        <span className="capitalize text-sm font-bold pl-2">{ item.name }</span>
+                                                    </div>
+                                                ))
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <div className="mt-6">
+                                <div className="font-bold text-vici_secondary_text">Top Activities</div>
+                                <div className="mt-3 px-3 py-2 flex bg-vici_light_gray rounded-lg">
+                                    <img src="/img/activities/fitness.png" />
+                                    <img src="/img/activities/reading.png" className="ml-3" />
+                                    <img src="/img/activities/games.png" className="ml-3" />
+                                </div>
+                            </div>
+                            {/* <div className="stats">
                                 <ul>
                                     <li>
                                         <div className="dpointicon" style={{background: "#ffca28"}}>&nbsp;</div>
@@ -268,7 +417,7 @@ class SideProfile extends React.Component {
                                         </li>
                                     )}
                                 </ul>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
