@@ -158,10 +158,13 @@ class ClanHeader extends React.Component {
         const isAuthHeader = () => {
             if(auth.isAuthenticated()){
                 return (
-                    <div className="isauthheader">
-                        <div className="dnotif">
+                    <div className="flex">
+                        <div className="dnotif px-3 flex">
                             <div className="relative">
-                                <div onClick={this.handleOpenMessages} className="dmessage cursor-pointer"><FontAwesomeIcon icon={faComment} /><span className="notifone">&nbsp;</span></div>
+                                <div onClick={this.handleOpenMessages} className="dmessage mx-3 cursor-pointer relative">
+                                   {/*  <FontAwesomeIcon icon={faComment} /> */}
+                                   <img src="/img/messages.png" className="w-10 mt-3" />
+                                <span className="notifone absolute bg-primary_color h-2 rounded-full top-0 right-0 w-2">&nbsp;</span></div>
                                 {
                                     this.state.openMessages &&
                                 <div className="absolute bg-white_color right-0 shadow-vici rounded-b-2xl z-10" style={{width: '432px'}}>
@@ -232,11 +235,15 @@ class ClanHeader extends React.Component {
                                 }
 
                             </div>
-                            <div className="dalarm"><FontAwesomeIcon icon={faBell} /><span className="notifone">&nbsp;</span></div>
+                            <div className="dalarm relative pl-3">
+                                {/* <FontAwesomeIcon icon={faBell} /> */}
+                                    <img src="/img/notif.png" className="w-8 mt-3" />
+                                <span className="notifone absolute bg-primary_color h-2 rounded-full top-3 right-0 w-2">&nbsp;</span>
+                            </div>
                         </div>
-                        <div className="dproficon">
+                        <div className="dproficon mt-1 mx-3">
                             <div className="relative">
-                                <img alt="" onClick={this.handleOpenAccountSettings} src={auth.userProfile() ? auth.userProfile().profpic_link : '/img/avatarguest.png'} className="cursor-pointer"/>
+                                <img alt="" onClick={this.handleOpenAccountSettings} src={auth.userProfile() ? auth.userProfile().profpic_link : '/img/avatarguest.png'} className="cursor-pointer rounded-lg w-14"/>
                                 {
                                     this.state.openAccountSettings &&
                                     <div className="absolute bg-white_color right-0 shadow-vici rounded z-10" style={{width: '270px'}}>
@@ -313,19 +320,19 @@ class ClanHeader extends React.Component {
                                 }
                             </div>
                         </div>
-                        <div className="dcoin">
-                            <div className="dcoin-inner"><img alt="" src="/img/coil.png"/> <span>0</span></div>
+                        <div className="dcoin mt-3 mr-3">
+                            <div className="dcoin-inner flex"><img alt="" src="/img/coil.png"/> <span className="pl-2">0</span></div>
                         </div>
-                        <div className="dmedals">
-                            <div className="dmedal-inner"><img alt="" src="/img/medal.png"/> <span>0</span></div>
+                        <div className="dmedals mt-3 mx-3">
+                            <div className="dmedal-inner flex"><img alt="" src="/img/medal.png"/> <span className="pl-2">0</span></div>
                         </div>
                     </div>
                 );
             } else {
                 return (
-                    <div className="login_buttons">
-                        <button onClick={this.handleOpenLogin} className="login_button">login</button>
-                        <button  onClick={this.handleOpenLogin} className="signup_button">sign up</button>
+                    <div className="flex ml-3 pt-2">
+                        <button onClick={this.handleOpenLogin} className="px-3 py-2 bg-primary_color text-white_color rounded-md h-10 w-24 capitalize">login</button>
+                        <button  onClick={this.handleOpenLogin} className="px-3 py-2 bg-primary_color text-white_color rounded-md h-10 w-24 ml-3 capitalize">sign up</button>
 
                         {this.state.openModal && <LoginModal closeModal={this.handleCloseLogin } />}
                     </div>
@@ -335,21 +342,26 @@ class ClanHeader extends React.Component {
         
         return (
             <div className="clan-header-main">
-                <div className="clan-header-inner">
+                <div className="clan-header-inner flex justify-between lg:justify-evenly">
                     <div className="dlogo">
                         <a href="/"><img alt="" src="/img/vici.png"/></a>
                     </div>
-                    <div className="ditems">
+                    <div className="flex lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </div>
+                    <div className="hidden lg:flex">
                         <div className="dmenu m-0 w-1/2">
-                            <ul className="flex justify-center w-full">
+                            <ul className="flex justify-center w-full pt-3">
                                 <li className="px-6"><a href="/">Home</a></li>
                                 <li className="px-6"><a href="/">Explore</a></li>
                                 <li className="px-6"><a href="/">Learn</a></li>
                             </ul>
                         </div>
-                        <div className="dsearch relative">
-                            <span><FontAwesomeIcon icon={faSearch} /></span>
-                            <input onKeyPress={this.handleKeyPress.bind(this)} type="text" name="" id="" />
+                        <div className="dsearch mt-2 relative h-10 border border-medium_gray rounded-lg flex">
+                            <span className="pt-2 px-3"><FontAwesomeIcon icon={faSearch} /></span>
+                            <input className="rounded-lg focus:outline-none" onKeyPress={this.handleKeyPress.bind(this)} type="text" name="" id="" />
                             {
                                 this.state.search.length > 0 &&
                                 <div className="absolute w-96 bg-white_color shadow-lg z-50 rounded-b-3xl">

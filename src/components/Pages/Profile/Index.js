@@ -97,8 +97,8 @@ class Index extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="block lg:flex lg:px-24 px-5 lg:py-0 py-5 bg-white_color justify-between">
-                        <div className="flex py-5 justify-center">
+                    <div className="block lg:flex px-5 lg:px-24 py-5 bg-white_color justify-between">
+                        <div className="flex justify-center">
                             <div className="flex w-52 bg-vici_light_gray rounded-full py-1 px-2">
                                 <img alt="" src="/img/badge-question.png" className="h-10" />
                                 <div>
@@ -114,7 +114,8 @@ class Index extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="py-5 flex justify-center">
+                        <div className="mt-3 lg:mt-0 flex justify-center">
+
                             <button className="flex py-2 px-3 border rounded-2xl border-vici_button_txt shadow-border_shadow_button">
                                 <img alt="" src="/img/Frame 1989.png" />
                                 <div className="px-2 pt-1 text-vici_button_txt">New Challenge</div>
@@ -122,14 +123,15 @@ class Index extends React.Component {
                         </div>
                     </div>
                     <div className="mt-6">
-                        <div className="block sm:flex w-full">
-                            <div className="w-full sm:w-1/4">
+                        <div className="block lg:flex w-full">
+                            <div className="w-full lg:w-1/4">
                                 <AboutMe />
                             </div>
-                            <div className="w-full sm:w-1/2">
+                            <div className="w-full lg:w-1/2">
                                 <ProfileContent />
                             </div>
-                            <div className="w-full sm:w-1/4">
+                            <div className="w-full lg:w-1/4">
+
                                 <RightSidebar />
                             </div>
                         </div>
