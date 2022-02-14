@@ -586,14 +586,14 @@ class LeaaderboardChallengeOne extends React.Component {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="ditem-flow"><div className="dflowtext">Must complete actions in order</div> <Switch height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
+                                        <div className="ditem-flow"><div className="dflowtext">Must complete actions in order</div> <Switch onColor='#FFCA28' height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
                                     </div>
                                 </div>
 
                                 <div className={"cg-item " + (this.state.activepart === 'two_social_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_social_actions') }>
                                     <div className="cg-label">
                                         <div className="cgl-name">Social Actions</div>
-                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
+                                        <div className="cgl-doptions"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
                                     </div>
                                     <div className="cg-input dactivity">
                                         <div className="subheader">Actions that help spread the word, build awareness and increase challenge engagement</div>
@@ -603,7 +603,7 @@ class LeaaderboardChallengeOne extends React.Component {
                                 <div className={"cg-item " + (this.state.activepart === 'two_convert_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_convert_actions') }>
                                     <div className="cg-label">
                                         <div className="cgl-name">Convert all actions into points</div>
-                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
+                                        <div className="cgl-doptions"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
                                     </div>
                                     <div className="cg-input dactivity">
                                         <div className="subheader">Set how many points participant can get for each action</div>
@@ -633,13 +633,13 @@ class LeaaderboardChallengeOne extends React.Component {
                                                         <div className="cgl-name">
                                                             <div className="cgl-name-title">Allow winners to pick their rewards</div>
                                                         </div>
-                                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
+                                                        <div className="cgl-doptions"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
                                                     </div>
                                                     <div className="cg-label">
                                                         <div className="cgl-name">
                                                             <div className="cgl-name-title">Allow multiple rewards</div>
                                                         </div>
-                                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
+                                                        <div className="cgl-doptions"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
                                                     </div>
                                                 </div>
                                                 <div className="d-reward-settings-ops">
@@ -654,7 +654,7 @@ class LeaaderboardChallengeOne extends React.Component {
                                 <div className={"cg-item " + (this.state.activepart === 'two_penalty' ? 'active_item' : '')} onFocus={() => this.createActive('two_penalty') }>
                                     <div className="cg-label">
                                         <div className="cgl-name">Penalty</div>
-                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
+                                        <div className="cgl-doptions"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
                                     </div>
                                     <div className="cg-input dactivity">
                                         <div className="subheader">Add penalty if goal has not been met.</div>
@@ -870,7 +870,7 @@ class LeaaderboardChallengeOne extends React.Component {
                                     <div className="cg-label">Enable form</div>
                                     <div className="cg-input dactivity">
                                         <div className="subheader">Collect additional information from participants</div>
-                                        <div className="ditem-flow"><div className="dflowtext">Show after joining</div> <Switch height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
+                                        <div className="ditem-flow"><div className="dflowtext">Show after joining</div> <Switch onColor='#FFCA28' height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
                                     </div>
                                 </div>
 

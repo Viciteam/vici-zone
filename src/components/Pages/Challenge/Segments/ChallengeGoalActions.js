@@ -21,7 +21,11 @@ class ChallengeGoalActions extends React.Component {
             simplipifyAction: false,
             setAsRequired: false,
             showInstructionForm: false,
-			integratedItems: []
+			VerifyAction: false,
+			actionPoints: true,
+			integratedItems: [],
+			customTrackingItems: [],
+			integrationMeasurement: 'meter'
         }
 
         this.openAddActionModal = this.openAddActionModal.bind(this);
@@ -31,6 +35,10 @@ class ChallengeGoalActions extends React.Component {
         this.CloneNewInstructions = this.CloneNewInstructions.bind(this);
         this.goToNextStep = this.goToNextStep.bind(this);
         this.addIntegratedItem = this.addIntegratedItem.bind(this);
+        this.changeIntegrationMeasurement = this.changeIntegrationMeasurement.bind(this);
+        this.addCustomTracking = this.addCustomTracking.bind(this);
+        this.enableVerifyAction = this.enableVerifyAction.bind(this);
+        this.enableActionPoints = this.enableActionPoints.bind(this);
     }
 
     addActivity(){
@@ -80,6 +88,34 @@ class ChallengeGoalActions extends React.Component {
 		this.setState({integratedItems: integrated_items})
 	}
 
+	addCustomTracking(event, item){
+		console.log('show item ->', item);
+		console.log('show selected ->', event.target.checked);
+		let custom_tracking = this.state.customTrackingItems;
+
+		if(event.target.checked){
+			custom_tracking.push(item);
+		} else {
+			let item_index = custom_tracking.indexOf(item);
+			custom_tracking.splice(item_index, 1);
+		}
+
+		this.setState({customTrackingItems: custom_tracking})
+	}
+
+	enableVerifyAction(){
+		this.setState({VerifyAction: !this.state.VerifyAction})
+	}
+
+	enableActionPoints(){
+		this.setState({actionPoints: !this.state.actionPoints})
+	}
+
+	changeIntegrationMeasurement(event){
+		// console.log('selected measurement ->', event.target.value);
+		this.setState({integrationMeasurement: event.target.value})
+	}
+
     render () {
         const showSteps = () => {
         	let showInstrucitionsField = () => {
@@ -114,6 +150,23 @@ class ChallengeGoalActions extends React.Component {
 					);
 				}
 			}
+			
+			let pointsEveryWhen = () => {
+				let pointlist = Array.from({length:5},(v,k)=>(k+1)*10);
+				console.log('point list -> ', pointlist);
+
+				let dmeasure = this.state.integrationMeasurement;
+				
+				console.log('selected measure -> ', dmeasure);
+				return pointlist.map(function (mark, i) {
+					return <option
+						key={mark}
+						value={mark}>
+						{mark + " "+dmeasure}
+					</option>
+				})
+					
+			}
 
 			let integrated_fields = () => {
 				if(this.state.integratedItems.length > 0){
@@ -130,11 +183,109 @@ class ChallengeGoalActions extends React.Component {
 						<div className="d-selected-integration">
 							{googleFitInfo}
 							{AppleHealthInfo}
+							<div className="d-integration-measurement">
+								<h3>Measurement</h3>
+								<div className="d-number-form">
+									<input type="number" />
+								</div>
+								<div className="d-number-measurement">
+									<select onChange={(e) => this.changeIntegrationMeasurement(e)} defaultValue={this.state.integrationMeasurement}>
+										<option value="meter">Meter</option>
+										<option value="km">Km</option>
+										<option value="miles">Miles</option>
+									</select>
+								</div>
+							</div>
+							<div className="d-integration-measurement">
+								<h3>Points</h3>
+								<div className="d-number-points">
+									<label htmlFor="">Give points every:</label>
+									<select>
+										{pointsEveryWhen()}
+									</select>
+								</div>
+							</div><div className="d-integration-customize">
+								<button>Customize point scale</button>
+							</div>
 						</div>
 					);
 				} else {
 					return (
-						<div className="d-integrated-item no-item-message">No integrations yet</div>
+						<div className="d-integrated-item no-item-message">No integrations selected</div>
+					);
+				}
+			}
+
+			let showVerification = () => {
+				if(this.state.enableVerifyAction){
+					return (
+						<div className="manual_verify">
+							<select>
+								<option value="manually_verify">Manually verify</option>
+								<option value="create_quiz">Create quiz</option>
+							</select>
+						</div>
+					);
+				}
+			}
+
+			let custom_tracking = () => {
+				if(this.state.customTrackingItems.length > 0){
+					let customTrackingItems = this.state.customTrackingItems;
+					// if google fit exist
+					let isViaLinkSelected = customTrackingItems.indexOf('via_link');
+					let viaLink = (isViaLinkSelected >= 0 ? <div className="d-integrated-selected-item"><img src="/img/link.png" alt="" /> <span className="d-integ-item">Via Link</span></div> : '');
+					
+					// if apple health exist
+					let isWriteActicleSelected = customTrackingItems.indexOf('write_article');
+					let writeArticle = (isWriteActicleSelected >= 0 ? <div className="d-integrated-selected-item"><img src="/img/notes.png" alt="" /> <span className="d-integ-item">Write Article</span></div> : '');
+
+					let isUploadSelected = customTrackingItems.indexOf('upload');
+					let upload = (isUploadSelected >= 0 ? <div className="d-integrated-selected-item"><img src="/img/upload.png" alt="" /> <span className="d-integ-item">Upload</span></div> : '');
+
+					let isTextInputSelected = customTrackingItems.indexOf('text_input');
+					let textInput = (isTextInputSelected >= 0 ? <div className="d-integrated-selected-item"><img src="/img/text.png" alt="" /> <span className="d-integ-item">Text Input</span></div> : '');
+
+					let isViaCameraSelected = customTrackingItems.indexOf('via_camera');
+					let viaCamera = (isViaCameraSelected >= 0 ? <div className="d-integrated-selected-item"><img src="/img/camera.png" alt="" /> <span className="d-integ-item">Via Camera</span></div> : '');
+
+					return (
+						<div className="d-selected-integration">
+							<div className="d-selected-custom-tracking">
+								{viaLink}
+								{writeArticle}
+								{upload}
+								{textInput}
+								{viaCamera}
+							</div>
+							<div className="d-verify-action">
+								<div className="cg-label">
+									<div className="cgl-name">Verify action tracking</div>
+									<div className="cgl-doptions"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.enableVerifyAction} checked={this.state.VerifyAction} /></div>
+								</div>
+								{showVerification()}
+							</div>
+						</div>
+					);
+				} else {
+					return (
+						<div className="d-integrated-item no-item-message">No integrations selected</div>
+					);
+				}
+			} 
+
+			let pointData = () => {
+				if(this.state.actionPoints){
+					return (
+						<div className="d-action-points">
+							<div className="d-action-points-left">
+								<label htmlFor="">Number of points</label>
+								<input type="number" />
+							</div>
+							<div className="d-action-points-right">
+								<button>Randomize point scale</button>
+							</div>
+						</div>
 					);
 				}
 			}
@@ -155,7 +306,7 @@ class ChallengeGoalActions extends React.Component {
 							<div className="d-action-step-one-options">
 								<div className="cg-label">
 									<div className="cgl-name">Simplify actions</div>
-									<div className="cgl-doptions"><Switch height={20} width={40} onChange={this.onSimplfyActionChange} checked={this.state.simplipifyAction} /></div>
+									<div className="cgl-doptions"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.onSimplfyActionChange} checked={this.state.simplipifyAction} /></div>
 								</div>
 								<div className="cg-input dactivity">
 									<div className="subheader">Create actions with ease, these actions won’t need any tracking and can be marked as done with one click.</div>
@@ -164,7 +315,7 @@ class ChallengeGoalActions extends React.Component {
 							<div className="d-action-step-one-options">
 								<div className="cg-label">
 									<div className="cgl-name">Set as required action</div>
-									<div className="cgl-doptions"><Switch height={20} width={40} onChange={this.onRequiredActionChange} checked={this.state.setAsRequired} /></div>
+									<div className="cgl-doptions"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.onRequiredActionChange} checked={this.state.setAsRequired} /></div>
 								</div>
 							</div>
 						</div>
@@ -184,7 +335,7 @@ class ChallengeGoalActions extends React.Component {
 								<h3>Action tracking</h3>
 								<div className="d-action-sidebar-desc">How can participants verify their action completion?	</div>
 								<div className="d-action-sidebar-item">
-									<div className="d-sideitem-label">Integrated apps <span>></span></div>
+									<div className="d-sideitem-label">Integrated apps</div>
 									<div className="d-sideitem-content">
 										<div className="d-sideitem-single"><span className="d-integ-checkbox"><input type="checkbox" name="integrate_item" onChange={(e) => this.addIntegratedItem(e, 'google_fit')} /></span> <img src="/img/logos_google-fit.png" alt="" /> <span className="d-integ-item">Google Fit</span></div>
 										<div className="d-sideitem-single"><span className="d-integ-checkbox"><input type="checkbox" name="integrate_item" onChange={(e) => this.addIntegratedItem(e, 'apple_health')} /></span> <img src="/img/ant-design_apple-filled.png" alt="" /> <span className="d-integ-item">Apple Health</span></div>
@@ -192,34 +343,49 @@ class ChallengeGoalActions extends React.Component {
 									</div>
 								</div>
 								<div className="d-action-sidebar-item">
-									<div className="d-sideitem-label">Custom Tracking <span>></span></div>
+									<div className="d-sideitem-label">Custom Tracking</div>
 									<div className="d-sideitem-content">
-										<div className="d-sideitem-single"><span className="d-integ-checkbox"><input type="checkbox" /></span><img className="d-tracking-image" src="/img/link.png" alt="" /> Via Link</div>
-										<div className="d-sideitem-single"><span className="d-integ-checkbox"><input type="checkbox" /></span><img className="d-tracking-image" src="/img/notes.png" alt="" /> Write an Article</div>
-										<div className="d-sideitem-single"><span className="d-integ-checkbox"><input type="checkbox" /></span><img className="d-tracking-image" src="/img/upload.png" alt="" /> Upload</div>
-										<div className="d-sideitem-single"><span className="d-integ-checkbox"><input type="checkbox" /></span><img className="d-tracking-image" src="/img/text.png" alt="" /> Text Input</div>
-										<div className="d-sideitem-single"><span className="d-integ-checkbox"><input type="checkbox" /></span><img className="d-tracking-image" src="/img/camera.png" alt="" /> Via Camera</div>
+										<div className="d-sideitem-single"><span className="d-integ-checkbox"><input type="checkbox" name="custom_tracking" onChange={(e) => this.addCustomTracking(e, 'via_link')} /></span><img className="d-tracking-image" src="/img/link.png" alt="" /> Via Link</div>
+										<div className="d-sideitem-single"><span className="d-integ-checkbox"><input type="checkbox" name="custom_tracking" onChange={(e) => this.addCustomTracking(e, 'write_article')} /></span><img className="d-tracking-image" src="/img/notes.png" alt="" /> Write an Article</div>
+										<div className="d-sideitem-single"><span className="d-integ-checkbox"><input type="checkbox" name="custom_tracking" onChange={(e) => this.addCustomTracking(e, 'upload')} /></span><img className="d-tracking-image" src="/img/upload.png" alt="" /> Upload</div>
+										<div className="d-sideitem-single"><span className="d-integ-checkbox"><input type="checkbox" name="custom_tracking" onChange={(e) => this.addCustomTracking(e, 'text_input')} /></span><img className="d-tracking-image" src="/img/text.png" alt="" /> Text Input</div>
+										<div className="d-sideitem-single"><span className="d-integ-checkbox"><input type="checkbox" name="custom_tracking" onChange={(e) => this.addCustomTracking(e, 'via_camera')} /></span><img className="d-tracking-image" src="/img/camera.png" alt="" /> Via Camera</div>
 										<div className="d-sideitem-single suggestive-item"><span><input type="checkbox" /></span>Import from social media</div>
 									</div>
 								</div>
 							</div>
 							<div className="d-action-maincontent">
 								<div className="d-main-content">
-									<div className="d-maincontent-label">Integrated Apps <span>></span></div>
+									<div className="d-maincontent-label">Integrated Apps</div>
 									<div className="d-maincontent-items">
 										{integrated_fields()}
+
 									</div>
 								</div>
 								<div className="d-main-content">
-									<div className="d-maincontent-label">Custom Tracking <span>></span></div>
+									<div className="d-maincontent-label">Custom Tracking</div>
 									<div className="d-maincontent-items">
-										show items
+										{custom_tracking()}
 									</div>
 								</div>
-								<div className="d-main-content">
-									<div className="d-maincontent-label">Points</div>
+								<div className="d-main-content no-border">
+									<div className="d-maincontent-label">
+										<div className="cg-label d-points-based">
+											<div className="cgl-name">Points</div>
+											<div className="cgl-doptions"><Switch onColor='#FFCA28' onColor='#FFCA28' height={20} width={40} onChange={this.enableActionPoints} checked={this.state.actionPoints} /></div>
+										</div>
+									</div>
 									<div className="d-maincontent-items">
-										show items
+										{pointData()}
+									</div>
+								</div>
+								<div className="d-main-content no-border">
+									<div className="total-action-points">
+										<div className="total-action-points-left">&nbsp;</div>
+										<div className="total-action-points-right">
+											<label htmlFor="">Total Points</label>
+											<input type="text" />
+										</div>
 									</div>
 								</div>
 							</div>
@@ -286,7 +452,7 @@ class ChallengeGoalActions extends React.Component {
                       </ReactModal>
                   </div>
               </div>
-              <div className="ditem-flow"><div className="dflowtext">Must complete actions in order</div> <Switch height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
+              <div className="ditem-flow"><div className="dflowtext">Must complete actions in order</div> <Switch onColor='#FFCA28' height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
           </div>
         )
     }

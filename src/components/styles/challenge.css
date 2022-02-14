@@ -4049,6 +4049,7 @@
     vertical-align: top;
     border-right: 1px solid #ccc;
     padding: 20px;
+    height: 500px;
 }
 
 .d-action-current-step .d-action-maincontent {
@@ -4056,6 +4057,8 @@
     width: 59%;
     vertical-align: top;
     padding: 20px;
+    height: 500px;
+    overflow-y: scroll;
 }
 
 .d-action-current-step .d-action-sidebar h3 {
@@ -4097,6 +4100,10 @@
     border-bottom: 1px solid #ccc;
 }
 
+.d-action-current-step .d-action-maincontent .d-main-content.no-border {
+    border-bottom: 0 none;
+}
+
 .d-action-current-step .d-action-maincontent .d-main-content .d-maincontent-label {
     font-size: 14px;
     font-weight: bold;
@@ -4106,6 +4113,7 @@
 
 .d-action-current-step .d-action-maincontent .d-main-content .d-maincontent-items {
     font-size: 13px;
+    padding: 10px 20px;
 }
 
 .d-action-current-step .d-action-sidebar .d-action-sidebar-item .d-sideitem-content .d-sideitem-single .d-integ-checkbox {
@@ -4129,4 +4137,169 @@
 .d-action-current-step .d-action-sidebar .d-action-sidebar-item .d-sideitem-content .d-sideitem-single img.d-tracking-image {
     width: 16px;
     margin-right: 5px;
+}
+
+.d-action-current-step .d-selected-integration .d-integrated-selected-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.d-action-current-step .d-selected-integration .d-integrated-selected-item > * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.d-action-current-step .d-selected-integration .d-integrated-selected-item img {
+    width: 20px;
+}
+
+.d-action-current-step .d-selected-integration .d-integration-measurement .d-number-form {
+    display: inline-block;
+    width: 30%;
+    vertical-align: middle;
+}
+.d-action-current-step .d-selected-integration .d-integration-measurement .d-number-form input {
+    border: 2px solid #DFDFE1;
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+.d-action-current-step .d-selected-integration .d-integration-measurement {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+.d-action-current-step .d-selected-integration .d-integration-measurement .d-number-measurement {
+    display: inline-block;
+    width: 65%;
+    margin-left: 4%;
+    vertical-align: middle;
+}
+
+.d-action-current-step .d-selected-integration .d-integration-measurement .d-number-measurement select {
+    border: 2px solid #DFDFE1;
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+.d-action-current-step .d-selected-integration .d-integration-measurement h3 {
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1em;
+    margin-bottom: 5px;
+}
+
+.d-action-current-step .d-selected-integration .d-integration-measurement .d-number-points label {
+    display: block;
+    font-size: 14px;
+}
+
+.d-action-current-step .d-selected-integration .d-integration-measurement .d-number-points select {
+    border: 2px solid #DFDFE1;
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+.d-action-current-step .d-selected-integration .d-verify-action .cg-label{
+    margin-bottom: 10px;
+}
+
+.d-action-current-step .d-selected-integration .d-verify-action .cg-label .cgl-name {
+    display: inline-block;
+    width: 80%;
+    vertical-align: middle;
+}
+
+.d-action-current-step .d-selected-integration .d-verify-action .cg-label .cgl-doptions {
+    display: inline-block;
+    width: 19%;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.d-action-current-step .d-selected-integration .manual_verify select {
+    border: 2px solid #DFDFE1;
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+.d-action-current-step .d-points-based .cgl-name {
+    display: inline-block;
+    width: 80%;
+    vertical-align: middle;
+}
+
+.d-action-current-step .d-points-based .cgl-doptions {
+    display: inline-block;
+    width: 19%;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.d-action-current-step .d-action-points .d-action-points-left {
+    display: inline-block;
+    width: 47%;
+    vertical-align: middle;
+    margin-right: 3%;
+}
+
+.d-action-current-step .d-action-points .d-action-points-left input {
+    border: 2px solid #DFDFE1;
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+.d-action-current-step .d-action-points .d-action-points-right {
+    display: inline-block;
+    width: 49%;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.d-action-current-step .total-action-points .total-action-points-left {
+    display: inline-block;
+    width: 30%;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.d-action-current-step .total-action-points .total-action-points-right {
+    display: inline-block;
+    width: 69%;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.d-action-current-step .total-action-points .total-action-points-right label {
+    display: inline-block;
+    width: 49%;
+    vertical-align: middle;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.d-action-current-step .total-action-points .total-action-points-right input {
+    border: 2px solid #DFDFE1;
+    vertical-align: middle;
+    display: inline-block;
+    width: 45%;
+    margin-left: 5%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 13px;
 }

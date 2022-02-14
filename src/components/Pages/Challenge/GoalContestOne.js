@@ -403,7 +403,7 @@ class GoalContestOne extends React.Component {
                                 <div className="cgl-name">
                                     <div className="cgl-name-title">Allow multiple winners</div>
                                 </div>
-                                <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
+                                <div className="cgl-doptions"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
                             </div>
                             <div className="cg-label many-winners">
                                 <div className="cgl-name">
@@ -532,7 +532,7 @@ class GoalContestOne extends React.Component {
                                             <div className="cgl-name-title">Enable Actions</div>
                                             <div className="cgl-name-subtitle">Enable additional actions to complete a submission</div>
                                         </div>
-                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
+                                        <div className="cgl-doptions"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
                                     </div>
                                     <div className="cg-input dactivity">
                                         <div className="cg-item cg-innerpart">
@@ -541,7 +541,7 @@ class GoalContestOne extends React.Component {
                                                     <div className="cgl-name-title">Social Actions</div>
                                                     <div className="cgl-name-subtitle">Actions that involves other's time/resources for the common good e.g., volunteering, donation drives, etc</div>
                                                 </div>
-                                                <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
+                                                <div className="cgl-doptions"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
                                             </div>
                                         </div>
 
@@ -551,7 +551,7 @@ class GoalContestOne extends React.Component {
                                                     <div className="cgl-name-title">Convert all actions into entry points</div>
                                                     <div className="cgl-name-subtitle">Entries will be based on points, useful for deciding winners randomly.</div>
                                                 </div>
-                                                <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
+                                                <div className="cgl-doptions"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
                                             </div>
                                         </div>
 
@@ -620,7 +620,7 @@ class GoalContestOne extends React.Component {
                                                 <div className="drakicon"><img src="/img/judge_single.png" alt="" /></div>
                                             </div>
                                             <div className="dm-center">
-                                                <Switch height={20} width={40} onChange={this.changeWinnerOptions} checked={this.state.rewardWinner} />
+                                                <Switch onColor='#FFCA28' height={20} width={40} onChange={this.changeWinnerOptions} checked={this.state.rewardWinner} />
                                             </div>
                                             <div className="dm-right">
                                                 <div className="drakicon"><img src="/img/judge_audience.png" alt="" /></div>
@@ -647,13 +647,13 @@ class GoalContestOne extends React.Component {
                                                         <div className="cgl-name">
                                                             <div className="cgl-name-title">Allow winners to pick their rewards</div>
                                                         </div>
-                                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
+                                                        <div className="cgl-doptions"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
                                                     </div>
                                                     <div className="cg-label">
                                                         <div className="cgl-name">
                                                             <div className="cgl-name-title">Allow multiple rewards</div>
                                                         </div>
-                                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
+                                                        <div className="cgl-doptions"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.enableActionChange} checked={this.state.enableAction} /></div>
                                                     </div>
                                                 </div>
                                                 <div className="d-reward-settings-ops">
@@ -668,7 +668,7 @@ class GoalContestOne extends React.Component {
                                 <div className={"cg-item " + (this.state.activepart === 'two_penalty' ? 'active_item' : '')} onFocus={() => this.createActive('two_penalty') }>
                                     <div className="cg-label">
                                         <div className="cgl-name">Penalty</div>
-                                        <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
+                                        <div className="cgl-doptions"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
                                     </div>
                                     <div className="cg-input dactivity">
                                         <div className="subheader">Set penalty for people who did not win.</div>
@@ -884,7 +884,7 @@ class GoalContestOne extends React.Component {
                                     <div className="cg-label">Enable form</div>
                                     <div className="cg-input dactivity">
                                         <div className="subheader">Collect additional information from participants</div>
-                                        <div className="ditem-flow"><div className="dflowtext">Show after joining</div> <Switch height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
+                                        <div className="ditem-flow"><div className="dflowtext">Show after joining</div> <Switch onColor='#FFCA28' height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
                                     </div>
                                 </div>
 

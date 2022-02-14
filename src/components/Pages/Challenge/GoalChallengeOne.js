@@ -558,7 +558,7 @@ class GoalChallengeOne extends React.Component {
                                 </div>
                                 <div className="d-social-item d-enable-user-to-like-page">
                                     <div className="d-social-item-text">After entering, give the user option to Like a Page?</div>
-                                    <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookLoginAllowToLikePage} checked={this.state.isFacebookLoginAllowToLikePage} /></div>
+                                    <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleFacebookLoginAllowToLikePage} checked={this.state.isFacebookLoginAllowToLikePage} /></div>
                                 </div>
                                 <div className={"d-social-value-item d-like-page-after-login" + (this.state.isFacebookLoginAllowToLikePage ? 'enabled-allow-like-page' : "")}>
                                     <label htmlFor="">Page URL</label>
@@ -568,7 +568,7 @@ class GoalChallengeOne extends React.Component {
                                     <div className="d-social-left-segment">
                                         <div className="d-social-item d-enable-repeat-action">
                                             <div className="d-social-item-text">Enable repeated action </div>
-                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookLoginEnableRepeat} checked={this.state.isFacebookLoginEnabledrepeat} /></div>
+                                            <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleFacebookLoginEnableRepeat} checked={this.state.isFacebookLoginEnabledrepeat} /></div>
                                         </div>
                                     </div>
                                     <div className="d-social-right-segment">
@@ -609,7 +609,7 @@ class GoalChallengeOne extends React.Component {
                                 </div>
                                 <div className="d-social-item d-enable-user-to-like-page">
                                     <div className="d-social-item-text">After entering, give the user option to Like a Page?</div>
-                                    <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookViewAllowToLikePage} checked={this.state.isFacebookVisitAllowToLikePage} /></div>
+                                    <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleFacebookViewAllowToLikePage} checked={this.state.isFacebookVisitAllowToLikePage} /></div>
                                 </div>
                                 <div className={"d-social-value-item d-like-page-after-login" + (this.state.isFacebookVisitAllowToLikePage ? 'enabled-allow-like-page' : "")}>
                                     <label htmlFor="">Page URL</label>
@@ -619,7 +619,7 @@ class GoalChallengeOne extends React.Component {
                                     <div className="d-social-left-segment">
                                         <div className="d-social-item d-enable-repeat-action">
                                             <div className="d-social-item-text">Enable repeated action </div>
-                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookViewEnableRepeat} checked={this.state.isFacebookVisitEnabledrepeat} /></div>
+                                            <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleFacebookViewEnableRepeat} checked={this.state.isFacebookVisitEnabledrepeat} /></div>
                                         </div>
                                     </div>
                                     <div className="d-social-right-segment">
@@ -666,7 +666,7 @@ class GoalChallengeOne extends React.Component {
                                     <div className="d-social-left-segment">
                                         <div className="d-social-item d-enable-repeat-action">
                                             <div className="d-social-item-text">Enable repeated action </div>
-                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookViewEnableRepeat} checked={this.state.isFacebookVisitEnabledrepeat} /></div>
+                                            <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleFacebookViewEnableRepeat} checked={this.state.isFacebookVisitEnabledrepeat} /></div>
                                         </div>
                                     </div>
                                     <div className="d-social-right-segment">
@@ -724,32 +724,32 @@ class GoalChallengeOne extends React.Component {
                         <div className="d-social-options-container">
                             <div className="d-social-item">
                                 <div className="d-social-item-text">Login with Facebook <span data-tip="This action will award the user with an entry for logging into Facebook -- award<br />the entry during login or ask the user to Like your Facebook page after login." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
-                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookLogin} checked={this.state.isFacebookLoginEnabled} /></div>
+                                <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleFacebookLogin} checked={this.state.isFacebookLoginEnabled} /></div>
                                 {LoginWithFacebookInput()}
                             </div>
                             <div className="d-social-item">
                                 <div className="d-social-item-text">Visit on Facebook <span data-tip="This action allows you to ask participants to visit a Facebook Page." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
-                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookVisit} checked={this.state.isFacebookVisitEnabled} /></div>
+                                <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleFacebookVisit} checked={this.state.isFacebookVisitEnabled} /></div>
                                 {VisitFacebookOption()}
                             </div>
                             <div className="d-social-item">
                                 <div className="d-social-header">
                                     <div className="d-social-item-text">View Post <span data-tip="This action allows you to ask participants to view a Facebook Post." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
-                                    <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookViewPost} checked={this.state.isFacebookViewPostEnabled} /></div>
+                                    <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleFacebookViewPost} checked={this.state.isFacebookViewPostEnabled} /></div>
                                 </div>
                                 {ViewPostOption()}
                             </div>
                             <div className="d-social-item">
                                 <div className="d-social-header">
                                     <div className="d-social-item-text">Join Facebook Group <span data-tip="This action allows you to ask participants to join a Facebook Group." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
-                                    <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookJoinGroup} checked={this.state.isFacebookJoinGroupEnabled} /></div>
+                                    <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleFacebookJoinGroup} checked={this.state.isFacebookJoinGroupEnabled} /></div>
                                 </div>
                                 {JoinGroupOption()}
                             </div>
                             <div className="d-social-item">
                                 <div className="d-social-header">
                                     <div className="d-social-item-text">Select image/photo <span data-tip="Select an image that corresponds to your page/post." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
-                                    <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleFacebookSelectPhotoVideo} checked={this.state.isFacebookSelectPhotoVideoEnabled} /></div>
+                                    <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleFacebookSelectPhotoVideo} checked={this.state.isFacebookSelectPhotoVideoEnabled} /></div>
                                 </div>
                                 {SelectPhotoVideoOption()}
                             </div>
@@ -781,7 +781,7 @@ class GoalChallengeOne extends React.Component {
                                     <div className="d-social-left-segment">
                                         <div className="d-social-item d-enable-repeat-action">
                                             <div className="d-social-item-text">Enable repeated action </div>
-                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramVisitaPostEnableRepeat} checked={this.state.isInstagramVisitaPostEnabledRepeat} /></div>
+                                            <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleInstagramVisitaPostEnableRepeat} checked={this.state.isInstagramVisitaPostEnabledRepeat} /></div>
                                         </div>
                                     </div>
                                     <div className="d-social-right-segment">
@@ -828,7 +828,7 @@ class GoalChallengeOne extends React.Component {
                                     <div className="d-social-left-segment">
                                         <div className="d-social-item d-enable-repeat-action">
                                             <div className="d-social-item-text">Enable repeated action </div>
-                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramVisitaPostEnableRepeat} checked={this.state.isInstagramVisitaPostEnabledRepeat} /></div>
+                                            <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleInstagramVisitaPostEnableRepeat} checked={this.state.isInstagramVisitaPostEnabledRepeat} /></div>
                                         </div>
                                     </div>
                                     <div className="d-social-right-segment">
@@ -875,7 +875,7 @@ class GoalChallengeOne extends React.Component {
                                     <div className="d-social-left-segment">
                                         <div className="d-social-item d-enable-repeat-action">
                                             <div className="d-social-item-text">Enable repeated action </div>
-                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramVisitaPostEnableRepeat} checked={this.state.isInstagramVisitaPostEnabledRepeat} /></div>
+                                            <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleInstagramVisitaPostEnableRepeat} checked={this.state.isInstagramVisitaPostEnabledRepeat} /></div>
                                         </div>
                                     </div>
                                     <div className="d-social-right-segment">
@@ -922,7 +922,7 @@ class GoalChallengeOne extends React.Component {
                                     <div className="d-social-left-segment">
                                         <div className="d-social-item d-enable-repeat-action">
                                             <div className="d-social-item-text">Enable repeated action </div>
-                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramVisitaPostEnableRepeat} checked={this.state.isInstagramVisitaPostEnabledRepeat} /></div>
+                                            <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleInstagramVisitaPostEnableRepeat} checked={this.state.isInstagramVisitaPostEnabledRepeat} /></div>
                                         </div>
                                     </div>
                                     <div className="d-social-right-segment">
@@ -957,28 +957,28 @@ class GoalChallengeOne extends React.Component {
                             <div className="d-social-item">
                                 <div className="d-social-header">
                                     <div className="d-social-item-text">Follow a user <span data-tip="This action allows you to ask participants to follow a Twitter Account." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
-                                    <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleTwitterFollowAUser} checked={this.state.isTwitterFollowAUserEnabled} /></div>
+                                    <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleTwitterFollowAUser} checked={this.state.isTwitterFollowAUserEnabled} /></div>
                                 </div>
                                 {FollowAUser()}
                             </div>
                             <div className="d-social-item">
                                 <div className="d-social-header">
                                     <div className="d-social-item-text">View a Tweet <span data-tip="This action allows you to ask participants to view a Tweet." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
-                                    <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleTwitterViewATweet} checked={this.state.isTwitterViewATweetEnabled} /></div>
+                                    <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleTwitterViewATweet} checked={this.state.isTwitterViewATweetEnabled} /></div>
                                 </div>
                                 {ViewATweet()}
                             </div>
                             <div className="d-social-item">
                                 <div className="d-social-header">
                                     <div className="d-social-item-text">Retweet a tweet <span data-tip="This action allows you to ask participants to Retweet a Tweet." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
-                                    <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleTwitterRetweetaTweet} checked={this.state.isTwitterRetweetATweetEnabled} /></div>
+                                    <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleTwitterRetweetaTweet} checked={this.state.isTwitterRetweetATweetEnabled} /></div>
                                 </div>
                                 {ReTweet()}
                             </div>
                             <div className="d-social-item">
                                 <div className="d-social-header">
                                     <div className="d-social-item-text">Tweet <span data-tip="This action allows you to ask participants to Tweet." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
-                                    <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleTwitterTweet} checked={this.state.isTwitterTweetEnabled} /></div>
+                                    <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleTwitterTweet} checked={this.state.isTwitterTweetEnabled} /></div>
                                 </div>
                                 {Tweet()}
                             </div>
@@ -1010,7 +1010,7 @@ class GoalChallengeOne extends React.Component {
                                     <div className="d-social-left-segment">
                                         <div className="d-social-item d-enable-repeat-action">
                                             <div className="d-social-item-text">Enable repeated action </div>
-                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramVisitaPostEnableRepeat} checked={this.state.isInstagramVisitaPostEnabledRepeat} /></div>
+                                            <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleInstagramVisitaPostEnableRepeat} checked={this.state.isInstagramVisitaPostEnabledRepeat} /></div>
                                         </div>
                                     </div>
                                     <div className="d-social-right-segment">
@@ -1057,7 +1057,7 @@ class GoalChallengeOne extends React.Component {
                                     <div className="d-social-left-segment">
                                         <div className="d-social-item d-enable-repeat-action">
                                             <div className="d-social-item-text">Enable repeated action </div>
-                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramVisitaPostEnableRepeat} checked={this.state.isInstagramVisitaPostEnabledRepeat} /></div>
+                                            <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleInstagramVisitaPostEnableRepeat} checked={this.state.isInstagramVisitaPostEnabledRepeat} /></div>
                                         </div>
                                     </div>
                                     <div className="d-social-right-segment">
@@ -1097,7 +1097,7 @@ class GoalChallengeOne extends React.Component {
                                     <div className="d-social-left-segment">
                                         <div className="d-social-item d-enable-repeat-action">
                                             <div className="d-social-item-text">Enable repeated action </div>
-                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramShowPhotoVideoEnableRepeat} checked={this.state.isInstagramShowPhotoVideoEnableRepeat} /></div>
+                                            <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleInstagramShowPhotoVideoEnableRepeat} checked={this.state.isInstagramShowPhotoVideoEnableRepeat} /></div>
                                         </div>
                                     </div>
                                     <div className="d-social-right-segment">
@@ -1130,21 +1130,21 @@ class GoalChallengeOne extends React.Component {
                         <div className="d-social-item">
                             <div className="d-social-header">
                                 <div className="d-social-item-text">Select image/photo <span data-tip="This action allows you to ask participants to visit an Instagram Profile." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
-                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramSelectPhotoVideo} checked={this.state.isInstagramSelectPhotoVideoEnabled} /></div>
+                                <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleInstagramSelectPhotoVideo} checked={this.state.isInstagramSelectPhotoVideoEnabled} /></div>
                             </div>
                             {SelectPhotoVideoOption()}
                         </div>
                         <div className="d-social-item">
                             <div className="d-social-header">
                                 <div className="d-social-item-text">Visit a Post <span data-tip="This action allows you to ask participants to view an Instagram Post." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
-                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramVisitAPost} checked={this.state.isInstagramSelectVisitAPost} /></div>
+                                <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleInstagramVisitAPost} checked={this.state.isInstagramSelectVisitAPost} /></div>
                             </div>
                             {VisitAPost()}
                         </div>
                         <div className="d-social-item">
                             <div className="d-social-header">
                                 <div className="d-social-item-text">Visit a Profile <span data-tip="Select an image that corresponds to your page/post." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
-                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramVisitAProfile} checked={this.state.isInstagramSelectVisitAProfile} /></div>
+                                <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleInstagramVisitAProfile} checked={this.state.isInstagramSelectVisitAProfile} /></div>
                             </div>
                             {VisitAPProfile()}
                         </div>
@@ -1175,7 +1175,7 @@ class GoalChallengeOne extends React.Component {
                                     <div className="d-social-left-segment">
                                         <div className="d-social-item d-enable-repeat-action">
                                             <div className="d-social-item-text">Enable repeated action</div>
-                                            <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleInstagramShowPhotoVideoEnableRepeat} checked={this.state.isInstagramShowPhotoVideoEnableRepeat} /></div>
+                                            <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleInstagramShowPhotoVideoEnableRepeat} checked={this.state.isInstagramShowPhotoVideoEnableRepeat} /></div>
                                         </div>
                                     </div>
                                     <div className="d-social-right-segment">
@@ -1208,26 +1208,26 @@ class GoalChallengeOne extends React.Component {
                         <div className="d-social-item">
                             <div className="d-social-header">
                                 <div className="d-social-item-text">Visit youtube channel <span data-tip="This action allows you to ask participants to visit a YouTube Channel." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
-                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleYoutubeVisitChannel} checked={this.state.isYoutubeVisitChannelEnabled} /></div>
+                                <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleYoutubeVisitChannel} checked={this.state.isYoutubeVisitChannelEnabled} /></div>
                             </div>
                             {VisitChannel()}
                         </div>
                         <div className="d-social-item">
                             <div className="d-social-header">
                                 <div className="d-social-item-text">Subscribe to channel <span data-tip="This action allows you to ask participants to subscribe to a YouTube Channel." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
-                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleYoutubeVisitChannel} checked={false} disabled/></div>
+                                <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleYoutubeVisitChannel} checked={false} disabled/></div>
                             </div>
                         </div>
                         <div className="d-social-item">
                             <div className="d-social-header">
                                 <div className="d-social-item-text">Watch a video <span data-tip="This action allows you to ask participants to watch a YouTube video." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
-                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleYoutubeVisitChannel} checked={false} disabled/></div>
+                                <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleYoutubeVisitChannel} checked={false} disabled/></div>
                             </div>
                         </div>
                         <div className="d-social-item">
                             <div className="d-social-header">
                                 <div className="d-social-item-text">Comment a video <span data-tip="This action allows you to ask participants to comment on a YouTube video." className="d-social-question-info"><FontAwesomeIcon icon={faQuestionCircle} /></span></div>
-                                <div className="d-social-item-switch"><Switch height={20} width={40} onChange={this.toogleYoutubeVisitChannel} checked={false} disabled/></div>
+                                <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleYoutubeVisitChannel} checked={false} disabled/></div>
                             </div>
                         </div>
                         <ReactTooltip html="true" />
@@ -1407,7 +1407,7 @@ class GoalChallengeOne extends React.Component {
                                   <div className={"cg-item " + (this.state.activepart === 'two_social_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_social_actions') }>
                                       <div className="cg-label">
                                           <div className="cgl-name">Social Actions</div>
-                                          <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.onSocialActionChange} checked={this.state.socialActionSLide} /></div>
+                                          <div className="cgl-doptions"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.onSocialActionChange} checked={this.state.socialActionSLide} /></div>
                                       </div>
                                       <div className="cg-input dactivity">
                                           <div className="subheader">Actions that help spread the word, build awareness and increase challenge engagement</div>
@@ -1494,7 +1494,7 @@ class GoalChallengeOne extends React.Component {
                                   <div className={"cg-item " + (this.state.activepart === 'two_convert_actions' ? 'active_item' : '')} onFocus={() => this.createActive('two_convert_actions') }>
                                       <div className="cg-label">
                                           <div className="cgl-name">Convert all actions into points</div>
-                                          <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.toogleConvertActionToPoints} checked={this.state.convertActionToPoints} /></div>
+                                          <div className="cgl-doptions"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleConvertActionToPoints} checked={this.state.convertActionToPoints} /></div>
                                       </div>
                                       <div className="cg-input dactivity">
                                           <div className="subheader">Set how many points participant can get for each action</div>
@@ -1504,7 +1504,7 @@ class GoalChallengeOne extends React.Component {
                                   <div className={"cg-item " + (this.state.activepart === 'two_penalty' ? 'active_item' : '')} onFocus={() => this.createActive('two_penalty') }>
                                       <div className="cg-label">
                                           <div className="cgl-name">Penalty</div>
-                                          <div className="cgl-doptions"><Switch height={20} width={40} onChange={this.toogleAllowPenalty} checked={this.state.allowPenalty} /></div>
+                                          <div className="cgl-doptions"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleAllowPenalty} checked={this.state.allowPenalty} /></div>
                                       </div>
                                       <div className="cg-input dactivity">
                                           <div className="subheader">Add penalty if goal has not been met.</div>
@@ -1720,7 +1720,7 @@ class GoalChallengeOne extends React.Component {
                                       <div className="cg-label">Enable form</div>
                                       <div className="cg-input dactivity">
                                           <div className="subheader">Collect additional information from participants</div>
-                                          <div className="ditem-flow"><div className="dflowtext">Show after joining</div> <Switch height={20} width={40} onChange={this.toogleEnableFormAfterJoining} checked={this.state.enableFormAfterJoining} /></div>
+                                          <div className="ditem-flow"><div className="dflowtext">Show after joining</div> <Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleEnableFormAfterJoining} checked={this.state.enableFormAfterJoining} /></div>
                                       </div>
                                   </div>
 
