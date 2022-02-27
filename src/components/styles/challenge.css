@@ -3814,6 +3814,11 @@
     margin-left: 20px;
 }
 
+.d-action-current-step .d-action-steps-options button.d-proceed-action.disabled-button {
+    background: #fff6d9;
+    color: #FFCA28;
+}
+
 .d-action-step-image img {
   margin: 0 auto;
   width: 130px;
@@ -3915,4 +3920,418 @@
 
 .challenges-goal-page-inner .cgoal-center-inner .dmultiple .dm-left.active_main_goal_item {
     background: #ffca28;
+}
+
+.d-add-action-modal-inner .d-action-step-items {
+    padding: 20px 90px;
+}
+
+.d-add-action-modal-inner .d-action-step-items.d-action-step-two {
+    padding: 0;
+}
+
+.d-add-action-modal-inner .d-action-step-items .d-action-step-name label{
+    width: 100%;
+    font-size: 16px;
+    display: inline-block;
+    line-height: 1em;
+}
+
+.d-add-action-modal-inner .d-action-step-items .d-action-step-name input {
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    display: block;
+    padding: 10px 20px;
+    line-height: 1em;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+.d-add-action-modal-inner .d-action-step-items .d-action-step-one-options{
+    margin-bottom: 20px;
+}
+.d-add-action-modal-inner .d-action-step-items .d-action-step-one-options .cg-label .cgl-name {
+    display: inline-block;
+    width: 79%;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.d-add-action-modal-inner .d-action-step-items .d-action-step-one-options .cg-label .cgl-doptions {
+    display: inline-block;
+    width: 20%;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.d-action-current-step .d-add-instructions-fields {
+    margin-bottom: 15px;
+}
+
+.d-action-current-step .d-add-instructions-fields .d-add-header {
+    width: 70%;
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.d-action-current-step .d-add-instructions-fields .d-add-close {
+    width: 29%;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+    color: red;
+}
+
+.d-action-current-step .d-add-instructions-fields .d-add-instruction-textarea textarea {
+    border: 1px solid #ccc;
+    width: 100%;
+    display: block;
+    padding: 10px 20px;
+    line-height: 1em;
+    font-size: 14px;
+    margin-bottom: 15px;
+    border-radius: 18px;
+    min-height: 90px;
+}
+
+.d-action-current-step .d-add-instructions-fields .d-link-options .d-link-option-checkarea {
+    display: inline-block;
+    width: 5%;
+    text-align: center;
+}
+
+.d-action-current-step .d-add-instructions-fields .d-link-options .d-link-option-text {
+    display: inline-block;
+    width: 25%;
+    text-align: center;
+}
+
+.d-action-current-step .d-add-instructions-fields .d-link-options .d-link-option-input {
+    display: inline-block;
+    width: 69%;
+    text-align: center;
+}
+
+.d-action-current-step .d-add-instructions-fields .d-link-options .d-link-option-input input {
+    text-align: left;
+    width: 100%;
+    display: block;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 18px;
+    font-size: 14px;
+}
+
+.d-action-current-step .d-actions-instructions .d-add-instructions{
+    margin: 0 20px;
+}
+
+.d-action-current-step .d-actions-instructions .d-add-instructions button {
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+.d-action-current-step .d-actions-instructions .d-add-instructions button span {
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+.d-action-current-step .d-actions-instructions {
+    margin: 20px 20px;
+}
+
+.d-add-action-modal-inner .d-action-step-items .d-action-step-one-options .subheader {
+    font-size: 14px;
+    line-height: 1.2em;
+}
+
+.d-action-current-step .d-action-sidebar {
+    display: inline-block;
+    width: 40%;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    height: 500px;
+}
+
+.d-action-current-step .d-action-maincontent {
+    display: inline-block;
+    width: 59%;
+    vertical-align: top;
+    padding: 20px;
+    height: 500px;
+    overflow-y: scroll;
+}
+
+.d-action-current-step .d-action-sidebar h3 {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1em;
+    margin-bottom: 5px;
+}
+
+.d-action-current-step .d-action-sidebar .d-action-sidebar-desc {
+    font-size: 12px;
+    line-height: 1.2em;
+    margin-bottom: 10px;
+}
+
+.d-action-current-step .d-action-sidebar .d-action-sidebar-item .d-sideitem-label {
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1em;
+    margin-bottom: 15px;
+}
+
+.d-action-current-step .d-action-sidebar .d-action-sidebar-item {
+    margin-bottom: 10px;
+}
+
+.d-action-current-step .d-action-sidebar .d-action-sidebar-item .d-sideitem-content {
+    margin-left: 10px;
+}
+
+.d-action-current-step .d-action-sidebar .d-action-sidebar-item .d-sideitem-content .d-sideitem-single {
+    font-size: 13px;
+    line-height: 1em;
+    margin-bottom: 8px;
+}
+
+.d-action-current-step .d-action-maincontent .d-main-content {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+.d-action-current-step .d-action-maincontent .d-main-content.no-border {
+    border-bottom: 0 none;
+}
+
+.d-action-current-step .d-action-maincontent .d-main-content .d-maincontent-label {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1em;
+    margin-bottom: 5px;
+}
+
+.d-action-current-step .d-action-maincontent .d-main-content .d-maincontent-items {
+    font-size: 13px;
+    padding: 10px 20px;
+}
+
+.d-action-current-step .d-action-sidebar .d-action-sidebar-item .d-sideitem-content .d-sideitem-single .d-integ-checkbox {
+    display: inline-block;
+    width: 10%;
+    vertical-align: middle;
+}
+
+.d-action-current-step .d-action-sidebar .d-action-sidebar-item .d-sideitem-content .d-sideitem-single img {
+    display: inline-block;
+    width: 23px;
+    vertical-align: middle;
+}
+
+.d-action-current-step .d-action-sidebar .d-action-sidebar-item .d-sideitem-content .d-sideitem-single .d-integ-item {
+    display: inline-block;
+    width: 75%;
+    vertical-align: middle;
+}
+
+.d-action-current-step .d-action-sidebar .d-action-sidebar-item .d-sideitem-content .d-sideitem-single img.d-tracking-image {
+    width: 16px;
+    margin-right: 5px;
+}
+
+.d-action-current-step .d-selected-integration .d-integrated-selected-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.d-action-current-step .d-selected-integration .d-integrated-selected-item > * {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.d-action-current-step .d-selected-integration .d-integrated-selected-item img {
+    width: 20px;
+}
+
+.d-action-current-step .d-selected-integration .d-integration-measurement .d-number-form {
+    display: inline-block;
+    width: 30%;
+    vertical-align: middle;
+}
+.d-action-current-step .d-selected-integration .d-integration-measurement .d-number-form input {
+    border: 2px solid #DFDFE1;
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+.d-action-current-step .d-selected-integration .d-integration-measurement {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+.d-action-current-step .d-selected-integration .d-integration-measurement .d-number-measurement {
+    display: inline-block;
+    width: 65%;
+    margin-left: 4%;
+    vertical-align: middle;
+}
+
+.d-action-current-step .d-selected-integration .d-integration-measurement .d-number-measurement select {
+    border: 2px solid #DFDFE1;
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+.d-action-current-step .d-selected-integration .d-integration-measurement h3 {
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1em;
+    margin-bottom: 5px;
+}
+
+.d-action-current-step .d-selected-integration .d-integration-measurement .d-number-points label {
+    display: block;
+    font-size: 14px;
+}
+
+.d-action-current-step .d-selected-integration .d-integration-measurement .d-number-points select {
+    border: 2px solid #DFDFE1;
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+.d-action-current-step .d-selected-integration .d-verify-action .cg-label{
+    margin-bottom: 10px;
+}
+
+.d-action-current-step .d-selected-integration .d-verify-action .cg-label .cgl-name {
+    display: inline-block;
+    width: 80%;
+    vertical-align: middle;
+}
+
+.d-action-current-step .d-selected-integration .d-verify-action .cg-label .cgl-doptions {
+    display: inline-block;
+    width: 19%;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.d-action-current-step .d-selected-integration .manual_verify select {
+    border: 2px solid #DFDFE1;
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+.d-action-current-step .d-points-based .cgl-name {
+    display: inline-block;
+    width: 80%;
+    vertical-align: middle;
+}
+
+.d-action-current-step .d-points-based .cgl-doptions {
+    display: inline-block;
+    width: 19%;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.d-action-current-step .d-action-points .d-action-points-left {
+    display: inline-block;
+    width: 47%;
+    vertical-align: middle;
+    margin-right: 3%;
+}
+
+.d-action-current-step .d-action-points .d-action-points-left input {
+    border: 2px solid #DFDFE1;
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+.d-action-current-step .d-action-points .d-action-points-right {
+    display: inline-block;
+    width: 49%;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.d-action-current-step .total-action-points .total-action-points-left {
+    display: inline-block;
+    width: 30%;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.d-action-current-step .total-action-points .total-action-points-right {
+    display: inline-block;
+    width: 69%;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.d-action-current-step .total-action-points .total-action-points-right label {
+    display: inline-block;
+    width: 49%;
+    vertical-align: middle;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.d-action-current-step .total-action-points .total-action-points-right input {
+    border: 2px solid #DFDFE1;
+    vertical-align: middle;
+    display: inline-block;
+    width: 45%;
+    margin-left: 5%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+.d-action-current-step .activity-answer-questions {
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+
+.d-action-current-step .activity-answer-questions-inner {
+    background: #F2F2F2;
+    font-size: 12px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.d-action-current-step .activity-answer-questions-inner h2 {
+    font-weight: bold;
+    line-height: 1em;
+    margin-bottom: 5px;
+}
+
+.d-action-current-step .activity-answer-questions-inner .answer-desc {
+    line-height: 1.3em;
+    margin-bottom: 5px;
+}
+
+.d-action-current-step .d-action-sidebar .d-action-sidebar-item .d-sideitem-content .d-sideitem-single.suggestive-item span {
+    margin-right: 10px;
 }

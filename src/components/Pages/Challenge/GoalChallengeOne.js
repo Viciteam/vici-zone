@@ -506,6 +506,8 @@ class GoalChallengeOne extends React.Component {
         );
         
 
+        
+
 
 
         return (
@@ -535,7 +537,9 @@ class GoalChallengeOne extends React.Component {
                           </div>
 
                           <div className={"dstep step_one " + (this.state.stepnumber === 1 ? 'isactive_tab' : '')}>
-                              <StepTwo />
+                              <div className="cgoal-center-inner">
+                                  <StepTwo />
+                              </div>
                           </div>
 
                           <div className={"dstep step_one " + (this.state.stepnumber === 2 ? 'isactive_tab' : '')}>
@@ -695,7 +699,7 @@ class GoalChallengeOne extends React.Component {
                                       <div className="cg-label">Enable form</div>
                                       <div className="cg-input dactivity">
                                           <div className="subheader">Collect additional information from participants</div>
-                                          <div className="ditem-flow"><div className="dflowtext">Show after joining</div> <Switch height={20} width={40} onChange={this.toogleEnableFormAfterJoining} checked={this.state.enableFormAfterJoining} /></div>
+                                          <div className="ditem-flow"><div className="dflowtext">Show after joining</div> <Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleEnableFormAfterJoining} checked={this.state.enableFormAfterJoining} /></div>
                                       </div>
                                   </div>
 
