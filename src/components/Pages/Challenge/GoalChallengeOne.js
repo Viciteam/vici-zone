@@ -53,45 +53,16 @@ class GoalChallengeOne extends React.Component {
             selectedPreviewHeaderImage: '/img/prev-header.png',
             socialActionSLide: false,
             
-            isOpenSingleRewardModal: false, // open social action modal,
             convertActionToPoints: false,
             allowPenalty: false,
             participantsLocation: false,
             enableFormAfterJoining: false,
-            mainGoalValue: 'single',
+            mainGoalValue: 'single', 
 
-            // facebook options
-            isFacebookLoginEnabled: false,
-            isFacebookVisitEnabled: true,
-            isFacebookViewPostEnabled: false,
-            isFacebookJoinGroupEnabled: false,
-            isFacebookSelectPhotoVideoEnabled: false,
+            
 
-            // facebook Login Options
-            isFacebookLoginAllowToLikePage: false,
-            isFacebookLoginEnabledrepeat: false,
-
-            // instagram
-            isInstagramSelectPhotoVideoEnabled: false,
-            isInstagramSelectVisitAPost: false,
-            isInstagramSelectVisitAProfile: false,
-            isInstagramShowPhotoVideoEnabledRepeat: false,
-            isInstagramVisitaPostEnabledRepeat: false,
-            isInstagramVisitaProfileEnabledRepeat: false,
-
-            // twitter
-            isTwitterFollowAUserEnabled: false,
-            isTwitterViewATweetEnabled: false,
-            isTwitterRetweetATweetEnabled: false,
-            isTwitterTweetEnabled: false,
-
-            // youtube
-            isYoutubeVisitChannelEnabled: false,
-
-
-            // facebook Visit Options
-            isFacebookVisitAllowToLikePage: false,
-            isFacebookVisitEnabledrepeat: false,
+            
+            
 
             // challenge form
             formDetails: {
@@ -106,7 +77,6 @@ class GoalChallengeOne extends React.Component {
         this.createActive = this.createActive.bind(this);
         this.proceedToNext = this.proceedToNext.bind(this);
         this.proceedToPrev = this.proceedToPrev.bind(this);
-        this.addActivity = this.addActivity.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.openCountry = this.openCountry.bind(this);
         this.showDropBase = this.showDropBase.bind(this);
@@ -122,37 +92,12 @@ class GoalChallengeOne extends React.Component {
         this.toogleEnableFormAfterJoining = this.toogleEnableFormAfterJoining.bind(this);
         this.toogleMainGoalValues = this.toogleMainGoalValues.bind(this);
 
-        // social popup
-        this.toogleFacebookLogin = this.toogleFacebookLogin.bind(this);
-        this.toogleFacebookVisit = this.toogleFacebookVisit.bind(this);
-        this.toogleFacebookViewPost = this.toogleFacebookViewPost.bind(this);
-        this.toogleFacebookJoinGroup = this.toogleFacebookJoinGroup.bind(this);
-        this.toogleFacebookSelectPhotoVideo = this.toogleFacebookSelectPhotoVideo.bind(this);
 
-        // facebook login options
-        this.toogleFacebookLoginAllowToLikePage = this.toogleFacebookLoginAllowToLikePage.bind(this);
-        this.toogleFacebookLoginEnableRepeat = this.toogleFacebookLoginEnableRepeat.bind(this);
+        
 
-        // facebook view options
-        this.toogleFacebookViewAllowToLikePage = this.toogleFacebookViewAllowToLikePage.bind(this);
-        this.toogleFacebookViewEnableRepeat = this.toogleFacebookViewEnableRepeat.bind(this);
+        
 
-        // instagram options
-        this.toogleInstagramSelectPhotoVideo = this.toogleInstagramSelectPhotoVideo.bind(this);
-        this.toogleInstagramVisitAPost = this.toogleInstagramVisitAPost.bind(this);
-        this.toogleInstagramVisitAProfile = this.toogleInstagramVisitAProfile.bind(this);
-        this.toogleInstagramShowPhotoVideoEnableRepeat = this.toogleInstagramShowPhotoVideoEnableRepeat.bind(this);
-        this.toogleInstagramVisitaPostEnableRepeat = this.toogleInstagramVisitaPostEnableRepeat.bind(this);
-
-        // twitter
-        this.toogleTwitterFollowAUser = this.toogleTwitterFollowAUser.bind(this);
-        this.toogleTwitterViewATweet = this.toogleTwitterViewATweet.bind(this);
-        this.toogleTwitterRetweetaTweet = this.toogleTwitterRetweetaTweet.bind(this);
-        this.toogleTwitterTweet = this.toogleTwitterTweet.bind(this);
-
-        // youtube
-        this.toogleYoutubeVisitChannel = this.toogleYoutubeVisitChannel.bind(this);
-
+        
         // change tab
         
 
@@ -168,49 +113,13 @@ class GoalChallengeOne extends React.Component {
 
 
 
-    toogleFacebookSelectPhotoVideo(){
-        this.setState({isFacebookSelectPhotoVideoEnabled: !this.state.isFacebookSelectPhotoVideoEnabled});
-    }
+    
     
     toogleMainGoalValues(toogleTo){
         this.setState({mainGoalValue: toogleTo});
         this.populateInput('goal_type', toogleTo);
         this.createActive('two_main_goal')
-    }
-
-    toogleFacebookViewPost(){
-        this.setState({isFacebookViewPostEnabled: !this.state.isFacebookViewPostEnabled});
-    }
-
-    toogleFacebookJoinGroup(){
-        this.setState({isFacebookJoinGroupEnabled: !this.state.isFacebookJoinGroupEnabled});
-    }
-
-    // facebook login
-    toogleFacebookLoginEnableRepeat(){
-        this.setState({isFacebookLoginEnabledrepeat: !this.state.isFacebookLoginEnabledrepeat});
-    }
-
-    toogleFacebookLoginAllowToLikePage(){
-        this.setState({isFacebookLoginAllowToLikePage: !this.state.isFacebookLoginAllowToLikePage});
-    }
-
-    toogleFacebookLogin(){
-        this.setState({isFacebookLoginEnabled: !this.state.isFacebookLoginEnabled});
-    }
-
-    // Facebook view
-    toogleFacebookViewEnableRepeat(){
-        this.setState({isFacebookVisitEnabledrepeat: !this.state.isFacebookVisitEnabledrepeat});
-    }
-
-    toogleFacebookViewAllowToLikePage(){
-        this.setState({isFacebookVisitAllowToLikePage: !this.state.isFacebookVisitAllowToLikePage});
-    }
-
-    toogleFacebookVisit(){
-        this.setState({isFacebookVisitEnabled: !this.state.isFacebookVisitEnabled});
-    }
+    } 
 
     toogleConvertActionToPoints(){
         let newState = !this.state.convertActionToPoints;
@@ -245,26 +154,7 @@ class GoalChallengeOne extends React.Component {
         this.populateInput('enable_form_after_joining', enableForm)
     }
     
-    // instagram options
-    toogleInstagramSelectPhotoVideo(){
-        this.setState({isInstagramSelectPhotoVideoEnabled: !this.state.isInstagramSelectPhotoVideoEnabled});
-    }
-
-    toogleInstagramVisitAPost(){
-        this.setState({isInstagramSelectVisitAPost: !this.state.isInstagramSelectVisitAPost});
-    }
-
-    toogleInstagramVisitAProfile(){
-        this.setState({isInstagramSelectVisitAProfile: !this.state.isInstagramSelectVisitAProfile});
-    }
-
-    toogleInstagramShowPhotoVideoEnableRepeat(){
-        this.setState({isInstagramShowPhotoVideoEnableRepeat: !this.state.isInstagramShowPhotoVideoEnableRepeat});
-    }
-
-    toogleInstagramVisitaPostEnableRepeat(){
-        this.setState({isInstagramVisitaPostEnabledRepeat: !this.state.isInstagramVisitaPostEnabledRepeat});
-    }
+    
 
     createActive(setactive){
         console.log('Type ->', setactive);
@@ -278,27 +168,7 @@ class GoalChallengeOne extends React.Component {
     //   console.log('changed '+state+' -> ', e);
     }
 
-    // twitter
-    toogleTwitterFollowAUser(){
-        this.setState({isTwitterFollowAUserEnabled: !this.state.isTwitterFollowAUserEnabled});
-    }
-
-    toogleTwitterViewATweet(){
-        this.setState({isTwitterViewATweetEnabled: !this.state.isTwitterViewATweetEnabled});
-    }
-
-    toogleTwitterRetweetaTweet(){
-        this.setState({isTwitterRetweetATweetEnabled: !this.state.isTwitterRetweetATweetEnabled});
-    }
-
-    toogleTwitterTweet(){
-        this.setState({isTwitterTweetEnabled: !this.state.isTwitterTweetEnabled});
-    }
-
-    // youtube
-    toogleYoutubeVisitChannel(){
-        this.setState({isYoutubeVisitChannelEnabled: !this.state.isYoutubeVisitChannelEnabled});
-    }
+    
 
 
     proceedToNext(){
@@ -320,17 +190,6 @@ class GoalChallengeOne extends React.Component {
     }
 
     /** Page 2 */
-    addActivity(){
-        console.log("shiw -> ", this.activity_list);
-
-        /**
-            Add New Item
-        */
-
-        // this.activityList.push({"activity": ""});
-
-
-    }
 
     resetCount(){
         this.setState({showCountry: false})
