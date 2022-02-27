@@ -4,6 +4,9 @@ import React from 'react';
 import Menu from './Segments/Menu'
 import ChallengeGoalActions from './Segments/ChallengeGoalActions'
 
+// import steps
+import StepOne from './Steps/StepOne'
+
 import Switch from "react-switch";
 
 import ReactModal from 'react-modal';
@@ -36,8 +39,8 @@ class GoalChallengeOne extends React.Component {
         this.state = {
             uinfo: this.props.uinfo,
             activepart: 'title',
-            stepnumber: 0,
-            menuActive: 1,
+            stepnumber: 1,
+            menuActive: 2,
             activityList: [{"activity": ""}],
             checked: false,
             showCountry: false,
@@ -95,7 +98,10 @@ class GoalChallengeOne extends React.Component {
                 'details': {}
             },
             challengeTitle: '',
-            title: ''
+            title: '',
+
+            // challenge form
+            stepOneData: []
         }
         this.createActive = this.createActive.bind(this);
         this.proceedToNext = this.proceedToNext.bind(this);
@@ -159,6 +165,8 @@ class GoalChallengeOne extends React.Component {
 
         this.populateInput = this.populateInput.bind(this);
         this.submitChallengeForm = this.submitChallengeForm.bind(this);
+
+        this.handleStepOneCallback = this.handleStepOneCallback.bind(this);
 
         this.activity_list = [
             {"activity": ""}
@@ -271,11 +279,6 @@ class GoalChallengeOne extends React.Component {
         this.populateInput('enable_form_after_joining', enableForm)
     }
     
-
-
-
-
-
     // instagram options
     toogleInstagramSelectPhotoVideo(){
         this.setState({isInstagramSelectPhotoVideoEnabled: !this.state.isInstagramSelectPhotoVideoEnabled});
@@ -482,23 +485,23 @@ class GoalChallengeOne extends React.Component {
             console.log(response);
         });
 
-    //     api.get('challenge/'+this.state.challengeID).then(
-    //     (response) => {
-    //       console.log('response -> ', response.data.challenges);
-    //       let challenges = response.data.challenges[0];
+        //     api.get('challenge/'+this.state.challengeID).then(
+        //     (response) => {
+        //       console.log('response -> ', response.data.challenges);
+        //       let challenges = response.data.challenges[0];
 
-    //       let challenge_details = [];
-    //       challenge_details['name'] = challenges.name;
-    //       challenge_details['description'] = challenges.description;
-    //       this.setState({challengeDetails: challenge_details});
-          
-    //     //   this.setState({challengeActions: challenges.actions});
+        //       let challenge_details = [];
+        //       challenge_details['name'] = challenges.name;
+        //       challenge_details['description'] = challenges.description;
+        //       this.setState({challengeDetails: challenge_details});
+            
+        //     //   this.setState({challengeActions: challenges.actions});
 
-    //       // challenge actions
-    //     }
-    //   ).catch((error) => {
-    //     console.log('error -> ', error);
-    //   });
+        //       // challenge actions
+        //     }
+        //   ).catch((error) => {
+        //     console.log('error -> ', error);
+        //   });
 
 
         
@@ -506,6 +509,12 @@ class GoalChallengeOne extends React.Component {
 
 
         console.log('params ->', params);
+    }
+
+    handleStepOneCallback(StepOneInfo){
+        console.log('step one info -> ', StepOneInfo);
+        this.setState({stepOneData: StepOneInfo});
+        this.proceedToNext();
     }
 
     render () {
@@ -1327,37 +1336,7 @@ class GoalChallengeOne extends React.Component {
 
                           <div className={"dstep step_one " + (this.state.stepnumber === 0 ? 'isactive_tab' : '')}>
                               <div className="cgoal-center-inner">
-                                  <h2>Title and Description</h2>
-                                  <div className={"cg-item " + (this.state.activepart === 'title' ? 'active_item' : '')} onFocus={() => this.createActive('title') }>
-                                      <div className="cg-label">Challenge Title</div>
-                                      <div className="cg-input">
-                                          <input type="text" onChange={(e) => this.populateInput('challengeTitle', e.target.value)} />
-                                      </div>
-                                  </div>
-
-                                  <div className={"cg-item " + (this.state.activepart === 'hashtags' ? 'active_item' : '')}  onFocus={() => this.createActive('hashtags') }>
-                                      <div className="cg-label">Hashtags</div>
-                                      <div className="cg-input">
-                                          <input type="text" onChange={(e) => this.populateInput('hashtags', e.target.value)} />
-                                      </div>
-                                  </div>
-
-                                  <div className={"cg-item " + (this.state.activepart === 'tagline' ? 'active_item' : '')}  onFocus={() => this.createActive('tagline') }>
-                                      <div className="cg-label">Tagline</div>
-                                      <div className="cg-input">
-                                          <textarea name="" id="" onChange={(e) => this.populateInput('tagline', e.target.value)}></textarea>
-                                      </div>
-                                  </div>
-
-                                  <div className={"cg-item " + (this.state.activepart === 'rules' ? 'active_item' : '')}  onFocus={() => this.createActive('rules') }>
-                                      <div className="cg-label">Instructions and rules</div>
-                                      <div className="cg-input">
-                                          <textarea name="" id="" onChange={(e) => this.populateInput('instructions_rules', e.target.value)}></textarea>
-                                      </div>
-                                  </div>
-                                  <div className="dnext-button">
-                                      <button className="next-arrow" onClick={() => this.proceedToNext()}>Next &rarr;</button>
-                                  </div>
+                                  <StepOne callBack={this.handleStepOneCallback} />
                               </div>
                           </div>
 
