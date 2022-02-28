@@ -39,8 +39,8 @@ class GoalChallengeOne extends React.Component {
         this.state = {
             uinfo: this.props.uinfo,
             activepart: 'title',
-            stepnumber: 1,
-            menuActive: 2,
+            stepnumber: 2,
+            menuActive: 3,
             activityList: [{"activity": ""}],
             checked: false,
             showCountry: false,
@@ -53,17 +53,11 @@ class GoalChallengeOne extends React.Component {
             selectedPreviewHeaderImage: '/img/prev-header.png',
             socialActionSLide: false,
             
-            convertActionToPoints: false,
+            
             allowPenalty: false,
             participantsLocation: false,
             enableFormAfterJoining: false,
-            mainGoalValue: 'single', 
-
             
-
-            
-            
-
             // challenge form
             formDetails: {
                 'details': {}
@@ -83,24 +77,15 @@ class GoalChallengeOne extends React.Component {
         this.activateItem = this.activateItem.bind(this);
         this.changeColor = this.changeColor.bind(this);
         this.changePrevHeader = this.changePrevHeader.bind(this);
-        this.onSocialActionChange = this.onSocialActionChange.bind(this);
         
-        this.toogleConvertActionToPoints = this.toogleConvertActionToPoints.bind(this);
+        
+        
         this.toogleAllowPenalty = this.toogleAllowPenalty.bind(this);
         this.toogleChangeChallengePrivacy = this.toogleChangeChallengePrivacy.bind(this);
         this.toogleSelectSpecificLocation = this.toogleSelectSpecificLocation.bind(this);
         this.toogleEnableFormAfterJoining = this.toogleEnableFormAfterJoining.bind(this);
-        this.toogleMainGoalValues = this.toogleMainGoalValues.bind(this);
-
-
-        
-
-        
-
         
         // change tab
-        
-
         this.populateInput = this.populateInput.bind(this);
         this.submitChallengeForm = this.submitChallengeForm.bind(this);
 
@@ -110,23 +95,8 @@ class GoalChallengeOne extends React.Component {
             {"activity": ""}
         ];
     }
-
-
-
     
     
-    toogleMainGoalValues(toogleTo){
-        this.setState({mainGoalValue: toogleTo});
-        this.populateInput('goal_type', toogleTo);
-        this.createActive('two_main_goal')
-    } 
-
-    toogleConvertActionToPoints(){
-        let newState = !this.state.convertActionToPoints;
-        this.setState({convertActionToPoints: newState});
-        
-        this.populateInput('convert_action_to_points', newState)
-    }
 
     toogleAllowPenalty(){
         this.setState({allowPenalty: !this.state.allowPenalty});
@@ -152,9 +122,7 @@ class GoalChallengeOne extends React.Component {
         let enableForm = !this.state.enableFormAfterJoining;
         this.setState({enableFormAfterJoining: enableForm});
         this.populateInput('enable_form_after_joining', enableForm)
-    }
-    
-    
+    } 
 
     createActive(setactive){
         console.log('Type ->', setactive);
@@ -167,10 +135,7 @@ class GoalChallengeOne extends React.Component {
       this.setState({formDetails: dform});
     //   console.log('changed '+state+' -> ', e);
     }
-
     
-
-
     proceedToNext(){
         let stepnum = this.state.stepnumber + 1;
         let menuitem = this.state.menuActive + 1;
@@ -264,14 +229,8 @@ class GoalChallengeOne extends React.Component {
         this.setState({selectedPreviewHeaderImage: selectedTodo});
     }
 
-    onSocialActionChange(){
-        let socialActions = !this.state.socialActionSLide;
-        this.setState({socialActionSLide: socialActions});
-        this.populateInput('social_action', socialActions)
-    }
-
     
-
+    
     submitChallengeForm(){
         console.log(this.state.formDetails);
 
@@ -320,12 +279,7 @@ class GoalChallengeOne extends React.Component {
         //   ).catch((error) => {
         //     console.log('error -> ', error);
         //   });
-
-
         
-        
-
-
         console.log('params ->', params);
     }
 
@@ -364,11 +318,6 @@ class GoalChallengeOne extends React.Component {
             </li>
         );
         
-
-        
-
-
-
         return (
             <div className="challenges-goal-page-inner">
                 <ReactTooltip />

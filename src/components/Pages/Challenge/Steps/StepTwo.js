@@ -17,12 +17,16 @@ class StepTwo extends React.Component {
         this.state = {
             isactive: this.props.isactive,
             activepart: 'title',
-            
-
+            mainGoalValue: 'single', 
+            convertActionToPoints: false,
+            allowPenalty: false,
+            convertActionToPoints: false,
         }
 
         this.createActive = this.createActive.bind(this);
+        this.toogleMainGoalValues = this.toogleMainGoalValues.bind(this);
 
+        this.toogleConvertActionToPoints = this.toogleConvertActionToPoints.bind(this);
         
 
 
@@ -32,6 +36,19 @@ class StepTwo extends React.Component {
     createActive(setactive){
         console.log('Type ->', setactive);
         this.setState({activepart: setactive})
+    }
+
+    toogleMainGoalValues(toogleTo){
+        this.setState({mainGoalValue: toogleTo});
+        // this.populateInput('goal_type', toogleTo);
+        this.createActive('two_main_goal')
+    } 
+
+    toogleConvertActionToPoints(){
+        let newState = !this.state.convertActionToPoints;
+        this.setState({convertActionToPoints: newState});
+        
+        // this.populateInput('convert_action_to_points', newState)
     }
 
     

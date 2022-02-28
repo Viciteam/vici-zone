@@ -21,7 +21,7 @@ class AddSocialAction extends React.Component {
 
             // facebook options
             isFacebookLoginEnabled: false,
-            isFacebookVisitEnabled: true,
+            isFacebookVisitEnabled: false,
             isFacebookViewPostEnabled: false,
             isFacebookJoinGroupEnabled: false,
             isFacebookSelectPhotoVideoEnabled: false,
@@ -42,6 +42,7 @@ class AddSocialAction extends React.Component {
 
             isTheTwitterFollowUserEnableRepeatAction: false,
             isTwitterViewATweetEnabledRepeat: false,
+            isTwitterRetweetaTweetEnableRepeat: false,
 
             // youtube
             isYoutubeVisitChannelEnabled: false,
@@ -71,6 +72,8 @@ class AddSocialAction extends React.Component {
         this.toogleFacebookViewPost = this.toogleFacebookViewPost.bind(this);
         this.toogleFacebookJoinGroup = this.toogleFacebookJoinGroup.bind(this);
         this.toogleFacebookSelectPhotoVideo = this.toogleFacebookSelectPhotoVideo.bind(this);
+
+        this.onSocialActionChange = this.onSocialActionChange.bind(this);
         
         // facebook login options
         this.toogleFacebookLoginAllowToLikePage = this.toogleFacebookLoginAllowToLikePage.bind(this);
@@ -224,6 +227,16 @@ class AddSocialAction extends React.Component {
 
     toogleTwitterViewATweetEnableRepeat(){
         this.setState({isTwitterViewATweetEnabledRepeat: !this.state.isTwitterViewATweetEnabledRepeat});
+    }
+
+    toogleTwitterRetweetatweetEnableRepeat(){
+        this.setState({isTwitterRetweetaTweetEnableRepeat: !this.state.isTwitterRetweetaTweetEnableRepeat});
+    }
+
+    onSocialActionChange(){
+        let socialActions = !this.state.socialActionSLide;
+        this.setState({socialActionSLide: socialActions});
+        // this.populateInput('social_action', socialActions)
     }
 
     render () {
@@ -565,7 +578,7 @@ class AddSocialAction extends React.Component {
                                     <div className="d-social-left-segment">
                                         <div className="d-social-item d-enable-repeat-action">
                                             <div className="d-social-item-text">Enable repeated action </div>
-                                            <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleInstagramVisitaPostEnableRepeat} checked={this.state.isInstagramVisitaPostEnabledRepeat} /></div>
+                                            <div className="d-social-item-switch"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleTwitterRetweetatweetEnableRepeat} checked={this.state.isTwitterRetweetaTweetEnableRepeat} /></div>
                                         </div>
                                     </div>
                                     <div className="d-social-right-segment">
@@ -575,7 +588,7 @@ class AddSocialAction extends React.Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className={"d-social-values-additional-options " + (this.state.isInstagramVisitaPostEnabledRepeat ? 'repeated-action-enabled' : "")}>
+                                <div className={"d-social-values-additional-options " + (this.state.isTwitterRetweetaTweetEnableRepeat ? 'repeated-action-enabled' : "")}>
                                     <div className="d-social-value-item d-max-points">
                                         <label htmlFor="">Maximum points per</label>
                                         <select name="" id="">

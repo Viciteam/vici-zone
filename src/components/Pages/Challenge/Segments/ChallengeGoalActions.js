@@ -51,7 +51,8 @@ class ChallengeGoalActions extends React.Component {
               },
               'total': ''
             },
-            ActionList: []
+            ActionList: [],
+			ActionsMustCompleteActionInOrder: false
         }
 
         this.openAddActionModal = this.openAddActionModal.bind(this);
@@ -72,6 +73,8 @@ class ChallengeGoalActions extends React.Component {
 		this.addIntegrationParameters = this.addIntegrationParameters.bind(this);
 		this.savePointsEveryWhen = this.savePointsEveryWhen.bind(this);
 		this.showVerificationToogle = this.showVerificationToogle.bind(this);
+
+		this.toogleMustCompleteActionInOrder = this.toogleMustCompleteActionInOrder.bind(this);
     }
 
     addActivity(){
@@ -216,6 +219,10 @@ class ChallengeGoalActions extends React.Component {
 		}
 
 		this.setState({currentActions: dform});
+	}
+
+	toogleMustCompleteActionInOrder(){
+		this.setState({ActionsMustCompleteActionInOrder: !this.state.ActionsMustCompleteActionInOrder});
 	}
 
     render () {
@@ -489,15 +496,6 @@ class ChallengeGoalActions extends React.Component {
 										{pointData()}
 									</div>
 								</div>
-								{/* <div className="d-main-content no-border">
-									<div className="total-action-points">
-										<div className="total-action-points-left">&nbsp;</div>
-										<div className="total-action-points-right">
-											<label htmlFor="">Total Points</label>
-											<input type="text" disabled value="0" />
-										</div>
-									</div>
-								</div> */}
 							</div>
 						</div>
 						<div className="d-action-steps-options">
@@ -552,7 +550,7 @@ class ChallengeGoalActions extends React.Component {
                       </ReactModal>
                   </div>
               </div>
-              <div className="ditem-flow"><div className="dflowtext">Must complete actions in order</div> <Switch onColor='#FFCA28' height={20} width={40} onChange={this.handleChange} checked={this.state.checked} /></div>
+              <div className="ditem-flow"><div className="dflowtext">Must complete actions in order</div> <Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleMustCompleteActionInOrder} checked={this.state.ActionsMustCompleteActionInOrder} /></div>
           </div>
         )
     }

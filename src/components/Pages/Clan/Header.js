@@ -173,8 +173,8 @@ class ClanHeader extends React.Component {
                                             <div>Message</div>
                                             <div className="flex pr-3">
                                                 <button className="p-1 mr-3 border rounded border-light_gray">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                                     </svg>
                                                 </button>
                                                 <div className="text-lg text-vici_secondary pt-1">New Message</div>
@@ -203,8 +203,8 @@ class ClanHeader extends React.Component {
                                                     </div>
                                                 </div>
                                                 <div className="pt-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                                                     </svg>
                                                 </div>
                                             </div>
@@ -254,8 +254,8 @@ class ClanHeader extends React.Component {
                                             <div onClick={this.handleOpenCreateBrandProfile} className="flex px-6 py-3 cursor-pointer ">
                                                 <div>
                                                     <button className="p-1 border rounded border-medium_gray text-vici_secondary">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                                         </svg>
                                                     </button>
                                                 </div>
@@ -268,11 +268,11 @@ class ClanHeader extends React.Component {
                                                     Focus Mode
                                                 </div>
                                                 <div>
-                                                    <label for="toggleB" class="flex items-center cursor-pointer">
-                                                        <div class="relative mute-chat">
-                                                            <input type="checkbox" id="toggleB" class="sr-only" />
-                                                            <div class="block bg-bottom_gray w-12 h-7 rounded-full"></div>
-                                                            <div class="dot absolute left-1 top-1 bg-vici_gray w-5 h-5 rounded-full transition"></div>
+                                                    <label for="toggleB" className="flex items-center cursor-pointer">
+                                                        <div className="relative mute-chat">
+                                                            <input type="checkbox" id="toggleB" className="sr-only" />
+                                                            <div className="block bg-bottom_gray w-12 h-7 rounded-full"></div>
+                                                            <div className="dot absolute left-1 top-1 bg-vici_gray w-5 h-5 rounded-full transition"></div>
                                                         </div>
                                                     </label>
                                                 </div>
@@ -298,17 +298,17 @@ class ClanHeader extends React.Component {
                                             <div className="mx-6 pb-6">
                                                 <div className="text-xs">
                                                     <span className="px-1">
-                                                        <a href="/privacy-policy" class="iubenda-white no-brand iubenda-noiframe iubenda-embed iubenda-noiframe iub-body-embed" title="Privacy Policy">
+                                                        <a href="/privacy-policy" className="iubenda-white no-brand iubenda-noiframe iubenda-embed iubenda-noiframe iub-body-embed" title="Privacy Policy">
                                                             Privacy Policy
                                                         </a>                                                       
                                                     </span> • 
                                                     <span className="px-1">
-                                                        <a href="/terms-and-conditions" class="iubenda-white no-brand iubenda-noiframe iubenda-embed iubenda-noiframe iub-body-embed" title="Terms and Conditions">
+                                                        <a href="/terms-and-conditions" className="iubenda-white no-brand iubenda-noiframe iubenda-embed iubenda-noiframe iub-body-embed" title="Terms and Conditions">
                                                             Terms and Conditions
                                                         </a>
                                                     </span> • 
                                                     <span className="px-1">
-                                                        <a href="/cookie-policy" class="iubenda-white no-brand iubenda-noiframe iubenda-embed iubenda-noiframe iub-body-embed" title="Cookie Policy">
+                                                        <a href="/cookie-policy" className="iubenda-white no-brand iubenda-noiframe iubenda-embed iubenda-noiframe iub-body-embed" title="Cookie Policy">
                                                             Cookie Policy
                                                         </a>
                                                     </span> • 
@@ -347,8 +347,8 @@ class ClanHeader extends React.Component {
                         <a href="/"><img alt="" src="/img/vici.png"/></a>
                     </div>
                     <div className="flex lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </div>
                     <div className="hidden lg:flex">
