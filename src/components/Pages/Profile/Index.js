@@ -3,6 +3,9 @@ import AboutMe from './Components/AboutMe';
 import ProfileContent from './Components/ProfileContent';
 import RightSidebar from './Components/RightSidebar';
 import EditProfile from './Modal/EditProfile';
+
+import NewChallengeModal from './Segments/NewChallengeModal';
+
 import { ProfileContext } from '../Profile/ProfileContext'
 
 import auth from '../../../services/auth';
@@ -12,9 +15,11 @@ class Index extends React.Component {
         super(props);
         this.state = {
             openEditProfileModal: false,
+            newChallengeModal: false
         }
         this.handleOpenEditProfileModal = this.handleOpenEditProfileModal.bind(this);
         this.handleCloseEditProfileModal = this.handleCloseEditProfileModal.bind(this);      
+        this.newChallenge = this.newChallenge.bind(this);      
     }
 
     static contextType = ProfileContext;
@@ -25,6 +30,11 @@ class Index extends React.Component {
 
     handleCloseEditProfileModal () {
         this.setState({ openEditProfileModal: false });
+    }
+
+    newChallenge(){
+        console.log("open modal now");
+        this.setState({ newChallengeModal: true });
     }
 
     render () {
@@ -86,9 +96,9 @@ class Index extends React.Component {
                                     </button>
                                 </div>
                                 <div className="mt-2">
-                                    <button onClick={this.handleOpenEditProfileModal} className="text-sm flex bg-vici_secondary w-full text-white_color px-3 py-1 pl-3 rounded">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-0 sm:mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                    <button onClick={this.handleOpenEditProfileModal} className="text-sm flex bg-vici_secondary w-full text-white_color px-3 py-1 rounded">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                         </svg>
                                         <span className="hidden sm:block">Edit Profile</span>
                                     </button>
@@ -114,11 +124,11 @@ class Index extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="mt-3 lg:mt-0 flex justify-center">
-
-                            <button className="flex py-2 px-3 border rounded-2xl border-vici_button_txt shadow-border_shadow_button">
+                        <div>
+                            <button className="flex py-2 px-3 border rounded-2xl border-vici_button_txt shadow-border_shadow_button" onClick={() => this.newChallenge() }>
                                 <img alt="" src="/img/Frame 1989.png" />
                                 <div className="px-2 pt-1 text-vici_button_txt">New Challenge</div>
+                                {this.state.newChallengeModal && <NewChallengeModal showModal={this.state.newChallengeModal} />}
                             </button>
                         </div>
                     </div>

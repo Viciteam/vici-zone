@@ -134,6 +134,10 @@ function App() {
               <ClanHeader />
               <GoalChallengeOne />
             </Route>
+            <Route exact path="/challenge/goal/:id">
+              <ClanHeader />
+              <GoalChallengeOne />
+            </Route>
             <Route exact path="/challenge/contest">
               <ClanHeader />
               <GoalContestOne />

@@ -335,8 +335,8 @@ const Content = () => {
                 viewBox: "0 0 24 24",
                 stroke: "currentColor",
                 children: /*#__PURE__*/Object(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__["jsxDEV"])("path", {
-                  "stroke-linecap": "round",
-                  "stroke-linejoin": "round",
+                  "strokeLinecap": "round",
+                  "strokeLinejoin": "round",
                   "stroke-width": "2",
                   d: "M14 5l7 7m0 0l-7 7m7-7H3"
                 }, void 0, false, {
