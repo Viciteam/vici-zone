@@ -329,7 +329,7 @@ class SideProfile extends React.Component {
                     
                     <div className="user-details">
                         <div className="ud-inner">
-                            <div className="flex justify-between">
+                            <div className="flex justify-between side-profile-name">
                                 <div className="w-48 truncate">
                                     <h3><a href='/profile' className="truncate">{ auth.isAuthenticated() ? auth.userProfile() ? auth.userProfile().name : auth.user().name : 'Guest User'}</a></h3>
                                 </div>
@@ -341,27 +341,27 @@ class SideProfile extends React.Component {
                                     }
                                 </div>
                             </div>
-                            <div className="grid grid-cols-3 mt-3 pb-3 border-b border-vici_gray">
-                                    <div className="text-center">
+                            <div className="grid grid-cols-3 mt-3 pb-3 border-b border-vici_gray side-profile-badge">
+                                    <div className="text-center badge-data">
                                         <div className="font-bold">2</div>
-                                        <div>Following</div>
+                                        <div className="badge-details">Following</div>
                                     </div>
-                                    <div className="text-center">
+                                    <div className="text-center badge-data">
                                         <div className="font-bold">25</div>
-                                        <div>Followers</div>
+                                        <div className="badge-details">Followers</div>
                                     </div>
-                                    <div className="text-center">
+                                    <div className="text-center badge-data">
                                         <div className="font-bold">259</div>
-                                        <div>Friends</div>
+                                        <div className="badge-details">Friends</div>
                                     </div>
                             </div>
-                            <div className="flex mt-6 justify-between">
+                            <div className="flex mt-6 justify-between side-feeling">
                                 <div className="flex">
                                     <img src="/img/waving.png" className="w-6 h-6 mt-2" />
                                     <div className="pl-3 pt-2 text-sm font-bold text-vici_secondary_text">How do you feel today?</div>
                                 </div>
                                 <div className="relative">
-                                    <div onClick={this.handleOpenEmojis} className="flex border p-1 rounded-full border-bottom_gray cursor-pointer">
+                                    <div onClick={this.handleOpenEmojis} className="flex border side-feeling-content p-1 rounded-full border-bottom_gray cursor-pointer">
                                         <img src={this.state.emoji} />
                                         <span className="text-sm font-bold pl-2 pt-1 capitalize">{ this.state.emojiText }</span>
                                         <div className="pt-1">

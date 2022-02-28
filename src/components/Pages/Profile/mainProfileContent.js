@@ -73,14 +73,34 @@ class mainProfileContent extends React.Component{
         const user_information = this.state.userinfo;
         return (
             <div className="container mx-auto mt-20">
-                <div className="main-content">
-                    <div className="profile-part pt-4">
+                <div className="main-content flex">
+                    <div className="w-1/4 hidden lg:block pt-4">
                         <SideProfile uinfo={user_information} />
                     </div>
-                    <div className="content-part">
+                    <div className="w-1/2 middle-content">
+
+                        <div className="w-full block lg:hidden pt-4">
+                            <SideProfile uinfo={user_information} />
+                        </div>
+
+                        <div className="w-full block lg:hidden">
+                            <div className="sr-inner">
+                                {/* <DailyChallenge />
+                                <OngoingChallenge /> */}
+                                {/* <PopularClans /> */}
+                                {/* <WhoToFollow /> */}
+                                <PersonalAgenda />
+                                <AllChallengesSidebar />
+                                <div className="bg-white_color p-3 flex justify-center rounded-xl shadow-vici mt-6">
+                                    <Calendar />
+                                </div>
+                                <Friends />
+                            </div>
+                        </div>
+
                         <div className="content-inner">
-                            <div className="timeline">
-                                <div className="top-part">
+                            <div className="w-full">
+                                <div className="top-part mx-6">
                                     {
                                         auth.isAuthenticated() ? 
                                         <div className="relative">
@@ -137,9 +157,9 @@ class mainProfileContent extends React.Component{
                                             <br className="clear"/> */}
                                         </div>
                                         :
-                                        <div>
-                                            <div className='flex w-full h-36 justify-center pt-14 border border-medium_gray rounded-xl'>
-                                                Log in to Vici to create and participate in challenges. <span onClick={this.handleOpenModal} className="font-bold cursor-pointer pl-1">Login</span> 
+                                        <div className="px-6 mb-3">
+                                            <div className='flex w-full h-36 justify-center pt-14 border border-medium_gray rounded-xl login-details'>
+                                                <span>Log in to Vici to create and participate in challenges.</span> <span onClick={this.handleOpenModal} className="font-bold cursor-pointer pl-1">Login</span> 
                                             </div>
                                             {this.state.openModal && <LoginModal closeModal={this.handleCloseModal } />}
                                         </div>
@@ -148,9 +168,9 @@ class mainProfileContent extends React.Component{
 
                                 </div>
                                 <div className="middle-part">
-                                    <div className="mp-inner">
-                                        <Tabs defaultIndex={0}>
-                                            <TabList className="tabtitles">
+                                    <div className="mp-inner pt-0">
+                                        <Tabs defaultIndex={0} className="mt-6" >
+                                            <TabList className="tabtitles px-6">
                                                 <Tab>Challenges & Achievements</Tab>
                                                 <Tab>Timeline</Tab>
                                             </TabList>
@@ -165,12 +185,8 @@ class mainProfileContent extends React.Component{
                                     </div>
                                 </div>
                             </div>
-                            <div className="srightnotif">
+                            {/* <div className="srightnotif hidden lg:block">
                                 <div className="sr-inner">
-                                    {/* <DailyChallenge />
-                                    <OngoingChallenge /> */}
-                                    {/* <PopularClans /> */}
-                                    {/* <WhoToFollow /> */}
                                     <PersonalAgenda />
                                     <AllChallengesSidebar />
                                     <div className="bg-white_color p-3 rounded-xl shadow-vici mt-6">
@@ -179,9 +195,27 @@ class mainProfileContent extends React.Component{
                                     <Friends />
                                 </div>
                             </div>
-                            <br className="clear"/>
+                            <br className="clear"/> */}
                         </div>
                     </div>
+
+                    <div className="w-1/4 hidden lg:block">
+                        <div className="sr-inner">
+                            {/* <DailyChallenge />
+                            <OngoingChallenge /> */}
+                            {/* <PopularClans /> */}
+                            {/* <WhoToFollow /> */}
+                            <PersonalAgenda />
+                            <AllChallengesSidebar />
+                            <div className="bg-white_color p-3 rounded-xl shadow-vici mt-6">
+                                <Calendar />
+                            </div>
+                            <Friends />
+                        </div>
+                    </div>
+                    <br className="clear"/>
+
+
                 </div>
             </div>
         )

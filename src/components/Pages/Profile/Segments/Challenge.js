@@ -103,7 +103,7 @@ class Challenge extends React.Component {
 
         return (
             <div className="challenges-inner">
-                <div className="dchallemgeheader">
+                {/* <div className="dchallemgeheader">
                     <div className="dc-inner">
                         <div className="dci-left">
                             <button onClick={this.handleOpenModal}>
@@ -121,7 +121,7 @@ class Challenge extends React.Component {
                             
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="dchallenge-list">
                     <div className="dch-inner">
                         <ChallengeList />

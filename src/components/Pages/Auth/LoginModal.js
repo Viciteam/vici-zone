@@ -340,7 +340,7 @@ function LoginModal ({ closeModal }) {
                     <div className="">
                         <div className="mt-6">
                             <GoogleLogin
-                                clientId="919545217754-5f49t1u2bdg1j5vrshge709km7nmn73l.apps.googleusercontent.com"
+                                clientId="210346353529-aiqqk6kajcfu5kosjg4o7i8rj8gp6b5m.apps.googleusercontent.com"
                                 buttonText="Continue with Google"
                                 onSuccess={LoginWithGoogle}
                                 // onFailure={this.responseGoogle}
