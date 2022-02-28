@@ -66,11 +66,18 @@ class JoinWaitlist extends React.Component {
         // console.log('changeSegment -> id ->', id);
 
         const Mautic = require('mautic');
+        // const client = new Mautic({
+        //     baseUrl: 'https://send.ibial.com/api',
+        //     auth: {
+        //         username: 'ibialdev',
+        //         password: 'ibialdevpassword'
+        //     }
+        // });
         const client = new Mautic({
-            baseUrl: 'https://send.ibial.com/api',
+            baseUrl: 'https://send.vici.website/api',
             auth: {
-                username: 'ibialdev',
-                password: 'ibialdevpassword'
+                username: 'hello@vici.team',
+                password: 'Vici@Team#1'
             }
         });
 
@@ -105,8 +112,8 @@ class JoinWaitlist extends React.Component {
             const client = new Mautic({
                 baseUrl: 'https://send.vici.website/api',
                 auth: {
-                    username: 'admin',
-                    password: 'viciteam'
+                    username: 'hello@vici.team',
+                    password: 'Vici@Team#1'
                 }
             });
 
