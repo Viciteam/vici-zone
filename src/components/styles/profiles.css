@@ -1620,3 +1620,64 @@ ul.tabtitles > li {
 .isauthheader .dmedals {
     margin-right: 15px;
 }
+
+
+@media only screen and (max-width: 1022px) {
+    .middle-content {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .side-profile-name,
+    .side-profile-badge,
+    .side-feeling {
+        display: block;
+    }
+    .badge-data {
+        display: flex;
+    }
+    .badge-details {
+        padding-left: 10px;
+    }
+    .side-feeling-content {
+        justify-content: space-evenly;
+        margin-top: 12px;
+    }
+    .login-details {
+        display: block;
+        text-align: center;
+    }
+    .container {
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .side-profile-name,
+    .side-profile-badge,
+    .side-feeling {
+        display: flex;
+    }
+    .badge-data {
+        display: block;
+    }
+    .badge-details {
+        padding-left: 0px;
+    }
+    .side-feeling-content {
+        justify-content: space-evenly;
+        margin-top: 0px;
+    }
+    .side-profile-badge {
+        justify-content: space-between;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .login-details {
+        display: block;
+        text-align: center;
+    }
+}
+
