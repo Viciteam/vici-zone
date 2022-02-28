@@ -1,6 +1,8 @@
 import './../../styles/challenge.css';
 import React from 'react';
 
+import { withRouter } from 'react-router-dom'
+
 import Menu from './Segments/Menu'
 
 // import steps
@@ -37,6 +39,7 @@ class GoalChallengeOne extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            challengeID: this.props.match.params.id,
             uinfo: this.props.uinfo,
             activepart: 'title',
             stepnumber: 1,
@@ -696,4 +699,4 @@ class GoalChallengeOne extends React.Component {
     }
 }
 
-export default GoalChallengeOne
+export default withRouter(GoalChallengeOne)

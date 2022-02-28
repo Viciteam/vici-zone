@@ -99,6 +99,8 @@ class AddSocialAction extends React.Component {
         this.toogleTwitterFollowUserEnableRepeatAction = this.toogleTwitterFollowUserEnableRepeatAction.bind(this);
         this.toogleTwitterViewATweetEnableRepeat = this.toogleTwitterViewATweetEnableRepeat.bind(this);
 
+        this.toogleTwitterRetweetatweetEnableRepeat = this.toogleTwitterRetweetatweetEnableRepeat.bind(this);
+
         // youtube
         this.toogleYoutubeVisitChannel = this.toogleYoutubeVisitChannel.bind(this);
 
