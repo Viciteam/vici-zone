@@ -3,6 +3,7 @@ import React from 'react';
 
 import ChallengeGoalActions from './../Segments/ChallengeGoalActions'
 import AddSocialAction from './../Segments/AddSocialAction'
+import ChallengePenalties from './../Segments/ChallengePenalties'
 import Switch from "react-switch";
 import ReactModal from 'react-modal';
 import ReactTooltip from 'react-tooltip';
@@ -113,58 +114,7 @@ class StepTwo extends React.Component {
                 </div>
 
                 <div className={"cg-item " + (this.state.activepart === 'two_penalty' ? 'active_item' : '')} onFocus={() => this.createActive('two_penalty') }>
-                    <div className="cg-label">
-                        <div className="cgl-name">Penalty</div>
-                        <div className="cgl-doptions"><Switch onColor='#FFCA28' height={20} width={40} onChange={this.toogleAllowPenalty} checked={this.state.allowPenalty} /></div>
-                    </div>
-                    <div className="cg-input dactivity">
-                        <div className="subheader">Add penalty if goal has not been met.</div>
-                        <div className="activity-list">
-                            <div className="activity-items">
-                                <div className="ac-item">
-                                    <div className="dleftitems">
-                                        <span className="dicon"><FontAwesomeIcon icon={faBars} /></span>
-                                        <span className="dtext">Drink 8 glasses of water everyday</span>
-                                    </div>
-                                    <div className="drightitems">
-                                        <span className="doptions"><FontAwesomeIcon icon={faEllipsisV} /></span>
-                                    </div>
-                                </div>
-                                <div className="ac-item">
-                                    <div className="dleftitems">
-                                        <span className="dicon"><FontAwesomeIcon icon={faBars} /></span>
-                                        <span className="dtext">Drink 8 glasses of water everyday</span>
-                                    </div>
-                                    <div className="drightitems">
-                                        <span className="doptions"><FontAwesomeIcon icon={faEllipsisV} /></span>
-                                    </div>
-                                </div>
-                                <div className="ac-item">
-                                    <div className="dleftitems">
-                                        <span className="dicon"><FontAwesomeIcon icon={faBars} /></span>
-                                        <span className="dtext">Drink 8 glasses of water everyday</span>
-                                    </div>
-                                    <div className="drightitems">
-                                        <span className="doptions"><FontAwesomeIcon icon={faEllipsisV} /></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="activity-add-button">
-                                <div className="daddactions" onClick={() => this.addActivity()}>
-                                    <span className="dicon"><FontAwesomeIcon icon={faPlus} /></span>
-                                    <span className="dtext">Add penalty action</span>
-                                </div>
-                                <div className="daddactions" onClick={() => this.addActivity()}>
-                                    <span className="dicon"><FontAwesomeIcon icon={faPlus} /></span>
-                                    <span className="dtext">Add social action</span>
-                                </div>
-                                <div className="daddactions" onClick={() => this.addActivity()}>
-                                    <span className="dicon"><FontAwesomeIcon icon={faPlus} /></span>
-                                    <span className="dtext">Lose Vici tokens</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <ChallengePenalties />
                 </div>
 
                 <div className="dnext-button">
