@@ -42,8 +42,8 @@ class GoalChallengeOne extends React.Component {
             challengeID: this.props.match.params.id,
             uinfo: this.props.uinfo,
             activepart: 'title',
-            stepnumber: 1,
-            menuActive: 2,
+            stepnumber: 0,
+            menuActive: 1,
             activityList: [{"activity": ""}],
             checked: false,
             showCountry: false,
@@ -83,7 +83,7 @@ class GoalChallengeOne extends React.Component {
         
         
         
-        this.toogleAllowPenalty = this.toogleAllowPenalty.bind(this);
+        
         this.toogleChangeChallengePrivacy = this.toogleChangeChallengePrivacy.bind(this);
         this.toogleSelectSpecificLocation = this.toogleSelectSpecificLocation.bind(this);
         this.toogleEnableFormAfterJoining = this.toogleEnableFormAfterJoining.bind(this);
@@ -101,10 +101,7 @@ class GoalChallengeOne extends React.Component {
     
     
 
-    toogleAllowPenalty(){
-        this.setState({allowPenalty: !this.state.allowPenalty});
-        
-    }
+    
 
     toogleChangeChallengePrivacy(){
         console.log();
