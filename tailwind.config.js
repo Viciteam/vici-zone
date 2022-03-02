@@ -83,6 +83,9 @@ module.exports = {
     extend: {
       width: {
         'vici_sidebar' : '420px',
+      },
+      backgroundImage: {
+        'vici-wailist': "url('img/bg-logo-wailist.png')",
       }
     },
   },

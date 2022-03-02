@@ -1,10 +1,9 @@
 //import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Header from './components/Header'
-import Content  from './components/Content'
-import Footer from './components/Footer'
-import Thankyou from './components/ThankyouPage/Thankyou';
+
+import Waitlist from './components/Pages/Waitlist/Waitlist';
+
 import ThankyouHeader from './components/ThankyouPage/Header';
 import NewThankyouPage from './components/ThankyouPage/NewThankyouPage';
 
@@ -77,13 +76,15 @@ function App() {
       <div className="bg-primary_background font-nunito">
           <Switch>
            <Route exact path="/">
-              <ClanHeader />
-              <ProfileContent />
+              {/* <ClanHeader />
+              <ProfileContent /> */}
+              <Waitlist />
             </Route>
             <Route exact path="/waitlist">
-              <Header />
+              {/* <Header />
               <Content />
-              <Footer />
+              <Footer /> */}
+              <Waitlist />
             </Route>
             <Route path="/waitlist-thanks">
               <ThankyouHeader />
