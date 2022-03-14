@@ -91,7 +91,10 @@ function App() {
               {/* <Thankyou /> */}
               <NewThankyouPage />
             </Route>
-
+            <Route path="/optin-thanks">
+              <ThankyouHeader />
+              <NewThankyouPage />
+            </Route>
             <Route path="/profile">
             <ProfileProvider>
                 <ClanHeader />
