@@ -6,6 +6,7 @@ import Waitlist from './components/Pages/Waitlist/Waitlist';
 
 import ThankyouHeader from './components/ThankyouPage/Header';
 import NewThankyouPage from './components/ThankyouPage/NewThankyouPage';
+import OptinThanks from './components/ThankyouPage/OptinThanks';
 
 // import ProfileHeader from './components/Pages/Profile/Header';
 import ProfileContent from './components/Pages/Profile/mainProfileContent';
@@ -92,8 +93,9 @@ function App() {
               <NewThankyouPage />
             </Route>
             <Route path="/optin-thanks">
-              <ThankyouHeader />
-              <NewThankyouPage />
+              {/* <ThankyouHeader />
+              <NewThankyouPage /> */}
+              <OptinThanks />
             </Route>
             <Route path="/profile">
             <ProfileProvider>

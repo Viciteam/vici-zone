@@ -41,6 +41,7 @@ module.exports = {
         '6xl': '4rem',
         '7xl': '5rem',
         '28': '28px',
+        '16': '16px',
         '10': '10px',
         '64': '64px',
         '60': '60px',
@@ -86,7 +87,7 @@ module.exports = {
       },
       backgroundImage: {
         'vici-wailist': "url('img/bg-logo-wailist.png')",
-      }
+      },
     },
   },
   variants: {
