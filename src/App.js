@@ -7,6 +7,10 @@ import Waitlist from './components/Pages/Waitlist/Waitlist';
 import ThankyouHeader from './components/ThankyouPage/Header';
 import NewThankyouPage from './components/ThankyouPage/NewThankyouPage';
 import OptinThanks from './components/ThankyouPage/OptinThanks';
+import Presell from './components/Pages/Presell/Presell';
+
+
+
 
 // import ProfileHeader from './components/Pages/Profile/Header';
 import ProfileContent from './components/Pages/Profile/mainProfileContent';
@@ -76,10 +80,15 @@ function App() {
     <Router>
       <div className="bg-primary_background font-nunito">
           <Switch>
-           <Route exact path="/">
+            <Route exact path="/">
               {/* <ClanHeader />
               <ProfileContent /> */}
               <Waitlist />
+            </Route>
+            <Route exact path="/pre-order">
+              {/* <ClanHeader />
+              <ProfileContent /> */}
+              <Presell />
             </Route>
             <Route exact path="/waitlist">
               {/* <Header />

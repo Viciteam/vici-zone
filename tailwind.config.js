@@ -48,6 +48,7 @@ module.exports = {
      },
     fontFamily: {
       'nunito': ['nunito', 'sans-serif'],
+      'inter': ['Inter', 'sans-serif'],
       'MyFont': ['"My Font"', 'serif'] // Ensure fonts with spaces have " " surrounding it.
     },
     colors: {
@@ -80,6 +81,7 @@ module.exports = {
       vici_request: '#030612',
       vici_prof_bg: '#C4C4C4',
       vici_bg_button: '#ffffff33',
+      vici_bg_opacity: '#ffca280d',
     },
     extend: {
       width: {
@@ -87,6 +89,7 @@ module.exports = {
       },
       backgroundImage: {
         'vici-wailist': "url('img/bg-logo-wailist.png')",
+        'presell-circle' : "url('img/Oval Copy 5.png')",
       },
     },
   },
