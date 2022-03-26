@@ -47,9 +47,9 @@ class Presell extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="mt-6">
+                <div className="mt-6 border-b border-vici_gray">
                     <div className="container mx-auto">
-                        <div className="block sm:flex pb-6 border-b border-vici_gray">
+                        <div className="block sm:flex pb-6">
                             <div className="flex w-full sm:w-1/2 p-6 border-r border-vici_gray">
                                 <div>
                                     <img src="/img/zone/presell/Quote Mark.png" className="w-12" />
@@ -154,8 +154,226 @@ class Presell extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="mt-6 pb-12">
+
+                <div className="mt-6 pb-12 border-b border-vici_gray">
                     <Carousel />
+                </div>
+
+                <div className="mt-6 border-b border-vici_gray">
+                    <div className="container mx-auto">
+                        <div className="block sm:flex p-6">
+                            <div className="w-full sm:w-1/2">
+                                <div className="text-3xl px-6 font-black">
+                                    Benefits of using challenges
+                                </div>
+                                <div className="flex mt-6">
+                                    <div className="w-1/5 mt-8">
+                                        <div className="flex justify-center">
+                                            <img src="/img/zone/presell/benefits/writer 1.png" className=""/>
+                                        </div>
+                                    </div>
+                                    <div className="w-4/5 px-6">
+                                        <div className="text-xl font-black">User generated content</div>
+                                        <p className="pt-3">
+                                            Instead of you having to come up with your own content like other types of content, content in challenges is created by the challenge participants which you can then use to promote in other marketing challenges
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex mt-6">
+                                    <div className="w-1/5 mt-8">
+                                        <div className="flex justify-center">
+                                            <img src="/img/zone/presell/benefits/social-media 1.png" className=""/>
+                                        </div>
+                                    </div>
+                                    <div className="w-4/5 px-6">
+                                        <div className="text-xl font-black">Highly Engaging</div>
+                                        <p className="pt-3">
+                                            Unlike other types of content such as videos or articles that people just read or watch and can skim through quickly to move on to the next thing. Challenges are highly engagin, motivational, and fun to both participants and viewers, hence driving more brand engagement and stickiness
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex mt-6">
+                                    <div className="w-1/5 mt-8">
+                                        <div className="flex justify-center">
+                                            <img src="/img/zone/presell/benefits/viral 1.png" className=""/>
+                                        </div>
+                                    </div>
+                                    <div className="w-4/5 px-6">
+                                        <div className="text-xl font-black">Virality</div>
+                                        <p className="pt-3">
+                                            Challenges are viral by nature. Additionally, you can easily add viral actions into the challenges by requiring participants to share the challenge or tag their friends. Imagine having a piece of content that promotes itself and becomes a sensation world-wide
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex mt-6">
+                                    <div className="w-1/5 mt-8">
+                                        <div className="flex justify-center">
+                                            <img src="/img/zone/presell/benefits/brand 1.png" className=""/>
+                                        </div>
+                                    </div>
+                                    <div className="w-4/5 px-6">
+                                        <div className="text-xl font-black">Raise brand-awareness</div>
+                                        <p className="pt-3">
+                                            Challenge can be a great way to increase brand awareness by putting your target audience to your brand through fun activities
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="w-full sm:w-1/2 sm:pt-0 pt-12">
+                                <div className="text-3xl px-6 font-black">
+                                    Problems solved
+                                </div>
+                                <div className="flex mt-6">
+                                    <div className="w-1/5 mt-8">
+                                        <div className="flex justify-center">
+                                            <img src="/img/zone/presell/benefits/content-creator 1.png" className=""/>
+                                        </div>
+                                    </div>
+                                    <div className="w-4/5 px-6">
+                                        <div className="text-xl font-black">Can’t produce content consistently</div>
+                                        <p className="pt-3">
+                                            According to The State of Content Marketing Survey 2017 by Zazzle Media, 60% say they can't produce content consistently.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex my-12">
+                                    <div className="w-1/5 mt-8">
+                                        <div className="flex justify-center">
+                                            <img src="/img/zone/presell/benefits/social-engagement 1.png" className=""/>
+                                        </div>
+                                    </div>
+                                    <div className="w-4/5 px-6">
+                                        <div className="text-xl font-black">Hard to produce engaging content</div>
+                                        <p className="pt-3">
+                                            The same survey showed that 65% of respondents find it difficult to produce engaging content.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex my-24">
+                                    <div className="w-1/5 mt-8">
+                                        <div className="flex justify-center">
+                                            <img src="/img/zone/presell/benefits/organic 1.png" className=""/>
+                                        </div>
+                                    </div>
+                                    <div className="w-4/5 px-6">
+                                        <div className="text-xl font-black">Higher organic acquisition cost via content</div>
+                                        <p className="pt-3">
+                                            According to Profitwell, content CAC is growing quicker than paid CAC
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="flex mt-6">
+                                    <div className="w-1/5 mt-8">
+                                        <div className="flex justify-center">
+                                            <img src="/img/zone/presell/benefits/follow 1.png" className=""/>
+                                        </div>
+                                    </div>
+                                    <div className="w-4/5 px-6">
+                                        <div className="text-xl font-black">Hard to retain followers</div>
+                                        <p className="pt-3">
+                                            45% of respondents to a Buzzstream poll said they’ll unfollow brands on social media that spend too much time talking about their brand and products while ignoring their audience.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="mt-6 mb-12">
+                            <div className="text-xl w-1/3 mx-auto text-center">
+                                <div>Yes, challenges are so beneficial.</div> 
+                                <div>But why aren’t more companies using them?</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="mt-6">
+                    <div className="font-black text-3xl py-6 text-center">The challenges of running challenges</div>
+                </div>
+                <div className="bg-vici_light_gray pb-6">
+                    <div className="container mx-auto">
+                        <div className="block sm:flex">
+                            <div className="w-full sm:w-1/2 p-6 mt-6">
+                                <div className="flex px-12 p-6 mb-6 bg-white_color rounded-xl">
+                                    <div className="">
+                                        <div className="p-1 rounded-full bg-vici_cancel text-white_color">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div className="pl-4">
+                                        Cannot capture challenge participant information    
+                                    </div>
+                                </div>
+                                <div className="flex px-12 p-6 mb-6 bg-white_color rounded-xl">
+                                    <div className="">
+                                        <div className="p-1 rounded-full bg-vici_cancel text-white_color">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div className="pl-4">
+                                        Hard to manage lots of participants   
+                                    </div>
+                                </div>
+                                <div className="flex px-12 p-6 mb-3 bg-white_color rounded-xl">
+                                    <div className="pt-2">
+                                        <div className="p-1 rounded-full bg-vici_cancel text-white_color">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div className="pl-4">
+                                        Overwhelmed by challenge submissions via social comments, hashtags & direct messages  
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div className="w-full sm:w-1/2 p-6 mt-6">
+                                <div className="flex px-12 p-6 mb-6 bg-white_color rounded-xl">
+                                    <div className="">
+                                        <div className="p-1 rounded-full bg-vici_cancel text-white_color">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div className="pl-4">
+                                        No statistics on the effectiveness of challenge campaigns  
+                                    </div>
+                                </div>
+                                <div className="flex px-12 p-6 mb-6 bg-white_color rounded-xl">
+                                    <div className="">
+                                        <div className="p-1 rounded-full bg-vici_cancel text-white_color">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div className="pl-4">
+                                        No easy way to manage rewards upon challenge completions 
+                                    </div>
+                                </div>
+                                <div className="flex px-12 p-6 mb-3 bg-white_color rounded-xl">
+                                    <div className="pt-2">
+                                        <div className="p-1 rounded-full bg-vici_cancel text-white_color">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div className="pl-4">
+                                        Having to piece together various tools or custom code your own solution to make an okay challenge campaign  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="text-center">
+                            <div>These are some of the reasons why challenges are not fully utilized to their full potential by businesses.</div>
+                            <div>(Imagine doing email marketing nowadays without an email automation tool.)</div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
