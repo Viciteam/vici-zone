@@ -99,5 +99,5 @@ module.exports = {
       fontSize: ['hover', 'focus'],
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/aspect-ratio")],
 }

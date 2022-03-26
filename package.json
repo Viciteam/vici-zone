@@ -11,6 +11,7 @@
     "@fortawesome/react-fontawesome": "^0.1.15",
     "@headlessui/react": "^1.4.0",
     "@mparticle/web-sdk": "^2.14.1",
+    "@tailwindcss/aspect-ratio": "^0.4.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Carousel from './Carousel';
 class Presell extends React.Component {
 
     render () {
@@ -153,6 +153,9 @@ class Presell extends React.Component {
                             and so many more challenges are used successfully by companies and organizations around the world
                         </div>
                     </div>
+                </div>
+                <div className="mt-6 pb-12">
+                    <Carousel />
                 </div>
 
             </div>
