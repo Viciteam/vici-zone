@@ -83,6 +83,7 @@ module.exports = {
       vici_bg_button: '#ffffff33',
       vici_bg_opacity: '#ffca280d',
       vici_cancel: '#F24E1E',
+      vici_bg_footer: '#1F1521',
     },
     extend: {
       width: {
