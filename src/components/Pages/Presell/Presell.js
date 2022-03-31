@@ -81,7 +81,7 @@ class Presell extends React.Component {
                     <img src="/img/Vici Logo.png" width="63" />
                 </div>                
                 <div className="container mx-auto z-10">
-                    <div className="px-6 py-3 mt-6 rounded-3xl text-xl text-center bg-vici_bg_opacity">
+                    <div className="px-6 py-3 mt-6 rounded-3xl text-lg text-center bg-vici_bg_opacity">
                         <div>Engage with your audience on a new level with a <span className="font-bold">new content type</span></div>
                         <div>that boosts your brand awareness, conversion, customer retention, word-of-mouth, and ultimately <span className="font-bold">revenue</span></div>
                     </div>
@@ -107,19 +107,19 @@ class Presell extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex -mt-16 justify-center text-2xl">
+                        <div className="flex -mt-20 justify-center text-2xl">
                             <div className="block sm:flex">
                                 <div className="mb-3 sm:mb-0">
-                                    <button className="px-6 py-2 mr-0 sm:mr-2 rounded-lg bg-primary_color shadow-border_shadow_button hover:text-white_color">Get Early Access</button>
+                                    <button className="px-6 py-2 mr-0 sm:mr-2 rounded-lg bg-primary_color shadow-border_shadow_button hover:text-white_color"><a href="#pre-order">Get Early Access</a></button>
                                 </div>
                                 <div>
-                                    <button className="px-14 py-2 ml-0 sm:ml-2 bg-white_color rounded-lg border hover:text-primary_color">Learn more</button>
+                                    <button className="px-14 py-2 ml-0 sm:ml-2 bg-white_color rounded-lg border hover:text-primary_color"><a href="#learn-more">Learn more</a></button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="mt-6 border-b border-vici_gray">
+                <div className="mt-3 border-b border-vici_gray">
                     <div className="container mx-auto">
                         <div className="block sm:flex pb-6">
                             <div className="flex w-full sm:w-1/2 p-6 border-r border-vici_gray">
@@ -127,10 +127,10 @@ class Presell extends React.Component {
                                     <img src="/img/zone/presell/Quote Mark.png" className="w-12" />
                                 </div>
                                 <div className="pl-3 pr-6">
-                                    <p>
+                                    <p className="text-sm">
                                         Your project idea is truly interesting. As a marketer I see a potential for business to use Vici and for younger generation customers to engage in challenges.
                                     </p>
-                                    <div className="flex mt-6">
+                                    <div className="flex mt-6 text-sm">
                                         <div>
                                             <img src="/img/zone/presell/dr.donatas.png" className="w-18" />
                                         </div>
@@ -147,10 +147,10 @@ class Presell extends React.Component {
                                     <img src="/img/zone/presell/Quote Mark.png" className="w-16" />
                                 </div>
                                 <div className="pl-3 pr-6">
-                                    <p>
+                                    <p className="text-sm">
                                         If companies have this, they will be able to strengthen the connection with customers and increase their loyalty. I can see us creating challenges to encourage students to achieve certificates in exchange for some kinds of gifts.
                                     </p>
-                                    <div className="flex mt-6">
+                                    <div className="flex mt-6 text-sm">
                                         <div>
                                             <img src="/img/zone/presell/Frame 2700.png" className="w-18" />
                                         </div>
@@ -166,31 +166,31 @@ class Presell extends React.Component {
                     </div>     
                 </div>   
 
-                <div className="mt-12">
+                <div className="mt-6" id="learn-more">
                     <div className="text-center text-4xl font-extrabold">What’s a Challenge?</div>
                     <div className="container mx-auto">
-                        <div className="flex mt-6">
+                        <div className="flex mt-3">
                             <div className="w-1/2 flex justify-center">
-                                <img src="/img/zone/presell/2 23.png" />
+                                <img src="/img/zone/presell/2 23.png" className="w-8/12" />
                             </div>
                             <div className="w-1/2 flex justify-center">
-                                <img src="/img/zone/presell/Feature 2.png" />
+                                <img src="/img/zone/presell/Feature 2.png" className="w-8/12"/>
                             </div>
                         </div>
                         <div className="p-6 text-center w-10/12 mx-auto">
-                            <div>
+                            <div className="text-sm">
                                 A challenge consists of a goal, some actions that your audience needss to take, and optionally some kinds of rewards upon completion. 
                                 Challenge is an underused type of content that is highly viral, engaging, fun, and motivational to your audience.
                             </div>
                             <div className="block sm:flex mt-6">
                                 <div className="flex sm:block justify-center">
-                                    <img src="/img/zone/presell/Frame 1781.png" />
+                                    <img src="/img/zone/presell/Frame 1781.png" className="w-8/12" />
                                 </div>
                                 <div className="w-full pl-0 sm:pl-6 pt-5 text-center sm:text-left">
-                                    <div className="text-2xl font-extrabold">
+                                    <div className="text-xl font-extrabold">
                                         Challenges are used by different types of businesses and organizations to
                                     </div>
-                                    <div>boost brand awareness, generate leads, drive sales & increase customer engagement</div>
+                                    <div className="text-sm">boost brand awareness, generate leads, drive sales & increase customer engagement</div>
                                 </div>
                             </div>
                         </div>
@@ -198,10 +198,10 @@ class Presell extends React.Component {
                 </div>
 
 
-                <div className="mt-12 bg-vici_light_gray p-12">
+                <div className="bg-vici_light_gray px-12 py-3">
                     <div className="container mx-auto">
                         <div className="block lg:flex">
-                            <div className="w-full lg:w-2/3 lg:px-12 px-0 pb-12 pt-0 xl:pt-28 text-xl">
+                            <div className="w-full lg:w-2/3 lg:px-12 px-0 pb-12 pt-0 xl:pt-28 text-lg">
                                 <p>
                                     In 2019, Too Faced Cosmetics noticed that one of their lip glosses was selling out due to a viral TikTok challenge where young users were showing off the effects fo the product on their pout with <span className="font-bold">before and after videos.</span>
                                 </p>
@@ -214,14 +214,14 @@ class Presell extends React.Component {
                                 </p>
                             </div>
                             <div className="flex justify-center">
-                                <img src="/img/zone/presell/Frame 2754.png" className="rounded-3xl"/>
+                                <img src="/img/zone/presell/Frame 2754.png" className="rounded-3xl w-10/12"/>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="mt-6 px-12 py-6">
                     <div className="container mx-auto">
-                        <div className="text-2xl text-center font-bold">
+                        <div className="text-xl text-center font-bold">
                             and so many more challenges are used successfully by companies and organizations around the world
                         </div>
                     </div>
@@ -235,7 +235,7 @@ class Presell extends React.Component {
                     <div className="container mx-auto">
                         <div className="block sm:flex p-6">
                             <div className="w-full sm:w-1/2">
-                                <div className="text-3xl px-6 font-black">
+                                <div className="text-2xl px-6 font-black">
                                     Benefits of using challenges
                                 </div>
                                 <div className="flex mt-6">
@@ -245,8 +245,8 @@ class Presell extends React.Component {
                                         </div>
                                     </div>
                                     <div className="w-4/5 px-6">
-                                        <div className="text-xl font-black">User generated content</div>
-                                        <p className="pt-3">
+                                        <div className="text-lg font-black">User generated content</div>
+                                        <p className="pt-3 text-sm">
                                             Instead of you having to come up with your own content like other types of content, content in challenges is created by the challenge participants which you can then use to promote in other marketing challenges
                                         </p>
                                     </div>
@@ -258,8 +258,8 @@ class Presell extends React.Component {
                                         </div>
                                     </div>
                                     <div className="w-4/5 px-6">
-                                        <div className="text-xl font-black">Highly Engaging</div>
-                                        <p className="pt-3">
+                                        <div className="text-lg font-black">Highly Engaging</div>
+                                        <p className="pt-3 text-sm">
                                             Unlike other types of content such as videos or articles that people just read or watch and can skim through quickly to move on to the next thing. Challenges are highly engagin, motivational, and fun to both participants and viewers, hence driving more brand engagement and stickiness
                                         </p>
                                     </div>
@@ -271,8 +271,8 @@ class Presell extends React.Component {
                                         </div>
                                     </div>
                                     <div className="w-4/5 px-6">
-                                        <div className="text-xl font-black">Virality</div>
-                                        <p className="pt-3">
+                                        <div className="text-lg font-black">Virality</div>
+                                        <p className="pt-3 text-sm">
                                             Challenges are viral by nature. Additionally, you can easily add viral actions into the challenges by requiring participants to share the challenge or tag their friends. Imagine having a piece of content that promotes itself and becomes a sensation world-wide
                                         </p>
                                     </div>
@@ -284,15 +284,15 @@ class Presell extends React.Component {
                                         </div>
                                     </div>
                                     <div className="w-4/5 px-6">
-                                        <div className="text-xl font-black">Raise brand-awareness</div>
-                                        <p className="pt-3">
+                                        <div className="text-lg font-black">Raise brand-awareness</div>
+                                        <p className="pt-3 text-sm">
                                             Challenge can be a great way to increase brand awareness by putting your target audience to your brand through fun activities
                                         </p>
                                     </div>
                                 </div>
                             </div>
                             <div className="w-full sm:w-1/2 sm:pt-0 pt-12">
-                                <div className="text-3xl px-6 font-black">
+                                <div className="text-2xl px-6 font-black">
                                     Problems solved
                                 </div>
                                 <div className="flex mt-6">
@@ -302,8 +302,8 @@ class Presell extends React.Component {
                                         </div>
                                     </div>
                                     <div className="w-4/5 px-6">
-                                        <div className="text-xl font-black">Can’t produce content consistently</div>
-                                        <p className="pt-3">
+                                        <div className="text-lg font-black">Can’t produce content consistently</div>
+                                        <p className="pt-3 text-sm">
                                             According to The State of Content Marketing Survey 2017 by Zazzle Media, 60% say they can't produce content consistently.
                                         </p>
                                     </div>
@@ -315,34 +315,34 @@ class Presell extends React.Component {
                                         </div>
                                     </div>
                                     <div className="w-4/5 px-6">
-                                        <div className="text-xl font-black">Hard to produce engaging content</div>
-                                        <p className="pt-3">
+                                        <div className="text-lg font-black">Hard to produce engaging content</div>
+                                        <p className="pt-3 text-sm">
                                             The same survey showed that 65% of respondents find it difficult to produce engaging content.
                                         </p>
                                     </div>
                                 </div>
-                                <div className="flex my-24">
+                                <div className="flex my-12">
                                     <div className="w-1/5 mt-8">
                                         <div className="flex justify-center">
                                             <img src="/img/zone/presell/benefits/organic 1.png" className=""/>
                                         </div>
                                     </div>
                                     <div className="w-4/5 px-6">
-                                        <div className="text-xl font-black">Higher organic acquisition cost via content</div>
-                                        <p className="pt-3">
+                                        <div className="text-lg font-black">Higher organic acquisition cost via content</div>
+                                        <p className="pt-3 text-sm">
                                             According to Profitwell, content CAC is growing quicker than paid CAC
                                         </p>
                                     </div>
                                 </div>
-                                <div className="flex mt-6">
+                                <div className="flex">
                                     <div className="w-1/5 mt-8">
                                         <div className="flex justify-center">
                                             <img src="/img/zone/presell/benefits/follow 1.png" className=""/>
                                         </div>
                                     </div>
                                     <div className="w-4/5 px-6">
-                                        <div className="text-xl font-black">Hard to retain followers</div>
-                                        <p className="pt-3">
+                                        <div className="text-lg font-black">Hard to retain followers</div>
+                                        <p className="pt-3 text-sm">
                                             45% of respondents to a Buzzstream poll said they’ll unfollow brands on social media that spend too much time talking about their brand and products while ignoring their audience.
                                         </p>
                                     </div>
@@ -350,7 +350,7 @@ class Presell extends React.Component {
                             </div>
                         </div>
                         <div className="mt-6 mb-12">
-                            <div className="text-xl w-1/3 mx-auto text-center">
+                            <div className="text-lg w-1/3 mx-auto text-center">
                                 <div>Yes, challenges are so beneficial.</div> 
                                 <div>But why aren’t more companies using them?</div>
                             </div>
@@ -358,7 +358,7 @@ class Presell extends React.Component {
                     </div>
                 </div>
                 <div className="mt-6">
-                    <div className="font-black text-3xl py-6 text-center">The challenges of running challenges</div>
+                    <div className="font-black text-2xl py-6 text-center">The challenges of running challenges</div>
                 </div>
                 <div className="bg-vici_light_gray pb-6">
                     <div className="container mx-auto">
@@ -448,14 +448,14 @@ class Presell extends React.Component {
                     </div>
                 </div>
                 <div className="mt-12">
-                    <div className="text-center text-4xl font-black">
+                    <div className="text-center text-3xl font-black">
                         Introducing Vici
                     </div>
-                    <div className="text-center text-xl mt-3 text-vici_secondary_text">The platform built for businesses and organizations to harness the power of challenges</div>
+                    <div className="text-center text-lg mt-3 text-vici_secondary_text">The platform built for businesses and organizations to harness the power of challenges</div>
                     <div className="container mx-auto mt-12">
                         <div className="block sm:flex px-3">
                             <div className="w-full sm:w-1/2">
-                                <div className="text-2xl font-bold">Easily Create Challenges</div>
+                                <div className="text-xl font-bold">Easily Create Challenges</div>
                                 <br />
                                 <p>
                                     With our easy <span className="font-bold">step-by-step challenge creation tool,</span> you can set up any types of challenges from simple to complex in a few minutes.
@@ -478,7 +478,7 @@ class Presell extends React.Component {
                                 </div>
                             </div>
                             <div className="w-full sm:w-1/2">
-                                <div className="text-2xl font-bold">Raise Brand Awareness</div>
+                                <div className="text-xl font-bold">Raise Brand Awareness</div>
                                 <br />
                                 <p>
                                 Boost awareness to your challenges by sharing them on social media or embedding them on your website.
@@ -489,7 +489,7 @@ class Presell extends React.Component {
                         </div>
                         <div className="block sm:flex mt-6 px-3">
                             <div className="w-full sm:w-1/2">
-                                <div className="text-2xl font-bold">Acquire Participant Information</div>
+                                <div className="text-xl font-bold">Acquire Participant Information</div>
                                 <br />
                                 <p>
                                 Stop wasting your challenge exposure by not capturing the information of the participants.
@@ -512,7 +512,7 @@ class Presell extends React.Component {
                                 </div>
                             </div>
                             <div className="w-full sm:w-1/2">
-                                <div className="text-2xl font-bold">Activate your participants</div>
+                                <div className="text-xl font-bold">Activate your participants</div>
                                 <br />
                                 <p>
                                 Motivate your audience to complete your challenge by posting updates and chatting with them inside the challenge. Your audience also receives email notifications if they are not active. This way you can get them back and continue the challenge.
@@ -524,7 +524,7 @@ class Presell extends React.Component {
                         </div>
                         <div className="block sm:flex mt-6 px-3">
                             <div className="w-full sm:w-1/2">
-                                <div className="text-2xl font-bold">Retain your audience</div>
+                                <div className="text-xl font-bold">Retain your audience</div>
                                 <br />
                                 <p>
                                 Your audience can discover <span className="font-bold">new challenges and content</span> from your brand. They can also connect with your business and other users through social features such as <span className="font-bold">social posts</span> and <span className="font-bold">instant messaging</span>. 
@@ -543,7 +543,7 @@ class Presell extends React.Component {
                                 </div>
                             </div>
                             <div className="w-full sm:w-1/2">
-                                <div className="text-2xl font-bold">Referrals</div>
+                                <div className="text-xl font-bold">Referrals</div>
                                 <br />
                                 <p>
                                 <span className="font-bold">Supercharge word-of-mouth</span> by allowing your <span className="font-bold">audience, influencers, and team members</span> to start and promote their own challenges under your brand Zone.
@@ -552,20 +552,20 @@ class Presell extends React.Component {
                             
                         </div>
                     </div>
-                    <div className="text-center text-xl mt-3 pb-6 text-vici_secondary_text">With the Vici, you will be able to grow your audience and ultimately generate more revenue</div>
+                    <div className="text-center text-lg mt-3 pb-6 text-vici_secondary_text">With the Vici, you will be able to grow your audience and ultimately generate more revenue</div>
                     <div className="flex justify-center">
                         <img src="/img/zone/presell/7.png" />
                     </div>
                     <div className="flex justify-center mb-3 sm:mb-0 mt-6">
-                        <button className="px-6 text-xl py-2 mr-0 sm:mr-2 rounded-lg bg-primary_color shadow-border_shadow_button hover:text-white_color">Get Early Access</button>
+                        <button className="px-6 text-xl py-2 mr-0 sm:mr-2 rounded-lg bg-primary_color shadow-border_shadow_button hover:text-white_color"><a href="#pre-order">Get Early Access</a></button>
                     </div>
                 </div>
                 <div className="mt-12">
-                    <div className="text-center text-3xl font-black">Features that will be available on Vici</div>
+                    <div className="text-center text-2xl font-black">Features that will be available on Vici</div>
                 </div>
-                <div className="py-12 border-b border-vici_secondary_text">
+                <div className="py-6 border-b border-vici_secondary_text">
                     <div className="container mx-auto">
-                        <div className="block lg:flex justify-evenly">
+                        <div className="block lg:flex justify-evenly text-sm">
                             <button onClick={() => this.handleFeatures('challenges', 0)} className={`${this.state.active == 'challenges' ? 'bg-primary_color font-bold' : ''} uppercase px-6 py-3 rounded-3xl`}>Challenges</button>
                             <button onClick={() => this.handleFeatures('customize', 1)} className={`${this.state.active == 'customize' ? 'bg-primary_color font-bold' : ''} uppercase px-6 py-3 rounded-3xl`}>Customize</button>
                             <button onClick={() => this.handleFeatures('managing',2)} className={`${this.state.active == 'managing' ? 'bg-primary_color font-bold' : ''} uppercase px-6 py-3 rounded-3xl`}>Managing</button>
@@ -574,8 +574,8 @@ class Presell extends React.Component {
                             <button onClick={() => this.handleFeatures('business', 5)} className={`${this.state.active == 'business' ? 'bg-primary_color font-bold' : ''} uppercase px-6 py-3 rounded-3xl`}>Business & Agency Features</button>
                         </div>
                         <div className="mt-6">
-                            <div className="text-center text-2xl font-bold text-vici_secondary">{ availableFeatures[this.state.imgIndex].title }</div>
-                            <div className="text-xl text-center">{ availableFeatures[this.state.imgIndex].subtitle }</div>
+                            <div className="text-center text-xl font-bold text-vici_secondary">{ availableFeatures[this.state.imgIndex].title }</div>
+                            <div className="text-lg text-center">{ availableFeatures[this.state.imgIndex].subtitle }</div>
                             <div className="flex justify-center">
                                 <div className="">
                                     <img src={availableFeatures[this.state.imgIndex].image} />
@@ -600,7 +600,7 @@ class Presell extends React.Component {
                                     </svg>
                                 </button>
                             </div>
-                            <div className="mt-12 text-xl font-bold text-center">
+                            <div className="mt-12 text-lg font-bold text-center">
                                 And so many more
                             </div>
                             <div className="text-center mt-6">
@@ -609,76 +609,76 @@ class Presell extends React.Component {
                         </div>
                     </div>
                 </div> 
-                <div className="mt-12 container mx-auto">
-                    <div className="text-center text-4xl font-black">Introducing Vici pre-order program</div>
+                <div id="pre-order" className="mt-6 container mx-auto">
+                    <div className="text-center text-3xl font-black">Introducing Vici pre-order program</div>
                     <div className="text-center">With this program, you will be able to pre-order lifetime access to Vici Zone for a low one-time payment.
                     When the product is released, it will be sold for a monthly subscription. So this is your chance to be an early adopter and lock in your license for a one-time fee.</div>
                 
-                    <div className="mt-6 text-center text-xl font-bold text-vici_secondary">All pre-order packages includes</div>
+                    <div className="mt-3 text-center text-xl font-bold text-vici_secondary">All pre-order packages includes</div>
                     <div className="w-2/3 mx-auto mt-3">
                         <div className="text-center font-bold">Whitelabel and custom domain,  Unlimited challenge activities, social posts, and conversations Unlimited team members, admins, and moderators</div>
                         <div className="text-xs uppercase text-center mt-3 text-vici_secondary_text">*These special pre-order packages will only be available for the first 100 customers or until March 31st. So hurry up before the time runs out!</div>
                     </div>
-                    <div className="flex justify-center mt-12">
+                    <div className="flex justify-center mt-6">
                         <CountDownTimer />
                     </div>
-                    <div className="mt-12 flex justify-center">
+                    <div className="mt-6 flex justify-center">
                         <table class="table-auto">
                             <thead>
-                                <tr className="text-sm sm:text-2xl py-1 sm:py-6">
+                                <tr className="text-sm sm:text-xl py-1 sm:py-6">
                                     <th>
                                     </th>
                                     <th width="200" className="border-l border-vici_prof_bg">
                                         <div>Pro</div>
-                                        <div className="text-xs sm:text-xl">$ 79</div>
+                                        <div className="text-xs sm:text-lg">$ 79</div>
                                     </th>
                                     <th width="200" className="border-l border-vici_prof_bg">
                                         <div>VIP</div>
-                                        <div className="text-xs sm:text-xl">$ 157</div>
+                                        <div className="text-xs sm:text-lg">$ 157</div>
                                     </th>
                                     <th width="200" className="border-l border-vici_prof_bg px-3">
                                         <div className="bg-primary_color py-3 rounded-xl">
                                             <div className="px-1 sm:px-3 py-1 -mt-6 bg-vici_secondary text-white_color text-xs sm:text-sm w-2/3 mx-auto rounded-xl">Best Value</div>
                                             <div>Agency</div>
-                                            <div className="text-xs sm:text-xl">$ 357</div>
+                                            <div className="text-xs sm:text-lg">$ 357</div>
                                         </div>
                                     </th>
                                     <th width="200" className="border-l border-vici_prof_bg">
                                         <div>Supreme</div>
-                                        <div className="text-xs sm:text-xl">$ 987</div>
+                                        <div className="text-xs sm:text-lg">$ 987</div>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className="text-xs sm:text-xl py-6">
-                                    <td className="font-bold px-3 py-6">Total Audience</td>
-                                    <td className="text-right py-6 pr-3">1,000</td>
-                                    <td className="text-right py-6 pr-3 border-l border-vici_prof_bg">2,500</td>
-                                    <td className="text-right py-6 pr-3 border-l border-vici_prof_bg">10,000</td>
-                                    <td className="text-right py-6 pr-3 border-l border-vici_prof_bg">30,000</td>
+                                <tr className="text-xs sm:text-lg py-3">
+                                    <td className="font-bold px-3 py-3">Total Audience</td>
+                                    <td className="text-right py-3 pr-3">1,000</td>
+                                    <td className="text-right py-3 pr-3 border-l border-vici_prof_bg">2,500</td>
+                                    <td className="text-right py-3 pr-3 border-l border-vici_prof_bg">10,000</td>
+                                    <td className="text-right py-3 pr-3 border-l border-vici_prof_bg">30,000</td>
                                 </tr>
-                                <tr className="text-xs sm:text-xl py-6 bg-vici_light_gray">
-                                    <td className="font-bold px-3 py-6">Media storage</td>
-                                    <td className="text-right pr-3 py-6">25 GB</td>
-                                    <td className="text-right py-6 pr-3 border-l border-vici_prof_bg">100 GB</td>
-                                    <td className="text-right py-6 pr-3 border-l border-vici_prof_bg">500 GB</td>
-                                    <td className="text-right py-6 pr-3 border-l border-vici_prof_bg">2,000 GB</td>
+                                <tr className="text-xs sm:text-lg py-3 bg-vici_light_gray">
+                                    <td className="font-bold px-3 py-3">Media storage</td>
+                                    <td className="text-right pr-3 py-3">25 GB</td>
+                                    <td className="text-right py-3 pr-3 border-l border-vici_prof_bg">100 GB</td>
+                                    <td className="text-right py-3 pr-3 border-l border-vici_prof_bg">500 GB</td>
+                                    <td className="text-right py-3 pr-3 border-l border-vici_prof_bg">2,000 GB</td>
                                 </tr>
-                                <tr className="text-xs sm:text-xl py-6">
-                                    <td className="font-bold px-3 py-6">Agency Features</td>
-                                    <td className="text-right pr-3 py-6">-</td>
-                                    <td className="text-right py-6 pr-3 border-l border-vici_prof_bg">-</td>
-                                    <td className="text-right py-6 pr-3 border-l border-vici_prof_bg">Yes</td>
-                                    <td className="text-right py-6 pr-3 border-l border-vici_prof_bg">Yes</td>
+                                <tr className="text-xs sm:text-lg py-3">
+                                    <td className="font-bold px-3 py-3">Agency Features</td>
+                                    <td className="text-right pr-3 py-3">-</td>
+                                    <td className="text-right py-3 pr-3 border-l border-vici_prof_bg">-</td>
+                                    <td className="text-right py-3 pr-3 border-l border-vici_prof_bg">Yes</td>
+                                    <td className="text-right py-3 pr-3 border-l border-vici_prof_bg">Yes</td>
                                 </tr>
-                                <tr className="text-xs sm:text-xl py-6 bg-vici_light_gray border-b border-vici_prof_bg">
-                                    <td className="font-bold px-3 py-6">Number of Clients</td>
-                                    <td className="text-right pr-3 py-6">-</td>
-                                    <td className="text-right pr-3 py-6">-</td>
-                                    <td className="text-right pr-3 py-6">3</td>
-                                    <td className="text-right pr-3 py-6">10</td>
+                                <tr className="text-xs sm:text-lg py-3 bg-vici_light_gray border-b border-vici_prof_bg">
+                                    <td className="font-bold px-3 py-3">Number of Clients</td>
+                                    <td className="text-right pr-3 py-3">-</td>
+                                    <td className="text-right pr-3 py-3">-</td>
+                                    <td className="text-right pr-3 py-3">3</td>
+                                    <td className="text-right pr-3 py-3">10</td>
                                 </tr>
-                                <tr className="text-xs sm:text-xl py-6">
+                                <tr className="text-xs sm:text-lg py-6">
                                     <td className="font-bold px-3 py-6"></td>
                                     <td className="text-right pr-3 py-6">
                                         <button className="bg-primary_color shadow-vici px-3 py-2 rounded-xl hover:text-white_color"><a href="https://go.vici.zone/vici-zone-pro-pre-order/" target="_blank">Pre-order now</a></button>
@@ -696,95 +696,95 @@ class Presell extends React.Component {
                             </tbody>
                         </table>
                     </div>
-                    <div className="flex mt-6 w-2/3 mx-auto">
+                    <div className="flex w-2/3 mx-auto">
                         <div className="w-1/4">
-                            <img src="/img/zone/presell/Group.png" />
+                            <img src="/img/zone/presell/Group.png" className="w-8/12" />
                         </div> 
-                        <div className="text-xl pt-6 w-3/4">
+                        <div className="pt-3 w-3/4">
                             Either <span className="font-bold">you are satisfied</span> with how Vici Zone helps you engage with your audience and grow your business, <span className="font-bold">or you get your money back.</span> No questions asked.
                         </div>
                     </div>
                 </div> 
-                <div className="mt-6 bg-vici_light_gray pb-12">
-                    <div className="text-center text-4xl font-black py-6">FAQs</div>
+                <div className="mt-6 bg-vici_light_gray pb-6">
+                    <div className="text-center text-3xl font-black py-6">FAQs</div>
                     <div className="container mx-auto px-12">
                         <div className="block sm:flex">
                             <div className="w-full sm:w-1/2 px-3 sm:px-12">
                                 <div>
                                     <div className="flex justify-between">
-                                        <div className="text-xl font-bold">What is total audience?</div>
+                                        <div className="text-lg font-bold">What is total audience?</div>
                                         <div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                                             </svg>
                                         </div>
                                     </div>
-                                    <p className="mt-3">
+                                    <p className="mt-3 text-sm">
                                         Total audience is the total number of contacts you added to your zone. Your audience are people who can engage in challenges and social posts.
                                     </p>
                                 </div>
                                 <div className="mt-6">
                                     <div className="flex justify-between">
-                                        <div className="text-xl font-bold">If I pre-order today, when can I use them?</div>
+                                        <div className="text-lg font-bold">If I pre-order today, when can I use them?</div>
                                         <div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                                             </svg>
                                         </div>
                                     </div>
-                                    <p className="mt-3">
+                                    <p className="mt-3 text-sm">
                                     We are running this pre-order program in order to gather feedback and ideas from early visionaries like you who see the value of Vici Zone for your business so that we can build the platform to match your exact needs. This process can take a long time especially special business features such as white-label and agency. However, our goal is to release Vici Zone in 2022 and that's when you can start using your credit.
                                     </p>
                                 </div>
                                 <div className="mt-6">
                                     <div className="flex justify-between">
-                                        <div className="text-xl font-bold">Why should I buy these pre-order credits today?</div>
+                                        <div className="text-lg font-bold">Why should I buy these pre-order credits today?</div>
                                         <div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                                             </svg>
                                         </div>
                                     </div>
-                                    <p className="mt-3">
+                                    <p className="mt-3 text-sm">
                                     This offer is only available during the prelaunch period of Vici Zone. Because we only accept a few early customers to deliver the best services, these special pre-order packages will only be available for the first 100 customers or until March 31st. We have sold hundreds of licenses on other launches of other software products so these licenses can go fast. The best time to take action is today.
                                     </p>
                                 </div>
                                 <div className="mt-6">
                                     <div className="flex justify-between">
-                                        <div className="text-xl font-bold">What are my next steps after the purchase?</div>
+                                        <div className="text-lg font-bold">What are my next steps after the purchase?</div>
                                         <div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                                             </svg>
                                         </div>
                                     </div>
-                                    <p className="mt-3">
+                                    <p className="mt-3 text-sm">
                                     After completing the check-out process. You will be added to a special space where you can request features and share feedback. Please check your emails for the next steps.
                                     </p>
                                 </div>
                                 <div className="mt-6">
                                     <div className="flex justify-between">
-                                        <div className="text-xl font-bold">How can I get in touch with support?</div>
+                                        <div className="text-lg font-bold">How can I get in touch with support?</div>
                                         <div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                                             </svg>
                                         </div>
                                     </div>
-                                    <p className="mt-3">
+                                    <p className="mt-3 text-sm">
                                     You can just email hi@vici.team and we'll get to you asap.
                                     </p>
                                 </div>
                                 <div className="mt-6">
                                     <div className="flex justify-between">
-                                        <div className="text-xl font-bold">Who are you guys anyway?</div>
+                                        <div className="text-lg font-bold">Who are you guys anyway?</div>
                                         <div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                                             </svg>
                                         </div>
                                     </div>
-                                    <p className="mt-3">
+                                    <p className="mt-3 text-sm">
                                     We are a group of skilled marketers, designers and developers who are developing Vici for ourselves and wanted to bring the same platform to you.
                                     </p>
                                 </div>
@@ -792,66 +792,66 @@ class Presell extends React.Component {
                             <div className="w-full sm:w-1/2 px-3">
                                 <div>
                                     <div className="flex justify-between">
-                                        <div className="text-xl font-bold">What if I pre-order and you don't develop the platform?</div>
+                                        <div className="text-lg font-bold">What if I pre-order and you don't develop the platform?</div>
                                         <div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                                             </svg>
                                         </div>
                                     </div>
-                                    <p className="mt-3">
+                                    <p className="mt-3 text-sm">
                                     We already invested a lot of time and money on developing this platform which you can see a live in-progress demo version built on real codes on Vici.life. In parallel with technical development, we are running this pre-order campaign to test out our marketing messages and gather feedback from early visionaries like you so that we can best prepare for our public launch. If we stop developing the platform for any reason, you are covered by our lifetime money-back guarantee.
                                     </p>
                                 </div>
                                 <div className="mt-6">
                                     <div className="flex justify-between">
-                                        <div className="text-xl font-bold">What if I run out of storage later on?</div>
+                                        <div className="text-lg font-bold">What if I run out of storage later on?</div>
                                         <div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                                             </svg>
                                         </div>
                                     </div>
-                                    <p className="mt-3">
+                                    <p className="mt-3 text-sm">
                                     Don't worry. You will be able to upgrade your storage in case you have reached the full capacity.
                                     </p>
                                 </div>
                                 <div className="mt-6">
                                     <div className="flex justify-between">
-                                        <div className="text-xl font-bold">Can I sell my purchased package to others if I don't use it?</div>
+                                        <div className="text-lg font-bold">Can I sell my purchased package to others if I don't use it?</div>
                                         <div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                                             </svg>
                                         </div>
                                     </div>
-                                    <p className="mt-3">
+                                    <p className="mt-3 text-sm">
                                     Yes, you can. You can just need to let us know who you sell your package to.
                                     </p>
                                 </div>
                                 <div className="mt-6">
                                     <div className="flex justify-between">
-                                        <div className="text-xl font-bold">How can I get my money back if I'm not satisfied?</div>
+                                        <div className="text-lg font-bold">How can I get my money back if I'm not satisfied?</div>
                                         <div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                                             </svg>
                                         </div>
                                     </div>
-                                    <p className="mt-3">
+                                    <p className="mt-3 text-sm">
                                     If you are not satisfied with Vici Zone for any reasons and you haven't used more than 30% of your purchased credit, just email us at hi@vici.team to get your refund.
                                     </p>
                                 </div>
                                 <div className="mt-6">
                                     <div className="flex justify-between">
-                                        <div className="text-xl font-bold">What if I'm not technical?</div>
+                                        <div className="text-lg font-bold">What if I'm not technical?</div>
                                         <div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                                             </svg>
                                         </div>
                                     </div>
-                                    <p className="mt-3">
+                                    <p className="mt-3 text-sm">
                                     Don’t worry – we built the platform so everyone can use it. You don’t need to be technical to experience results. If you have technical questions, you can always get answers from us.
                                     </p>
                                 </div>
@@ -859,12 +859,12 @@ class Presell extends React.Component {
                         </div>
                     </div>
                     <div className="flex justify-center mt-6 py-3">
-                        <button className="text-2xl px-5 py-3 text-vici_secondary font-bold bg-primary_color rounded-2xl hover:text-white_color shadow-vici">Pre-order Vici Zone Today</button>
+                        <button className="text-2xl px-5 py-3 text-vici_secondary font-bold bg-primary_color rounded-2xl hover:text-white_color shadow-vici"><a href="#pre-order">Pre-order Vici Zone Today</a></button>
                     </div>
                 </div>
-                <div className="mt-12 pb-12">
-                    <div className="text-4xl text-center font-black">The Team</div>
-                    <div className="container mx-auto mt-12">
+                <div className="mt-6 pb-6">
+                    <div className="text-3xl text-center font-black">The Team</div>
+                    <div className="container mx-auto mt-6">
                         <div className="block lg:flex mx-24">
                             <div className="w-full lg:w-1/4 mx-6 text-center">
                                 <div className="flex justify-center">
@@ -907,7 +907,7 @@ class Presell extends React.Component {
                                 <div className="text-vici_secondary text-sm"> 4 years of experience in multimedia design</div>
                             </div>
                         </div>
-                        <div className="w-3/4 block lg:flex mx-auto justify-center mt-12">
+                        <div className="w-3/4 block lg:flex mx-auto justify-center mt-6">
                             <div className="w-full lg:w-1/4 mx-6 text-center">
                                 <div className="flex justify-center">
                                     <img src="/img/zone/presell/team/rock.png" />
@@ -939,10 +939,10 @@ class Presell extends React.Component {
                                 <div className="text-vici_secondary text-sm"> 5 years Of Experience in Multimedia Design</div>
                             </div>
                         </div>
-                        <div className="mt-12">
-                            <div className="text-3xl font-black text-center">Advisor</div>
+                        <div className="mt-3">
+                            <div className="text-2xl font-black text-center">Advisor</div>
                         </div>
-                        <div className="mt-8">
+                        <div className="mt-3">
                             <div className="flex justify-center w-full sm:w-1/2 mx-auto">
                                 <div>
                                     <img src="/img/zone/presell/team/donatas.png" />
@@ -959,7 +959,7 @@ class Presell extends React.Component {
                         </div>
                     </div>
                 </div> 
-                <div className="py-12 bg-vici_bg_footer">
+                <div className="py-6 bg-vici_bg_footer">
                     <div className="container flex mx-auto text-white_color text-sm font-inter font-normal">
                         <div className="w-1/3">
                             <div>
@@ -971,7 +971,7 @@ class Presell extends React.Component {
                         </div>
                         <div className="w-1/3 text-center">
                             <div className="font-light">All Rights Reserved</div>
-                            <div className=""><a href="#" >Privacy</a>  | <a href="#" >Terms and Conditions</a></div>
+                            <div className=""><a href="https://vici.life/privacy-policy" target="_blank" >Privacy</a>  | <a href="https://vici.life/terms-and-conditions" target="_blank" >Terms and Conditions</a></div>
                         </div>
                         <div className="w-1/3 text-right">
                             <div className="font-light">hi@vici.team</div>

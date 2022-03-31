@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 function CountDownTimer(){
 
 
-   const [expiryTime, setExpiryTime] = useState("31 mar 2022 00:00:01");
+   const [expiryTime, setExpiryTime] = useState("31 apr 2022 00:00:01");
    const [countdownTime, setCountdownTime]= useState(
        {
            countdownDays:'',
@@ -54,25 +54,25 @@ function CountDownTimer(){
                 <>
                 <div className="block sm:flex font-nunito">
                     <div className="mx-3">
-                        <div className="text-5xl font-bold text-vici_secondary_text bg-vici_light_gray py-3 px-6 rounded-2xl">
+                        <div className="text-4xl font-bold text-vici_secondary_text bg-vici_light_gray py-3 px-6 rounded-2xl">
                             {countdownTime.countdownDays}
                         </div>
                         <div className="uppercase text-center text-sm font-bold pt-3">Day/s</div>
                     </div>
                     <div className="mx-3">
-                        <div className="text-5xl font-bold text-vici_secondary_text bg-vici_light_gray py-3 px-6 rounded-2xl">
+                        <div className="text-4xl font-bold text-vici_secondary_text bg-vici_light_gray py-3 px-6 rounded-2xl">
                             {countdownTime.countdownHours}
                         </div>
                         <div className="uppercase text-center text-sm font-bold pt-3">Hour/s</div>
                     </div>
                     <div className="mx-3">
-                        <div className="text-5xl font-bold text-vici_secondary_text bg-vici_light_gray py-3 px-6 rounded-2xl">
+                        <div className="text-4xl font-bold text-vici_secondary_text bg-vici_light_gray py-3 px-6 rounded-2xl">
                             {countdownTime.countdownMinutes}
                         </div>
                         <div className="uppercase text-center text-sm font-bold pt-3">Minute/s</div>
                     </div>
                     <div className="mx-3">
-                        <div className="text-5xl font-bold text-vici_secondary_text bg-vici_light_gray py-3 px-6 rounded-2xl">
+                        <div className="text-4xl font-bold text-vici_secondary_text bg-vici_light_gray py-3 px-6 rounded-2xl">
                             {countdownTime.countdownSeconds}
                         </div>
                         <div className="uppercase text-center text-sm font-bold pt-3">Second/s</div>
