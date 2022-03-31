@@ -13,7 +13,7 @@ import Presell from './components/Pages/Presell/Presell';
 
 
 // import ProfileHeader from './components/Pages/Profile/Header';
-import ProfileContent from './components/Pages/Profile/mainProfileContent';
+/* import ProfileContent from './components/Pages/Profile/mainProfileContent';
 
 import Profile from './components/Pages/Profile/Index'
 
@@ -58,7 +58,7 @@ axios.interceptors.request.use(function (config){
   const token = CookieService.get("access_token");
   config.headers.Authorization = token ? `Bearer ${token}` : '';
   return config;
-});
+}); */
 
 //mParticle
 /* var mParticle = require('mparticle');
@@ -91,22 +91,16 @@ function App() {
               <Presell />
             </Route>
             <Route exact path="/waitlist">
-              {/* <Header />
-              <Content />
-              <Footer /> */}
               <Waitlist />
             </Route>
             <Route path="/waitlist-thanks">
               <ThankyouHeader />
-              {/* <Thankyou /> */}
               <NewThankyouPage />
             </Route>
             <Route path="/optin-thanks">
-              {/* <ThankyouHeader />
-              <NewThankyouPage /> */}
               <OptinThanks />
             </Route>
-            <Route path="/profile">
+            {/* <Route path="/profile">
             <ProfileProvider>
                 <ClanHeader />
                 <Profile />
@@ -199,7 +193,7 @@ function App() {
             </Route>
             <Route path="/cookie-policy">
               <CookiePolicy />
-            </Route>
+            </Route> */}
           </Switch>
       </div>
     </Router>
