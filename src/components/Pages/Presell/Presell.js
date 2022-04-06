@@ -14,6 +14,11 @@ class Presell extends React.Component {
         this.handleNext = this.handleNext.bind(this);
     }
 
+    componentDidMount(){
+        document.title = "Pre-order Vici - Quickly create and run viral Challenges";
+        document.getElementsByTagName("META")[2].content="Engage with your audience on a new level with a new content type that boosts your brand awareness, conversion, customer retention, word-of-mouth, and ultimately revenue";
+    }
+
     handleFeatures = (feature, index) => {
         this.setState({ imgIndex: index});
         this.setState({ active: feature });
@@ -119,7 +124,7 @@ class Presell extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="mt-3 border-b border-vici_gray">
+                <div id="learn-more" className="mt-12 border-b border-vici_gray">
                     <div className="container mx-auto">
                         <div className="block sm:flex pb-6">
                             <div className="flex w-full sm:w-1/2 p-6 border-r border-vici_gray">
@@ -166,31 +171,30 @@ class Presell extends React.Component {
                     </div>     
                 </div>   
 
-                <div className="mt-6" id="learn-more">
+                <div className="mt-6">
                     <div className="text-center text-4xl font-extrabold">What’s a Challenge?</div>
                     <div className="container mx-auto">
                         <div className="flex mt-3">
                             <div className="w-1/2 flex justify-center">
-                                <img src="/img/zone/presell/2 23.png" className="w-8/12" />
+                                <img src="/img/zone/presell/Feature 4.png" className="w-8/12" />
                             </div>
                             <div className="w-1/2 flex justify-center">
-                                <img src="/img/zone/presell/Feature 2.png" className="w-8/12"/>
+                                <img src="/img/zone/presell/Feature 3.png" className="w-8/12"/>
                             </div>
                         </div>
                         <div className="p-6 text-center w-10/12 mx-auto">
                             <div className="text-sm">
-                                A challenge consists of a goal, some actions that your audience needss to take, and optionally some kinds of rewards upon completion. 
-                                Challenge is an underused type of content that is highly viral, engaging, fun, and motivational to your audience.
+                                A challenge consists of a goal, some actions that your audience need to take and optionally some kinds of rewards upon completion. 
                             </div>
                             <div className="block sm:flex mt-6">
                                 <div className="flex sm:block justify-center">
-                                    <img src="/img/zone/presell/Frame 1781.png" className="w-8/12" />
+                                    <img src="/img/zone/presell/Frame 1781.png" className="w-8/12 mx-auto mt-3" />
                                 </div>
                                 <div className="w-full pl-0 sm:pl-6 pt-5 text-center sm:text-left">
                                     <div className="text-xl font-extrabold">
-                                        Challenges are used by different types of businesses and organizations to
+                                        Challenges are popular and can be used to boost brand awareness, conversion, engagement, word-of-mouth, and ultimately revenue!
                                     </div>
-                                    <div className="text-sm">boost brand awareness, generate leads, drive sales & increase customer engagement</div>
+                                    <div className="text-sm"></div>
                                 </div>
                             </div>
                         </div>
@@ -200,21 +204,21 @@ class Presell extends React.Component {
 
                 <div className="bg-vici_light_gray px-12 py-3">
                     <div className="container mx-auto">
-                        <div className="block lg:flex">
-                            <div className="w-full lg:w-2/3 lg:px-12 px-0 pb-12 pt-0 xl:pt-28 text-lg">
-                                <p>
-                                    In 2019, Too Faced Cosmetics noticed that one of their lip glosses was selling out due to a viral TikTok challenge where young users were showing off the effects fo the product on their pout with <span className="font-bold">before and after videos.</span>
+                        <div className="">
+                            <div className="w-full lg:w-2/3 mx-auto lg:px-12 px-0 pb-6 pt-0 xl:pt-6 text-lg">
+                                <p className="text-center">
+                                That's why big-name entrepreneurs and marketers such as Tony Robbins, Grant Cardone, Dean Graziosi, Russell Brunson use challenges as a critical element of their business.
                                 </p>
-                                <br />
+                                {/* <br />
                                 <p className="font-bold">Too Faced didn’t miss this opportunity. They launched a similar challenge to promote a new mascara, and sales skyrocketed.</p>
                                 <br />
                                 <p>
                                     The strategy worked, generating 1 billion views on the campaign’s hashtag
                                     #TFDamn Girl up until now.
-                                </p>
+                                </p> */}
                             </div>
                             <div className="flex justify-center">
-                                <img src="/img/zone/presell/Frame 2754.png" className="rounded-3xl w-10/12"/>
+                                <img src="/img/zone/presell/Frame 2754.png" className="rounded-3xl w-2/3"/>
                             </div>
                         </div>
                     </div>

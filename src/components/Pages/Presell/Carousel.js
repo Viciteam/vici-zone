@@ -12,6 +12,7 @@ const Carousel = () => {
         'Frame 2749.png',
         'Frame 2750.png',
         'Frame 2751.png',
+        'Frame 2760.png',
         'Frame 2752.png',
         'Frame 2753.png',
         'Frame 2754.png',
