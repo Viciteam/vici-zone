@@ -92,7 +92,7 @@ class Presell extends React.Component {
                     </div>
                 </div>
                 <div className="bg-no-repeat bg-left-bottom bg-none xl:bg-presell-circle">
-                    <div className="container mx-auto">
+                    <div className="container mx-auto w-10/12">
                         <div className="xl:mt-20 mt-6 block xl:flex">
                             <div className="w-full xl:w-1/2">
                                 <div className="text-5xl whitespace-normal leading-tight text-center xl:text-left xl:whitespace-pre">
